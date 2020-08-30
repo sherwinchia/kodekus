@@ -1,8 +1,24 @@
 module.exports = {
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        primary:'#6C72EF',
+        hover:'#ECEFF3',
+        base:'#F1F4F8',
+        dark:{
+          100:'#27292C',
+          200:'#202125',
+          300:'#15161A',
+        },
+      },
+      fontFamily:{
+        roboto:['Roboto','sans-serif']
+      }
+    },
   },
-  variants: {},
+  variants: {
+    textColor:['responsive', 'hover', 'focus', 'group-hover'],
+  },
   plugins: [],
 }

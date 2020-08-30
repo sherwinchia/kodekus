@@ -16,6 +16,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    protected $admin_namespace = 'App\Http\Controllers\Admin';
+    protected $browser_namespace = 'App\Http\Controllers\Browser';
+
     /**
      * The path to the "home" route for your application.
      *
@@ -42,11 +45,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        // $this->mapApiRoutes();
+        // $this->mapWebRoutes();
+        $this->mapAdminRoutes();
+        $this->mapBrowserRoutes();
+        
     }
 
     /**
@@ -77,4 +80,36 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
+  
+    protected function mapAdminRoutes(){
+      // web routes accessed by using the browser directly
+      Route::middleware('web')
+        ->prefix('admin')
+        ->name('admin.')
+        ->namespace($this->admin_namespace)
+        ->group(base_path('routes/admin/web.php'));
+  
+      // api routes accessed by using axios from same application
+      // Route::domain($this->domain("admin"))
+      //   ->prefix('api')
+      //   ->name('admin.api.')
+      //   ->middleware('web')
+      //   ->namespace($this->admin_namespace)
+      //   ->group(base_path('routes/admin/api.php'));
+    }
+
+    protected function mapBrowserRoutes(){
+      Route::middleware('web')
+        ->name('browser.')
+        ->namespace($this->browser_namespace)
+        ->group(base_path('routes/browser/web.php'));
+        
+        // Route::prefix("api")
+        // ->name('browser.api.')
+        // ->middleware('web')
+        // ->namespace($this->api_namespace)
+        // ->group(base_path('routes/browser/api.php'));
+    }
+
+
 }
