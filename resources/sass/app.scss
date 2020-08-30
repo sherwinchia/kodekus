@@ -1,3 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
 @tailwind base;
 @tailwind components; 
 @tailwind utilities;
+
+.navbar-list{
+  @apply  p-2 pl-4 my-1 mx-2 rounded-lg; 
+
+  a{
+    i{
+      @apply text-gray-500;
+    }
+    span{
+      @apply text-gray-500;
+      i{
+        @apply text-gray-500;
+      }
+    }
+  }
+}
+
+.navbar-list:hover{
+  @apply bg-primary; 
+  a{
+    i{
+      @apply text-white;
+    }
+    span{
+      @apply text-white;
+      i{
+        @apply text-white;
+      }
+    }
+  }
+}
+
+.navbar-active-list{
+  @apply bg-primary p-2 pl-4 my-1 mx-2 rounded-lg; 
+  a{
+    i{
+      @apply text-white;
+    }
+    span{
+      @apply text-white;
+      i{
+        @apply text-white;
+      }
+    }
+  }
+}
+
+// @variants group-hover, hover, focus {
+//   .nav-item {
+//     @apply text-primary;
+//   }
+// }
+
+
+// scroll-bar::-webkit-scrollbar {
+//   width: 10px;
+//   height: 10px;
+// }
+// scroll-bar::-webkit-scrollbar-button {
+//   width: 76px;
+//   height: 76px;
+// }
+// scroll-bar::-webkit-scrollbar-thumb {
+//   background: #ffbb29;
+//   border: 0px none #ffffff;
+//   border-radius: 100px;
+// }
+// scroll-bar::-webkit-scrollbar-thumb:hover {
+//   background: #ffbb29;
+// }
+// scroll-bar::-webkit-scrollbar-thumb:active {
+//   background: #ffbb29;
+// }
+// scroll-bar::-webkit-scrollbar-track {
+//   background: #2e2e2e;
+//   border: 0px none #ffffff;
+//   border-radius: 100px;
+// }
+// scroll-bar::-webkit-scrollbar-track:hover {
+//   background: #2e2e2e;
+// }
+// scroll-bar::-webkit-scrollbar-track:active {
+//   background: #242424;
+// }
+// scroll-bar::-webkit-scrollbar-corner {
+//   background: transparent;
+// }
