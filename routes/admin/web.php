@@ -17,11 +17,39 @@ Route::group(['prefix' => 'admin'], function () {
   Auth::routes();
 });
 
-// Route::middleware(['auth', 'isAdmin'])->group(function(){
-  Route::get('dashboard','PageController@dashboard')->name('admin.dashboard');
-  Route::get('content','PageController@content')->name('admin.content');
-  Route::get('user','PageController@user')->name('admin.user');
-// });
+Route::layout('admin.layouts.master')->section('content')->group(function () {
+  
+  //Dashboard
+  Route::livewire('dashboard','admin.dashboard.index')->name('dashboard.index');
 
-// example purpose
-// Route::livewire('dashboard', 'admin.navbar')->layout('admin.layouts.master');
+  //Article
+  Route::livewire('articles','admin.articles.index')->name('articles.index');
+  Route::livewire('articles/{article}','admin.articles.edit')->name('articles.edit');
+
+  //Category
+  Route::livewire('categories','admin.categories.index')->name('categories.index');
+
+  //Tag
+  Route::livewire('tags','admin.tags.index')->name('tags.index');
+
+  //User
+  Route::livewire('users','admin.users.index')->name('users.index');
+
+  //Role
+  Route::livewire('roles','admin.roles.index')->name('roles.index');
+
+  //Permission
+  Route::livewire('permissions','admin.permissions.index')->name('permissions.index');
+
+  //Advertisement
+  Route::livewire('advertisements','admin.advertisements.index')->name('advertisements.index');
+  
+  //File
+  Route::livewire('files','admin.files.index')->name('files.index');
+
+  //Log
+  Route::livewire('logs','admin.logs.index')->name('logs.index');
+
+  //Backup
+  Route::livewire('backups','admin.backups.index')->name('backups.index');
+});

@@ -82,6 +82,8 @@ class RouteServiceProvider extends ServiceProvider
     }
   
     protected function mapAdminRoutes(){
+      //admin middleware ['auth', 'isAdmin']
+
       // web routes accessed by using the browser directly
       Route::middleware('web')
         ->prefix('admin')
@@ -90,12 +92,11 @@ class RouteServiceProvider extends ServiceProvider
         ->group(base_path('routes/admin/web.php'));
   
       // api routes accessed by using axios from same application
-      // Route::domain($this->domain("admin"))
-      //   ->prefix('api')
-      //   ->name('admin.api.')
-      //   ->middleware('web')
-      //   ->namespace($this->admin_namespace)
-      //   ->group(base_path('routes/admin/api.php'));
+      Route::middleware('web')
+        ->prefix('admin/api')
+        ->name('admin.api.')
+        ->namespace($this->admin_namespace)
+        ->group(base_path('routes/admin/api.php'));
     }
 
     protected function mapBrowserRoutes(){
