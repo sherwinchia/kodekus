@@ -4,6 +4,42 @@
 @tailwind components; 
 @tailwind utilities;
 
+html,body{
+  @apply p-0 text-black;
+}
+
+.card{
+  @apply max-w-sm rounded overflow-hidden shadow-lg p-2 bg-white mb-6;
+  .card-header{
+    padding: 1rem 0;
+    border-bottom: 2px solid rgb(231, 236, 240);
+    p{
+      font-weight: bold;
+    }
+  }
+  .card-body{
+
+  }
+}
+
+.input-group{
+  
+  @apply my-4;
+
+  label{
+    display: block;
+  }
+
+  input[type='text'], input[type='file'], textarea{
+    @apply shadow rounded w-full py-2 px-3 outline-none border;
+  }
+
+  input[type='checkbox']{
+    @apply h-10 w-full;
+  }
+  
+}
+
 .navbar-list{
   @apply  p-2 pl-4 my-1 mx-2 rounded-lg; 
 
@@ -21,7 +57,7 @@
 }
 
 .navbar-list:hover{
-  @apply bg-primary; 
+  @apply bg-dark-100; 
   a{
     i{
       @apply text-white;
@@ -48,6 +84,28 @@
       }
     }
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 24px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(87, 87, 87);
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(65, 64, 64);
 }
 
 // @variants group-hover, hover, focus {

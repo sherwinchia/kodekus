@@ -9,7 +9,6 @@
     <div class="bg-dark-200 flex justify-between items-center p-3 ">
       <div class=" brand text-white text-lg font-roboto font-bold uppercase">
         <i class="fas fa-dice-d20 w-8 text-lg text-white "></i>
-        Sherwin Chia
       </div>
       <div x-data="{profileDrop:false}">
         <div class="w-10 h-10 bg-white cursor-pointer rounded-full overflow-hidden" @click="profileDrop=true">
@@ -37,11 +36,11 @@
       </div>
     </div>
 
-    <div class="flex-1 flex overflow-hidden bg-dark-200">
-      <div class="navigation-bar w-56 flex-none overflow-y-auto mt-2">
+    <div class="flex-1 flex overflow-hidden ">
+      <div class="navigation-bar w-56 flex-none overflow-y-auto bg-dark-200">
         <livewire:admin.navbar>
       </div>
-      <div class="content flex-1 overflow-y-auto p-3 bg-dark-300 text-hover">
+      <div class="content flex-1 flex overflow-y-auto">
         @yield('content')
       </div>
     </div>
@@ -51,18 +50,5 @@
     </div> --}}
 
   </div>
-
-
-
 </main>
-
 @endsection
-
-{{-- @include('admin.layouts.partials.main') --}}
-
-{{-- <section class="left col-span-1">
-  <livewire:admin.navbar>
-</section>
-<section class="right col-span-5">
-  @yield('content')
-</section> --}}

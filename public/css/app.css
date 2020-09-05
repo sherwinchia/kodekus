@@ -23741,6 +23741,60 @@ video {
           animation: bounce 1s infinite;
 }
 
+html, body {
+  padding: 0;
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+}
+
+.card {
+  max-width: 24rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  margin-bottom: 1.5rem;
+}
+
+.card .card-header {
+  padding: 1rem 0;
+  border-bottom: 2px solid #e7ecf0;
+}
+
+.card .card-header p {
+  font-weight: bold;
+}
+
+.input-group {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+}
+
+.input-group input[type=text], .input-group input[type=file], .input-group textarea {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  outline: 0;
+  border-width: 1px;
+}
+
+.input-group input[type=checkbox] {
+  height: 2.5rem;
+  width: 100%;
+}
+
 .navbar-list {
   padding: 0.5rem;
   padding-left: 1rem;
@@ -23771,8 +23825,8 @@ video {
 
 .navbar-list:hover {
   --bg-opacity: 1;
-  background-color: #6C72EF;
-  background-color: rgba(108, 114, 239, var(--bg-opacity));
+  background-color: #27292C;
+  background-color: rgba(39, 41, 44, var(--bg-opacity));
 }
 
 .navbar-list:hover a i {
@@ -23822,6 +23876,32 @@ video {
   --text-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 24px;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #575757;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #414040;
 }
 
 @media (min-width: 640px){

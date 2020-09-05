@@ -30,3 +30,14 @@
 // const app = new Vue({
 //     el: '#app',
 // });
+
+// require('bootstrap-table');
+// import 'bootstrap-table/dist/bootstrap-table.css';
+
+// import EditorJS from '@editorjs/editorjs';
+
+window.EditorJS = require('@editorjs/editorjs');
+
+// Quill Setup
+window.Quill = require('quill');
+// window.QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
