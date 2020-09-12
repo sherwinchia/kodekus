@@ -1,12 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
 @tailwind base;
-@tailwind components; 
-@tailwind utilities;
 
 html,body{
   @apply p-0 text-black;
 }
+
+button{
+  @apply p-2 bg-green-300 rounded-lg;  
+}
+
+h1              { font-size: 2em; margin: .67em 0 }
+h2              { font-size: 1.5em; margin: .75em 0 }
+h3              { font-size: 1.17em; margin: .83em 0 }
+h5              { font-size: .83em; margin: 1.5em 0 }
+h6              { font-size: .75em; margin: 1.67em 0 }
+h1, h2, h3, h4,
+h5, h6          { font-weight: bolder }
+
+@tailwind components; 
+@tailwind utilities;
 
 .card{
   @apply max-w-sm rounded overflow-hidden shadow-lg p-2 bg-white mb-6;
@@ -23,15 +36,13 @@ html,body{
 }
 
 .input-group{
-  
-  @apply my-4;
-
   label{
     display: block;
+    font-size: .875rem;
   }
 
   input[type='text'], input[type='file'], textarea{
-    @apply shadow rounded w-full py-2 px-3 outline-none border;
+    @apply shadow rounded w-full py-2 px-3 outline-none border mb-2;
   }
 
   input[type='checkbox']{
@@ -82,6 +93,19 @@ html,body{
       i{
         @apply text-white;
       }
+    }
+  }
+}
+
+.article-form{
+  .article-right{
+    @apply bg-white border-l;
+    
+    section{
+      @apply py-2 px-3 border-b rounded;
+    }
+    section:hover{
+      background-color: rgb(231, 239, 245);
     }
   }
 }

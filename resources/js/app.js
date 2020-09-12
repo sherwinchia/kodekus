@@ -34,10 +34,31 @@
 // require('bootstrap-table');
 // import 'bootstrap-table/dist/bootstrap-table.css';
 
-// import EditorJS from '@editorjs/editorjs';
 
 window.EditorJS = require('@editorjs/editorjs');
+window.Paragraph = require('@editorjs/paragraph');
+window.Header = require('@editorjs/header');
+window.Quote = require('@editorjs/quote');
+window.Warning = require('@editorjs/warning');
+window.Delimiter = require('@editorjs/delimiter');
+window.List = require('@editorjs/list');
+window.ImageTool = require('@editorjs/image');
+window.SimpleImage = require('@editorjs/simple-image');
+window.LinkTool = require('@editorjs/link');
+window.Embed = require('@editorjs/embed');
+window.AttachesTool = require('@editorjs/attaches');
+window.CodeTool = require('@editorjs/code');
+window.RawTool = require('@editorjs/raw');
+window.Marker = require('@editorjs/marker');
+window.InlineCode = require('@editorjs/inline-code');
+window.Undo = require('editorjs-undo');
 
 // Quill Setup
-window.Quill = require('quill');
+// window.Quill = require('quill');
 // window.QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
+
+// Pikaday
+// window.Pikaday = require('pikaday/pikaday.js');
+
+//Flatpickr
+window.flatpickr = require('flatpickr').default;

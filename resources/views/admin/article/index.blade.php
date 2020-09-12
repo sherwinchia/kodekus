@@ -1,7 +1,10 @@
+@extends('admin.layouts.master')
+
 @section('meta-content')
-<title>Articles | {{ config('app.name') }} </title>
+<title>Article | {{ config('app.name') }} </title>
 @endsection
 
+@section('content')
 <div class="p-12">
   <p class="font-bold">Articles</p>
   <hr>
@@ -58,6 +61,8 @@
     </div>
   </div>
 </div>
+@endsection
+
 @push('styles')
 
 @endpush

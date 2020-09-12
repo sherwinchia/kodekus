@@ -23,8 +23,8 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
   Route::livewire('dashboard','admin.dashboard.index')->name('dashboard.index');
 
   //Article
-  Route::livewire('articles','admin.articles.index')->name('articles.index');
-  Route::livewire('articles/{article}','admin.articles.edit')->name('articles.edit');
+  Route::get('articles','Article\Web\ArticleController@index')->name('articles.index');
+  Route::get('articles/{article}','Article\Web\ArticleController@edit')->name('articles.edit');
 
   //Category
   Route::livewire('categories','admin.categories.index')->name('categories.index');
