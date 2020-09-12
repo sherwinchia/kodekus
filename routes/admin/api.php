@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // List articles (index table)
-Route::get('articles','ArticleController@index');
+Route::get('articles','Article\API\ArticleController@index');
 
 // Show article 
 Route::get('articles/{article}','ArticleController@show');

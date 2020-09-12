@@ -24,7 +24,7 @@ class CreateArticlesTable extends Migration
 
             $table->string('title');
             $table->text('subtitle');
-            $table->longText('content');
+            $table->longText('body');
             $table->integer('read_minutes')->nullable();
             $table->string('publish_date')->nullable();
             $table->integer('author_id');
