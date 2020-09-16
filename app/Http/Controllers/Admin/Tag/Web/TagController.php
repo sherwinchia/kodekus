@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Article\Web;
+namespace App\Http\Controllers\Admin\Tag\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Article;
 
-class ArticleController extends Controller
+class TagController extends Controller
 {
-  public const PATH = 'admin.articles.';
+  public const PATH = 'admin.tags.';
 
   public function index()
   {

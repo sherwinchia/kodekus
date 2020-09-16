@@ -26,14 +26,16 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
   Route::get('articles','Article\Web\ArticleController@index')->name('articles.index');
   Route::get('articles/create','Article\Web\ArticleController@create')->name('articles.create');
   Route::get('articles/{article}','Article\Web\ArticleController@edit')->name('articles.edit');
-  Route::delete('articles/{article}','Article\Web\ArticleController@delete')->name('articles.delete');
-
 
   //Category
-  Route::livewire('categories','admin.categories.index')->name('categories.index');
+  Route::get('categories','Category\Web\CategoryController@index')->name('categories.index');
+  Route::get('categories/create','Category\Web\CategoryController@create')->name('categories.create');
+  Route::get('categories/{category}','Category\Web\CategoryController@edit')->name('categories.edit');
 
   //Tag
-  Route::livewire('tags','admin.tags.index')->name('tags.index');
+  Route::get('tags','Tag\Web\TagController@index')->name('tags.index');
+  Route::get('tags/create','Tag\Web\TagController@create')->name('tags.create');
+  Route::get('tags/{tag}','Tag\Web\TagController@edit')->name('tags.edit');
 
   //User
   Route::livewire('users','admin.users.index')->name('users.index');

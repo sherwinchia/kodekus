@@ -597,14 +597,6 @@ html, body {
   color: rgba(0, 0, 0, var(--text-opacity));
 }
 
-button {
-  padding: 0.5rem;
-  --bg-opacity: 1;
-  background-color: #9ae6b4;
-  background-color: rgba(154, 230, 180, var(--bg-opacity));
-  border-radius: 0.5rem;
-}
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -24087,6 +24079,65 @@ h5, h6 {
 
 .article-form .article-right section:hover {
   background-color: #e7eff5;
+}
+
+.data-table .bottom {
+  vertical-align: middle;
+  display: inline-block;
+  min-width: 100%;
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-width: 1px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.data-table .bottom table thead tr th {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom-width: 2px;
+  line-height: 1rem;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.data-table .bottom table tbody tr .non-id {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  white-space: nowrap;
+  border-bottom-width: 1px;
+  --text-opacity: 1;
+  color: #000;
+  color: rgba(0, 0, 0, var(--text-opacity));
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.pagination {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.pagination li {
+  display: inline-block;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  color: red;
+  border: 1px solid red;
+  border-radius: 2px;
 }
 
 /* width */
