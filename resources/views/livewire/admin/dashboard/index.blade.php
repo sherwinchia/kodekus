@@ -3,7 +3,7 @@
 @endsection
 
 <div class="flex flex-col p-4">
-  <div class="flex">
+  {{-- <div class="flex">
     <div class="user flex items-center w-48 h-24 rounded-lg bg-dark-100 mb-4">
       <span class="flex flex-col items-center border-r-2 p-4">
         <i class="fas fa-user text-3xl"></i>
@@ -22,5 +22,5 @@
       voluptatum minus ipsum explicabo soluta facilis, quam quas aliquam nesciunt, inventore, doloremque sapiente
       asperiores aspernatur ratione.
     </div>
-  </div>
+  </div> --}}
 </div>

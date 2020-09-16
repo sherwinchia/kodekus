@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Article\Web;
+namespace App\Http\Controllers\Admin\Category\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Article;
 
-class ArticleController extends Controller
+class CategoryController extends Controller
 {
-  public const PATH = 'admin.articles.';
+  public const PATH = 'admin.categories.';
 
   public function index()
   {

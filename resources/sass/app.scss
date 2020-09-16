@@ -11,9 +11,9 @@ html,body{
   @apply p-0 text-black;
 }
 
-button{
-  @apply p-2 bg-green-300 rounded-lg;  
-}
+// button{
+//   @apply p-2 bg-green-300 rounded-lg;  
+// }
 
 h1              { font-size: 2em; margin: .67em 0 }
 h2              { font-size: 1.5em; margin: .75em 0 }
@@ -114,6 +114,66 @@ h5, h6          { font-weight: bolder }
     }
   }
 }
+
+.data-table{
+  .bottom{
+    @apply align-middle inline-block min-w-full bg-white px-8 py-3 border rounded-bl-lg rounded-br-lg;
+    table{
+      thead{
+        tr{
+          th{
+            @apply px-6 py-3 border-b-2 leading-4 tracking-wider text-sm;
+          }
+        }
+      }
+      tbody{
+        tr{
+          .non-id{
+            @apply px-6 py-4 whitespace-no-wrap border-b text-black text-sm leading-5;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  list-style: none;
+  padding-left: 0;
+  text-align: center;
+
+  li{
+    display: inline-block;
+  }
+
+ 
+
+  a {
+    text-decoration: none;
+    padding: 0.2rem 0.4rem;
+    color: red;
+    border: 1px solid red;
+    border-radius: 2px;
+  }
+}
+
+// .table-auto{
+//   @apply min-w-full;
+//   thead{
+//     tr{
+//       th{
+//         @apply px-4 py-2 text-center;
+//       }
+//     }
+//   }
+//   tbody{
+//     tr{
+//       td{
+//         @apply border px-4 py-2 text-left;
+//       }
+//     }
+//   }
+// }
 
 /* width */
 ::-webkit-scrollbar {
