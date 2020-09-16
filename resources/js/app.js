@@ -31,8 +31,36 @@
 //     el: '#app',
 // });
 
-// require('bootstrap-table');
-// import 'bootstrap-table/dist/bootstrap-table.css';
+try {
+  window.$ = window.jQuery = require('jquery');
+
+  // let token = document.head.querySelector('meta[name="csrf-token"]');
+
+  // if (token) {
+  //     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  // } else {
+  //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  // }
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  // require('bootstrap');
+} catch (e) {}
+
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
 
 
 window.EditorJS = require('@editorjs/editorjs');
@@ -57,8 +85,8 @@ window.Undo = require('editorjs-undo');
 // window.Quill = require('quill');
 // window.QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
-// Pikaday
+// // Pikaday
 // window.Pikaday = require('pikaday/pikaday.js');
 
-//Flatpickr
-window.flatpickr = require('flatpickr').default;
+// //Flatpickr
+// const flatpickr = require('flatpickr').default;

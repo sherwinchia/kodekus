@@ -16,18 +16,17 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
 
-            //meta data
-            $table->string('meta_title')->nullable();
-            $table->text('meta_description')->nullable();
-            $table->string('meta_image')->nullable();
+            $table->text('description');
+            $table->longText('image')->nullable();
             $table->string('slug')->unique();
 
             $table->string('title');
-            $table->text('subtitle');
             $table->longText('body');
+            $table->string('category');
+            $table->string('tag');
             $table->integer('read_minutes')->nullable();
             $table->string('publish_date')->nullable();
-            $table->integer('author_id');
+            $table->integer('author_id')->nullable();
 
             $table->boolean('featured')->default(0);
             $table->boolean('approved')->default(0);
