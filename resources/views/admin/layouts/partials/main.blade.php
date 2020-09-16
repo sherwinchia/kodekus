@@ -10,12 +10,8 @@
   @yield('meta-content')
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
   <script src="https://kit.fontawesome.com/cde5973eff.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.min.js" defer></script>
-  <script src='https://cdn.tiny.cloud/1/kl4b9kwmcthfey9pzqwlxr2ft8gd3ignrzerwfxhhkxeqy8s/tinymce/5/tinymce.min.js'
-    referrerpolicy="origin">
-  </script>
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,18 +19,19 @@
 
   <!-- Styles -->
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
   <livewire:styles />
   @stack('styles')
 
 </head>
 
 <body>
-  <div id="app">
+  @routes
+  <div class="relative" id="app">
     @yield('master')
   </div>
   <livewire:scripts />
-  @yield('scripts')
+  @include('admin.layouts.partials.scripts')
 </body>
 
 </html>

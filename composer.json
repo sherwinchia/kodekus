@@ -15,7 +15,9 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.2",
-        "livewire/livewire": "^1.3"
+        "livewire/livewire": "^1.3",
+        "rappasoft/laravel-livewire-tables": "^0.2.1",
+        "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

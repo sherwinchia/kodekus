@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
+// $fa-font-path: '~@fortawesome/fontawesome-free/webfonts'; 
+// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// @import '~@fortawesome/fontawesome-free/scss/solid';
+// @import '~@fortawesome/fontawesome-free/scss/regular';
+
 @tailwind base;
 
 html,body{
@@ -138,37 +143,3 @@ h5, h6          { font-weight: bolder }
 //   }
 // }
 
-
-// scroll-bar::-webkit-scrollbar {
-//   width: 10px;
-//   height: 10px;
-// }
-// scroll-bar::-webkit-scrollbar-button {
-//   width: 76px;
-//   height: 76px;
-// }
-// scroll-bar::-webkit-scrollbar-thumb {
-//   background: #ffbb29;
-//   border: 0px none #ffffff;
-//   border-radius: 100px;
-// }
-// scroll-bar::-webkit-scrollbar-thumb:hover {
-//   background: #ffbb29;
-// }
-// scroll-bar::-webkit-scrollbar-thumb:active {
-//   background: #ffbb29;
-// }
-// scroll-bar::-webkit-scrollbar-track {
-//   background: #2e2e2e;
-//   border: 0px none #ffffff;
-//   border-radius: 100px;
-// }
-// scroll-bar::-webkit-scrollbar-track:hover {
-//   background: #2e2e2e;
-// }
-// scroll-bar::-webkit-scrollbar-track:active {
-//   background: #242424;
-// }
-// scroll-bar::-webkit-scrollbar-corner {
-//   background: transparent;
-// }

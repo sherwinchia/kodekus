@@ -6,7 +6,8 @@
   </div> --}}
 
   <div wire:ignore class="flex-1 overflow-y-auto py-3 article-left">
-    <div wire:key="editorJs" x-data="formComponents()" id="editorjs" x-init="mountEditorJs()">
+    <div wire:key="editorJs" x-data="formComponents()" id="editorjs"
+      x-init="mountEditorJs( {{ isset($article->body) ? $article->body : '' }})">
     </div>
   </div>
 
@@ -47,32 +48,44 @@
 
       <section>
         <div class="input-group">
-          <label for="meta_title">Publish Date</label>
-          <div id="publish_date"></div>
-          {{-- <input
-              x-data
-              x-ref="input"
-              x-init="new Pikaday({ field: $refs.input })"
-              type="text"
-              {{ $attributes }}
-          > --}}
+          <label for="category">Category</label>
+          <select wire:model="category">
+            <option value="test1">Test1</option>
+            <option value="test2">Test2</option>
+          </select>
         </div>
+      </section>
+      <section>
+
         <div class="input-group">
-          <label for="meta_description">Published</label>
+          <label for="tag">Tag</label>
+        </div>
+      </section>
+
+      <section>
+        <div class="input-group">
+          <label for="publish_date">Publish Date</label>
+          <input type="datetime-local" wire:model="publish_date">
+        </div>
+      </section>
+
+      <section>
+        <div class="input-group">
+          <label for="published">Published</label>
           <input type="checkbox" wire:model="published">
         </div>
       </section>
 
       <section>
         <div class="input-group">
-          <label for="meta_description">Featured</label>
+          <label for="featured">Featured</label>
           <input type="checkbox" wire:model="featured">
         </div>
       </section>
 
       <section>
         <div class="input-group">
-          <label for="meta_description">Trending</label>
+          <label for="trending">Trending</label>
           <input type="checkbox" wire:model="trending">
         </div>
       </section>
@@ -80,7 +93,10 @@
 
     <div x-data="formComponents()">
       @if ($errors->any())
-      <section class=" alert alert-danger mt-1" role="alert">{{ $errors->first() }}</section>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-2">
+        <strong class="font-bold">Error!</strong>
+        <span class="block sm:inline">{{ $errors->first() }}</span>
+      </div>
       @endif
       <button x-on:click.prevent="onPublishClicked()" type="submit" class="w-full">Publish</button>
       </section>
@@ -136,7 +152,7 @@
         reader.readAsDataURL(file);
       },
 
-      mountEditorJs(){
+      mountEditorJs(data){
           editor = new EditorJS({
           holder: 'editorjs',
 
@@ -221,10 +237,12 @@
             },
           },
 
+          data:data,
+
           placeholder: 'Let`s write an awesome story!',
           
           onReady: () => {
-            new Undo({editor});     
+            new Undo({editor});    
           },
 
           save(blockContent){
@@ -256,8 +274,5 @@
       },
     }
   }
-
-  $x = document.getElementById('publish_date');
-  flatpickr($x,{});
 </script>
 @endsection

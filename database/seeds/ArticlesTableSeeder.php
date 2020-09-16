@@ -14,6 +14,6 @@ class ArticlesTableSeeder extends Seeder
     {
       Article::truncate();
       
-      factory(Article::class,5)->create();
+      factory(Article::class,10)->create();
     }
 }

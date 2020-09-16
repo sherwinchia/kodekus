@@ -12,39 +12,64 @@ use Illuminate\Support\Facades\Validator;
 
 class ArticleForm extends Component
 {
-  // public $article;
+  public $article;
   public $title;
   public $description;
   public $body;
   public $content;
   public $slug;
   public $image;
-  public $published;
-  public $featured;
-  public $trending;
+  public $category = 'Category';
+  public $tag = 'Tag';
+  public $publish_date;
+  public $published = 0;
+  public $featured = 0;
+  public $trending = 0;
+  public $author_id;
 
+
+  public $edit;
 
   protected $rules = [
     'title' => 'required|max:80',
     'description' => 'required|max:200',
-    'image' => 'required',
-    'slug' => 'required|regex:/^[a-z0-9-]+$/',
+    'image' => 'nullable',
+    'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
     'content' => 'required|present|array',
+    'category' => 'required',
+    'tag' => 'required',
+    'publish_date' => 'required',
+    'author_id' => 'required',
+    'published' => 'required',
+    'featured' => 'required',
+    'trending' => 'required',
+
   ];
 
   protected $listeners = [
     'imageUploaded','publishClicked','titleAdded'
   ];
 
-  public function mount($articleId)
+  public function mount($articleId=null)
   { 
-    
-    $article = Article::findOrFail($articleId);
-    $this->title = $article->title;
-    $this->slug = $article->slug;
-    $this->subtitle = $article->subtitle;
-    $this->description = $article->description;
+    // dd(isset($articleId));
+    $this->edit = isset($articleId) ? true : false;
+
+    if(isset($articleId)){
+      $this->article = Article::findOrFail($articleId);
+      $this->title = $this->article->title;
+      $this->slug = $this->article->slug;
+      $this->subtitle = $this->article->subtitle;
+      $this->description = $this->article->description;
+      $this->image = $this->article->image;
+      $this->category = $this->article->category;
+      $this->tag = $this->article->tag;
+      $this->publish_date = $this->article->publish_date;
+      $this->published = $this->article->published;
+      $this->featured = $this->article->featured;
+      $this->trending = $this->article->trending;
+    }
   }
 
   public function titleAdded()
@@ -77,7 +102,21 @@ class ArticleForm extends Component
   {
     $this->content = $editorJs['blocks'];
     $this->body =json_encode($editorJs);
-    $this->validate($this->rules);
+    $this->author_id = 1;
+    $data = $this->validate($this->rules);
+    // $data['publish_date'] = Carbon::parse($data['publish_date']);
+
+    if($this->edit){
+      $this->article->update($data);
+      session()->flash('success', 'Article successfully updated.');
+      return redirect()->route('admin.articles.index');
+    } else {
+      $article = Article::create($data);
+      session()->flash('success', 'Article successfully created.');
+      return redirect()->route('admin.articles.index');
+    }
+
+
     // $image = $this->storeImage();
   }
 

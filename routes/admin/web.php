@@ -24,7 +24,10 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
 
   //Article
   Route::get('articles','Article\Web\ArticleController@index')->name('articles.index');
+  Route::get('articles/create','Article\Web\ArticleController@create')->name('articles.create');
   Route::get('articles/{article}','Article\Web\ArticleController@edit')->name('articles.edit');
+  Route::delete('articles/{article}','Article\Web\ArticleController@delete')->name('articles.delete');
+
 
   //Category
   Route::livewire('categories','admin.categories.index')->name('categories.index');
