@@ -36,12 +36,12 @@
       </div>
     </div>
 
-    <div class="flex-1 flex overflow-hidden ">
+    <div class="flex-1 flex overflow-hidden">
       <div class="navigation-bar w-56 flex-none overflow-y-auto bg-dark-200">
         <livewire:admin.navbar>
       </div>
       <div class="content flex-1 flex flex-col overflow-y-auto">
-        <div class="p-2">
+        <div class="">
           @include('admin.layouts.partials.notifications')
         </div>
         @yield('content')

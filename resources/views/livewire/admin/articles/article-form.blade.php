@@ -1,11 +1,5 @@
-<form class="flex-1 flex overflow-hidden article-form">
-  {{-- <div wire:ignore class="flex-1">
-    <div id="quillJs" wire:key="wysiwygEditor" wire:model.debounce.2000ms="body" class="mb-4" x-data="quillJs()"
-      x-init="mountQuillJs()">
-    </div>
-  </div> --}}
-
-  <div wire:ignore class="flex-1 overflow-y-auto py-3 article-left">
+<div class="flex-1 flex article-form overflow-y-hidden">
+  <div wire:ignore class="flex-1 py-3 article-left overflow-y-auto">
     <div wire:key="editorJs" x-data="formComponents()" id="editorjs"
       x-init="mountEditorJs( {{ isset($article->body) ? $article->body : '' }})">
     </div>
@@ -55,8 +49,8 @@
           </select>
         </div>
       </section>
-      <section>
 
+      <section>
         <div class="input-group">
           <label for="tag">Tag</label>
         </div>
@@ -98,11 +92,12 @@
         <span class="block sm:inline">{{ $errors->first() }}</span>
       </div>
       @endif
-      <button x-on:click.prevent="onPublishClicked()" type="submit" class="w-full">Publish</button>
-      </section>
+      <button x-on:click.prevent="onPublishClicked()" class="w-full p-4 bg-green-200 outline-none">Publish</button>
     </div>
   </div>
-</form>
+</div>
+
+
 
 
 @push('styles')

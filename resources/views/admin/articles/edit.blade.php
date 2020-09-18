@@ -5,7 +5,5 @@
 @endsection
 
 @section('content')
-<div class="flex-1 flex flex-col">
-  <livewire:admin.articles.article-form articleId="{{ $article->id }}" />
-</div>
+<livewire:admin.articles.article-form articleId="{{ $article->id }}" />
 @endsection

@@ -10,7 +10,7 @@
           <option value="20">20</option>
         </select>
       </div>
-      <a href="{{ route('admin.articles.create') }}" role="button">Create</a>
+      <a href="{{ route('admin.categories.create') }}" role="button">Create</a>
     </div>
   </div>
   <div class="bottom">
@@ -32,27 +32,27 @@
         </tr>
       </thead>
       <tbody class="bg-white">
-        @foreach ($articles as $article)
+        @foreach ($categories as $category)
         <tr>
           <td class="px-6 py-4 whitespace-no-wrap border-b">
             <div class="flex items-center">
               <div>
-                <div class="text-sm leading-5 text-gray-800">{{ $article->id }}</div>
+                <div class="text-sm leading-5 text-gray-800">{{ $category->id }}</div>
               </div>
             </div>
           </td>
           <td class="non-id">
-            {{ $article->title }}
+            {{ $category->title }}
           </td>
           <td class="non-id text-center">
-            {{ $article->published }}
+            {{ $category->published }}
           </td>
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
-              <a class="mx-1 text-lg" role="button" href="{{ route('admin.articles.edit', $article->id) }}">
+              <a class="mx-1 text-lg" role="button" href="{{ route('admin.categories.edit', $category->id) }}">
                 <i class="fas fa-edit"></i>
               </a>
-              <a class="mx-1 text-lg" role="button" wire:click.prevent="delete({{ $article->id }})">
+              <a class="mx-1 text-lg" role="button" wire:click.prevent="delete({{ $category->id }})">
                 <i class="fas fa-trash"></i>
               </a>
             </div>
@@ -65,16 +65,16 @@
       <div>
         <p class="text-sm leading-5">
           Showing
-          <span class="font-medium">{{ $articles->firstItem() }}</span>
+          <span class="font-medium">{{ $categories->firstItem() }}</span>
           to
-          <span class="font-medium">{{ $articles->lastItem() }}</span>
+          <span class="font-medium">{{ $categories->lastItem() }}</span>
           of
-          <span class="font-medium">{{ $articles->total() }}</span>
+          <span class="font-medium">{{ $categories->total() }}</span>
           results
         </p>
       </div>
       <div class="inline-block">
-        {{ $articles->links() }}
+        {{ $categories->links() }}
       </div>
     </div>
   </div>
