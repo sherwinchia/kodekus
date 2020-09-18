@@ -597,6 +597,14 @@ html, body {
   color: rgba(0, 0, 0, var(--text-opacity));
 }
 
+button {
+  padding: 0.5rem;
+  --bg-opacity: 1;
+  background-color: #9ae6b4;
+  background-color: rgba(154, 230, 180, var(--bg-opacity));
+  border-radius: 0.5rem;
+}
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -24066,6 +24074,7 @@ h5, h6 {
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
   border-left-width: 1px;
+  width: 400px;
 }
 
 .article-form .article-right section {

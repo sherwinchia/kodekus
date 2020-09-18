@@ -27,7 +27,7 @@
 
 <body>
   @routes
-  <div class="relative" id="app">
+  <div class="" id="app">
     @yield('master')
   </div>
   <livewire:scripts />

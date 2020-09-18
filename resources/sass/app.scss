@@ -11,6 +11,10 @@ html,body{
   @apply p-0 text-black;
 }
 
+button{
+  @apply p-2 bg-green-300 rounded-lg;  
+}
+
 // button{
 //   @apply p-2 bg-green-300 rounded-lg;  
 // }
@@ -105,7 +109,7 @@ h5, h6          { font-weight: bolder }
 .article-form{
   .article-right{
     @apply bg-white border-l;
-    
+    width: 400px;
     section{
       @apply py-2 px-3 border-b rounded;
     }
