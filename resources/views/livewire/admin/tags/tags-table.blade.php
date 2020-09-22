@@ -21,10 +21,7 @@
             <a wire:click.prevent="sortBy('id')" role="button">ID</a>
           </th>
           <th class="text-left">
-            <a wire:click.prevent="sortBy('title')" role="button">Title</a>
-          </th>
-          <th>
-            <a wire:click.prevent="sortBy('published')" role="button">Published</a>
+            <a wire:click.prevent="sortBy('name')" role="button">Name</a>
           </th>
           <th>
             Action
@@ -42,10 +39,7 @@
             </div>
           </td>
           <td class="non-id">
-            {{ $tag->title }}
-          </td>
-          <td class="non-id text-center">
-            {{ $tag->published }}
+            {{ $tag->name }}
           </td>
           <td class="non-id">
             <div class="flex justify-center text-gray-600">

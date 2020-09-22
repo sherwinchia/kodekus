@@ -21,11 +21,11 @@
             <a wire:click.prevent="sortBy('id')" role="button">ID</a>
           </th>
           <th class="text-left">
-            <a wire:click.prevent="sortBy('title')" role="button">Title</a>
+            <a wire:click.prevent="sortBy('name')" role="button">Name</a>
           </th>
-          <th>
+          {{-- <th>
             <a wire:click.prevent="sortBy('published')" role="button">Published</a>
-          </th>
+          </th> --}}
           <th>
             Action
           </th>
@@ -42,11 +42,11 @@
             </div>
           </td>
           <td class="non-id">
-            {{ $category->title }}
+            {{ $category->name }}
           </td>
-          <td class="non-id text-center">
+          {{-- <td class="non-id text-center">
             {{ $category->published }}
-          </td>
+          </td> --}}
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.categories.edit', $category->id) }}">

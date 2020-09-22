@@ -61,8 +61,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-
-
 window.EditorJS = require('@editorjs/editorjs');
 window.Paragraph = require('@editorjs/paragraph');
 window.Header = require('@editorjs/header');
@@ -81,12 +79,4 @@ window.Marker = require('@editorjs/marker');
 window.InlineCode = require('@editorjs/inline-code');
 window.Undo = require('editorjs-undo');
 
-// Quill Setup
-// window.Quill = require('quill');
-// window.QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
-
-// // Pikaday
-// window.Pikaday = require('pikaday/pikaday.js');
-
-// //Flatpickr
-// const flatpickr = require('flatpickr').default;
+// import SlimSelect from 'slim-select';

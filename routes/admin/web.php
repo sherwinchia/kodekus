@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
-  Auth::routes();
-});
+// Route::group(['prefix' => 'admin'], function () {
+//   Auth::routes();
+// });
 
 Route::layout('admin.layouts.master')->section('content')->group(function () {
   
   //Dashboard
-  Route::livewire('dashboard','admin.dashboard.index')->name('dashboard.index');
+  Route::get('dashboard','Dashboard\Web\DashboardController@index')->name('dashboard.index');
 
   //Article
   Route::get('articles','Article\Web\ArticleController@index')->name('articles.index');
@@ -57,4 +57,12 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
 
   //Backup
   Route::livewire('backups','admin.backups.index')->name('backups.index');
+
+  // Route::get()->name('profile.show');
+  // Route::post()->name('profile.update.password');
+  // Route::post()->name('profile.update.profile');
+  // Route::post()->name('logout');
 });
+
+// Route::get()->name('login.show');
+// Route::post()->name('login.submit');

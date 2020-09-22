@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Category\Web;
 
+use App\Models\Category;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,8 +21,8 @@ class CategoryController extends Controller
     return view(self::PATH.'create');
   }
 
-  public function edit(Article $article)
+  public function edit(Category $category)
   {
-    return view(self::PATH.'edit',compact('article'));
+    return view(self::PATH.'edit',compact('category'));
   }
 }
