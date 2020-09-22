@@ -44,57 +44,77 @@
         <div class="input-group">
           <label for="category">Category</label>
           <select wire:model="category">
-            <option value="test1">Test1</option>
-            <option value="test2">Test2</option>
+            <option selected="selected" disabled>Choose one category</option>
+            @foreach ($categories as $category)
+            <option>{{ $category->name }}</option>
+            @endforeach
           </select>
         </div>
       </section>
 
-      <section>
+      {{-- <section>
         <div class="input-group">
-          <label for="tag">Tag</label>
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="publish_date">Publish Date</label>
-          <input type="datetime-local" wire:model="publish_date">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="published">Published</label>
-          <input type="checkbox" wire:model="published">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="featured">Featured</label>
-          <input type="checkbox" wire:model="featured">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="trending">Trending</label>
-          <input type="checkbox" wire:model="trending">
-        </div>
-      </section>
+          <select multiple="multiple" name="sports[]" id="sports">
+            @foreach($aSports as $aKey => $aSport)
+            @foreach($aItem->sports as $aItemKey => $aItemSport)
+            <option value="{{$aKey}}" @if($aKey==$aItemKey)selected="selected" @endif>{{$aSport}}</option>
+      @endforeach
+      @endforeach
+      </select>
     </div>
+    </section> --}}
 
-    <div x-data="formComponents()">
-      @if ($errors->any())
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-2">
-        <strong class="font-bold">Error!</strong>
-        <span class="block sm:inline">{{ $errors->first() }}</span>
+    <section>
+      <div class="input-group">
+        <label for="tags">Tags</label>
+        <select wire:model="tag">
+          <option selected="selected" disabled>Choose one tag</option>
+          @foreach ($tags as $tag)
+          <option>{{ $tag->name }}</option>
+          @endforeach
+        </select>
       </div>
-      @endif
-      <button x-on:click.prevent="onPublishClicked()" class="w-full p-4 bg-green-200 outline-none">Publish</button>
-    </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="publish_date">Publish Date</label>
+        <input type="datetime-local" wire:model="publish_date">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="published">Published</label>
+        <input type="checkbox" wire:model="published">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="featured">Featured</label>
+        <input type="checkbox" wire:model="featured">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="trending">Trending</label>
+        <input type="checkbox" wire:model="trending">
+      </div>
+    </section>
   </div>
+
+  <div x-data="formComponents()">
+    @if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-2">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline">{{ $errors->first() }}</span>
+    </div>
+    @endif
+    <button x-on:click.prevent="onPublishClicked()" class="w-full p-4 bg-green-200 outline-none">Publish</button>
+  </div>
+</div>
 </div>
 
 

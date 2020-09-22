@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryForm extends Component
 {
+  public $category;
+
   public $name;
   public $slug;
 
@@ -19,7 +21,7 @@ class CategoryForm extends Component
 
   protected $rules = [
     'name' => 'required|max:80',
-    'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:tags',
+    'slug' => 'required|regex:/^[a-z0-9-]+$/',
   ];
 
   protected $listeners = [
@@ -31,9 +33,35 @@ class CategoryForm extends Component
     $this->edit = isset($categoryId) ? true : false;
 
     if(isset($categoryId)){
-      $category = Category::findOrFail($categoryId);
-      $this->name = $category->name;
-      $this->slug = $category->slug;
+      $this->category = Category::findOrFail($categoryId);
+      $this->name = $this->category->name;
+      $this->slug = $this->category->slug;
+    }
+  }
+
+  public function submit()
+  {
+    if ($this->edit) {
+      $data = $this->validate([
+        'name' => 'required|max:80',
+        'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:categories,slug,'.$this->category->id,
+      ]);
+    } else {
+      $data = $this->validate($this->rules);
+    }
+    
+
+    if($this->edit){
+      $this->category->update($data);
+      session()->flash('success', 'Category successfully updated.');
+      return redirect()->route('admin.categories.index');
+    }else{
+      Category::create([
+        'name' => $this->name,
+        'slug' => $this->slug
+      ]);
+      session()->flash('success', 'Category successfully created.');
+      return redirect()->route('admin.categories.index');
     }
   }
 

@@ -13315,13 +13315,7 @@ window.CodeTool = __webpack_require__(/*! @editorjs/code */ "./node_modules/@edi
 window.RawTool = __webpack_require__(/*! @editorjs/raw */ "./node_modules/@editorjs/raw/dist/bundle.js");
 window.Marker = __webpack_require__(/*! @editorjs/marker */ "./node_modules/@editorjs/marker/dist/bundle.js");
 window.InlineCode = __webpack_require__(/*! @editorjs/inline-code */ "./node_modules/@editorjs/inline-code/dist/bundle.js");
-window.Undo = __webpack_require__(/*! editorjs-undo */ "./node_modules/editorjs-undo/dist/bundle.js"); // Quill Setup
-// window.Quill = require('quill');
-// window.QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
-// // Pikaday
-// window.Pikaday = require('pikaday/pikaday.js');
-// //Flatpickr
-// const flatpickr = require('flatpickr').default;
+window.Undo = __webpack_require__(/*! editorjs-undo */ "./node_modules/editorjs-undo/dist/bundle.js"); // import SlimSelect from 'slim-select';
 
 /***/ }),
 

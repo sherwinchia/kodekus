@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Tag\Web;
 
+use App\Models\Tag;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,8 +21,8 @@ class TagController extends Controller
     return view(self::PATH.'create');
   }
 
-  public function edit(Article $article)
+  public function edit(Tag $tag)
   {
-    return view(self::PATH.'edit',compact('article'));
+    return view(self::PATH.'edit',compact('tag'));
   }
 }

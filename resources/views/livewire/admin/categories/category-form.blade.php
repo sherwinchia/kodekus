@@ -1,10 +1,9 @@
 <div class="flex-1 flex article-form overflow-y-hidden">
-
-  <div class="flex-none article-right flex flex-col justify-between">
+  <form wire:submit.prevent="submit" class="flex-none article-right flex flex-col justify-between">
     <div class="overflow-y-auto">
       <section>
         <div class="input-group">
-          <label for="title">Title</label>
+          <label for="name">Name</label>
           <input wire:model="name" wire:input="$emitSelf('nameAdded')" type="text" id="name" maxlength="80">
         </div>
       </section>
@@ -12,10 +11,9 @@
       <section>
         <div class="input-group">
           <label for="slug">Slug </label>
-          <input id="slug" pattern="^[a-z0-9-]+$" type="text" wire:model="slug">
+          <input wire:model="slug" id="slug" pattern="^[a-z0-9-]+$" type="text">
         </div>
       </section>
-
     </div>
 
     <div x-data="formComponents()">
@@ -25,7 +23,7 @@
         <span class="block sm:inline">{{ $errors->first() }}</span>
       </div>
       @endif
-      <button x-on:click.prevent="onPublishClicked()" class="w-full p-4 bg-green-200 outline-none">Publish</button>
+      <button type="submit" class="w-full p-4 bg-green-200 outline-none">Create</button>
     </div>
-  </div>
+  </form>
 </div>

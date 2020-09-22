@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Admin\Articles;
 
 use Livewire\Component;
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -13,14 +15,17 @@ use Illuminate\Support\Facades\Validator;
 class ArticleForm extends Component
 {
   public $article;
+  public $categories;
+  public $tags;
+
   public $title;
   public $description;
   public $body;
   public $content;
   public $slug;
   public $image;
-  public $category = 'Category';
-  public $tag = 'Tag';
+  public $category;
+  public $tag;
   public $publish_date;
   public $published = 0;
   public $featured = 0;
@@ -36,7 +41,7 @@ class ArticleForm extends Component
     'image' => 'nullable',
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
-    'content' => 'required|present|array',
+    'content' => 'required|present|array', 
     'category' => 'required',
     'tag' => 'required',
     'publish_date' => 'required',
@@ -44,7 +49,6 @@ class ArticleForm extends Component
     'published' => 'required',
     'featured' => 'required',
     'trending' => 'required',
-
   ];
 
   protected $listeners = [
@@ -70,6 +74,9 @@ class ArticleForm extends Component
       $this->featured = $this->article->featured;
       $this->trending = $this->article->trending;
     }
+
+    $this->categories = Category::all();
+    $this->tags = Tag::all();
   }
 
   public function titleAdded()
@@ -103,7 +110,26 @@ class ArticleForm extends Component
     $this->content = $editorJs['blocks'];
     $this->body =json_encode($editorJs);
     $this->author_id = 1;
-    $data = $this->validate($this->rules);
+
+    if ($this->edit) {
+      $data = $this->validate([
+        'title' => 'required|max:80',
+        'description' => 'required|max:200',
+        'image' => 'nullable',
+        'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles,slug,'.$this->article->id,
+        'body' => 'required',
+        'content' => 'required|present|array', 
+        'category' => 'required',
+        'tag' => 'required',
+        'publish_date' => 'required',
+        'author_id' => 'required',
+        'published' => 'required',
+        'featured' => 'required',
+        'trending' => 'required',
+      ]);
+    } else {
+      $data = $this->validate($this->rules);
+    }
     // $data['publish_date'] = Carbon::parse($data['publish_date']);
 
     if($this->edit){
