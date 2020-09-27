@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //   Auth::routes();
 // });
 
-Route::layout('admin.layouts.master')->section('content')->group(function () {
+Route::middleware('auth')->group(function () {
   
   //Dashboard
   Route::get('dashboard','Dashboard\Web\DashboardController@index')->name('dashboard.index');
@@ -38,13 +39,21 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
   Route::get('tags/{tag}','Tag\Web\TagController@edit')->name('tags.edit');
 
   //User
-  Route::livewire('users','admin.users.index')->name('users.index');
+  Route::get('users','User\Web\UserController@index')->name('users.index');
+  Route::get('users/create','User\Web\UserController@create')->name('users.create');
+  Route::get('users/{user}','User\Web\UserController@edit')->name('users.edit');
+  // Route::livewire('users','admin.users.index')->name('users.index');
 
   //Role
-  Route::livewire('roles','admin.roles.index')->name('roles.index');
+  Route::get('roles','Role\Web\RoleController@index')->name('roles.index');
+  Route::get('roles/create','Role\Web\RoleController@create')->name('roles.create');
+  Route::get('roles/{role}','Role\Web\RoleController@edit')->name('roles.edit');
 
   //Permission
-  Route::livewire('permissions','admin.permissions.index')->name('permissions.index');
+  // Route::livewire('permissions','admin.permissions.index')->name('permissions.index');
+  Route::get('permissions','Permission\Web\PermissionController@index')->name('permissions.index');
+  Route::get('permissions/create','Permission\Web\PermissionController@create')->name('permissions.create');
+  Route::get('permissions/{permission}','Permission\Web\PermissionController@edit')->name('permissions.edit');
 
   //Advertisement
   Route::livewire('advertisements','admin.advertisements.index')->name('advertisements.index');
@@ -61,8 +70,14 @@ Route::layout('admin.layouts.master')->section('content')->group(function () {
   // Route::get()->name('profile.show');
   // Route::post()->name('profile.update.password');
   // Route::post()->name('profile.update.profile');
-  // Route::post()->name('logout');
+
+  //Logout
+  Route::get('logout','Core\AuthController@logout')->name('logout');
+
+  //Root
+  Route::get('/','Core\WelcomeController@index')->name('welcome');
 });
 
-// Route::get()->name('login.show');
-// Route::post()->name('login.submit');
+Route::middleware('guest')->group(function(){
+  Route::get('login','Core\AuthController@showLogin')->name('login.show');
+});

@@ -146,5 +146,13 @@
       </ul>
     </li>
 
+    <li class="navbar-list">
+      <a class="flex-col justify-between items-center" href="{{ route('admin.logout') }}">
+        <div class="w-full">
+          <i class="fas fa-sign-out-alt w-8 text-l"></i>
+          <span class="font-roboto text-m">Logout</span>
+        </div>
+      </a>
+    </li>
   </ul>
 </div>

@@ -86,21 +86,21 @@
     <section>
       <div class="input-group">
         <label for="published">Published</label>
-        <input type="checkbox" wire:model="published">
+        <input class="w-full h-10" type="checkbox" wire:model="published">
       </div>
     </section>
 
     <section>
       <div class="input-group">
         <label for="featured">Featured</label>
-        <input type="checkbox" wire:model="featured">
+        <input class="w-full h-10" type="checkbox" wire:model="featured">
       </div>
     </section>
 
     <section>
       <div class="input-group">
         <label for="trending">Trending</label>
-        <input type="checkbox" wire:model="trending">
+        <input class="w-full h-10" type="checkbox" wire:model="trending">
       </div>
     </section>
   </div>
