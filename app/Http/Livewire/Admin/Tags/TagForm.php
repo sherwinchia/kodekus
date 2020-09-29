@@ -17,6 +17,7 @@ class TagForm extends Component
   public $name;
   public $slug;
 
+  public $buttonText = 'Create';
   public $edit;
 
   protected $rules = [
@@ -36,6 +37,7 @@ class TagForm extends Component
       $this->tag = Tag::findOrFail($tagId);
       $this->name = $this->tag->name;
       $this->slug = $this->tag->slug;
+      $this->buttonText = 'Update';
     }
   }
 

@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 
+use Spatie\Permission\Models\Role;
+
 use Carbon;
 use Validator;
 use Illuminate\Console\Command;
@@ -65,6 +67,7 @@ class GenerateAdmin extends Command{
       'role' => 'admin'
     ]);
 
+    $admin->syncRoles($admin->role);
 
     if($admin){
       $this->info('Admin has been created successfully.');

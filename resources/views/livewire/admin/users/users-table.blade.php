@@ -23,6 +23,9 @@
           <th class="text-left">
             <a wire:click.prevent="sortBy('name')" role="button">Name</a>
           </th>
+          <th class="text-left">
+            <a wire:click.prevent="sortBy('role')" role="button">Role</a>
+          </th>
           <th>
             Action
           </th>
@@ -40,6 +43,9 @@
           </td>
           <td class="non-id">
             {{ $user->name }}
+          </td>
+          <td class="non-id">
+            {{ $user->role }}
           </td>
           <td class="non-id">
             <div class="flex justify-center text-gray-600">

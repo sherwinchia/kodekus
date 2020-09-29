@@ -17,6 +17,7 @@ class CategoryForm extends Component
   public $name;
   public $slug;
 
+  public $buttonText = 'Create';
   public $edit;
 
   protected $rules = [
@@ -36,6 +37,7 @@ class CategoryForm extends Component
       $this->category = Category::findOrFail($categoryId);
       $this->name = $this->category->name;
       $this->slug = $this->category->slug;
+      $this->buttonText = 'Update';
     }
   }
 
