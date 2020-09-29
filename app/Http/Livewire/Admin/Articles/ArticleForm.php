@@ -32,7 +32,7 @@ class ArticleForm extends Component
   public $trending = 0;
   public $author_id;
 
-
+  public $buttonText = 'Create';
   public $edit;
 
   protected $rules = [
@@ -57,7 +57,6 @@ class ArticleForm extends Component
 
   public function mount($articleId=null)
   { 
-    // dd(isset($articleId));
     $this->edit = isset($articleId) ? true : false;
 
     if(isset($articleId)){
@@ -73,6 +72,7 @@ class ArticleForm extends Component
       $this->published = $this->article->published;
       $this->featured = $this->article->featured;
       $this->trending = $this->article->trending;
+      $this->buttonText = 'Update';
     }
 
     $this->categories = Category::all();

@@ -6,11 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use HasRoles;
+    use Notifiable, HasRoles, LogsActivity;
+
+    protected static $logName = 'User';
 
     const ADMIN_ROLE = 'admin';
 
@@ -47,5 +49,9 @@ class User extends Authenticatable
       return $this->role === self::ADMIN_ROLE;    
     }
 
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return $this->name . " has been {$eventName}";
+    }
 
 }

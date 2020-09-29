@@ -62,10 +62,10 @@ Route::middleware('auth')->group(function () {
   Route::livewire('files','admin.files.index')->name('files.index');
 
   //Log
-  Route::livewire('logs','admin.logs.index')->name('logs.index');
+  Route::get('logs','Log\Web\LogController@index')->name('logs.index');
 
   //Backup
-  Route::livewire('backups','admin.backups.index')->name('backups.index');
+  Route::get('backups','Backup\Web\BackupController@index')->name('backups.index');
 
   // Route::get()->name('profile.show');
   // Route::post()->name('profile.update.password');

@@ -50,7 +50,7 @@
         </li>
       </ul>
     </li>
-
+    {{-- @can('Manage Authentication') --}}
     <li class="navbar-list pr-0"
       x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
       <a class="flex-col justify-between items-center cursor-pointer" @click="authenticationDrop=!authenticationDrop">
@@ -93,6 +93,7 @@
         </li>
       </ul>
     </li>
+    {{-- @endcan --}}
 
     <li class="{{ request()->is('admin/advertisements*') ? 'navbar-active-list' : 'navbar-list' }}">
       <a class="flex-col justify-between items-center" href="{{ route('admin.advertisements.index') }}">

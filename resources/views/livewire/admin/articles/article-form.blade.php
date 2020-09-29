@@ -112,7 +112,8 @@
       <span class="block sm:inline">{{ $errors->first() }}</span>
     </div>
     @endif
-    <button x-on:click.prevent="onPublishClicked()" class="w-full p-4 bg-green-200 outline-none">Publish</button>
+    <button x-on:click.prevent="onPublishClicked()"
+      class="w-full p-4 bg-green-200 outline-none">{{ $buttonText }}</button>
   </div>
 </div>
 </div>
