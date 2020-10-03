@@ -37,6 +37,13 @@ class ArticlesTable extends Component
     // return redirect()->to(route('admin.articles.index'));
   }
 
+  public function publish($id)
+  {
+    $article = Article::findOrFail($id);
+    $article->published = !$article->published;
+    $article->save();
+  }
+
   public function render()
   {
       return view('livewire.admin.articles.articles-table', [

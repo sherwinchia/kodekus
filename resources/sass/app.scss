@@ -50,12 +50,12 @@ h5, h6          { font-weight: bolder }
     font-size: .875rem;
   }
 
-  input[type='text'], input[type='file'], textarea{
-    @apply shadow rounded w-full py-2 px-3 outline-none border mb-2;
+  input[type='text'], input[type='file'], select, textarea{
+    @apply shadow rounded w-full py-2 px-3 outline-none border mb-2 bg-white;
   }
 
-  input[type='checkbox']{
-
+  input[type='text']:focus, input[type='file']:focus, select:focus, textarea:focus{
+    @apply border-blue-400;
   }
   
 }

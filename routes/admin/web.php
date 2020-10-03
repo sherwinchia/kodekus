@@ -18,48 +18,34 @@ use Illuminate\Support\Facades\Route;
 //   Auth::routes();
 // });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['admin.auth','isAdmin'])->group(function () {
   
   //Dashboard
   Route::get('dashboard','Dashboard\Web\DashboardController@index')->name('dashboard.index');
 
   //Article
-  Route::get('articles','Article\Web\ArticleController@index')->name('articles.index');
-  Route::get('articles/create','Article\Web\ArticleController@create')->name('articles.create');
-  Route::get('articles/{article}','Article\Web\ArticleController@edit')->name('articles.edit');
+  Route::resource('articles','Article\Web\ArticleController')->name('*','articles')->only('index','create','edit');
 
   //Category
-  Route::get('categories','Category\Web\CategoryController@index')->name('categories.index');
-  Route::get('categories/create','Category\Web\CategoryController@create')->name('categories.create');
-  Route::get('categories/{category}','Category\Web\CategoryController@edit')->name('categories.edit');
+  Route::resource('categories','Category\Web\CategoryController')->name('*','categories')->only('index','create','edit');
 
   //Tag
-  Route::get('tags','Tag\Web\TagController@index')->name('tags.index');
-  Route::get('tags/create','Tag\Web\TagController@create')->name('tags.create');
-  Route::get('tags/{tag}','Tag\Web\TagController@edit')->name('tags.edit');
+  Route::resource('tags','Tag\Web\TagController')->name('*','tags')->only('index','create','edit');
 
   //User
-  Route::get('users','User\Web\UserController@index')->name('users.index');
-  Route::get('users/create','User\Web\UserController@create')->name('users.create');
-  Route::get('users/{user}','User\Web\UserController@edit')->name('users.edit');
-  // Route::livewire('users','admin.users.index')->name('users.index');
+  Route::resource('users','User\Web\UserController')->name('*','users')->only('index','create','edit');
 
   //Role
-  Route::get('roles','Role\Web\RoleController@index')->name('roles.index');
-  Route::get('roles/create','Role\Web\RoleController@create')->name('roles.create');
-  Route::get('roles/{role}','Role\Web\RoleController@edit')->name('roles.edit');
+  Route::resource('roles','Role\Web\RoleController')->name('*','roles')->only('index','create','edit');
 
   //Permission
-  // Route::livewire('permissions','admin.permissions.index')->name('permissions.index');
-  Route::get('permissions','Permission\Web\PermissionController@index')->name('permissions.index');
-  Route::get('permissions/create','Permission\Web\PermissionController@create')->name('permissions.create');
-  Route::get('permissions/{permission}','Permission\Web\PermissionController@edit')->name('permissions.edit');
+  Route::resource('permissions','Permission\Web\PermissionController')->name('*','permissions')->only('index','create','edit');
 
   //Advertisement
-  Route::livewire('advertisements','admin.advertisements.index')->name('advertisements.index');
+  Route::resource('advertisements','Advertisement\Web\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
   
   //File
-  Route::livewire('files','admin.files.index')->name('files.index');
+  // Route::livewire('files','admin.files.index')->name('files.index');
 
   //Log
   Route::get('logs','Log\Web\LogController@index')->name('logs.index');
@@ -67,7 +53,7 @@ Route::middleware('auth')->group(function () {
   //Backup
   Route::get('backups','Backup\Web\BackupController@index')->name('backups.index');
 
-  // Route::get()->name('profile.show');
+  Route::get('profile','Core\ProfileController@show')->name('profile.show');
   // Route::post()->name('profile.update.password');
   // Route::post()->name('profile.update.profile');
 

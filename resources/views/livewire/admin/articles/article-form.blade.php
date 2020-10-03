@@ -176,7 +176,10 @@
             delimiter: Delimiter,
             code: CodeTool,
             raw: RawTool,
-            image:SimpleImage,
+            image: {
+            class: SimpleImage,
+            inlineToolbar: true
+            },
             // title:{
             //   class:Header,
             //   config: {

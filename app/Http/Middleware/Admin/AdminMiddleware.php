@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\Admin;
 
 use Closure;
 
@@ -18,6 +18,12 @@ class AdminMiddleware
       if(auth()->user()->isAdmin()) {
         return $next($request);
       }
-      return unauthorized_request('Ur not admin');
+      if ($request->expectsJson()) {
+        return unauthorized_request('Unauthorized request');
+      }
+
+      auth()->logout();
+      return redirect()->route('admin.login.show');
+      
     }
 }
