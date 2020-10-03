@@ -50,7 +50,7 @@
         </li>
       </ul>
     </li>
-    {{-- @can('Manage Authentication') --}}
+
     <li class="navbar-list pr-0"
       x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
       <a class="flex-col justify-between items-center cursor-pointer" @click="authenticationDrop=!authenticationDrop">
@@ -93,16 +93,7 @@
         </li>
       </ul>
     </li>
-    {{-- @endcan --}}
 
-    <li class="{{ request()->is('admin/advertisements*') ? 'navbar-active-list' : 'navbar-list' }}">
-      <a class="flex-col justify-between items-center" href="{{ route('admin.advertisements.index') }}">
-        <div class="w-full">
-          <i class="fas fa-ad w-8 text-l"></i>
-          <span class="font-roboto text-m">Advertisement</span>
-        </div>
-      </a>
-    </li>
 
     <li class="navbar-list pr-0 "
       x-data="{advancedDrop:{{ (request()->is('admin/files*') || request()->is('admin/backups*') || request()->is('admin/logs*')) ? 'true' : 'false' }}}">
@@ -120,40 +111,58 @@
         x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 scale-75"
         x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition-all ease-in duration-200"
         x-transition:leave-start="opacity-100 scale-75" x-transition:leave-end="opacity-0 scale-0">
-        <li class=" {{ request()->is('admin/files*') ? 'navbar-active-list' : 'navbar-list' }} ">
-          <a class="flex-col justify-between items-center " href="{{ route('admin.files.index') }}">
-            <div class="w-full">
-              <i class="fas fa-folder w-8 text-lg "></i>
-              <span class="font-roboto text-md ">File Manager</span>
-            </div>
-          </a>
-        </li>
-        <li class="{{ request()->is('admin/backups*') ? 'navbar-active-list' : 'navbar-list' }} ">
-          <a class="flex-col justify-between items-center" href="{{ route('admin.backups.index') }}">
-            <div class="w-full">
-              <i class="fas fa-database w-8 text-lg  "></i>
-              <span class="font-roboto text-md ">Backup</span>
-            </div>
-          </a>
-        </li>
-        <li class="{{ request()->is('admin/logs*') ? 'navbar-active-list' : 'navbar-list' }} ">
-          <a class="flex-col justify-between items-center" href="{{ route('admin.logs.index') }}">
-            <div class="w-full">
-              <i class="fas fa-scroll w-8 text-lg "></i>
-              <span class="font-roboto text-md ">Log</span>
-            </div>
-          </a>
-        </li>
-      </ul>
+        {{-- <li class=" {{ request()->is('admin/files*') ? 'navbar-active-list' : 'navbar-list' }} ">
+        <a class="flex-col justify-between items-center " href="{{ route('admin.files.index') }}">
+          <div class="w-full">
+            <i class="fas fa-folder w-8 text-lg "></i>
+            <span class="font-roboto text-md ">File Manager</span>
+          </div>
+        </a>
     </li>
-
-    <li class="navbar-list">
-      <a class="flex-col justify-between items-center" href="{{ route('admin.logout') }}">
+    <li class="{{ request()->is('admin/backups*') ? 'navbar-active-list' : 'navbar-list' }} ">
+      <a class="flex-col justify-between items-center" href="{{ route('admin.backups.index') }}">
         <div class="w-full">
-          <i class="fas fa-sign-out-alt w-8 text-l"></i>
-          <span class="font-roboto text-m">Logout</span>
+          <i class="fas fa-database w-8 text-lg  "></i>
+          <span class="font-roboto text-md ">Backup</span>
+        </div>
+      </a>
+    </li> --}}
+    <li class="{{ request()->is('admin/logs*') ? 'navbar-active-list' : 'navbar-list' }} ">
+      <a class="flex-col justify-between items-center" href="{{ route('admin.logs.index') }}">
+        <div class="w-full">
+          <i class="fas fa-scroll w-8 text-lg "></i>
+          <span class="font-roboto text-md ">Log</span>
         </div>
       </a>
     </li>
+  </ul>
+  </li>
+
+  <li class="{{ request()->is('admin/advertisements*') ? 'navbar-active-list' : 'navbar-list' }}">
+    <a class="flex-col justify-between items-center" href="{{ route('admin.advertisements.index') }}">
+      <div class="w-full">
+        <i class="fas fa-ad w-8 text-l"></i>
+        <span class="font-roboto text-m">Advertisement</span>
+      </div>
+    </a>
+  </li>
+
+  <li class="{{ request()->is('admin/profile*') ? 'navbar-active-list' : 'navbar-list' }}">
+    <a class="flex-col justify-between items-center" href="{{ route('admin.profile.show') }}">
+      <div class="w-full">
+        <i class="fas fa-user w-8 text-l"></i>
+        <span class="font-roboto text-m">Profile</span>
+      </div>
+    </a>
+  </li>
+
+  <li class="navbar-list">
+    <a class="flex-col justify-between items-center" href="{{ route('admin.logout') }}">
+      <div class="w-full">
+        <i class="fas fa-sign-out-alt w-8 text-l"></i>
+        <span class="font-roboto text-m">Logout</span>
+      </div>
+    </a>
+  </li>
   </ul>
 </div>

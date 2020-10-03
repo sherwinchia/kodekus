@@ -45,9 +45,14 @@
             {{ $article->title }}
           </td>
           <td class="non-id text-center">
-            {{ $article->published }}
+            @if ($article->published)
+            <input type="checkbox" wire:click.prevent="publish({{ $article->id }})" checked>
+            @else
+            <input type="checkbox" wire:click.prevent="publish({{ $article->id }})">
+            @endif
+
           </td>
-          <td class="non-id">
+          <td class=" non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.articles.edit', $article->id) }}">
                 <i class="fas fa-edit"></i>
