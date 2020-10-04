@@ -16,6 +16,11 @@ class ArticlesTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
+  public function updatingSearch()
+  {
+      $this->resetPage();
+  }
+
   public function sortBy($field)
   {
     if ($this->sortField === $field) {
@@ -42,6 +47,11 @@ class ArticlesTable extends Component
     $article = Article::findOrFail($id);
     $article->published = !$article->published;
     $article->save();
+  }
+
+  public function paginationView()
+  {
+      return 'livewire.pagination.tailwind';
   }
 
   public function render()

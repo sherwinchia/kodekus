@@ -16,6 +16,11 @@ class UsersTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
+  public function updatingSearch()
+  {
+      $this->resetPage();
+  }
+  
   public function sortBy($field)
   {
     if ($this->sortField === $field) {
@@ -25,6 +30,11 @@ class UsersTable extends Component
     }
 
     $this->sortField = $field;
+  }
+
+  public function paginationView()
+  {
+      return 'livewire.pagination.tailwind';
   }
 
   public function render()

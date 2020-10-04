@@ -23947,7 +23947,7 @@ h5, h6 {
   border-radius: 0.25rem;
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 0.5rem;
+  padding: 1.5rem;
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
@@ -23968,7 +23968,7 @@ h5, h6 {
   font-size: 0.875rem;
 }
 
-.input-group input[type=text], .input-group input[type=file], .input-group select, .input-group textarea {
+.input-group input[type=text], .input-group input[type=file], .input-group input[type=email], .input-group input[type=password], .input-group select, .input-group textarea {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
   width: 100%;
@@ -23984,7 +23984,7 @@ h5, h6 {
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
-.input-group input[type=text]:focus, .input-group input[type=file]:focus, .input-group select:focus, .input-group textarea:focus {
+.input-group input[type=text]:focus, .input-group input[type=file]:focus, .input-group input[type=email]:focus, .input-group input[type=password]:focus, .input-group select:focus, .input-group textarea:focus {
   --border-opacity: 1;
   border-color: #63b3ed;
   border-color: rgba(99, 179, 237, var(--border-opacity));
@@ -24133,24 +24133,6 @@ h5, h6 {
   color: rgba(0, 0, 0, var(--text-opacity));
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.pagination {
-  list-style: none;
-  padding-left: 0;
-  text-align: center;
-}
-
-.pagination li {
-  display: inline-block;
-}
-
-.pagination a {
-  text-decoration: none;
-  padding: 0.2rem 0.4rem;
-  color: red;
-  border: 1px solid red;
-  border-radius: 2px;
 }
 
 /* width */
