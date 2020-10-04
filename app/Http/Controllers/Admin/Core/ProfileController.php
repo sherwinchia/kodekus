@@ -11,7 +11,8 @@ class ProfileController extends Controller
 
   public function show()
   {
-    return view(self::PATH . 'profile');
+    $user = current_user();
+    return view(self::PATH . 'profile', compact('user'));
   }
 
 }

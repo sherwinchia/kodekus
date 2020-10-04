@@ -36,7 +36,7 @@
           <a class="flex-col justify-between items-center" href="{{ route('admin.categories.index') }}">
             <div class="w-full">
               <i class="fas fa-archive w-8 text-lg  "></i>
-              <span class="font-roboto text-md ">Category</span>
+              <span class="font-roboto text-md ">Categories</span>
             </div>
           </a>
         </li>
@@ -44,7 +44,7 @@
           <a class="flex-col justify-between items-center" href="{{ route('admin.tags.index') }}">
             <div class="w-full">
               <i class="fas fa-tag w-8 text-lg "></i>
-              <span class="font-roboto text-md ">Tag</span>
+              <span class="font-roboto text-md ">Tags</span>
             </div>
           </a>
         </li>
@@ -71,7 +71,7 @@
           <a class="flex-col justify-between items-center " href="{{ route('admin.users.index') }}">
             <div class="w-full">
               <i class="fas fa-users w-8 text-lg "></i>
-              <span class="font-roboto text-md ">User</span>
+              <span class="font-roboto text-md ">Users</span>
             </div>
           </a>
         </li>
@@ -79,7 +79,7 @@
           <a class="flex-col justify-between items-center" href="{{ route('admin.roles.index') }}">
             <div class="w-full">
               <i class="fas fa-user-tag w-8 text-lg  "></i>
-              <span class="font-roboto text-md ">Role</span>
+              <span class="font-roboto text-md ">Roles</span>
             </div>
           </a>
         </li>
@@ -87,7 +87,7 @@
           <a class="flex-col justify-between items-center" href="{{ route('admin.permissions.index') }}">
             <div class="w-full">
               <i class="fas fa-key w-8 text-lg "></i>
-              <span class="font-roboto text-md ">Permission</span>
+              <span class="font-roboto text-md ">Permissions</span>
             </div>
           </a>
         </li>
@@ -131,7 +131,7 @@
       <a class="flex-col justify-between items-center" href="{{ route('admin.logs.index') }}">
         <div class="w-full">
           <i class="fas fa-scroll w-8 text-lg "></i>
-          <span class="font-roboto text-md ">Log</span>
+          <span class="font-roboto text-md ">Logs</span>
         </div>
       </a>
     </li>

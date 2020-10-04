@@ -38,6 +38,11 @@ class LogsTable extends Component
   //   // return redirect()->to(route('admin.articles.index'));
   // }
 
+  public function paginationView()
+  {
+      return 'livewire.pagination.tailwind';
+  }
+
   public function render()
   {
       return view('livewire.admin.logs.logs-table', [

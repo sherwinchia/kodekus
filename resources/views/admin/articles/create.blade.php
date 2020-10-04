@@ -4,6 +4,10 @@
 <title>Article | {{ config('app.name') }} </title>
 @endsection
 
+@section('breadcrumbs')
+{{ Breadcrumbs::render('admin.articles.create') }}
+@endsection
+
 @section('content')
 <livewire:admin.articles.article-form />
 @endsection

@@ -16,6 +16,11 @@ class PermissionsTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
+  public function updatingSearch()
+  {
+      $this->resetPage();
+  }
+
   public function sortBy($field)
   {
     if ($this->sortField === $field) {
@@ -35,6 +40,11 @@ class PermissionsTable extends Component
     // session()->flash('success', 'Article successfully deleted.');
 
     // return redirect()->to(route('admin.articles.index'));
+  }
+
+  public function paginationView()
+  {
+      return 'livewire.pagination.tailwind';
   }
 
   public function render()
