@@ -70,11 +70,9 @@ class RoleForm extends Component
       // $permissionsId = array_splice($this->permissionsId,$this->defaultCount);
 
       $permissions = [];
-
       foreach ($this->permissionsId as $permissionId) {
         array_push($permissions,Permission::findOrFail($permissionId));
       }
-
       $this->role->syncPermissions($permissions);
 
       session()->flash('success', 'Role successfully updated.');
@@ -83,6 +81,13 @@ class RoleForm extends Component
       $role = Role::create([
         'name' => $this->name,
       ]);
+
+      $permissions = [];
+      foreach ($this->permissionsId as $permissionId) {
+        array_push($permissions,Permission::findOrFail($permissionId));
+      }
+      $role->syncPermissions($permissions);
+
       session()->flash('success', 'Role successfully created.');
       return redirect()->route('admin.roles.index');
     }

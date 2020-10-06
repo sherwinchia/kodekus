@@ -23968,7 +23968,13 @@ h5, h6 {
   font-size: 0.875rem;
 }
 
-.input-group input[type=text], .input-group input[type=file], .input-group input[type=email], .input-group input[type=password], .input-group select, .input-group textarea {
+.input-group input[type=text],
+.input-group input[type=file],
+.input-group input[type=email],
+.input-group input[type=password],
+.input-group input[type=datetime-local],
+.input-group select,
+.input-group textarea {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border-radius: 0.25rem;
   width: 100%;
@@ -23984,7 +23990,13 @@ h5, h6 {
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
-.input-group input[type=text]:focus, .input-group input[type=file]:focus, .input-group input[type=email]:focus, .input-group input[type=password]:focus, .input-group select:focus, .input-group textarea:focus {
+.input-group input[type=text]:focus,
+.input-group input[type=file]:focus,
+.input-group input[type=email]:focus,
+.input-group input[type=password]:focus,
+.input-group input[type=datetime-local]:focus,
+.input-group select:focus,
+.input-group textarea:focus {
   --border-opacity: 1;
   border-color: #63b3ed;
   border-color: rgba(99, 179, 237, var(--border-opacity));
