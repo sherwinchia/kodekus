@@ -1,6 +1,5 @@
 <div>
   <ul>
-
     <li class="{{ request()->is('admin/dashboard') ? 'navbar-active-list' : 'navbar-list' }}">
       <a class="flex-col justify-between items-center" href="{{ route('admin.dashboard.index') }}">
         <i class="fa fa-home w-8 text-lg"></i>

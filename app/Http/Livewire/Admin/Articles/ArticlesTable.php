@@ -16,6 +16,10 @@ class ArticlesTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
+  protected $listeners = [
+    'delete'
+  ];
+
   public function updatingSearch()
   {
       $this->resetPage();

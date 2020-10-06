@@ -50,11 +50,23 @@ h5, h6          { font-weight: bolder }
     font-size: .875rem;
   }
 
-  input[type='text'], input[type='file'], input[type='email'], input[type='password'], select, textarea{
+  input[type='text'], 
+  input[type='file'], 
+  input[type='email'], 
+  input[type='password'], 
+  input[type='datetime-local'],  
+  select, 
+  textarea{
     @apply shadow rounded w-full py-2 px-3 outline-none border mb-2 bg-white;
   }
 
-  input[type='text']:focus, input[type='file']:focus, input[type='email']:focus, input[type='password']:focus, select:focus, textarea:focus{
+  input[type='text']:focus, 
+  input[type='file']:focus, 
+  input[type='email']:focus, 
+  input[type='password']:focus, 
+  input[type='datetime-local']:focus, 
+  select:focus, 
+  textarea:focus{
     @apply border-blue-400;
   }
   
