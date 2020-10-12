@@ -54,4 +54,9 @@ class User extends Authenticatable
         return $this->name . " has been {$eventName}";
     }
 
+    public function articles()
+    {
+      return $this->hasMany('App\Models\Article', 'author_id');
+    }
+
 }

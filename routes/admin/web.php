@@ -17,37 +17,37 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['admin.auth','isAdmin'])->group(function () {
   
   //Dashboard
-  Route::get('dashboard','Dashboard\Web\DashboardController@index')->name('dashboard.index');
+  Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard.index');
 
   //Article
-  Route::resource('articles','Article\Web\ArticleController')->name('*','articles')->only('index','create','edit');
+  Route::resource('articles','Article\ArticleController')->name('*','articles')->only('index','create','edit');
 
   //Category
-  Route::resource('categories','Category\Web\CategoryController')->name('*','categories')->only('index','create','edit');
+  Route::resource('categories','Category\CategoryController')->name('*','categories')->only('index','create','edit');
 
   //Tag
-  Route::resource('tags','Tag\Web\TagController')->name('*','tags')->only('index','create','edit');
+  Route::resource('tags','Tag\TagController')->name('*','tags')->only('index','create','edit');
 
   //User
-  Route::resource('users','User\Web\UserController')->name('*','users')->only('index','create','edit');
+  Route::resource('users','User\UserController')->name('*','users')->only('index','create','edit');
 
   //Role
-  Route::resource('roles','Role\Web\RoleController')->name('*','roles')->only('index','create','edit');
+  Route::resource('roles','Role\RoleController')->name('*','roles')->only('index','create','edit');
 
   //Permission
-  Route::resource('permissions','Permission\Web\PermissionController')->name('*','permissions')->only('index','create','edit');
+  Route::resource('permissions','Permission\PermissionController')->name('*','permissions')->only('index','create','edit');
 
   //Advertisement
-  Route::resource('advertisements','Advertisement\Web\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
+  Route::resource('advertisements','Advertisement\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
   
   //File
   // Route::livewire('files','admin.files.index')->name('files.index');
 
   //Log
-  Route::get('logs','Log\Web\LogController@index')->name('logs.index');
+  Route::get('logs','Log\LogController@index')->name('logs.index');
 
   //Backup
-  Route::get('backups','Backup\Web\BackupController@index')->name('backups.index');
+  Route::get('backups','Backup\BackupController@index')->name('backups.index');
 
   Route::get('profile','Core\ProfileController@show')->name('profile.show');
   // Route::post()->name('profile.update.password');

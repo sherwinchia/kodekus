@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Permission\Web;
+namespace App\Http\Controllers\Admin\Permission;
 
 use Spatie\Permission\Models\Permission;
 

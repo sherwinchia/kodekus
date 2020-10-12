@@ -19,18 +19,23 @@
         <tr>
           <th class="text-left">
             <a wire:click.prevent="sortBy('id')" role="button">ID</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'id'])
           </th>
           <th class="text-left">
             <a wire:click.prevent="sortBy('log_name')" role="button">Type</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'type'])
           </th>
           <th>
             <a wire:click.prevent="sortBy('description')" role="button">Description</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'description'])
           </th>
           <th>
             <a wire:click.prevent="sortBy('causer_id')" role="button">User</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'causer_id'])
           </th>
           <th>
             <a wire:click.prevent="sortBy('created_at')" role="button">Date</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'created_at'])
           </th>
         </tr>
       </thead>
@@ -45,16 +50,16 @@
             </div>
           </td>
           <td class="non-id">
-            {{ $log->log_name }}
+            {{ $log->log_name ?? '-' }}
           </td>
           <td class="non-id">
-            {{ $log->description }}
+            {{ $log->description ?? '-' }}
           </td>
           <td class="non-id">
-            {{ $log->causer->name }}
+            {{ $log->causer->name ?? '-' }}
           </td>
           <td class="non-id">
-            {{ date_to_human($log->created_at) }}
+            {{ date_to_human($log->created_at) ?? '-' }}
           </td>
           {{-- <td class="non-id text-center">
             {{ $log->published }}

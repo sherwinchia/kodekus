@@ -30,6 +30,11 @@ class Article extends Model
     return $this->hasMany('App\Models\Tag');
   }
 
+  public function author()
+  {
+    return $this->belongsTo('App\Models\User', 'author_id');
+  }
+
   public function getDescriptionForEvent(string $eventName): string
   {
       return $this->title . " has been {$eventName}";

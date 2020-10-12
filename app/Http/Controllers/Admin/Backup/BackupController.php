@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Backup\Web;
+namespace App\Http\Controllers\Admin\Backup;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
