@@ -21,7 +21,7 @@ class ArticleForm extends Component
   public $title;
   public $description;
   public $body;
-  public $content;
+  // public $content;
   public $slug;
   public $image;
   public $category;
@@ -41,7 +41,7 @@ class ArticleForm extends Component
     'image' => 'nullable',
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
-    'content' => 'required|present|array', 
+    // 'content' => 'required|present|array', 
     'category' => 'required',
     'tag' => 'required',
     'publish_date' => 'required',
@@ -107,8 +107,17 @@ class ArticleForm extends Component
 
   public function publishClicked($editorJs)
   {
-    $this->content = $editorJs['blocks'];
+    // $this->content = $editorJs['blocks'];
+    // $body = $editorJs;
+    
+    // foreach ($body['blocks'] as $block) {
+    //   if ($block['type'] == 'code') {
+    //     dd($block['data']['code']);
+    //   }
+    // }
+    
     $this->body =json_encode($editorJs);
+    
     $this->author_id = 1;
 
     if ($this->edit) {
@@ -118,7 +127,7 @@ class ArticleForm extends Component
         'image' => 'nullable',
         'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles,slug,'.$this->article->id,
         'body' => 'required',
-        'content' => 'required|present|array', 
+        // 'content' => 'required|present|array', 
         'category' => 'required',
         'tag' => 'required',
         'publish_date' => 'required',
@@ -131,6 +140,7 @@ class ArticleForm extends Component
       $data = $this->validate($this->rules);
     }
     // $data['publish_date'] = Carbon::parse($data['publish_date']);
+    // dd(date_to_human($data['publish_date']));
 
     if($this->edit){
       $this->article->update($data);

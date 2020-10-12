@@ -19,12 +19,15 @@
         <tr>
           <th class="text-left">
             <a wire:click.prevent="sortBy('id')" role="button">ID</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'id'])
           </th>
           <th class="text-left">
             <a wire:click.prevent="sortBy('name')" role="button">Name</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'name'])
           </th>
           <th class="text-left">
             <a wire:click.prevent="sortBy('role')" role="button">Role</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'role'])
           </th>
           <th>
             Action

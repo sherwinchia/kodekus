@@ -19,16 +19,25 @@
         <tr>
           <th class="text-left">
             <a wire:click.prevent="sortBy('id')" role="button">ID</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'id'])
           </th>
           <th class="text-left">
             <a wire:click.prevent="sortBy('title')" role="button">Title</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'title'])
+          </th>
+          <th>
+            <a wire:click.prevent="sortBy('publish_date')" role="button">Publish Date</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'publish_date'])
           </th>
           <th>
             <a wire:click.prevent="sortBy('published')" role="button">Published</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'published'])
           </th>
           <th>
             Action
           </th>
+
+
         </tr>
       </thead>
       <tbody class="bg-white">
@@ -44,13 +53,15 @@
           <td class="non-id">
             {{ $article->title }}
           </td>
+          <td>
+            {{ date_to_human($article->publish_date) }}
+          </td>
           <td class="non-id text-center">
             @if ($article->published)
             <input type="checkbox" wire:click.prevent="publish({{ $article->id }})" checked>
             @else
             <input type="checkbox" wire:click.prevent="publish({{ $article->id }})">
             @endif
-
           </td>
           <td class=" non-id">
             <div class="flex justify-center text-gray-600">

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Tag\Web;
+namespace App\Http\Controllers\Admin\User;
 
-use App\Models\Tag;
+use App\Models\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class UserController extends Controller
 {
-  public const PATH = 'admin.tags.';
+  public const PATH = 'admin.users.';
 
   public function index()
   {
@@ -21,8 +21,8 @@ class TagController extends Controller
     return view(self::PATH.'create');
   }
 
-  public function edit(Tag $tag)
+  public function edit(User $user)
   {
-    return view(self::PATH.'edit',compact('tag'));
+    return view(self::PATH.'edit',compact('user'));
   }
 }

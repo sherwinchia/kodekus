@@ -6,7 +6,6 @@
 
   <div x-data="{profileDrop:false, sidebarVisible:true}" class="flex min-h-screen h-screen">
 
-
     <div class="flex-1 flex overflow-hidden">
       <div x-show="sidebarVisible"
         class="navigation-bar w-56 flex-none overflow-y-auto bg-dark-200 transform origin-left flex flex-col">
@@ -38,8 +37,8 @@
         @yield('content')
       </div>
     </div>
-
-    {{-- <div class="footer text-center p-3 bg-white ">
+    {{-- 
+    <div class="footer text-center p-3 bg-white ">
       Design and Built by Sherwin Variancia
     </div> --}}
 

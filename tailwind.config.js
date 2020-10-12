@@ -15,7 +15,7 @@ module.exports = {
       },
       fontFamily:{
         roboto:['Roboto','sans-serif']
-      }
+      },
     },
   },
   variants: {
