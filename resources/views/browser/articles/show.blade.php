@@ -9,10 +9,10 @@
 @endsection --}}
 
 @section('content')
-<div class="container mx-auto pt-20" x-data="articleData()" x-init="init()">
+<div class="container mx-auto pt-20 article-show" x-data="articleData()" x-init="init()">
 
-  <div class="flex justify-center">
-    <div class="w-8/12">
+  <div class="flex justify-center mb-4">
+    <div class="center w-10/12 lg:w-7/12 xl:w-8/12">
       <div class="title mb-4">
         <h1 class="text-center py-4">{{ $article->title }}</h1>
         <div class="text-center py-4 text-gray-800 font-light">
@@ -27,16 +27,49 @@
     </div>
   </div>
 
-  <div class="flex justify-center">
-    <div class="left hidden lg:block w-2/12 ">
-      <div class="flex-col sticky top-0">
-        <div class="text-center text-2xl py-2"><i class="far fa-heart"></i></div>
-        <div class="text-center text-2xl py-2"><i class="far fa-comment"></i></div>
-        <div class="text-center text-2xl py-2"><i class="far fa-bookmark"></i></div>
+  <div class="flex justify-center mb-10">
+    <div class="left hidden lg:block w-3/12 px-4 ">
+      <div class="flex flex-col h-full">
+        <div class="share flex-1">
+          <div class="left-sticky flex flex-col items-center">
+            <div class="mb-2 font-semibold">
+              <label class="">Share</label>
+            </div>
+            <div class="social-container">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+            <div class="social-container">
+              <a href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+            <div class="social-container">
+              <a href="#">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+            <div class="social-container">
+              <a href="#">
+                <i class="fab fa-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="action flex-1 mt-20">
+          <div class="left-sticky flex flex-col items-center">
+            <div class="text-center text-2xl py-2"><i class="far fa-heart"></i></div>
+            <div class="text-center text-2xl py-2"><i class="far fa-comment"></i></div>
+            <div class="text-center text-2xl py-2"><i class="far fa-bookmark"></i></div>
+          </div>
+        </div>
       </div>
+
+
     </div>
 
-    <div class="center w-8/12">
+    <div class="center w-10/12 lg:w-6/12 xl:w-7/12">
       {{-- {{ dd($article) }} --}}
 
       {{-- {{ dd($article->body->blocks) }} --}}
@@ -109,18 +142,64 @@
       @endforeach
     </div>
 
-    <div class="right hidden lg:block w-2/12">
-      <div class="flex-col sticky top-0">
-        <div class="text-center text-2xl py-2">ADS AREA</div>
+    <div class="right hidden lg:block w-3/12 px-4">
+      <div class="flex flex-col right-sticky">
+        <div class="subscribe-newsletter text-center">
+          <img class="mx-auto" src="https://fooddiversity.today/wp-content/uploads/2016/05/placeholder.png" alt="">
+          <div class="info">
+            <p class="title">This is title</p>
+            <p>Read next ></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="flex bg-yellow-200 py-4">
-    <div class="w-12/12">
-      More artcle
+  <div>
+    <div class="border-b border-gray-500 mb-4 mx-8 font-semibold">
+      <label>More Post</label>
+    </div>
+    <div class="flex flex-wrap justify-center more-posts">
+      <div class="post w-full lg:w-1/3">
+        <img src="https://fooddiversity.today/wp-content/uploads/2016/05/placeholder.png" alt="">
+        <div class="info">
+          <p class="title">This is titleThis is titleThis is titleThis is titleThis is titleThis is titleThis is
+            titleThis
+            is title</p>
+          <p class="extra">
+            <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
+            <span class="px-2">|</span>
+            <span x-text="readingMinutes"></span>
+          </p>
+        </div>
+      </div>
+      <div class="post w-full lg:w-1/3">
+        <img src="https://fooddiversity.today/wp-content/uploads/2016/05/placeholder.png" alt="">
+        <div class="info">
+          <p class="title">Excepturi ratione molestiae repudiandae ea quaerat saepe placeat deleniti.</p>
+          <p class="extra">
+            <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
+            <span class="px-2">|</span>
+            <span x-text="readingMinutes"></span>
+          </p>
+        </div>
+      </div>
+      <div class="post w-full lg:w-1/3">
+        <img
+          src="https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-260nw-1037719192.jpg"
+          alt="">
+        <div class="info">
+          <p class="title">This is title</p>
+          <p class="extra">
+            <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
+            <span class="px-2">|</span>
+            <span x-text="readingMinutes"></span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
 
 
@@ -128,52 +207,28 @@
 
 @push('styles')
 <style>
-  .iframe-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%;
-  }
 
-  .responsive-iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    min-width: 100%;
-    height: 100%;
-  }
 </style>
 @endpush
 
 @section('scripts')
 <script>
   function articleData(){
-    return{
-      //data
-      readingMinutes: null,
-      //function
+  return{
+    //data
+    readingMinutes: null,
+    //function
 
-      init(){
-        let body = {!! json_encode($article->body->blocks) !!};
-        body = JSON.stringify(body);
-        let words = body.split(" ").length;
-        let wordsPerMinute = 200;
-        let minutes = Math.ceil(words / wordsPerMinute);
-        
-        this.readingMinutes = minutes <= 1 ? `${minutes} minute` : `${minutes} minutes`;
-      }
+    init(){
+      let body = {!! json_encode($article->body->blocks) !!};
+      body = JSON.stringify(body);
+      let words = body.split(" ").length;
+      let wordsPerMinute = 200;
+      let minutes = Math.ceil(words / wordsPerMinute);
+      
+      this.readingMinutes = minutes <= 1 ? `${minutes} minute` : `${minutes} minutes`;
     }
   }
-
-  window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
 }
 
 </script>

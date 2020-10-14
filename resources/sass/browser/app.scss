@@ -31,9 +31,9 @@ h5, h6          { font-weight: bolder }
 @tailwind utilities;
 
 .card{
-  @apply max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white mb-6;
+  @apply max-w-sm rounded-lg overflow-hidden shadow-lg bg-white mb-6;
   .card-header{
-    padding: 1rem 0;
+    padding: 0;
     border-bottom: 2px solid rgb(231, 236, 240);
     p{
       font-weight: bold;
@@ -72,6 +72,7 @@ h5, h6          { font-weight: bolder }
   
 }
 
+// <navbar>
 .header {
   width: 100%;
   background-color: #f1f1f1;
@@ -87,7 +88,119 @@ h5, h6          { font-weight: bolder }
 /* The progress bar (scroll indicator) */
 .progress-bar {
   height: 8px;
-  background: #b5d9e9;
+  background: #53798a;
   width: 0%;
 }
+// </navbar>
+
+// <article show>
+.article-show{
+  .left{
+    .left-sticky{
+      top:8rem;
+      position: -webkit-sticky;
+      position: sticky;
+    }
+
+    .share{
+  
+      .social-container{
+        @apply border border-gray-500 rounded-full h-12 w-12 flex items-center justify-center mb-3;
+      }
+
+    }
+
+    .action{
+
+    }
+
+  }
+
+  .right{
+    .right-sticky{
+      top:8rem;
+      position: -webkit-sticky;
+      position: sticky;
+      .subscribe-newsletter{
+        img{
+          height: 8rem;
+          width: 8rem;
+          object-fit: cover;
+        }
+
+        .info{
+          @apply px-4 py-2 flex flex-col h-32;
+          .title{
+            @apply font-semibold text-lg;
+            height: 3.6em;
+            line-height: 1.8em;
+            display: block;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+            overflow: hidden;
+          }
+    
+          .extra{
+            @apply flex-1 text-gray-800 font-light;
+          }
+        }
+      }
+    }
+  }
+
+  .center{
+    .iframe-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%;
+    }
+    
+    .responsive-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      min-width: 100%;
+      height: 100%;
+    }
+  }
+
+  .more-posts{
+    overflow: hidden;
+
+    .post{
+      @apply mx-4 card;
+    }
+
+    img{
+      height: 16rem;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .info{
+      @apply px-4 py-2 flex flex-col h-32;
+      .title{
+        @apply font-semibold text-lg;
+        height: 3.6em;
+        line-height: 1.8em;
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+
+      .extra{
+        @apply flex-1 text-gray-800 font-light;
+      }
+    }
+
+  }
+
+}
+
+// </article show>
+
 

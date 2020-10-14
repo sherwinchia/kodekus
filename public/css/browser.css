@@ -23936,10 +23936,9 @@ h5, h6 {
 
 .card {
   max-width: 24rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
@@ -23947,7 +23946,7 @@ h5, h6 {
 }
 
 .card .card-header {
-  padding: 1rem 0;
+  padding: 0;
   border-bottom: 2px solid #e7ecf0;
 }
 
@@ -24011,8 +24010,140 @@ h5, h6 {
 
 .progress-bar {
   height: 8px;
-  background: #b5d9e9;
+  background: #53798a;
   width: 0%;
+}
+
+.article-show .left .left-sticky {
+  top: 8rem;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.article-show .left .share .social-container {
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #a0aec0;
+  border-color: rgba(160, 174, 192, var(--border-opacity));
+  border-radius: 9999px;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.article-show .right .right-sticky {
+  top: 8rem;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.article-show .right .right-sticky .subscribe-newsletter img {
+  height: 8rem;
+  width: 8rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.article-show .right .right-sticky .subscribe-newsletter .info {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+}
+
+.article-show .right .right-sticky .subscribe-newsletter .info .title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  height: 3.6em;
+  line-height: 1.8em;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.article-show .right .right-sticky .subscribe-newsletter .info .extra {
+  flex: 1 1 0%;
+  --text-opacity: 1;
+  color: #2d3748;
+  color: rgba(45, 55, 72, var(--text-opacity));
+  font-weight: 300;
+}
+
+.article-show .center .iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.article-show .center .responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  min-width: 100%;
+  height: 100%;
+}
+
+.article-show .more-posts {
+  overflow: hidden;
+}
+
+.article-show .more-posts .post {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: 24rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+  margin-bottom: 1.5rem;
+}
+
+.article-show .more-posts img {
+  height: 16rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.article-show .more-posts .info {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 8rem;
+}
+
+.article-show .more-posts .info .title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  height: 3.6em;
+  line-height: 1.8em;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.article-show .more-posts .info .extra {
+  flex: 1 1 0%;
+  --text-opacity: 1;
+  color: #2d3748;
+  color: rgba(45, 55, 72, var(--text-opacity));
+  font-weight: 300;
 }
 
 @media (min-width: 640px){
