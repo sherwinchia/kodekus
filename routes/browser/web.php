@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Route::resource('articles','Article\Web\ArticleController')->name('*','articles')->only('index','show');
-Route::get('articles/{slug}','Article\ArticleController@show')->name('articles.show');
+Route::get('articles/{category}/{slug}','Article\ArticleController@show')->name('articles.show');
 Route::get('articles/','Article\ArticleController@index')->name('articles.index');
 
 // Route::get('/', function () {

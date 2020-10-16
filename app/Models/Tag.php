@@ -21,8 +21,8 @@ class Tag extends Model
       return $this->name . " has been {$eventName}";
   }
 
-  public function article()
+  public function articles()
   {
-    return $this->hasMany('App\Models\Article');
+    return $this->belongsToMany('App\Models\Article');
   }
 }

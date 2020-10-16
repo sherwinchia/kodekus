@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 sticky top-0 z-50">
+<nav class="bg-gray-800 z-50">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -66,9 +66,9 @@
     </div>
   </div>
 
-  <div class="header">
-    <div class="progress-container">
+  {{-- <div class="header">
+    <div class="progress-container top-0 sticky">
       <div class="progress-bar" id="myBar"></div>
     </div>
-  </div>
+  </div> --}}
 </nav>

@@ -10,15 +10,15 @@
       <section>
         <div class="input-group">
           <label for="permission">Permission</label>
-          @foreach ($defaultPermissions as $permission)
+          @foreach ($defaultPermissions as $key => $permission)
           <div class="flex justify-between mb-2">
             <div class="" for="permission">{{ $permission->name }}</div>
-            <input class="w-16 h-8" type="checkbox" wire:model="permissionsId" value="{{ $permission->id }}" />
+            <input class="w-16 h-8" type="checkbox" wire:model="permissionsId.{{ $key }}"
+              value="{{ $permission->id }}" />
           </div>
           @endforeach
         </div>
       </section>
-
     </div>
     <div>
       @if ($errors->any())
