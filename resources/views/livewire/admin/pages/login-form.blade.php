@@ -1,5 +1,11 @@
 <div class="w-full max-w-xs m-auto">
-  <form wire:submit.prevent="submit" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+  <form wire:submit.prevent="submit" class="bg-white shadow-md rounded border-t-2 border-blue-400 px-8 pt-6 pb-8 mb-4">
+    <div>
+      <label class="block text-gray-700 text-md font-bold mb-6">
+        Login
+      </label>
+    </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
         Email

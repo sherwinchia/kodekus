@@ -24041,14 +24041,14 @@ h5, h6 {
   position: sticky;
 }
 
-.article-show .right .subscribe-newsletter img {
-  height: 8rem;
-  width: 8rem;
+.article-show .right .next-article img {
+  height: 7rem;
+  width: 7rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.article-show .right .subscribe-newsletter .info {
+.article-show .right .next-article .info {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -24058,18 +24058,20 @@ h5, h6 {
   height: 8rem;
 }
 
-.article-show .right .subscribe-newsletter .info .title {
-  font-weight: 600;
-  font-size: 1.125rem;
+.article-show .right .next-article .info .title {
+  font-weight: 300;
+  font-size: 0.875rem;
   height: 3.6em;
+  text-align: center;
   line-height: 1.8em;
   display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
   overflow: hidden;
+  padding: 0 2rem;
 }
 
-.article-show .right .subscribe-newsletter .info .extra {
+.article-show .right .next-article .info .extra {
   flex: 1 1 0%;
   --text-opacity: 1;
   color: #2d3748;
@@ -24094,10 +24096,6 @@ h5, h6 {
   height: 100%;
 }
 
-.article-show .more-posts {
-  overflow: hidden;
-}
-
 .article-show .more-posts .post {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -24116,14 +24114,12 @@ h5, h6 {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-bottom: 0.5rem;
 }
 
 .article-show .more-posts .info {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
-  height: 8rem;
 }
 
 .article-show .more-posts .info .title {
@@ -24143,7 +24139,6 @@ h5, h6 {
   color: rgba(45, 55, 72, var(--text-opacity));
   font-weight: 300;
   overflow: hidden;
-  height: 4rem;
 }
 
 @media (min-width: 640px){

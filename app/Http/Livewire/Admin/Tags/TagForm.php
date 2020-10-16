@@ -22,7 +22,7 @@ class TagForm extends Component
 
   protected $rules = [
     'name' => 'required|max:80',
-    'slug' => 'required|regex:/^[a-z0-9-]+$/',
+    'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:tags',
   ];
 
   protected $listeners = [

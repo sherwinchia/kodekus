@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Categories;
+namespace App\Http\Livewire\Admin\Series;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 
-use App\Models\Category;
+use App\Models\Series;
 
-class CategoriesTable extends Component
+class SeriesTable extends Component
 {
   use WithPagination;
 
@@ -38,8 +38,8 @@ class CategoriesTable extends Component
 
   public function delete($id)
   {
-    $category = Category::findOrFail($id);
-    $category->delete();
+    $series = Series::findOrFail($id);
+    $series->delete();
   }
 
   public function paginationView()
@@ -49,8 +49,8 @@ class CategoriesTable extends Component
 
   public function render()
   {
-      return view('livewire.admin.categories.categories-table', [
-        'categories' => Category::query()
+      return view('livewire.admin.series.series-table', [
+        'series' => Series::query()
             ->where('name', 'LIKE', "%{$this->search}%") 
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage)

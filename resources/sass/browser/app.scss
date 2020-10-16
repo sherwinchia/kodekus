@@ -123,23 +123,25 @@ h5, h6          { font-weight: bolder }
       position: sticky;
     }
     
-    .subscribe-newsletter{
+    .next-article{
       img{
-        height: 8rem;
-        width: 8rem;
+        height: 7rem;
+        width: 7rem;
         object-fit: cover;
       }
 
       .info{
         @apply px-4 py-2 flex flex-col h-32;
         .title{
-          @apply font-semibold text-lg;
+          @apply font-light text-sm;
           height: 3.6em;
+          text-align: center;
           line-height: 1.8em;
           display: block;
           text-overflow: ellipsis;
           word-wrap: break-word;
           overflow: hidden;
+          padding: 0 2rem;
         }
   
         .extra{
@@ -169,7 +171,6 @@ h5, h6          { font-weight: bolder }
   }
 
   .more-posts{
-    overflow: hidden;
 
     .post{
       @apply mx-4 card;
@@ -179,10 +180,11 @@ h5, h6          { font-weight: bolder }
       height: 16rem;
       width: 100%;
       object-fit: cover;
+      margin-bottom: .5rem;
     }
 
     .info{
-      @apply py-2 flex flex-col h-32;
+      @apply flex flex-col;
       .title{
         @apply font-semibold;
         height: 3rem;
@@ -195,7 +197,6 @@ h5, h6          { font-weight: bolder }
 
       .extra{
         @apply flex-1 text-gray-800 font-light overflow-hidden;
-        height: 4rem;
       }
     }
 

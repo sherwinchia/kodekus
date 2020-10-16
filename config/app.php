@@ -168,6 +168,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Mtownsend\ReadTime\Providers\ReadTimeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,8 +231,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Carbon' => Illuminate\Support\Carbon::class,
-        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
+        'SEOTools' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
 
     ],
 

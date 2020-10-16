@@ -28,6 +28,9 @@ Route::middleware(['admin.auth','isAdmin'])->group(function () {
   //Tag
   Route::resource('tags','Tag\TagController')->name('*','tags')->only('index','create','edit');
 
+  //Series
+  Route::resource('series','Series\SeriesController')->name('*','series')->only('index','create','edit');
+
   //User
   Route::resource('users','User\UserController')->name('*','users')->only('index','create','edit');
 

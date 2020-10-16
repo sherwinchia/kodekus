@@ -1,7 +1,7 @@
 @extends('browser.layouts.master')
 
 @section('meta-content')
-{!! SEOMeta::generate() !!}
+{!! SEOTools::generate() !!}
 @endsection
 
 {{-- @section('breadcrumbs')
@@ -9,7 +9,7 @@
 @endsection --}}
 
 @section('content')
-<div class="container mx-auto pt-12 article-show" x-data="articleData()" x-init="init()">
+<div class="container mx-auto pt-12 article-show">
   <div class="flex justify-center mb-4">
     <div class="center w-10/12 lg:w-6/12 xl:w-6/12">
       <div class="title mb-4">
@@ -19,7 +19,7 @@
           <span class="px-2">|</span>
           <span class="">{{ date_to_human($article->publish_date,'d F Y') }}</span>
           <span class="px-2">|</span>
-          <span class="" id="reading-minutes" x-text="readingMinutes"></span>
+          <span class="">{{ $article->read_minutes }}</span>
         </div>
         {{-- <p class="text-lg font-semibold text-gray-800 py-4">{{ $article->description }}</p> --}}
       </div>
@@ -91,7 +91,7 @@
       @endif
 
       @elseif ($section->type == 'paragraph')
-      <div class="mb-8">
+      <div class="">
         <p class="">{!! $section->data->text !!}</p>
       </div>
 
@@ -176,58 +176,71 @@
         </div>
       </div>
 
+      @if (isset($article->prev_article) || isset($article->next_article))
       <div class="post-navigation flex justify-between items-center pt-4">
-        <a href="">
-          <div class="flex items-center">
-            <svg class="h-5 w-5 mr-2 fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
-              style="enable-background:new -49 141 512 512;" xml:space="preserve">
-              <path id="XMLID_10_"
-                d="M438,372H36.355l72.822-72.822c9.763-9.763,9.763-25.592,0-35.355c-9.763-9.764-25.593-9.762-35.355,0 l-115.5,115.5C-46.366,384.01-49,390.369-49,397s2.634,12.989,7.322,17.678l115.5,115.5c9.763,9.762,25.593,9.763,35.355,0 c9.763-9.763,9.763-25.592,0-35.355L36.355,422H438c13.808,0,25-11.193,25-25S451.808,372,438,372z">
-              </path>
-            </svg>
-            Prev
-          </div>
-        </a>
-        <a href="">
-          <div class="flex items-center">
-            Next
-            <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
-              style="enable-background:new -49 141 512 512;" xml:space="preserve">
-              <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
-              l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
-              c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
-            </svg>
-          </div>
-        </a>
+        <div>
+          @if (isset($article->prev_article))
+          <a href="{{ $article->prev_article->link }}">
+            <div class="flex items-center">
+              <svg class="h-5 w-5 mr-2 fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
+                style="enable-background:new -49 141 512 512;" xml:space="preserve">
+                <path id="XMLID_10_"
+                  d="M438,372H36.355l72.822-72.822c9.763-9.763,9.763-25.592,0-35.355c-9.763-9.764-25.593-9.762-35.355,0 l-115.5,115.5C-46.366,384.01-49,390.369-49,397s2.634,12.989,7.322,17.678l115.5,115.5c9.763,9.762,25.593,9.763,35.355,0 c9.763-9.763,9.763-25.592,0-35.355L36.355,422H438c13.808,0,25-11.193,25-25S451.808,372,438,372z">
+                </path>
+              </svg>
+              Prev
+            </div>
+          </a>
+          @endif
+        </div>
+        <div>
+          @if (isset($article->next_article))
+          <a href="{{ $article->next_article->link }}">
+            <div class="flex items-center">
+              Next
+              <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
+                style="enable-background:new -49 141 512 512;" xml:space="preserve">
+                <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
+                l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
+                c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
+              </svg>
+            </div>
+          </a>
+          @endif
+        </div>
       </div>
+      @endif
     </div>
 
     <div class="right hidden lg:block w-3/12 px-4">
       <div class="flex flex-col h-full">
         <div class="flex-1"></div>
+        @if (isset($article->next_article))
         <div class="flex-1">
-          <div class="right-sticky subscribe-newsletter text-center">
+          <div class="right-sticky next-article text-center">
             <img class="mx-auto"
               src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
               alt="">
             <div class="info">
-              <p class="title">This is title</p>
-              <div class="flex justify-center items-center">
-                Read Next
-                <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
-                  style="enable-background:new -49 141 512 512;" xml:space="preserve">
-                  <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
+              <p class="title">{{ $article->next_article->title }}</p>
+              <a href="{{ $article->next_article->link }}">
+                <div class="flex justify-center items-center">
+                  Read Next
+                  <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
+                    <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
                 l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
                 c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
-                </svg>
-              </div>
+                  </svg>
+                </div>
+              </a>
             </div>
           </div>
         </div>
-        <div class="flex-1"></div>
+        @endif
       </div>
     </div>
   </div>
@@ -237,36 +250,35 @@
       <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
         <label>More Post</label>
       </div>
-      <div class="block space-x-0 lg:flex lg:space-x-6">
+      <div class="block space-x-0 lg:flex lg:space-x-6 ">
+        @foreach ($article->more_articles as $more_article)
 
         <div class="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0 more-posts">
           <img
             src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
             class="rounded" alt="technology" />
           <div class=" info">
-            <p class="title">Put all speaking her delicate recurred possible. Put all speaking her delicate recurred
-              possible.</p>
-            <p class="extra">
-              <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-              <span> | </span>
-              <span x-text="readingMinutes"></span>
-            </p>
+            <a href="{{ $more_article->article_link }}">
+              <p class="title">{{ $more_article->title }}</p>
+            </a>
+            <div class="extra">
+              <div class="mb-2">
+                <span>{{ date_to_human($more_article->publish_date,'d F Y') }}</span>
+                <span> | </span>
+                <span>{{ $more_article->read_minutes }}</span>
+              </div>
+              <div class="flex flex-wrap">
+                @foreach ($more_article->tags as $tag)
+                <a class="w-auto" href="#">
+                  <div class="p-1 rounded-sm border border-gray-400 mr-2 mb-2">{{ $tag->name }}</div>
+                </a>
+                @endforeach
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0 more-posts">
-          <img src="https://www.benq.com/content/dam/b2c/en-au/campaign/4k-monitor/d-4k-monitor-01.jpg" class="rounded"
-            alt="technology" />
-          <div class=" info">
-            <p class="title">Is at purse tried jokes china ready decay an. Is at purse tried jokes china ready decay
-              an. </p>
-            <p class="extra">
-              Category dkk
-            </p>
-          </div>
-        </div>
-
-
+        @endforeach
       </div>
     </div>
   </div>
@@ -318,26 +330,3 @@
 
 </style>
 @endpush
-
-@section('scripts')
-<script>
-  function articleData(){
-  return{
-    //data
-    readingMinutes: null,
-    //function
-
-    init(){
-      let body = {!! json_encode($article->body->blocks) !!};
-      body = JSON.stringify(body);
-      let words = body.split(" ").length;
-      let wordsPerMinute = 200;
-      let minutes = Math.ceil(words / wordsPerMinute);
-      
-      this.readingMinutes = minutes <= 1 ? `${minutes} minute read` : `${minutes} minutes read`;
-    }
-  }
-}
-
-</script>
-@endsection

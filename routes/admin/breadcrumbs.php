@@ -56,6 +56,23 @@ $trail->parent('admin.tags.index');
   $trail->push($tag->name);
 });
 
+//Series
+Breadcrumbs::for('admin.series.index', function ($trail) {
+  $trail->push('Series', route('admin.series.index'));
+});
+
+//Series > Create
+Breadcrumbs::for('admin.series.create', function ($trail) {
+  $trail->parent('admin.series.index');
+    $trail->push('Create');
+  });
+
+//Series > Edit
+Breadcrumbs::for('admin.series.edit', function ($trail, $series) {
+  $trail->parent('admin.series.index');
+    $trail->push($series->name);
+  });
+
 // Users
 Breadcrumbs::for('admin.users.index', function ($trail) {
   $trail->push('Users', route('admin.users.index'));
