@@ -47,6 +47,14 @@
             </div>
           </a>
         </li>
+        <li class="{{ request()->is('admin/series*') ? 'navbar-active-list' : 'navbar-list' }}">
+          <a class="flex-col justify-between items-center" href="{{ route('admin.series.index') }}">
+            <div class="w-full">
+              <i class="fas fa-tv w-8 text-lg "></i>
+              <span class="font-roboto text-md ">Series</span>
+            </div>
+          </a>
+        </li>
       </ul>
     </li>
 

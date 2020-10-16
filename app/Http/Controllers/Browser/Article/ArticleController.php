@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Browser\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
-use SEO;
+use SEOTools;
 use Share;
 
 class ArticleController extends Controller
@@ -24,19 +24,18 @@ class ArticleController extends Controller
       abort(404);
     }
 
-    $share = Share::page(route('browser.articles.show', ['slug'=> $article->slug, 'category' => $article->category->slug]), $article->title)
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->whatsapp()
-            ->getRawLinks();
+    $share = $article->share_link;
 
     $article->share = $share;
 
     $article->body = json_decode($article->body);
 
-    SEO::setTitle($article->title);
-    SEO::setDescription($article->description);
+    SEOTools::setTitle($article->title);
+    SEOTools::setDescription($article->description);
+    SEOTools::opengraph()->setUrl($article->article_link);
+    SEOTools::setCanonical($article->article_link);
+    SEOTools::opengraph()->addProperty('type', 'articles');
+    SEOTools::twitter()->setSite($article->article_link);
 
     return view(self::PATH . '.show', compact('article'));
   }

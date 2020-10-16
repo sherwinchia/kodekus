@@ -14,6 +14,61 @@ class ArticlesTableSeeder extends Seeder
     {
       Article::truncate();
       
-      factory(Article::class,50)->create();
+      Article::create([
+        'slug' => 'dummy-1',
+        'title' => 'This is dummy one',
+        'description' => 'This id dummy one description for testing purpose only',
+        'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
+        'category_id' => 1,
+        'author_id' => 1,
+        'publish_date' => '2020-10-15T21:00',
+        'published' => 1,
+      ]);
+
+      Article::create([
+        'slug' => 'dummy-2',
+        'title' => 'This is dummy two',
+        'description' => 'This id dummy two description for testing purpose only',
+        'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
+        'category_id' => 1,
+        'author_id' => 1,
+        'publish_date' => '2020-10-15T21:00',
+        'published' => 1,
+      ]);
+
+      Article::create([
+        'slug' => 'dummy-3',
+        'title' => 'This is dummy three',
+        'description' => 'This id dummy three description for testing purpose only',
+        'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
+        'category_id' => 1,
+        'author_id' => 1,
+        'publish_date' => '2020-10-15T21:00',
+        'published' => 1,
+      ]);
+
+      Article::create([
+        'slug' => 'dummy-4',
+        'title' => 'This is dummy four',
+        'description' => 'This id dummy four description for testing purpose only',
+        'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
+        'category_id' => 2,
+        'author_id' => 1,
+        'publish_date' => '2020-10-15T21:00',
+        'published' => 1,
+      ]);
+      
+      Article::create([
+        'slug' => 'dummy-5',
+        'title' => 'This is dummy five',
+        'description' => 'This id dummy five description for testing purpose only',
+        'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
+        'category_id' => 2,
+        'author_id' => 1,
+        'publish_date' => '2020-10-15T21:00',
+        'published' => 1,
+      ]);
+
+      // factory(Article::class,50)->create();
     }
 }

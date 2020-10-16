@@ -5,17 +5,20 @@ namespace App\Http\Livewire\Admin\Articles;
 use Livewire\Component;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Series;
 use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Facades\Validator;
+use Mtownsend\ReadTime\ReadTime;
 
 class ArticleForm extends Component
 {
   public $article;
   public $categories;
+  public $series;
   public $defaultTags;
 
   public $title;
@@ -24,6 +27,8 @@ class ArticleForm extends Component
   public $slug;
   public $image;
   public $category_id;
+  public $series_id;
+  public $read_minutes;
   public $tags;
   public $publish_date;
   public $published = 0;
@@ -41,7 +46,8 @@ class ArticleForm extends Component
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
     'category_id' => 'required',
-    // 'tag' => 'required',
+    'series_id' => 'nullable',
+    'read_minutes' => 'nullable',
     'publish_date' => 'required',
     'author_id' => 'required',
     'published' => 'required',
@@ -65,6 +71,7 @@ class ArticleForm extends Component
       $this->description = $this->article->description;
       $this->image = $this->article->image;
       $this->category_id = $this->article->category_id;
+      $this->series_id = $this->article->series_id;
       $this->tags = $this->article->tags->pluck('id')->toArray();
       $this->publish_date = $this->article->publish_date;
       $this->published = $this->article->published;
@@ -73,6 +80,7 @@ class ArticleForm extends Component
       $this->buttonText = 'Update';
     }
 
+    $this->series = Series::all();
     $this->categories = Category::all();
     $this->defaultTags = Tag::all();
   }
@@ -107,6 +115,16 @@ class ArticleForm extends Component
   { 
     $this->body =json_encode($editorJs);
     
+    $readMinutes = (new ReadTime($this->body, $omitSeconds = true, $abbreviated = false, $wordsPerMinute = 210))->toArray()['minutes'];
+
+    if ($readMinutes > 1) {
+      $readMinutes .= ' minutes';
+    } else {
+      $readMinutes .= ' minute';
+    }
+
+    $this->read_minutes = $readMinutes;
+
     $this->author_id = 1;
 
     if ($this->edit) {
@@ -117,7 +135,8 @@ class ArticleForm extends Component
         'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles,slug,'.$this->article->id,
         'body' => 'required',
         'category_id' => 'required',
-        // 'tag' => 'required',
+        'series_id' => 'nullable',
+        'read_minutes' => 'nullable',
         'publish_date' => 'required',
         'author_id' => 'required',
         'published' => 'required',

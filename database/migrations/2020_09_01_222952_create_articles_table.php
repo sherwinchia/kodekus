@@ -22,9 +22,11 @@ class CreateArticlesTable extends Migration
 
             $table->string('title');
             $table->longText('body');
-            $table->unsignedBigInteger('category_id');
-            $table->integer('read_minutes')->nullable();
+            
+            $table->string('read_minutes')->nullable();
             $table->string('publish_date')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('series_id')->nullable();
             $table->unsignedBigInteger('author_id')->nullable();
 
             $table->boolean('featured')->default(0);

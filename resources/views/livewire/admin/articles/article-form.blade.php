@@ -44,7 +44,7 @@
         <div class="input-group">
           <label for="category">Category</label>
           <select wire:model="category_id">
-            <option disabled>Choose one category</option>
+            <option value="null">Choose one category</option>
             @foreach ($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
@@ -54,9 +54,21 @@
 
       <section>
         <div class="input-group">
+          <label for="series">Series</label>
+          <select wire:model="series_id">
+            <option value="null">Choose one series</option>
+            @foreach ($series as $serie)
+            <option value="{{ $serie->id }}">{{ $serie->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </section>
+
+      <section>
+        <div class="input-group">
           <label for="tags">Tags</label>
           <select wire:model="tags" multiple>
-            <option disabled>Choose one tag</option>
+            <option value="null">Choose one tag</option>
             @foreach ($defaultTags as $tag)
             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
             @endforeach
