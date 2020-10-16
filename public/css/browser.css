@@ -24031,7 +24031,8 @@ h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .article-show .right .right-sticky {
@@ -24040,14 +24041,14 @@ h5, h6 {
   position: sticky;
 }
 
-.article-show .right .right-sticky .subscribe-newsletter img {
+.article-show .right .subscribe-newsletter img {
   height: 8rem;
   width: 8rem;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.article-show .right .right-sticky .subscribe-newsletter .info {
+.article-show .right .subscribe-newsletter .info {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -24057,7 +24058,7 @@ h5, h6 {
   height: 8rem;
 }
 
-.article-show .right .right-sticky .subscribe-newsletter .info .title {
+.article-show .right .subscribe-newsletter .info .title {
   font-weight: 600;
   font-size: 1.125rem;
   height: 3.6em;
@@ -24068,7 +24069,7 @@ h5, h6 {
   overflow: hidden;
 }
 
-.article-show .right .right-sticky .subscribe-newsletter .info .extra {
+.article-show .right .subscribe-newsletter .info .extra {
   flex: 1 1 0%;
   --text-opacity: 1;
   color: #2d3748;
@@ -24118,8 +24119,6 @@ h5, h6 {
 }
 
 .article-show .more-posts .info {
-  padding-left: 1rem;
-  padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   display: flex;
@@ -24129,9 +24128,8 @@ h5, h6 {
 
 .article-show .more-posts .info .title {
   font-weight: 600;
-  font-size: 1.125rem;
-  height: 3.6em;
-  line-height: 1.8em;
+  height: 3rem;
+  line-height: 1.5rem;
   display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
@@ -24144,6 +24142,8 @@ h5, h6 {
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
   font-weight: 300;
+  overflow: hidden;
+  height: 4rem;
 }
 
 @media (min-width: 640px){

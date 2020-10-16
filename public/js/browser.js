@@ -45834,18 +45834,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 window.hljs = __webpack_require__(/*! highlight.js */ "./node_modules/highlight.js/lib/index.js");
-hljs.initHighlightingOnLoad();
-
-window.onscroll = function () {
-  myFunction();
-};
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = winScroll / height * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
+hljs.initHighlightingOnLoad(); // window.onscroll = function() {myFunction()};
+// function myFunction() {
+// var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+// var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+// var scrolled = (winScroll / height) * 100;
+// document.getElementById("myBar").style.width = scrolled + "%";
+// }
 
 /***/ }),
 

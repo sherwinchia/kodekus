@@ -105,7 +105,7 @@ h5, h6          { font-weight: bolder }
     .share{
   
       .social-container{
-        @apply border border-gray-500 rounded-full h-12 w-12 flex items-center justify-center mb-3;
+        @apply border border-gray-500 rounded-full h-12 w-12 flex items-center justify-center my-2;
       }
 
     }
@@ -121,28 +121,29 @@ h5, h6          { font-weight: bolder }
       top:8rem;
       position: -webkit-sticky;
       position: sticky;
-      .subscribe-newsletter{
-        img{
-          height: 8rem;
-          width: 8rem;
-          object-fit: cover;
-        }
-
-        .info{
-          @apply px-4 py-2 flex flex-col h-32;
-          .title{
-            @apply font-semibold text-lg;
-            height: 3.6em;
-            line-height: 1.8em;
-            display: block;
-            text-overflow: ellipsis;
-            word-wrap: break-word;
-            overflow: hidden;
-          }
+    }
     
-          .extra{
-            @apply flex-1 text-gray-800 font-light;
-          }
+    .subscribe-newsletter{
+      img{
+        height: 8rem;
+        width: 8rem;
+        object-fit: cover;
+      }
+
+      .info{
+        @apply px-4 py-2 flex flex-col h-32;
+        .title{
+          @apply font-semibold text-lg;
+          height: 3.6em;
+          line-height: 1.8em;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+          overflow: hidden;
+        }
+  
+        .extra{
+          @apply flex-1 text-gray-800 font-light;
         }
       }
     }
@@ -181,11 +182,11 @@ h5, h6          { font-weight: bolder }
     }
 
     .info{
-      @apply px-4 py-2 flex flex-col h-32;
+      @apply py-2 flex flex-col h-32;
       .title{
-        @apply font-semibold text-lg;
-        height: 3.6em;
-        line-height: 1.8em;
+        @apply font-semibold;
+        height: 3rem;
+        line-height: 1.5rem;
         display: block;
         text-overflow: ellipsis;
         word-wrap: break-word;
@@ -193,7 +194,8 @@ h5, h6          { font-weight: bolder }
       }
 
       .extra{
-        @apply flex-1 text-gray-800 font-light;
+        @apply flex-1 text-gray-800 font-light overflow-hidden;
+        height: 4rem;
       }
     }
 

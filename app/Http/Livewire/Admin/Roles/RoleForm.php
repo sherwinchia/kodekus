@@ -16,7 +16,6 @@ class RoleForm extends Component
 
   public $edit;
   public $defaultPermissions;
-  public $defaultCount;
 
   public $buttonText = 'Create';
 
@@ -35,20 +34,14 @@ class RoleForm extends Component
       $this->name = $this->role->name;
       $this->buttonText = 'Update';
 
-      $this->defaultCount = count($this->defaultPermissions);
+      $currentPermissions = Role::findByName($this->role->name)->permissions->pluck('id')->toArray();
 
-      // $currentPermissions = Role::findByName($this->role->name)->permissions;
-
-      // foreach ($this->defaultPermissions as $defaultPermission) {
-      //   if (self::check($currentPermissions,'id',$defaultPermission->id)) {
-      //     array_push($this->permissionsId,$defaultPermission->id);
-      //   } else {
-      //     array_push($this->permissionsId,null);
-      //   }
-      // }
+      foreach ($this->defaultPermissions as $key => $permission) {
+        if (in_array($permission->id, $currentPermissions)) {
+          $this->permissionsId[$key] = $permission->id;
+        }
+      }
     }
-
-    // dd($this->permissionsId);
   }
 
   public function submit()
@@ -65,13 +58,11 @@ class RoleForm extends Component
     if($this->edit){
       $this->role->update($data);
 
-      // dd(array_splice($this->permissionsId,$this->defaultCount));
-
-      // $permissionsId = array_splice($this->permissionsId,$this->defaultCount);
-
       $permissions = [];
       foreach ($this->permissionsId as $permissionId) {
-        array_push($permissions,Permission::findOrFail($permissionId));
+        if ($permissionId == true) {
+          array_push($permissions,Permission::findOrFail($permissionId));
+        }
       }
       $this->role->syncPermissions($permissions);
 

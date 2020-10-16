@@ -20,4 +20,9 @@ class Category extends Model
   {
       return $this->name . " has been {$eventName}";
   }
+
+  public function articles()
+  {
+    return $this->hasMany('App\Models\Article');
+  }
 }

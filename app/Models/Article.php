@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Share;
 
 class Article extends Model
 {
@@ -17,8 +18,7 @@ class Article extends Model
     'body', 
     'slug', 
     'image', 
-    'category', 
-    'tag', 
+    'category_id', 
     'publish_date', 
     'published', 
     'featured', 
@@ -27,7 +27,7 @@ class Article extends Model
 
   public function tags()
   {
-    return $this->hasMany('App\Models\Tag');
+    return $this->belongsToMany('App\Models\Tag');
   }
 
   public function author()
@@ -35,8 +35,30 @@ class Article extends Model
     return $this->belongsTo('App\Models\User', 'author_id');
   }
 
+  public function category()
+  {
+    return $this->belongsTo('App\Models\Category', 'category_id');
+  }
+
   public function getDescriptionForEvent(string $eventName): string
   {
       return $this->title . " has been {$eventName}";
+  }
+
+  public function getArticleLinkAttribute()
+  {
+    return route('browser.articles.show', ['slug'=> $this->slug, 'category' => $this->category->slug]);
+  }
+
+  public function getShareLinkAttribute()
+  {
+    $share = Share::page(route('browser.articles.show', ['slug'=> $this->slug, 'category' => $this->category->slug]), $this->title)
+    ->facebook()
+    ->twitter()
+    ->linkedin()
+    ->whatsapp()
+    ->getRawLinks();
+
+    return $share;
   }
 }

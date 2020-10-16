@@ -16,16 +16,15 @@ class ArticleForm extends Component
 {
   public $article;
   public $categories;
-  public $tags;
+  public $defaultTags;
 
   public $title;
   public $description;
   public $body;
-  // public $content;
   public $slug;
   public $image;
-  public $category;
-  public $tag;
+  public $category_id;
+  public $tags;
   public $publish_date;
   public $published = 0;
   public $featured = 0;
@@ -41,9 +40,8 @@ class ArticleForm extends Component
     'image' => 'nullable',
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
-    // 'content' => 'required|present|array', 
-    'category' => 'required',
-    'tag' => 'required',
+    'category_id' => 'required',
+    // 'tag' => 'required',
     'publish_date' => 'required',
     'author_id' => 'required',
     'published' => 'required',
@@ -66,8 +64,8 @@ class ArticleForm extends Component
       $this->subtitle = $this->article->subtitle;
       $this->description = $this->article->description;
       $this->image = $this->article->image;
-      $this->category = $this->article->category;
-      $this->tag = $this->article->tag;
+      $this->category_id = $this->article->category_id;
+      $this->tags = $this->article->tags->pluck('id')->toArray();
       $this->publish_date = $this->article->publish_date;
       $this->published = $this->article->published;
       $this->featured = $this->article->featured;
@@ -76,7 +74,7 @@ class ArticleForm extends Component
     }
 
     $this->categories = Category::all();
-    $this->tags = Tag::all();
+    $this->defaultTags = Tag::all();
   }
 
   public function titleAdded()
@@ -106,16 +104,7 @@ class ArticleForm extends Component
   }
 
   public function publishClicked($editorJs)
-  {
-    // $this->content = $editorJs['blocks'];
-    // $body = $editorJs;
-    
-    // foreach ($body['blocks'] as $block) {
-    //   if ($block['type'] == 'code') {
-    //     dd($block['data']['code']);
-    //   }
-    // }
-    
+  { 
     $this->body =json_encode($editorJs);
     
     $this->author_id = 1;
@@ -127,9 +116,8 @@ class ArticleForm extends Component
         'image' => 'nullable',
         'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles,slug,'.$this->article->id,
         'body' => 'required',
-        // 'content' => 'required|present|array', 
-        'category' => 'required',
-        'tag' => 'required',
+        'category_id' => 'required',
+        // 'tag' => 'required',
         'publish_date' => 'required',
         'author_id' => 'required',
         'published' => 'required',
@@ -145,13 +133,15 @@ class ArticleForm extends Component
     if($this->edit){
       $this->article->update($data);
       session()->flash('success', 'Article successfully updated.');
-      return redirect()->route('admin.articles.index');
     } else {
-      $article = Article::create($data);
+      $this->article = Article::create($data);
       session()->flash('success', 'Article successfully created.');
-      return redirect()->route('admin.articles.index');
+      
     }
+    
 
+    $this->article->tags()->sync($this->tags);
+    return redirect()->route('admin.articles.index');
 
     // $image = $this->storeImage();
   }
