@@ -21,7 +21,7 @@ class ArticlesTableSeeder extends Seeder
         'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
         'category_id' => 1,
         'author_id' => 1,
-        'publish_date' => '2020-10-15T21:00',
+        'publish_date' => '2020-10-15T20:00',
         'published' => 1,
       ]);
 
@@ -32,7 +32,7 @@ class ArticlesTableSeeder extends Seeder
         'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
         'category_id' => 1,
         'author_id' => 1,
-        'publish_date' => '2020-10-15T21:00',
+        'publish_date' => '2020-10-14T21:00',
         'published' => 1,
       ]);
 
@@ -43,7 +43,7 @@ class ArticlesTableSeeder extends Seeder
         'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
         'category_id' => 1,
         'author_id' => 1,
-        'publish_date' => '2020-10-15T21:00',
+        'publish_date' => '2020-10-13T21:00',
         'published' => 1,
       ]);
 
@@ -65,7 +65,7 @@ class ArticlesTableSeeder extends Seeder
         'body' => '{"time":1600232431965,"blocks":[{"type":"paragraph","data":{"text":"aaa"}},{"type":"embed","data":{"service":"youtube","source":"https:\/\/www.youtube.com\/watch?v=kaP8mYmI2B4&amp;ab_channel=EHPMusicChannel","embed":"https:\/\/www.youtube.com\/embed\/kaP8mYmI2B4?","width":580,"height":320,"caption":""}},{"type":"paragraph","data":{"text":"Hello"}}],"version":"2.18.0"}',
         'category_id' => 2,
         'author_id' => 1,
-        'publish_date' => '2020-10-15T21:00',
+        'publish_date' => '2020-10-15T23:00',
         'published' => 1,
       ]);
 

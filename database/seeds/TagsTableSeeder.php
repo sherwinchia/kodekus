@@ -29,5 +29,26 @@ class TagsTableSeeder extends Seeder
           'name' => 'Python',
           'slug' => 'python'
         ]);
+
+        Tag::create([
+          'name' => 'C#',
+          'slug' => 'c-sharp'
+        ]);
+
+        Tag::create([
+          'name' => 'C',
+          'slug' => 'c'
+        ]);
+
+        Tag::create([
+          'name' => 'C++',
+          'slug' => 'c-plus'
+        ]);
+
+        Tag::create([
+          'name' => 'Golang',
+          'slug' => 'golang'
+        ]);
+   
     }
 }

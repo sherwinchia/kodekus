@@ -16,11 +16,8 @@
         </button>
       </div>
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex-shrink-0">
-          <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg"
-            alt="Workflow logo">
-          <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg"
-            alt="Workflow logo">
+        <div class="flex-shrink-0 text-xl font-bold text-white">
+          Brand
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex">

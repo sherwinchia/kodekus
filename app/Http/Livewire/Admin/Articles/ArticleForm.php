@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin\Articles;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Series;
@@ -10,12 +12,15 @@ use App\Models\Tag;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 use Intervention\Image\ImageManagerStatic;
 use Illuminate\Support\Facades\Validator;
 use Mtownsend\ReadTime\ReadTime;
 
 class ArticleForm extends Component
 {
+  use WithFileUploads;
+
   public $article;
   public $categories;
   public $series;
@@ -26,6 +31,7 @@ class ArticleForm extends Component
   public $body;
   public $slug;
   public $image;
+  public $temp_image;
   public $category_id;
   public $series_id;
   public $read_minutes;
@@ -42,7 +48,7 @@ class ArticleForm extends Component
   protected $rules = [
     'title' => 'required|max:80',
     'description' => 'required|max:200',
-    'image' => 'nullable',
+    'temp_image' => 'image|max:2048|nullable',
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles',
     'body' => 'required',
     'category_id' => 'required',
@@ -95,22 +101,6 @@ class ArticleForm extends Component
     } 
   }
 
-  public function imageUploaded($imageData)
-  {
-      $this->image = $imageData;
-  }
-
-  public function storeImage()
-  {
-      if(!$this->image)return null;
-
-      $img = ImageManagerStatic::make($this->image)->encode('jpg');
-      $name = Str::random().'.jpg';
-      Storage::disk('public')->put($name,$img);
-      return $name;
-      
-  }
-
   public function publishClicked($editorJs)
   { 
     $this->body =json_encode($editorJs);
@@ -131,7 +121,7 @@ class ArticleForm extends Component
       $data = $this->validate([
         'title' => 'required|max:80',
         'description' => 'required|max:200',
-        'image' => 'nullable',
+        'temp_image' => 'image|max:2048|nullable',
         'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:articles,slug,'.$this->article->id,
         'body' => 'required',
         'category_id' => 'required',
@@ -146,8 +136,16 @@ class ArticleForm extends Component
     } else {
       $data = $this->validate($this->rules);
     }
-    // $data['publish_date'] = Carbon::parse($data['publish_date']);
-    // dd(date_to_human($data['publish_date']));
+
+    if (is_object($data['temp_image'])) {
+      if ($this->image) {
+        //delete old Image
+        Storage::delete('public/' . $this->image);
+      }
+
+      $imagePath = $this->temp_image->store('public/image/articles');
+      $data['image'] = str_replace('public/', '', $imagePath);
+    }
 
     if($this->edit){
       $this->article->update($data);
@@ -155,14 +153,10 @@ class ArticleForm extends Component
     } else {
       $this->article = Article::create($data);
       session()->flash('success', 'Article successfully created.');
-      
     }
-    
 
     $this->article->tags()->sync($this->tags);
     return redirect()->route('admin.articles.index');
-
-    // $image = $this->storeImage();
   }
 
   public function render()

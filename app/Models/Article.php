@@ -61,11 +61,11 @@ class Article extends Model
   public function getShareLinkAttribute()
   {
     $share = Share::page(route('browser.articles.show', ['slug'=> $this->slug, 'category' => $this->category->slug]), $this->title)
-    ->facebook()
-    ->twitter()
-    ->linkedin()
-    ->whatsapp()
-    ->getRawLinks();
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->whatsapp()
+            ->getRawLinks();
 
     return $share;
   }
@@ -74,7 +74,7 @@ class Article extends Model
   {
     //if article->share sort by ID
     if (isset($this->series)) {
-      $nextId = Article::where('id', '>', $this->id)->where('series_id', $this->series->id)->orderBy('publish_date')->min('id');
+      $nextId = Article::where('id', '>', $this->id)->where('series_id', $this->series->id)->latest('publish_date')->min('id');
     } else {
       $nextId = Article::where('id', '>', $this->id)->min('id');
     }
@@ -91,7 +91,7 @@ class Article extends Model
   public function getPrevArticleAttribute()
   {
     if (isset($this->series)) {
-      $prevId = Article::where('id', '<', $this->id)->where('series_id', $this->series->id)->orderBy('publish_date')->max('id');
+      $prevId = Article::where('id', '<', $this->id)->where('series_id', $this->series->id)->latest('publish_date')->max('id');
     } else {
       $prevId = Article::where('id', '<', $this->id)->max('id');
     }
@@ -108,5 +108,14 @@ class Article extends Model
   {
     $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->where('series_id', $this->series_id)->take(3)->get();
     return $morePost;
+  }
+
+  public function getImageLinkAttribute()
+  {
+    if ($this->image) {
+      return asset('storage/' . $this->image);
+    } else {
+      return asset('images/placeholder/placeholder.png');
+    }
   }
 }
