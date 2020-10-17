@@ -23,99 +23,108 @@
         </div>
       </section>
 
-      <section>
+      {{-- <section>
         <div x-data="formComponents()" class="input-group">
           <label for="image">Image</label>
           <input type="file" accept="image/*" id="image" x-on:input="onUploadImage()">
           @if ($image)
           <img class="w-64 h-48 mx-auto object-cover overflow-hidden" src="{{ $image }}" alt="">
-          @endif
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="slug">Slug </label>
-          <input id="slug" pattern="^[a-z0-9-]+$" type="text" wire:model="slug">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="category">Category</label>
-          <select wire:model="category_id">
-            <option value="null">Choose one category</option>
-            @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="series">Series</label>
-          <select wire:model="series_id">
-            <option value="null">Choose one series</option>
-            @foreach ($series as $serie)
-            <option value="{{ $serie->id }}">{{ $serie->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="tags">Tags</label>
-          <select wire:model="tags" multiple>
-            <option value="null">Choose one tag</option>
-            @foreach ($defaultTags as $tag)
-            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="publish_date">Publish Date</label>
-          <input type="datetime-local" wire:model="publish_date">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="published">Published</label>
-          <input class="w-full h-10" type="checkbox" wire:model="published">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="featured">Featured</label>
-          <input class="w-full h-10" type="checkbox" wire:model="featured">
-        </div>
-      </section>
-
-      <section>
-        <div class="input-group">
-          <label for="trending">Trending</label>
-          <input class="w-full h-10" type="checkbox" wire:model="trending">
-        </div>
-      </section>
-    </div>
-
-    <div x-data="formComponents()">
-      @if ($errors->any())
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-2">
-        <strong class="font-bold">Error!</strong>
-        <span class="block sm:inline">{{ $errors->first() }}</span>
-      </div>
       @endif
-      <button x-on:click.prevent="onPublishClicked()"
-        class="w-full p-4 bg-green-200 outline-none">{{ $buttonText }}</button>
     </div>
+    </section> --}}
+
+    <section>
+      <div class="input-group">
+        <label for="image">Image</label>
+        <img class="w-64 h-48 mx-auto object-contain overflow-hidden"
+          src="{{ $temp_image ? $temp_image->temporaryUrl() : $article->image_link }}" alt="">
+        <input type="file" wire:model="temp_image" accept="image/*" id="image">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="slug">Slug </label>
+        <input id="slug" pattern="^[a-z0-9-]+$" type="text" wire:model="slug">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="category">Category</label>
+        <select wire:model="category_id">
+          <option value="null">Choose one category</option>
+          @foreach ($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endforeach
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="series">Series</label>
+        <select wire:model="series_id">
+          <option value="null">Choose one series</option>
+          @foreach ($series as $serie)
+          <option value="{{ $serie->id }}">{{ $serie->name }}</option>
+          @endforeach
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="tags">Tags</label>
+        <select wire:model="tags" multiple>
+          <option value="null">Choose one tag</option>
+          @foreach ($defaultTags as $tag)
+          <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+          @endforeach
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="publish_date">Publish Date</label>
+        <input type="datetime-local" wire:model="publish_date">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="published">Published</label>
+        <input class="w-full h-10" type="checkbox" wire:model="published">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="featured">Featured</label>
+        <input class="w-full h-10" type="checkbox" wire:model="featured">
+      </div>
+    </section>
+
+    <section>
+      <div class="input-group">
+        <label for="trending">Trending</label>
+        <input class="w-full h-10" type="checkbox" wire:model="trending">
+      </div>
+    </section>
   </div>
+
+  <div x-data="formComponents()">
+    @if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-2">
+      <strong class="font-bold">Error!</strong>
+      <span class="block sm:inline">{{ $errors->first() }}</span>
+    </div>
+    @endif
+    <button x-on:click.prevent="onPublishClicked()"
+      class="w-full p-4 bg-green-200 outline-none">{{ $buttonText }}</button>
+  </div>
+</div>
 </div>
 
 

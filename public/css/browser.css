@@ -24141,6 +24141,30 @@ h5, h6 {
   overflow: hidden;
 }
 
+.home .small-post .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.home .small-post .info .title {
+  font-weight: 600;
+  height: 4rem;
+  line-height: 2rem;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.home .small-post .info .description {
+  height: 3rem;
+  line-height: 1.5rem;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

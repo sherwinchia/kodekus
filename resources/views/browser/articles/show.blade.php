@@ -144,7 +144,7 @@
       <div class="post-tag mb-8 flex flex-wrap">
         @foreach ($article->tags as $tag)
         <a class="w-auto" href="#">
-          <div class="p-2 rounded-sm border border-gray-400 mr-2 mb-2">{{ $tag->name }}</div>
+          <div class="p-2 rounded-sm border border-gray-400 mr-2 mb-2"># {{ $tag->name }}</div>
         </a>
         @endforeach
       </div>
@@ -220,9 +220,7 @@
         @if (isset($article->next_article))
         <div class="flex-1">
           <div class="right-sticky next-article text-center">
-            <img class="mx-auto"
-              src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-              alt="">
+            <img class="mx-auto" src="{{ $article->next_article->image_link }}" alt="">
             <div class="info">
               <p class="title">{{ $article->next_article->title }}</p>
               <a href="{{ $article->next_article->link }}">
@@ -246,17 +244,14 @@
   </div>
 
   <div class="flex justify-center">
-    <div class="w-12/12">
+    <div class="w-10/12 lg:w-12/12 xl:w-12/12">
       <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
         <label>More Post</label>
       </div>
       <div class="block space-x-0 lg:flex lg:space-x-6 ">
         @foreach ($article->more_articles as $more_article)
-
-        <div class="rounded w-full lg:w-1/2 lg:w-1/3 p-4 lg:p-0 more-posts">
-          <img
-            src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60"
-            class="rounded" alt="technology" />
+        <div class="rounded w-full mb-4 lg:m-0 lg:w-1/3 lg:p-0 more-posts">
+          <img src="{{ $more_article->image_link }}" class="rounded" alt="technology" />
           <div class=" info">
             <a href="{{ $more_article->article_link }}">
               <p class="title">{{ $more_article->title }}</p>
@@ -270,63 +265,37 @@
               <div class="flex flex-wrap">
                 @foreach ($more_article->tags as $tag)
                 <a class="w-auto" href="#">
-                  <div class="p-1 rounded-sm border border-gray-400 mr-2 mb-2">{{ $tag->name }}</div>
+                  <div class="p-1 rounded-sm border border-gray-400 mr-2 mb-2"># {{ $tag->name }}</div>
                 </a>
                 @endforeach
               </div>
             </div>
           </div>
         </div>
-
         @endforeach
       </div>
     </div>
   </div>
+</div>
 
-</div>
-{{-- <div class="flex flex-wrap justify-center more-posts">
-      <div class="post w-full lg:w-1/3">
-        <img src="https://fooddiversity.today/wp-content/uploads/2016/05/placeholder.png" alt="">
-        <div class="info">
-          <p class="title">This is titleThis is titleThis is titleThis is titleThis is titleThis is titleThis is
-            titleThis
-            is title</p>
-          <p class="extra">
-            <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-<span class="px-2">|</span>
-<span x-text="readingMinutes"></span>
-</p>
-</div>
-</div>
-<div class="post w-full lg:w-1/3">
-  <img src="https://fooddiversity.today/wp-content/uploads/2016/05/placeholder.png" alt="">
-  <div class="info">
-    <p class="title">Excepturi ratione molestiae repudiandae ea quaerat saepe placeat deleniti.</p>
-    <p class="extra">
-      <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-      <span class="px-2">|</span>
-      <span x-text="readingMinutes"></span>
-    </p>
+{{-- <div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    ...
   </div>
-</div>
-<div class="post w-full w- lg:w-1/3">
-  <img src="https://image.shutterstock.com/image-vector/default-ui-image-placeholder-wireframes-260nw-1037719192.jpg"
-    alt="">
-  <div class="info">
-    <p class="title">This is title</p>
-    <p class="extra">
-      <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-      <span class="px-2">|</span>
-      <span x-text="readingMinutes"></span>
-    </p>
-  </div>
-</div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
 </div> --}}
 
 @endsection
-
-@push('styles')
-<style>
-
-</style>
-@endpush

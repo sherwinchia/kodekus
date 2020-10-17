@@ -204,6 +204,32 @@ h5, h6          { font-weight: bolder }
 
 }
 
+.home{
+  .small-post{
+    .info{
+      @apply flex flex-col;
+      .title{
+        @apply font-semibold;
+        height: 4rem;
+        line-height: 2rem;
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+
+      .description{
+        height: 3rem;
+        line-height: 1.5rem;
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
 // </article show>
 
 

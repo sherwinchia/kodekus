@@ -1,6 +1,8 @@
 import 'alpinejs';
+import Swiper from 'swiper/bundle';
 import "highlight.js/styles/dracula.css";
 
+import 'swiper/swiper-bundle.css';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -67,7 +69,27 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.hljs = require('highlight.js');
 hljs.initHighlightingOnLoad();
 
+let swiper = new Swiper('.swiper-container', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
+  slidesPerGroup: 3,
+  loopFillGroupWithBlank: true,
 
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+    dynamicBullets: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+})
 
 // window.onscroll = function() {myFunction()};
 
@@ -76,4 +98,4 @@ hljs.initHighlightingOnLoad();
 // var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 // var scrolled = (winScroll / height) * 100;
 // document.getElementById("myBar").style.width = scrolled + "%";
-// }
+// }  
