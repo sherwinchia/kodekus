@@ -57531,20 +57531,31 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__["default"]('.swiper-
   // Optional parameters
   direction: 'horizontal',
   loop: true,
-  slidesPerView: 3,
+  slidesPerView: 1,
   spaceBetween: 30,
-  slidesPerGroup: 3,
+  slidesPerGroup: 1,
   loopFillGroupWithBlank: true,
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-    dynamicBullets: true
+  keyboard: {
+    enabled: true
   },
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
-  }
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    hide: true
+  } // // If we need pagination
+  // pagination: {
+  //   el: '.swiper-pagination',
+  //   dynamicBullets: true,
+  // },
+  // // Navigation arrows
+  // navigation: {
+  //   nextEl: '.swiper-button-next',
+  //   prevEl: '.swiper-button-prev',
+  // },
+
 }); // window.onscroll = function() {myFunction()};
 // function myFunction() {
 // var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
