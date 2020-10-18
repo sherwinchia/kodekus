@@ -37,7 +37,7 @@
       <div class="input-group">
         <label for="image">Image</label>
         <img class="w-64 h-48 mx-auto object-contain overflow-hidden"
-          src="{{ $temp_image ? $temp_image->temporaryUrl() : $article->image_link }}" alt="">
+          src="{{ $temp_image ? $temp_image->temporaryUrl() : (isset($article) ? $article->image_link: null) }}" alt="">
         <input type="file" wire:model="temp_image" accept="image/*" id="image">
       </div>
     </section>

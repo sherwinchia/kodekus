@@ -48,6 +48,16 @@ class Article extends Model
     return $this->belongsTo('App\Models\Category', 'category_id');
   }
 
+  public function bookmarks()
+  {
+    return $this->morphMany('App\Models\Bookmark', 'bookmarkable');
+  }
+
+  public function comments()
+  {
+    return $this->morphMany('App\Models\Comment', 'commentable');
+  }
+
   public function getDescriptionForEvent(string $eventName): string
   {
       return $this->title . " has been {$eventName}";

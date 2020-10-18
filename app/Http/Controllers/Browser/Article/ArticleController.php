@@ -16,31 +16,14 @@ class ArticleController extends Controller
 
   public function index()
   {
-    SEOTools::setTitle('Home');
-    SEOTools::setDescription('This is my page description');
-    SEOTools::opengraph()->setUrl('http://current.url.com');
-    SEOTools::setCanonical('https://codecasts.com.br/lesson');
-    SEOTools::opengraph()->addProperty('type', 'articles');
-    SEOTools::twitter()->setSite('@LuizVinicius73');
-    SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
 
-    $tags = Tag::all()->filter(function ($tags){
-      return $tags->articles->count() > 0;
-    });;
-
-    $categories = Category::all()->filter(function ($category){
-      return $category->articles->count() > 0;
-    });
-
-    $latestArticles = Article::latest('publish_date')->take(6)->get();
-
-    return view(self::PATH . 'index', compact(['tags', 'categories', 'latestArticles']));
   }
 
   public function show($category, $slug)
   {
-    $article = Article::where('slug', $slug)->where('publish_date','<=',now())
+    $article = Article::where('publish_date','<=',now())
                       ->where('published',1)
+                      ->where('slug', $slug)
                       ->whereHas('category', function($query) use ($category){
                         $query->where('slug', $category);
                       })->first();

@@ -57,7 +57,7 @@ h5, h6          { font-weight: bolder }
   input[type='datetime-local'],  
   select, 
   textarea{
-    @apply shadow rounded w-full py-2 px-3 outline-none border mb-2 bg-white;
+    @apply shadow border-black rounded py-2 px-3 outline-none border mb-2 bg-white;
   }
 
   input[type='text']:focus, 
@@ -67,7 +67,7 @@ h5, h6          { font-weight: bolder }
   input[type='datetime-local']:focus, 
   select:focus, 
   textarea:focus{
-    @apply border-blue-400;
+    @apply border-black;
   }
   
 }
@@ -105,7 +105,7 @@ h5, h6          { font-weight: bolder }
     .share{
   
       .social-container{
-        @apply border border-gray-500 rounded-full h-12 w-12 flex items-center justify-center my-2;
+        @apply border border-gray-500 rounded-full h-10 w-10 flex items-center justify-center my-2;
       }
 
     }
@@ -170,12 +170,7 @@ h5, h6          { font-weight: bolder }
     }
   }
 
-  .more-posts{
-
-    .post{
-      @apply mx-4 card;
-    }
-
+  .article-thumbnail{
     img{
       height: 16rem;
       width: 100%;
@@ -187,24 +182,31 @@ h5, h6          { font-weight: bolder }
       @apply flex flex-col;
       .title{
         @apply font-semibold;
+        max-height: 3rem;
+        line-height: 1.5rem;
+        display: block;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+      }
+
+      .description{
         height: 3rem;
         line-height: 1.5rem;
         display: block;
         text-overflow: ellipsis;
         word-wrap: break-word;
-        overflow: hidden;
       }
+
 
       .extra{
         @apply flex-1 text-gray-800 font-light overflow-hidden;
       }
     }
-
   }
 
 }
 
-.home{
+.home-index{
   .small-post{
     .info{
       @apply flex flex-col;
@@ -228,6 +230,60 @@ h5, h6          { font-weight: bolder }
       }
     }
   }
+
+  .right-sticky{
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+.search{
+  .search-box{
+    @apply flex items-center relative;
+
+    i{
+      @apply text-xl absolute text-gray-700 right-0 cursor-pointer;
+      right: 1rem;
+      top: .8rem;
+    }
+  }
+
+  .search-article{
+    img{
+      height: 16rem;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: .5rem;
+    }
+
+    .info{
+      @apply flex flex-col justify-between;
+        .title{
+          @apply font-semibold;
+          max-height: 3rem;
+          line-height: 1.5rem;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+        }
+  
+        .description{
+          height: 3rem;
+          line-height: 1.5rem;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+        }
+
+      .extra{
+        @apply flex-1 text-gray-800 font-light overflow-hidden;
+      }
+    }
+  }
+}
+
+.comment-section{
+  
 }
 
 // </article show>

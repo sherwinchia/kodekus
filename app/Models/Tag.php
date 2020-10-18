@@ -25,4 +25,9 @@ class Tag extends Model
   {
     return $this->belongsToMany('App\Models\Article');
   }
+
+  public function getTagLinkAttribute()
+  {
+    return route('browser.search.index',['tag'=>$this->id]);
+  }
 }
