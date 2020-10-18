@@ -59,4 +59,18 @@ class User extends Authenticatable
       return $this->hasMany('App\Models\Article', 'author_id');
     }
 
+    public function bookmarks()
+    {
+      return $this->hasMany('App\Models\Bookmark');
+    }
+
+    public function bookmarked($type, $id)
+    {
+      $user = current_user();
+      $bookmarked = $user->bookmarks->where('bookmarkable_type', $type)
+                            ->where('bookmarkable_id',$id)
+                            ->first();
+
+      return $bookmarked ? true : false;
+    }
 }

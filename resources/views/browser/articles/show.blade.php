@@ -4,24 +4,20 @@
 {!! SEOTools::generate() !!}
 @endsection
 
-{{-- @section('breadcrumbs')
-{{ Breadcrumbs::render('admin.roles.index') }}
-@endsection --}}
-
 @section('content')
 <div class="container mx-auto pt-12 article-show">
   <div class="flex justify-center mb-4">
     <div class="center w-10/12 lg:w-6/12 xl:w-6/12">
       <div class="title mb-4">
         <h1 class="text-left py-4">{{ $article->title }}</h1>
-        <div class="text-left py-4 text-gray-800 font-light">
+        <div class="text-left py-4 text-black font-light">
           <span>by</span> <span class="font-medium">{{ $article->author->name ?? 'Anonymous' }}</span>
           <span class="px-2">|</span>
           <span class="">{{ date_to_human($article->publish_date,'d F Y') }}</span>
           <span class="px-2">|</span>
           <span class="">{{ $article->read_minutes }}</span>
         </div>
-        {{-- <p class="text-lg font-semibold text-gray-800 py-4">{{ $article->description }}</p> --}}
+        <p class="text-lg font-light text-black py-4">{{ $article->description }}</p>
       </div>
     </div>
   </div>
@@ -29,43 +25,44 @@
   <div class="flex justify-center mb-10">
     <div class="left hidden lg:block w-3/12 px-4 ">
       <div class="flex flex-col h-full">
-        <div class="share flex-1">
+        <div class="action flex-1 ">
+          <div class="left-sticky flex flex-col items-center text-gray-800 text-xl">
+            <div class="text-center py-2"><i class="far fa-heart"></i></div>
+            <div class="text-center py-2"><i class="far fa-comment"></i></div>
+            <div class="py-2">
+              <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" />
+            </div>
+          </div>
+        </div>
+        <div class="share flex-1 my-20">
           <div class="left-sticky flex flex-col items-center text-gray-800">
             <div class="mb-2 font-semibold">
               <label class="">Share</label>
             </div>
             <a href="{{ $article->share['facebook'] }}" target="_blank">
               <div class="social-container">
-                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-facebook-f text-sm"></i>
               </div>
             </a>
 
             <a href="{{ $article->share['twitter'] }}" target="_blank">
               <div class="social-container">
-                <i class="fab fa-twitter"></i>
+                <i class="fab fa-twitter text-sm"></i>
               </div>
             </a>
 
             <a href="{{ $article->share['linkedin'] }}" target="_blank">
               <div class="social-container">
-                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-linkedin-in text-sm"></i>
               </div>
             </a>
 
             <a href="{{ $article->share['whatsapp'] }}" target="_blank">
               <div class="social-container">
-                <i class="fab fa-whatsapp"></i>
+                <i class="fab fa-whatsapp text-sm"></i>
               </div>
             </a>
 
-          </div>
-        </div>
-
-        <div class="action flex-1 my-20">
-          <div class="left-sticky flex flex-col items-center text-gray-800">
-            <div class="text-center text-xl py-2"><i class="far fa-heart"></i></div>
-            <div class="text-center text-xl py-2"><i class="far fa-comment"></i></div>
-            <div class="text-center text-xl py-2"><i class="far fa-bookmark"></i></div>
           </div>
         </div>
       </div>
@@ -96,12 +93,13 @@
       </div>
 
       @elseif ($section->type == 'embed')
-      <div class="iframe-container">
+      <div class="iframe-container mb-4">
         <iframe class="responsive-iframe" src="{{ $section->data->embed }}"></iframe>
+        @if ($section->data->caption)
+        <label class="text-md text-gray-700 italic" for="video-caption">{{ $section->data->caption }}</label>
+        @endif
       </div>
-      @if ($section->data->caption)
-      <label class="text-md text-gray-700 italic" for="video-caption">{{ $section->data->caption }}</label>
-      @endif
+
 
       @elseif ($section->type == 'delimiter')
       <div class="text-2xl text-center py-6">
@@ -144,7 +142,7 @@
       <div class="post-tag mb-8 flex flex-wrap">
         @foreach ($article->tags as $tag)
         <a class="w-auto" href="#">
-          <div class="p-2 rounded-sm border border-gray-400 mr-2 mb-2"># {{ $tag->name }}</div>
+          <div class="p-2 rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
         </a>
         @endforeach
       </div>
@@ -152,12 +150,18 @@
       <div class="post-action flex justify-between items-center pb-4 border-b">
         <div class="flex text-gray-800">
           <div class="mr-4 flex items-center">
-            <i class="text-2xl far fa-heart"></i>
+            <i class="text-xl p-1 px-2 far fa-heart"></i>
             <span class="ml-2">likes</span>
           </div>
           <div class="mr-4 flex items-center">
-            <i class="text-2xl far fa-comment"></i>
+            <i class="text-xl p-1 px-2 far fa-comment"></i>
             <span class="ml-2">comments</span>
+          </div>
+          <div class="mr-4 flex items-center">
+            <div class="text-xl">
+              <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" />
+            </div>
+            <span class="ml-2">bookmark</span>
           </div>
         </div>
         <div class="flex text-gray-800">
@@ -177,7 +181,7 @@
       </div>
 
       @if (isset($article->prev_article) || isset($article->next_article))
-      <div class="post-navigation flex justify-between items-center pt-4">
+      <div class="post-navigation flex justify-between items-center pt-4 mb-4">
         <div>
           @if (isset($article->prev_article))
           <a href="{{ $article->prev_article->link }}">
@@ -212,6 +216,10 @@
         </div>
       </div>
       @endif
+
+      <div class="article-comments">
+        <livewire:browser.partials.comment-component :article="$article" />
+      </div>
     </div>
 
     <div class="right hidden lg:block w-3/12 px-4">
@@ -248,36 +256,10 @@
       <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
         <label>More Post</label>
       </div>
-      <div class="block space-x-0 lg:flex lg:space-x-6 ">
-        @foreach ($article->more_articles as $more_article)
-        <div class="rounded w-full mb-4 lg:m-0 lg:w-1/3 lg:p-0 more-posts">
-          <img src="{{ $more_article->image_link }}" class="rounded" alt="technology" />
-          <div class=" info">
-            <a href="{{ $more_article->article_link }}">
-              <p class="title">{{ $more_article->title }}</p>
-            </a>
-            <div class="extra">
-              <div class="mb-2">
-                <span>{{ date_to_human($more_article->publish_date,'d F Y') }}</span>
-                <span> | </span>
-                <span>{{ $more_article->read_minutes }}</span>
-              </div>
-              <div class="flex flex-wrap">
-                @foreach ($more_article->tags as $tag)
-                <a class="w-auto" href="#">
-                  <div class="p-1 rounded-sm border border-gray-400 mr-2 mb-2"># {{ $tag->name }}</div>
-                </a>
-                @endforeach
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
+      <div class="block space-x-0 lg:flex lg:space-x-6">
+        <livewire:browser.articles.articles-display-medium :articles="$article->more_articles" />
       </div>
     </div>
   </div>
 </div>
-
-
-
 @endsection

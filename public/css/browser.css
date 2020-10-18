@@ -23967,8 +23967,10 @@ h5, h6 {
 .input-group select,
 .input-group textarea {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
   border-radius: 0.25rem;
-  width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
@@ -23989,8 +23991,8 @@ h5, h6 {
 .input-group select:focus,
 .input-group textarea:focus {
   --border-opacity: 1;
-  border-color: #63b3ed;
-  border-color: rgba(99, 179, 237, var(--border-opacity));
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
 }
 
 .header {
@@ -24026,8 +24028,8 @@ h5, h6 {
   border-color: #a0aec0;
   border-color: rgba(160, 174, 192, var(--border-opacity));
   border-radius: 9999px;
-  height: 3rem;
-  width: 3rem;
+  height: 2.5rem;
+  width: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24096,20 +24098,7 @@ h5, h6 {
   height: 100%;
 }
 
-.article-show .more-posts .post {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  max-width: 24rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
-  margin-bottom: 1.5rem;
-}
-
-.article-show .more-posts img {
+.article-show .article-thumbnail img {
   height: 16rem;
   width: 100%;
   -o-object-fit: cover;
@@ -24117,22 +24106,29 @@ h5, h6 {
   margin-bottom: 0.5rem;
 }
 
-.article-show .more-posts .info {
+.article-show .article-thumbnail .info {
   display: flex;
   flex-direction: column;
 }
 
-.article-show .more-posts .info .title {
+.article-show .article-thumbnail .info .title {
   font-weight: 600;
+  max-height: 3rem;
+  line-height: 1.5rem;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.article-show .article-thumbnail .info .description {
   height: 3rem;
   line-height: 1.5rem;
   display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
-  overflow: hidden;
 }
 
-.article-show .more-posts .info .extra {
+.article-show .article-thumbnail .info .extra {
   flex: 1 1 0%;
   --text-opacity: 1;
   color: #2d3748;
@@ -24141,12 +24137,12 @@ h5, h6 {
   overflow: hidden;
 }
 
-.home .small-post .info {
+.home-index .small-post .info {
   display: flex;
   flex-direction: column;
 }
 
-.home .small-post .info .title {
+.home-index .small-post .info .title {
   font-weight: 600;
   height: 4rem;
   line-height: 2rem;
@@ -24156,12 +24152,76 @@ h5, h6 {
   overflow: hidden;
 }
 
-.home .small-post .info .description {
+.home-index .small-post .info .description {
   height: 3rem;
   line-height: 1.5rem;
   display: block;
   text-overflow: ellipsis;
   word-wrap: break-word;
+  overflow: hidden;
+}
+
+.home-index .right-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2rem;
+}
+
+.search .search-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search .search-box i {
+  font-size: 1.25rem;
+  position: absolute;
+  --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  right: 0;
+  cursor: pointer;
+  right: 1rem;
+  top: 0.8rem;
+}
+
+.search .search-article img {
+  height: 16rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.search .search-article .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search .search-article .info .title {
+  font-weight: 600;
+  max-height: 3rem;
+  line-height: 1.5rem;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.search .search-article .info .description {
+  height: 3rem;
+  line-height: 1.5rem;
+  display: block;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.search .search-article .info .extra {
+  flex: 1 1 0%;
+  --text-opacity: 1;
+  color: #2d3748;
+  color: rgba(45, 55, 72, var(--text-opacity));
+  font-weight: 300;
   overflow: hidden;
 }
 

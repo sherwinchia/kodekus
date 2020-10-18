@@ -25,4 +25,9 @@ class Category extends Model
   {
     return $this->hasMany('App\Models\Article');
   }
+
+  public function getCategoryLinkAttribute()
+  {
+    return route('browser.search.index',['category'=>$this->id]);
+  }
 }
