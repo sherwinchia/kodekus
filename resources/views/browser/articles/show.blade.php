@@ -22,13 +22,15 @@
     </div>
   </div>
 
-  <div class="flex justify-center mb-10">
+  <div class="flex justify-center mb-4">
     <div class="left hidden lg:block w-3/12 px-4 ">
       <div class="flex flex-col h-full">
         <div class="action flex-1 ">
           <div class="left-sticky flex flex-col items-center text-gray-800 text-xl">
-            <div class="text-center py-2"><i class="far fa-heart"></i></div>
-            <div class="text-center py-2"><i class="far fa-comment"></i></div>
+            <div class="py-2">
+              <livewire:browser.partials.like-component :likeableId="$article->id" :counter="true" />
+            </div>
+            {{-- <div class="text-center py-2"><i class="far fa-comment"></i></div> --}}
             <div class="py-2">
               <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" />
             </div>
@@ -150,18 +152,16 @@
       <div class="post-action flex justify-between items-center pb-4 border-b">
         <div class="flex text-gray-800">
           <div class="mr-4 flex items-center">
-            <i class="text-xl p-1 px-2 far fa-heart"></i>
-            <span class="ml-2">likes</span>
+            <livewire:browser.partials.like-component :likeableId="$article->id" :key="$article->id" :label="'likes'" />
           </div>
-          <div class="mr-4 flex items-center">
+          {{-- <div class="mr-4 flex items-center">
             <i class="text-xl p-1 px-2 far fa-comment"></i>
             <span class="ml-2">comments</span>
-          </div>
+          </div> --}}
           <div class="mr-4 flex items-center">
             <div class="text-xl">
-              <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" />
+              <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :label="'bookmark'" />
             </div>
-            <span class="ml-2">bookmark</span>
           </div>
         </div>
         <div class="flex text-gray-800">
@@ -181,7 +181,7 @@
       </div>
 
       @if (isset($article->prev_article) || isset($article->next_article))
-      <div class="post-navigation flex justify-between items-center pt-4 mb-4">
+      <div class="post-navigation flex justify-between items-center pt-4">
         <div>
           @if (isset($article->prev_article))
           <a href="{{ $article->prev_article->link }}">
@@ -216,10 +216,6 @@
         </div>
       </div>
       @endif
-
-      <div class="article-comments">
-        <livewire:browser.partials.comment-component :article="$article" />
-      </div>
     </div>
 
     <div class="right hidden lg:block w-3/12 px-4">
@@ -248,6 +244,12 @@
         </div>
         @endif
       </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-6/12 article-comments ">
+      <livewire:browser.partials.comment-component :article="$article" />
     </div>
   </div>
 

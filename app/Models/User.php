@@ -64,13 +64,29 @@ class User extends Authenticatable
       return $this->hasMany('App\Models\Bookmark');
     }
 
+    public function likes()
+    {
+      return $this->hasMany('App\Models\Like');
+    }
+
     public function bookmarked($type, $id)
     {
       $user = current_user();
       $bookmarked = $user->bookmarks->where('bookmarkable_type', $type)
                             ->where('bookmarkable_id',$id)
                             ->first();
+                            
 
       return $bookmarked ? true : false;
+    }
+
+    public function liked($type, $id)
+    {
+      $user = current_user();
+      $liked = $user->likes->where('likeable_type', $type)
+                            ->where('likeable_id',$id)
+                            ->first();
+
+      return $liked ? true : false;
     }
 }

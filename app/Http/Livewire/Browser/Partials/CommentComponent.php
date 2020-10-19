@@ -78,13 +78,13 @@ class CommentComponent extends Component
   public function submit()
   {
     $data = $this->validate($this->rules);
-    $data['approved'] = true;
-    if ($this->comment_id) {
-      $data['comment_id'] = $this->comment_id;
 
+    $data['approved'] = true;
+
+    if ($this->reply_stage) {
+      $data['comment_id'] = $this->comment_id;
       $reply = Reply::create($data);
       $this->success_message = 'Balasan anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
-
     } else {
       $data['commentable_id'] = $this->article->id;
       $data['commentable_type'] = self::article_model;
@@ -93,9 +93,9 @@ class CommentComponent extends Component
       $this->success_message = 'Komen anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
     }
   
+    // $this->name = null;
+    // $this->email = null;
     $this->content = null;
-    $this->name = null;
-    $this->email = null;
     $this->comment_id = null;
     $this->reply_stage = false;
     

@@ -122,7 +122,9 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
               <span class="text-green-600 font-normal">{{ $success_message }}</span>
               @endif
               <button class="px-4 py-2 bg-white border-black border text-black rounded w-full tracking-wide"
-                wire:click="submit" wire:loading.attr="disabled" wire:click="submit">Kirim</button>
+                wire:loading.attr="disabled" wire:click="submit">Kirim
+              </button>
+              <span wire:loading wire:target="submit">Loading ...</span>
             </div>
           </div>
         </div>
