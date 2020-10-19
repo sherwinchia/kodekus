@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Reply extends Model
 {
   protected $fillable = [
-    'commentable_id',
-    'commentable_type',
+    'comment_id',
     'user_id',
     'name',
     'email',
@@ -21,13 +20,8 @@ class Comment extends Model
     return $this->belongsTo('App\Models\User', 'user_id');
   }
 
-  public function replies()
+  public function comment()
   {
-    return $this->hasMany('App\Models\Reply');
-  }
-
-  public function commentable()
-  {
-    return $this->morphTo();
+    return $this->belongsTo('App\Models\Comment', 'comment_id');
   }
 }
