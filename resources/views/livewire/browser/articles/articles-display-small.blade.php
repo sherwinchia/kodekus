@@ -14,7 +14,7 @@
         <div class="flex flex-wrap mb-2">
           @foreach ($article->tags as $tag)
           <a class="w-auto" href="{{ $tag->tag_link }}">
-            <div class=" tracking-wide py-1 px-2  rounded-sm border-2 border-black text-black text-xs mr-2 mb-2">#
+            <div class=" py-1 px-2 text-xs  rounded-sm border border-black text-black text-xs mr-2 mb-2">#
               {{ $tag->name }}
             </div>
           </a>

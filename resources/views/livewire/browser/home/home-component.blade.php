@@ -15,7 +15,7 @@
           <div class=" flex flex-wrap">
             @foreach ($latestArticles[0]->tags as $tag)
             <a class="w-auto" href="{{ $tag->tag_link }}">
-              <div class="tracking-wide py-1 px-2 rounded-sm border-2 border-white text-white text-xs mr-2 mb-2">#
+              <div class="py-1 px-2 text-sm rounded-sm border border-white text-white text-xs mr-2 mb-2">#
                 {{ $tag->name }}
               </div>
             </a>
@@ -40,7 +40,7 @@
           <div class=" flex flex-wrap">
             @foreach ($latestArticles[1]->tags as $tag)
             <a class="w-auto" href="{{ $tag->tag_link }}">
-              <div class="tracking-wide py-1 px-2  rounded-sm border-2 border-white text-white text-xs mr-2 mb-2">#
+              <div class="py-1 px-2 text-sm  rounded-sm border border-white text-white text-xs mr-2 mb-2">#
                 {{ $tag->name }}
               </div>
             </a>
@@ -107,7 +107,7 @@
         <div class=" flex flex-wrap">
           @foreach ($tags as $tag)
           <a class="w-auto cursor-pointer mr-2" href="{{ $tag->tag_link }}">
-            <div class="tracking-wide py-1 px-2 rounded-sm border-2 border-black text-black text-sm mb-2">#
+            <div class="py-1 px-2 text-sm rounded-sm border border-black text-black text-sm mb-2">#
               {{ $tag->name }}
             </div>
           </a>

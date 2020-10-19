@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 use App\Models\Comment;
+use App\Models\Reply;
 
 class CommentComponent extends Component
 {
@@ -15,10 +16,13 @@ class CommentComponent extends Component
   public $email;
   public $content;
   public $user_id;
-
   public $article;
-
   public $success_message;
+
+  //reply
+  public $comment_id;
+  public $comment_name;
+  public $reply_stage = false;
 
   public const article_model = 'App\Models\Article';
 
@@ -53,19 +57,48 @@ class CommentComponent extends Component
     }
   }
 
+  public function reply($id)
+  {
+    $this->success_message = null;
+
+    $comment = Comment::find($id);
+    if ($comment) {
+      $this->comment_id = $comment->id;
+      $this->comment_name = $comment->name;
+      $this->reply_stage = true;
+    }
+  }
+
+  public function cancelReply()
+  {
+    $this->comment_id = null;
+    $this->reply_stage = false;
+  }
+
   public function submit()
   {
     $data = $this->validate($this->rules);
-    $data['commentable_id'] = $this->article->id;
-    $data['commentable_type'] = self::article_model;
+    $data['approved'] = true;
+    if ($this->comment_id) {
+      $data['comment_id'] = $this->comment_id;
 
-    $comment = Comment::create($data);
+      $reply = Reply::create($data);
+      $this->success_message = 'Balasan anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
 
+    } else {
+      $data['commentable_id'] = $this->article->id;
+      $data['commentable_type'] = self::article_model;
+
+      $comment = Comment::create($data);
+      $this->success_message = 'Komen anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
+    }
+  
     $this->content = null;
     $this->name = null;
     $this->email = null;
+    $this->comment_id = null;
+    $this->reply_stage = false;
     
-    $this->success_message = 'Komen anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
     $this->emit('refreshComponent');
   }
 

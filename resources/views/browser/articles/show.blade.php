@@ -142,7 +142,7 @@
       <div class="post-tag mb-8 flex flex-wrap">
         @foreach ($article->tags as $tag)
         <a class="w-auto" href="#">
-          <div class="p-2 rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
+          <div class="py-1 px-2 text-sm rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
         </a>
         @endforeach
       </div>

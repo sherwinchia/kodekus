@@ -3,7 +3,7 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
 @endphp
 
 <div class="bg-grey-300 h-full">
-  <ul class="block w-full mx-auto" x-data="{drop:false}">
+  <ul class="block w-full mx-auto" x-data="{drop:true}">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
         class="flex justify-between cursor-pointer py-4 text-black inline-block border-t border-b">
@@ -24,10 +24,11 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
           <div class="comment-display mb-4">
             <ul>
               @foreach ($comments as $comment)
+              {{-- {{ dd($comment->replies) }} --}}
               <li class="py-2">
                 <div class="flex justify-between items-center">
                   <div class="font-semibold">
-                    {{ $comment->user->name }}
+                    {{ $comment->name }}
                   </div>
                   <div class="font-light text-sm">
                     {{ date_to_human($comment->created_at, 'd M Y') }}
@@ -37,7 +38,31 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                   <p>
                     {{ $comment->content}}
                   </p>
+                  <a class="cursor-pointer underline" wire:click="reply({{ $comment->id }})">Reply</a>
                 </div>
+                @if ($comment->replies)
+                <ul class="m-2 ml-6 mr-0">
+                  @foreach ($comment->replies as $reply)
+
+                  <li>
+                    <div class="flex justify-between items-center">
+                      <div class="font-semibold">
+                        {{ $reply->name }}
+                      </div>
+                      <div class="font-light text-sm">
+                        {{ date_to_human($reply->created_at, 'd M Y') }}
+                      </div>
+                    </div>
+                    <div>
+                      <p>
+                        {{ $reply->content }}
+                      </p>
+                    </div>
+                  </li>
+
+                  @endforeach
+                </ul>
+                @endif
               </li>
               @endforeach
             </ul>
@@ -59,6 +84,16 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
             </div>
           </div>
           <div class="comment-form flex flex-col">
+            <h5 class="font-bold text-lg uppercase text-black">Tulis komentar</h5>
+
+            @if ($reply_stage == true)
+            <div>
+              <span>Replying to </span>
+              <span class="font-semibold">{{ $comment_name }}</span>
+              <a class="cursor-pointer underline" wire:click="cancelReply">Cancel</a>
+            </div>
+            @endif
+            @if (!Auth::check())
             <div class="input-group flex space-x-2">
               <div class="w-1/2">
                 <label for="name">Nama</label>
@@ -75,6 +110,7 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                 @error('email') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
               </div>
             </div>
+            @endif
             <div class="input-group w-full">
               <label for="content">Isi</label>
               <textarea wire:model="content" name="content" class="w-full" rows="4"
