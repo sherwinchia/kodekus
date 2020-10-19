@@ -33,7 +33,7 @@
   <div class="article-thumbnail w-full md:w-1/2 lg:w-1/3 p-2">
     <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
     <div class=" info">
-      <a class="h-24 overflow-hidden" href="{{ $article->article_link }}">
+      <a class="h-24 overflow-hidden mb-2" href="{{ $article->article_link }}">
         <p class="font-semibold">{{ $article->title }}</p>
         <p class="description">{{ $article->description }}</p>
       </a>

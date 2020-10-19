@@ -12,14 +12,16 @@ class BookmarkComponent extends Component
   public $article_model = 'App\Models\Article';
 
   public $bookmarkableId;
+  public $label;
 
   protected $listeners = [
-    'bookMarkRefresh' => '$refresh',
+    'bookmarkRefresh' => '$refresh',
   ];
 
-  public function mount($bookmarkableId)
+  public function mount($bookmarkableId, $label = null)
   {
     $this->bookmarkableId = $bookmarkableId;
+    $this->label = $label;
   }
 
   public function bookmark($id)
@@ -41,7 +43,7 @@ class BookmarkComponent extends Component
           ]);
         }
       }
-      $this->emit('bookMarkRefresh');
+      $this->emit('bookmarkRefresh');
     }
   }
 
