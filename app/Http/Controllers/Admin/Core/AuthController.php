@@ -17,7 +17,7 @@ class AuthController extends Controller
     return view(self::PATH . 'login');
   }
 
-  public function logout(Request $request)
+  public function logout()
   {
     Auth::logout();
 	  return redirect()->route('admin.login.show');

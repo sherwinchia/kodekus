@@ -10,7 +10,7 @@
   </div>
 
   @if ($label)
-  <span class="text-sm font-light">
+  <span class="text-sm font-light hidden lg:block">
     {{ $label }}
   </span>
   @endif

@@ -5,13 +5,14 @@
 @endsection
 
 @section('content')
-<div class="container mx-auto pt-12 article-show">
+<div class="container mx-auto article-show">
   <div class="flex justify-center mb-4">
-    <div class="center w-10/12 lg:w-6/12 xl:w-6/12">
+    <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       <div class="title mb-4">
         <h1 class="text-left py-4">{{ $article->title }}</h1>
         <div class="text-left py-4 text-black font-light">
-          <span>by</span> <span class="font-medium">{{ $article->author->name ?? 'Anonymous' }}</span>
+          <span>by</span> <span class="font-medium"><a
+              href="{{ $article->author_link }}">{{ $article->author->full_name ?? 'Anonymous' }}</a></span>
           <span class="px-2">|</span>
           <span class="">{{ date_to_human($article->publish_date,'d F Y') }}</span>
           <span class="px-2">|</span>
@@ -72,7 +73,7 @@
 
     </div>
 
-    <div class="center w-10/12 lg:w-6/12 xl:w-6/12">
+    <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       @foreach ($article->body->blocks as $section)
       @if ($section->type == 'header')
       @if ($section->data->level == 1)
@@ -149,7 +150,7 @@
         @endforeach
       </div>
 
-      <div class="post-action flex justify-between items-center pb-4 border-b">
+      <div class="post-action flex justify-between items-center pb-4">
         <div class="flex text-gray-800">
           <div class="mr-4 flex items-center">
             <livewire:browser.partials.like-component :likeableId="$article->id" :key="$article->id" :label="'likes'" />
@@ -181,7 +182,7 @@
       </div>
 
       @if (isset($article->prev_article) || isset($article->next_article))
-      <div class="post-navigation flex justify-between items-center pt-4">
+      <div class="post-navigation flex justify-between items-center pt-4 border-t">
         <div>
           @if (isset($article->prev_article))
           <a href="{{ $article->prev_article->link }}">
@@ -219,49 +220,49 @@
     </div>
 
     <div class="right hidden lg:block w-3/12 px-4">
-      <div class="flex flex-col h-full">
+      {{-- <div class="flex flex-col h-full">
         <div class="flex-1"></div>
         @if (isset($article->next_article))
         <div class="flex-1">
           <div class="right-sticky next-article text-center">
             <img class="mx-auto" src="{{ $article->next_article->image_link }}" alt="">
-            <div class="info">
-              <p class="title">{{ $article->next_article->title }}</p>
-              <a href="{{ $article->next_article->link }}">
-                <div class="flex justify-center items-center">
-                  Read Next
-                  <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="-49 141 512 512" style="enable-background:new -49 141 512 512;" xml:space="preserve">
-                    <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
+      <div class="info">
+        <p class="title">{{ $article->next_article->title }}</p>
+        <a href="{{ $article->next_article->link }}">
+          <div class="flex justify-center items-center">
+            Read Next
+            <svg class="h-5 w-5 ml-2 fill-current" clasversion="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-49 141 512 512"
+              style="enable-background:new -49 141 512 512;" xml:space="preserve">
+              <path id="XMLID_11_" d="M-24,422h401.645l-72.822,72.822c-9.763,9.763-9.763,25.592,0,35.355c9.763,9.764,25.593,9.762,35.355,0
                 l115.5-115.5C460.366,409.989,463,403.63,463,397s-2.634-12.989-7.322-17.678l-115.5-115.5c-9.763-9.762-25.593-9.763-35.355,0
                 c-9.763,9.763-9.763,25.592,0,35.355l72.822,72.822H-24c-13.808,0-25,11.193-25,25S-37.808,422-24,422z" />
-                  </svg>
-                </div>
-              </a>
-            </div>
+            </svg>
           </div>
-        </div>
-        @endif
+        </a>
       </div>
     </div>
   </div>
+  @endif
+</div> --}}
+</div>
+</div>
 
-  <div class="flex justify-center">
-    <div class="w-6/12 article-comments ">
-      <livewire:browser.partials.comment-component :article="$article" />
-    </div>
+<div class="flex justify-center">
+  <div class="w-11/12 lg:w-6/12 article-comments ">
+    <livewire:browser.partials.comment-component :article="$article" />
   </div>
+</div>
 
-  <div class="flex justify-center">
-    <div class="w-10/12 lg:w-12/12 xl:w-12/12">
-      <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
-        <label>More Post</label>
-      </div>
-      <div class="block space-x-0 lg:flex lg:space-x-6">
-        <livewire:browser.articles.articles-display-medium :articles="$article->more_articles" />
-      </div>
+<div class="flex justify-center">
+  <div class="w-11/12 lg:w-12/12 xl:w-12/12">
+    <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
+      <label>Artikel Lain</label>
+    </div>
+    <div class="block space-x-0 lg:flex lg:space-x-6">
+      <livewire:browser.articles.articles-display-medium :articles="$article->more_articles" />
     </div>
   </div>
+</div>
 </div>
 @endsection

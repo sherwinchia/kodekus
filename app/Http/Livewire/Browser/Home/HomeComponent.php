@@ -12,8 +12,10 @@ class HomeComponent extends Component
 {
   public $tags;
   public $categories;
-  public $latestArticles;
   public $search;
+  public $loadMore = 10;
+
+  protected $listeners = ['loadMore'];
 
   public function mount()
   {
@@ -24,13 +26,6 @@ class HomeComponent extends Component
     $this->categories = Category::all()->filter(function ($category){
       return $category->articles->count() > 0;
     });
-
-    $this->latestArticles = Article::latest('publish_date')->take(10)->get();
-  }
-
-  public function bookmark($id)
-  {
-    # code...
   }
 
   public function search()
@@ -40,6 +35,8 @@ class HomeComponent extends Component
 
   public function render()
   {
-      return view('livewire.browser.home.home-component');
+      return view('livewire.browser.home.home-component', [
+        'latestArticles' => Article::latest('publish_date')->take($this->loadMore)->get()
+      ]);
   }
 }

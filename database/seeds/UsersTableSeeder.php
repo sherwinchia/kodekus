@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Profile;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,18 +17,29 @@ class UsersTableSeeder extends Seeder
     {
         User::truncate();
 
-        User::create([
-          'name' => 'Sherwin',
+        $user1 = User::create([
           'email' => 'sherwin@admin.com',
           'password' => Hash::make('sherwin23'),
           'role' => 'admin'
         ]);
 
-        User::create([
-          'name' => 'John',
-          'email' => 'john@admin.com',
+        Profile::create([
+          'first_name' => 'Sherwin',
+          'last_name' => 'Variancia',
+          'user_id' => $user1->id
+        ]);
+
+        $user2 = User::create([
+          'email' => 'john@mail.com',
           'password' => Hash::make('sherwin23'),
           'role' => 'user'
         ]);
+
+        Profile::create([
+          'first_name' => 'John',
+          'last_name' => 'Doe',
+          'user_id' => $user2->id
+        ]);
+
     }
 }

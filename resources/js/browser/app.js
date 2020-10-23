@@ -70,46 +70,92 @@ window.hljs = require('highlight.js');
 hljs.initHighlightingOnLoad();
 
 let swiper = new Swiper('.swiper-container', {
-  // Optional parameters
-  direction: 'horizontal',
-  loop: true,
-  slidesPerView: 1,
-  spaceBetween: 30,
-  slidesPerGroup: 1,
-  loopFillGroupWithBlank: true,
-
-  keyboard: {
-    enabled: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
   },
-
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    hide: true,
-  },
-
-  // // If we need pagination
-  // pagination: {
-  //   el: '.swiper-pagination',
-  //   dynamicBullets: true,
-  // },
-
-  // // Navigation arrows
-  // navigation: {
-  //   nextEl: '.swiper-button-next',
-  //   prevEl: '.swiper-button-prev',
-  // },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 30,
+    },
+  }
 })
 
-// window.onscroll = function() {myFunction()};
+document.addEventListener('DOMContentLoaded', function() {
+  let prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+      let currentScrollPos = window.pageYOffset;
+      if (currentScrollPos === 0) {
+          document.querySelector(".navbar").style.top = "0";
+      } else if (prevScrollpos >= currentScrollPos) {
+          document.querySelector(".navbar").style.top = "0";
+      } else {
+          document.querySelector(".navbar").style.top = "-22%";
+      }
+      prevScrollpos = currentScrollPos;
+  }
 
-// function myFunction() {
-// var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-// var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-// var scrolled = (winScroll / height) * 100;
-// document.getElementById("myBar").style.width = scrolled + "%";
-// }  
+  // window.livewire.on('showLoginModal', event => {
+  //   let loginModal = document.getElementById('login-modal');
+  //   loginModal.classList.remove("hidden");
+  //   loginModal.classList.add("flex");
+  //   disableScroll();
+  // })
+
+  // document.getElementById("close-login-modal-button").addEventListener("click", closeLoginModal());
+
+  // function closeLoginModal(){
+  //   let loginModal = document.getElementById('login-modal');
+  //   loginModal.classList.remove("flex");
+  //   loginModal.classList.add("hidden");
+  //   enableScroll();
+  // }
+
+  // // modern Chrome requires { passive: false } when adding event
+  // var supportsPassive = false;
+  // try {
+  //   window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+  //     get: function () { supportsPassive = true; } 
+  //   }));
+  // } catch(e) {}
+
+  // var wheelOpt = supportsPassive ? { passive: false } : false;
+  // var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+
+  // function disableScroll() {
+  //   window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+  //   window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+  //   window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+  //   window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  // }
+  
+  // // call this to Enable
+  // function enableScroll() {
+  //   window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  //   window.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
+  //   window.removeEventListener('touchmove', preventDefault, wheelOpt);
+  //   window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  // }
+
+  // function preventDefault(e) {
+  //   e.preventDefault();
+  // }
+  
+  // function preventDefaultForScrollKeys(e) {
+  //   if (keys[e.keyCode]) {
+  //     preventDefault(e);
+  //     return false;
+  //   }
+  // }
+
+}, false);

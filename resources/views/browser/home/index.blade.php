@@ -9,10 +9,4 @@
 @endsection
 
 @push('styles')
-<style>
-  .swiper-container {
-    width: 100%;
-    height: 14rem;
-  }
-</style>
 @endpush

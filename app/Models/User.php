@@ -24,7 +24,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role'
+        'email', 
+        'password', 
+        'role', 
+        'facebook_id', 
+        'google_id'
     ];
 
     /**
@@ -33,7 +37,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 
+        'remember_token',
     ];
 
     /**
@@ -45,14 +50,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin(){        
-      return $this->role === self::ADMIN_ROLE;    
-    }
-
-    public function getDescriptionForEvent(string $eventName): string
-    {
-        return $this->name . " has been {$eventName}";
-    }
 
     public function articles()
     {
@@ -69,10 +66,29 @@ class User extends Authenticatable
       return $this->hasMany('App\Models\Like');
     }
 
+    public function newsletter()
+    {
+      return $this->hasOne('App\Models\Newsletter');
+    }
+
+    public function profile()
+    {
+      return $this->hasOne('App\Models\Profile');
+    }
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return $this->name . " has been {$eventName}";
+    }
+
+
+    public function isAdmin(){        
+      return $this->role === self::ADMIN_ROLE;    
+    }
+
     public function bookmarked($type, $id)
     {
-      $user = current_user();
-      $bookmarked = $user->bookmarks->where('bookmarkable_type', $type)
+      $bookmarked = $this->bookmarks->where('bookmarkable_type', $type)
                             ->where('bookmarkable_id',$id)
                             ->first();
                             
@@ -82,11 +98,36 @@ class User extends Authenticatable
 
     public function liked($type, $id)
     {
-      $user = current_user();
-      $liked = $user->likes->where('likeable_type', $type)
+      $liked = $this->likes->where('likeable_type', $type)
                             ->where('likeable_id',$id)
                             ->first();
 
       return $liked ? true : false;
+    }
+
+    public function subscribeToNewsletter()
+    {
+      if ($this->newsletter) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function getFullNameAttribute()
+    {
+      return $this->profile->first_name . ' ' .  $this->profile->last_name;
+    }
+
+    public function totalLikes()
+    {
+      $likes = 0;
+      $articles = $this->articles;
+      if ($articles) {
+        foreach ($articles as $article) {
+          $likes = $article->likes->count();
+        }
+      }
+      return $likes;
     }
 }

@@ -44,6 +44,9 @@ class BookmarkComponent extends Component
         }
       }
       $this->emit('bookmarkRefresh');
+      $this->emitTo('Browser.Bookmarks.BookmarksComponent','bookmarkRefresh');
+    } else {
+      // $this->emit('showLoginModal');
     }
   }
 
