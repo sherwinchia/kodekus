@@ -169,7 +169,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         Mtownsend\ReadTime\Providers\ReadTimeServiceProvider::class,
-
+        
         /*
          * Application Service Providers...
          */

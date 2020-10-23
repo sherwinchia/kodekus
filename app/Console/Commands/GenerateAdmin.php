@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Models\Profile;
 
 use Spatie\Permission\Models\Role;
 
@@ -42,7 +43,8 @@ class GenerateAdmin extends Command{
    */
   public function handle(){
 		$email = $this->ask('Enter admin email?');
-    $name = $this->ask("Enter admin's name?");
+    $first_name = $this->ask("Enter admin's first name?");
+    $last_name = $this->ask("Enter admin's last name?");
     $password = $this->secret('Enter admin password?');
     $confirmPassword = $this->secret('Confirm password?');
 
@@ -61,10 +63,15 @@ class GenerateAdmin extends Command{
 
 
     $admin = User::create([
-      'name' => $name,
       'email' => $email,
       'password' => Hash::make($password),
       'role' => 'admin'
+    ]);
+
+    $profile = Profile::create([
+      'user_id' => $admin->id,
+      'first_name' => $first_name,
+      'last_name' => $last_name,
     ]);
 
     $admin->syncRoles($admin->role);

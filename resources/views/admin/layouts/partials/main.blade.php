@@ -25,7 +25,6 @@
 </head>
 
 <body>
-  @routes
   <div class="" id="app">
     @yield('master')
   </div>

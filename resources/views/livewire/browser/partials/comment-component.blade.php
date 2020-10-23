@@ -2,8 +2,8 @@
 $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
 @endphp
 
-<div class="bg-grey-300 h-full">
-  <ul class="block w-full mx-auto" x-data="{drop:true}">
+<div class="bg-grey-300 h-full" x-data="{drop:false}">
+  <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
         class="flex justify-between cursor-pointer py-4 text-black inline-block border-t border-b">
@@ -35,16 +35,16 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                   </div>
                 </div>
                 <div class="">
-                  <p>
+                  <p style=" overflow-wrap: break-word;">
                     {{ $comment->content}}
                   </p>
                   <a class="cursor-pointer underline" wire:click="reply({{ $comment->id }})">Reply</a>
                 </div>
+                {{-- <button>Expand</button> --}}
                 @if ($comment->replies)
-                <ul class="m-2 ml-6 mr-0">
+                <ul class="m-2 ml-4 mr-0">
                   @foreach ($comment->replies as $reply)
-
-                  <li>
+                  <li class="border-l-2 border-black pl-2">
                     <div class="flex justify-between items-center">
                       <div class="font-semibold">
                         {{ $reply->name }}
@@ -54,12 +54,11 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                       </div>
                     </div>
                     <div>
-                      <p>
+                      <p style=" overflow-wrap: break-word;">
                         {{ $reply->content }}
                       </p>
                     </div>
                   </li>
-
                   @endforeach
                 </ul>
                 @endif
@@ -97,14 +96,14 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
             <div class="input-group flex space-x-2">
               <div class="w-1/2">
                 <label for="name">Nama</label>
-                <input wire:model="name"
+                <input wire:model.lazy="name"
                   class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
                   placeholder="John Doe">
                 @error('name') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
               </div>
               <div class="w-1/2">
                 <label for="email">Email</label>
-                <input wire:model="email"
+                <input wire:model.lazy="email"
                   class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
                   placeholder="john_doe@gmail.com">
                 @error('email') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
@@ -113,7 +112,7 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
             @endif
             <div class="input-group w-full">
               <label for="content">Isi</label>
-              <textarea wire:model="content" name="content" class="w-full" rows="4"
+              <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
                 placeholder="Mulai ketik pesan disini..."></textarea>
               @error('content') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
             </div>

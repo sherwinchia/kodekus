@@ -1,5 +1,5 @@
 <div>
-  <div class="p-2 mb-2">
+  <div class="mb-2">
     <div class="input-group search-box mb-2">
       <input wire:model.debounce.300ms="search" type="text" class="w-full"
         placeholder="Contoh: Laravel, Javascript, Python">
@@ -50,37 +50,13 @@
     <div class="w-full">
       <div class="flex flex-wrap">
         @foreach ($articles as $article)
-        <div class="search-article w-full md:w-1/2 lg:w-1/3 p-2">
-          <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
-          <div class=" info">
-            <a class="h-24 overflow-hidden" href="{{ $article->article_link }}">
-              <p class="font-semibold">{{ $article->title }}</p>
-              <p class="description">{{ $article->description }}</p>
-            </a>
-            <div class="extra">
-              <div class="mb-2 flex items-center">
-                <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-                <span class="px-2"> | </span>
-                <span>{{ $article->read_minutes }}</span>
-                <span class=" px-2">|</span>
-                <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
-              </div>
-              <div class="flex flex-wrap">
-                @foreach ($article->tags as $tag)
-                <a class="w-auto" href="{{ $tag->tag_link }}">
-                  <div class="py-1 px-2 text-sm rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
-                </a>
-                @endforeach
-              </div>
-            </div>
-          </div>
-        </div>
+        <livewire:browser.articles.article-display-small :article="$article" :key="$article->id" />
         @endforeach
       </div>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between p-2">
+  <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between">
     <div>
       <p class="text-sm leading-5">
         <span>Menampilkan</span>

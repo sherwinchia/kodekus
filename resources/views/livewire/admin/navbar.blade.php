@@ -8,7 +8,7 @@
     </li>
 
     <li class="navbar-list pr-0"
-      x-data="{contentDrop: {{ (request()->is('admin/articles*') || request()->is('admin/categories*') || request()->is('admin/tags*')) ? 'true' : 'false' }}} ">
+      x-data="{contentDrop: {{ (request()->is('admin/articles*') || request()->is('admin/categories*') || request()->is('admin/tags*') || request()->is('admin/series*')) ? 'true' : 'false' }}} ">
       <a class="flex-col justify-between items-center cursor-pointer" @click="contentDrop=!contentDrop">
         <div>
           <i class="fa fa-file-alt w-8 text-lg "></i>

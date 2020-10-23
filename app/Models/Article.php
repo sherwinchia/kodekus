@@ -121,7 +121,7 @@ class Article extends Model
 
   public function getMoreArticlesAttribute()
   {
-    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->where('series_id', $this->series_id)->take(3)->get();
+    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->orWhere('series_id', $this->series_id)->take(3)->get();
     return $morePost;
   }
 
@@ -132,5 +132,10 @@ class Article extends Model
     } else {
       return asset('images/placeholder/placeholder.png');
     }
+  }
+
+  public function getAuthorLinkAttribute()
+  {
+    return route('browser.authors.show', $this->author->id);
   }
 }

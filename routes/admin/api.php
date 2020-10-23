@@ -18,17 +18,17 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-// List articles (index table)
-Route::get('articles','Article\API\ArticleController@index');
+// // List articles (index table)
+// Route::get('articles','Article\API\ArticleController@index');
 
-// Show article 
-Route::get('articles/{article}','ArticleController@show');
+// // Show article 
+// Route::get('articles/{article}','ArticleController@show');
 
-// Create article
-Route::post('articles','ArticleController@store');
+// // Create article
+// Route::post('articles','ArticleController@store');
 
-// Update article
-Route::put('articles','ArticleController@update');
+// // Update article
+// Route::put('articles','ArticleController@update');
 
-// Remove article
-Route::post('articles/{article}','ArticleController@destroy');
+// // Remove article
+// Route::post('articles/{article}','ArticleController@destroy');

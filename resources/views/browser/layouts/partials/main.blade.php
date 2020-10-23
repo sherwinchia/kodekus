@@ -24,11 +24,10 @@
 </head>
 
 <body>
-  @routes
   <div class="" id="app">
     @yield('master')
+    {{-- @include('browser.layouts.partials.loginmodal') --}}
   </div>
-
   <livewire:scripts />
   @include('browser.layouts.partials.scripts')
 </body>
