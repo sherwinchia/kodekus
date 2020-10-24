@@ -46,7 +46,7 @@ class BookmarkComponent extends Component
       $this->emit('bookmarkRefresh');
       $this->emitTo('Browser.Bookmarks.BookmarksComponent','bookmarkRefresh');
     } else {
-      return redirect()->route('browser.auth.show', 'login');
+      return redirect()->route('browser.auth.show',['type'=> 'login']);
     }
   }
 

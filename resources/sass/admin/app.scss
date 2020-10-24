@@ -31,13 +31,15 @@ h5, h6          { font-weight: bolder }
 @tailwind utilities;
 
 .card{
-  @apply max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white mb-6;
+  @apply rounded overflow-hidden shadow-lg p-6 bg-white mb-6;
   .card-header{
     padding: 1rem 0;
     border-bottom: 2px solid rgb(231, 236, 240);
+    margin-bottom: 1rem;
     p{
       font-weight: bold;
     }
+
   }
   .card-body{
 
@@ -55,6 +57,8 @@ h5, h6          { font-weight: bolder }
   input[type='email'], 
   input[type='password'], 
   input[type='datetime-local'],  
+  input[type='date'],  
+  input[type='number'],  
   select, 
   textarea{
     @apply shadow rounded w-full py-2 px-3 outline-none border mb-2 bg-white;
@@ -65,11 +69,17 @@ h5, h6          { font-weight: bolder }
   input[type='email']:focus, 
   input[type='password']:focus, 
   input[type='datetime-local']:focus, 
+  input[type='date']:focus, 
+  input[type='number']:focus, 
   select:focus, 
   textarea:focus{
     @apply border-blue-400;
   }
   
+}
+
+.error-msg{
+  @apply text-sm text-red-600;
 }
 
 .navbar-list{

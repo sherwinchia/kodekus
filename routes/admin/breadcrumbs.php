@@ -87,7 +87,7 @@ $trail->parent('admin.users.index');
 // Users > Edit
 Breadcrumbs::for('admin.users.edit', function ($trail, $user) {
 $trail->parent('admin.users.index');
-  $trail->push($user->name);
+  $trail->push($user->full_name);
 });
 
 // Roles

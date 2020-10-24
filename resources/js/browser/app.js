@@ -93,16 +93,17 @@ let swiper = new Swiper('.swiper-container', {
 document.addEventListener('DOMContentLoaded', function() {
   let prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
-      let currentScrollPos = window.pageYOffset;
-      if (currentScrollPos === 0) {
-          document.querySelector(".navbar").style.top = "0";
-      } else if (prevScrollpos >= currentScrollPos) {
-          document.querySelector(".navbar").style.top = "0";
-      } else {
-          document.querySelector(".navbar").style.top = "-22%";
-      }
-      prevScrollpos = currentScrollPos;
+    let currentScrollPos = window.pageYOffset;
+    if (currentScrollPos === 0) {
+        document.querySelector(".navbar").style.top = "0";
+    } else if (prevScrollpos >= currentScrollPos) {
+        document.querySelector(".navbar").style.top = "0";
+    } else {
+        document.querySelector(".navbar").style.top = "-22%";
+    }
+    prevScrollpos = currentScrollPos;
   }
+
 
   // window.livewire.on('showLoginModal', event => {
   //   let loginModal = document.getElementById('login-modal');

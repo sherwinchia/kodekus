@@ -1,0 +1,22 @@
+.navbar{
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  z-index: 100;
+  transition: ease 0.3s;
+  -webkit-box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
+  -moz-box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
+  box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
+
+  .search-box{
+    @apply flex items-center relative ;
+
+    input{
+      @apply outline-none pr-4 border-b border-black ;
+    }
+
+    i{
+      @apply text-sm text-black cursor-pointer;
+    }
+  }
+}

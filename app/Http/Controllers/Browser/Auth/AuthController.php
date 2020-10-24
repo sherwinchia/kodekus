@@ -10,9 +10,14 @@ class AuthController extends Controller
 {
   public const PATH = 'browser.auth.';
 
-  public function show($form)
+  public function show()
   {
-    $form  = strtolower($form);
+    if (request()->has('type')) {
+      $form  = request()->get('type');
+    } else {
+      $form = 'login';
+    }
+    
     return view(self::PATH . 'show', compact('form'));
   }
 

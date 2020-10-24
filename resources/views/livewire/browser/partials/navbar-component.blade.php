@@ -1,4 +1,4 @@
-<nav x-data="{menuDropdown : false, searchExpand : false, profileDropdown: false}"
+<nav x-cloack x-data="{menuDropdown : false, searchExpand : false, profileDropdown: false}"
   class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex items-center relative">
@@ -18,8 +18,8 @@
       </div>
       <div class="flex-1 flex items-center justify-center">
         <div
-          class="flex w-full justify-center sm:w-1/2 sm:justify-between align-middle py-2 sm:px-3 sm:mx-3 sm:border-r border-black text-xl font-semibold">
-          <div class=" space-x-3 text-lg items-center hidden md:flex">
+          class="flex w-full justify-center sm:w-1/2 sm:justify-end align-middle py-2 sm:px-3 sm:mx-3 sm:border-r border-black text-xl font-semibold">
+          {{-- <div class=" space-x-3 text-lg items-center hidden md:flex">
             <a href="">
               <i class="fab fa-instagram-square"></i>
             </a>
@@ -32,34 +32,39 @@
             <a href="">
               <i class="fab fa-youtube"></i>
             </a>
-          </div>
+          </div> --}}
           <a href="{{ route('browser.home.index') }}">
-            <h2>Ko&#60;\ing</h2>
+            <h2>Ko&#60;\ing&#62;</h2>
           </a>
         </div>
-
+        {{-- {{ request()->is('admin/categories*') ? 'navbar-active-list' : 'navbar-list' }} --}}
         <div class="w-1/2 justify-between align-middle items-center hidden sm:flex py-2 space-x-8">
           <div class="flex items-center space-x-6">
-            <a href="{{ route('browser.home.index') }}" class="rounded-md text-lg uppercase">
+            <a href="{{ route('browser.home.index') }}"
+              class=" {{ request()->is('home') ? 'underline' : '' }} rounded-md uppercase">
               Home
             </a>
-            <a href="{{ route('browser.series.index') }}" class="rounded-md text-lg uppercase">
+            <a href="{{ route('browser.series.index') }}"
+              class=" {{ request()->is('series*') ? 'underline' : '' }}  rounded-md uppercase">
               Series
             </a>
-            <a href="{{ route('browser.series.index') }}" class="rounded-md text-lg uppercase">
+            <a href="{{ route('browser.series.index') }}"
+              class=" {{ request()->is('about*') ? 'underline' : '' }}  rounded-md uppercase">
               About
             </a>
+            <div class="search-box space-x-2">
+              <i @click="searchExpand = !searchExpand" class="fas fa-search"></i>
+              <input x-show="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
+                class="text-sm font-light" placeholder="Cari">
+            </div>
           </div>
           <div class="flex items-center space-x-4">
-            <div class="search-box">
-              <i @click="searchExpand = !searchExpand" class="fas fa-search"></i>
-              <input x-show="searchExpand" wire:model.debounce.300ms="search" type="text" class="text-sm font-light"
-                placeholder="Cari">
-            </div>
+
 
             @guest
-            <button><a href="{{ route('browser.auth.show', 'register') }}">Register</a></button>
-            <button><a href="{{ route('browser.auth.show', 'login') }}">Login</a></button>
+            <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
+            <a class="border border-black p-2 rounded"
+              href="{{ route('browser.auth.show', ['type' => 'register']) }}">Register</a>
             @endguest
 
             @auth

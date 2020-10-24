@@ -27,13 +27,13 @@ Route::get('search','Search\SearchController@index')->name('search.index');
 Route::get('series','Series\SeriesController@index')->name('series.index');
 
 //Home
-Route::get('/','Home\HomeController@index')->name('home.index');
+Route::get('home','Home\HomeController@index')->name('home.index');
 
 
 Route::middleware('guest:web')->group(function(){
+  Route::get('auth','Auth\AuthController@show')->name('auth.show');
   Route::get('sign-in/{provider}', 'Auth\SocialiteController@redirect')->name('login.socialite');
   Route::get('sign-in/{provider}/callback', 'Auth\SocialiteController@handleCallback')->name('login.socialite.callback');
-  Route::get('auth/{form}','Auth\AuthController@show')->name('auth.show');
 });
 
 //Root

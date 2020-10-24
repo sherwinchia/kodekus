@@ -45,7 +45,7 @@
             </div>
           </td>
           <td class="non-id">
-            {{ $user->name }}
+            {{ $user->full_name }}
           </td>
           <td class="non-id">
             {{ $user->role }}

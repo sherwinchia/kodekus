@@ -10,6 +10,7 @@
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       <div class="title mb-4">
         <h1 class="text-left py-4">{{ $article->title }}</h1>
+        <img src="{{ $article->image_link }}" alt="">
         <div class="text-left py-4 text-black font-light">
           <span>by</span> <span class="font-medium"><a
               href="{{ $article->author_link }}">{{ $article->author->full_name ?? 'Anonymous' }}</a></span>
@@ -167,16 +168,16 @@
         </div>
         <div class="flex text-gray-800">
           <a class="pl-4" href="{{ $article->share['facebook'] }}" target="_blank">
-            <i class="text-xl fab fa-facebook-square"></i>
+            <i class="text-lg fab fa-facebook-square"></i>
           </a>
           <a class="pl-4" href="{{ $article->share['twitter'] }}" target="_blank">
-            <i class="text-xl fab fa-twitter"></i>
+            <i class="text-lg fab fa-twitter"></i>
           </a>
           <a class="pl-4" href="{{ $article->share['linkedin'] }}" target="_blank">
-            <i class="text-xl fab fa-linkedin"></i>
+            <i class="text-lg fab fa-linkedin"></i>
           </a>
           <a class="pl-4" href="{{ $article->share['whatsapp'] }}" target="_blank">
-            <i class="text-xl fab fa-whatsapp-square"></i>
+            <i class="text-lg fab fa-whatsapp-square"></i>
           </a>
         </div>
       </div>

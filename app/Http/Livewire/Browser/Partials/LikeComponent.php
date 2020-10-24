@@ -50,7 +50,7 @@ class LikeComponent extends Component
       }
       $this->emit('likeRefresh');
     } else {
-      //emit signal to display login modal
+      return redirect()->route('browser.auth.show',['type'=> 'login']);
     }
   }
 

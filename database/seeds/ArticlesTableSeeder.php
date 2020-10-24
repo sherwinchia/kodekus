@@ -23,6 +23,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-15T20:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
 
       Article::create([
@@ -34,6 +35,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-14T21:00',
         'published' => 1,
+        'read_minutes' => '3 minutes'
       ]);
 
       Article::create([
@@ -45,6 +47,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-13T21:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
 
       Article::create([
@@ -56,6 +59,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-15T21:00',
         'published' => 1,
+        'read_minutes' => '5 minutes'
       ]);
       
       Article::create([
@@ -67,6 +71,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-15T23:00',
         'published' => 1,
+        'read_minutes' => '2 minutes'
       ]);
       Article::create([
         'slug' => 'dummy-6',
@@ -77,6 +82,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-09-15T23:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
       Article::create([
         'slug' => 'dummy-7',
@@ -87,6 +93,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-13T23:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
       Article::create([
         'slug' => 'dummy-8',
@@ -97,6 +104,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-05T23:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
       Article::create([
         'slug' => 'dummy-9',
@@ -107,6 +115,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-15T23:30',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
       Article::create([
         'slug' => 'dummy-10',
@@ -117,6 +126,7 @@ class ArticlesTableSeeder extends Seeder
         'author_id' => 1,
         'publish_date' => '2020-10-15T16:00',
         'published' => 1,
+        'read_minutes' => '1 minute'
       ]);
 
       // factory(Article::class,50)->create();

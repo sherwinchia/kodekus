@@ -1,0 +1,44 @@
+.search{
+  .search-box{
+    @apply flex items-center relative;
+
+    i{
+      @apply text-xl absolute text-gray-700 right-0 cursor-pointer;
+      right: 1rem;
+      top: .8rem;
+    }
+  }
+
+  .search-article{
+    img{
+      height: 16rem;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: .5rem;
+    }
+
+    .info{
+      @apply flex flex-col justify-between;
+        .title{
+          @apply font-semibold;
+          max-height: 3rem;
+          line-height: 1.5rem;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+        }
+  
+        .description{
+          height: 3rem;
+          line-height: 1.5rem;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: break-word;
+        }
+
+      .extra{
+        @apply flex-1 text-gray-800 font-light overflow-hidden;
+      }
+    }
+  }
+}

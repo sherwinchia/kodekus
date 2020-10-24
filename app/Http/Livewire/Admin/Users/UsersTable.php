@@ -41,7 +41,12 @@ class UsersTable extends Component
   {
       return view('livewire.admin.users.users-table', [
         'users' => User::query()
-            ->where('name', 'LIKE', "%{$this->search}%") 
+            ->whereHas('profile', function($query){
+              $query->where('first_name', 'LIKE', "%{$this->search}%");
+            }) 
+            ->orWhereHas('profile', function($query){
+              $query->where('last_name', 'LIKE', "%{$this->search}%");
+            }) 
             ->orWhere('role', 'LIKE', "%{$this->search}%") 
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage)
