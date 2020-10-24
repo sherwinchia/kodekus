@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-<livewire:browser.auth.auth-form />
+<livewire:browser.auth.auth-form :form="$form" />
 @endsection

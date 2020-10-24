@@ -2,7 +2,11 @@
 
 @section('master')
 
-@include('browser.layouts.partials.navbar')
+{{-- @include('browser.layouts.partials.navbar') --}}
+
+<livewire:browser.partials.navbar-component />
+
+<div class="h-16"></div>
 
 <main class="flex flex-col min-h-screen">
   @yield('content')

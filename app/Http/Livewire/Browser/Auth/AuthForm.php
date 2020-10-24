@@ -7,28 +7,45 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+use App\Models\User;
+use App\Models\Profile;
+use Illuminate\Support\Facades\Hash;
+
 class AuthForm extends Component
 {
+  public $first_name;
+  public $last_name;
   public $email;
   public $password;
-
-  public $stage;
+  public $password_confirmation;
+  
+  public $form;
 
   protected $rules = [
-    'email' => 'required',
-    'password' => 'required',
+    'first_name' => 'required|string',
+    'last_name' => 'string|nullable',
+    'email' => 'required|email',
+    'password' => 'required|confirmed',
   ];
 
-  public function changeStage($stage)
+  public function mount($form)
   {
-    $this->stage = $stage;
+    $this->changeForm($form);
   }
 
-  public function submit()
+  public function changeForm($form)
   {
-    $data = $this->validate($this->rules);
+    $this->form = $form;
+  }
 
-	  if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+  public function login()
+  {
+    $this->validate([
+      'email' => 'required|email',
+      'password' => 'required',
+    ]);
+
+	  if (Auth::guard('web')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = current_user();
 
       return redirect()->intended(route('browser.home.index'));
@@ -36,6 +53,27 @@ class AuthForm extends Component
 	  }else{
 	    $this->addError('error', 'Email or password is incorrect!');
 	  }
+  }
+
+  public function register()
+  {
+    $data = $this->validate($this->rules);
+
+    $user = User::create([
+      'email' => $data['email'],
+      'password' => Hash::make($data['password']),
+      'role' => 'user'
+    ]);
+
+    $profile = Profile::create([
+      'user_id' => $user->id,
+      'first_name' => $data['first_name'],
+      'last_name' => $data['last_name'],
+    ]);
+
+    Auth::guard('web')->login($user);
+
+    return redirect()->route('browser.home.index');
   }
   
   public function render()

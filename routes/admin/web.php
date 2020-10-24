@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['admin.auth','isAdmin'])->group(function () {
+Route::middleware(['guest:admin'])->group(function(){
+  Route::get('login','Core\AuthController@showLogin')->name('login.show');
+});
+
+Route::middleware(['admin.auth:admin'])->group(function () {
   
   //Dashboard
   Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard.index');
@@ -63,6 +67,3 @@ Route::middleware(['admin.auth','isAdmin'])->group(function () {
   Route::get('/','Core\WelcomeController@index')->name('welcome');
 });
 
-Route::middleware('guest')->group(function(){
-  Route::get('login','Core\AuthController@showLogin')->name('login.show');
-});

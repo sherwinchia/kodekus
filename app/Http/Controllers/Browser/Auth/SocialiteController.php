@@ -50,7 +50,7 @@ class SocialiteController extends Controller
       'user_id' => $user->id
     ]);
     
-    Auth::attempt(['email' => $user->email, 'password' => $this->defaultPassword, 'role' => 'user']);
+    Auth::guard('web')->attempt(['email' => $user->email, 'password' => $this->defaultPassword, 'role' => 'user']);
     Auth::logoutOtherDevices($this->defaultPassword);
 
     return redirect()->route('browser.home.index');
@@ -58,7 +58,7 @@ class SocialiteController extends Controller
 
   private function login($userDetails, $provider)
   {
-    if (Auth::attempt(['email' => $userDetails->getEmail(), 'password' => $this->defaultPassword , "{$provider}_id" => $userDetails->getId(), 'role' => 'user'])) {
+    if (Auth::guard('web')->attempt(['email' => $userDetails->getEmail(), 'password' => $this->defaultPassword , "{$provider}_id" => $userDetails->getId(), 'role' => 'user'])) {
       // Auth::logoutOtherDevices($this->defaultPassword);
       $user = current_user();
       if (!$user["{$provider}_id"]) $user->update(["{$provider}_id" => $userDetails->getId()]);

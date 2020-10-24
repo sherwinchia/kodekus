@@ -22,12 +22,13 @@ class LoginForm extends Component
   {
     $data = $this->validate($this->rules);
 
-	  if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
-      $admin = current_user();
+	  if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
+      $admin = auth()->guard('admin')->user();
 			if ($admin->isAdmin()) {
         return redirect()->intended(route('admin.welcome'));
-			}
-      Auth::logout();
+
+      }
+      Auth::guard('admin')->logout();
       $this->addError('error', 'Email or password is incorrect!');
 			
 	  }else{
