@@ -119,13 +119,13 @@ class User extends Authenticatable
       return $this->profile->first_name . ' ' .  $this->profile->last_name;
     }
 
-    public function totalLikes()
+    public function getTotalLikesAttribute()
     {
       $likes = 0;
       $articles = $this->articles;
       if ($articles) {
         foreach ($articles as $article) {
-          $likes = $article->likes->count();
+          $likes += $article->likes->count();
         }
       }
       return $likes;

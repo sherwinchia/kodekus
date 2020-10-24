@@ -1,0 +1,27 @@
+.input-group{
+  label{
+    display: block;
+    font-size: .875rem;
+  }
+
+  input[type='text'], 
+  input[type='file'], 
+  input[type='email'], 
+  input[type='password'], 
+  input[type='datetime-local'],  
+  select, 
+  textarea{
+    @apply shadow border-black py-2 px-3 outline-none border mb-2 bg-white;
+  }
+
+  input[type='text']:focus, 
+  input[type='file']:focus, 
+  input[type='email']:focus, 
+  input[type='password']:focus, 
+  input[type='datetime-local']:focus, 
+  select:focus, 
+  textarea:focus{
+    @apply border-black;
+  }
+  
+}

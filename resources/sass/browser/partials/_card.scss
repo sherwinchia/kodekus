@@ -1,0 +1,13 @@
+.card{
+  @apply max-w-sm rounded-lg overflow-hidden shadow-lg bg-white mb-6;
+  .card-header{
+    padding: 0;
+    border-bottom: 2px solid rgb(231, 236, 240);
+    p{
+      font-weight: bold;
+    }
+  }
+  .card-body{
+
+  }
+}

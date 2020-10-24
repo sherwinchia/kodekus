@@ -1,6 +1,6 @@
 <div class="w-full max-w-xs m-auto">
 
-  <form wire:submit.prevent="submit" class="bg-white shadow-md rounded border-t-2 border-blue-400 px-8 pt-6 pb-8 mb-4">
+  <form wire:submit.prevent="submit" class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <div>
       <label class="block text-gray-700 text-md font-bold mb-6">
         Login
@@ -31,9 +31,6 @@
         type="submit">
         Sign In
       </button>
-      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-        Forgot Password?
-      </a>
     </div>
   </form>
   {{-- <p class="text-center text-gray-500 text-xs">

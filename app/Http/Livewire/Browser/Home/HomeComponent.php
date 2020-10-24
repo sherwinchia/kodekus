@@ -13,9 +13,9 @@ class HomeComponent extends Component
   public $tags;
   public $categories;
   public $search;
-  public $loadMore = 10;
+  public $perLoad = 8;
 
-  protected $listeners = ['loadMore'];
+  protected $listeners = ['home-load-more' => 'loadMore'];
 
   public function mount()
   {
@@ -28,6 +28,11 @@ class HomeComponent extends Component
     });
   }
 
+  public function loadMore()
+  {
+    $this->perLoad += 8;
+  }
+
   public function search()
   {
     return redirect(route('browser.search.index',['title' => $this->search]));
@@ -36,7 +41,7 @@ class HomeComponent extends Component
   public function render()
   {
       return view('livewire.browser.home.home-component', [
-        'latestArticles' => Article::latest('publish_date')->take($this->loadMore)->get()
+        'latestArticles' => Article::latest('publish_date')->paginate($this->perLoad)
       ]);
   }
 }

@@ -6,9 +6,9 @@
 
 <livewire:browser.partials.navbar-component />
 
-<div class="h-16"></div>
+<div class="h-24"></div>
 
-<main class="flex flex-col min-h-screen">
+<main class="flex flex-col">
   @yield('content')
 </main>
 
