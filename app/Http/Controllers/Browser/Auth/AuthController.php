@@ -10,14 +10,15 @@ class AuthController extends Controller
 {
   public const PATH = 'browser.auth.';
 
-  public function show()
+  public function show($form)
   {
-    return view(self::PATH . 'show');
+    $form  = strtolower($form);
+    return view(self::PATH . 'show', compact('form'));
   }
 
   public function logout()
   {
-    Auth::logout();
+    Auth::guard('web')->logout();
 	  return redirect()->route('browser.home.index');
   }
 }

@@ -19,7 +19,7 @@ class AuthController extends Controller
 
   public function logout()
   {
-    Auth::logout();
+    Auth::guard('admin')->logout();
 	  return redirect()->route('admin.login.show');
   }
 }

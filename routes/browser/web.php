@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('sign-in/{provider}', 'Auth\SocialiteController@redirect')->name('login.socialite');
-Route::get('sign-in/{provider}/callback', 'Auth\SocialiteController@handleCallback')->name('login.socialite.callback');
-Route::get('login','Auth\AuthController@show')->name('login.show');
-
 //Author
 Route::get('author/{author}', 'Author\AuthorController@show')->name('authors.show');
 
@@ -34,8 +29,15 @@ Route::get('series','Series\SeriesController@index')->name('series.index');
 //Home
 Route::get('/','Home\HomeController@index')->name('home.index');
 
+
+Route::middleware('guest:web')->group(function(){
+  Route::get('sign-in/{provider}', 'Auth\SocialiteController@redirect')->name('login.socialite');
+  Route::get('sign-in/{provider}/callback', 'Auth\SocialiteController@handleCallback')->name('login.socialite.callback');
+  Route::get('auth/{form}','Auth\AuthController@show')->name('auth.show');
+});
+
 //Root
-Route::middleware('browser.auth')->group(function(){
+Route::middleware(['browser.auth:web'])->group(function(){
   Route::get('profile','Profile\ProfileController@show')->name('profile.show');
   Route::get('logout','Auth\AuthController@logout')->name('logout');
 });
