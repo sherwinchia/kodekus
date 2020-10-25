@@ -16,9 +16,7 @@ class PermissionsTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
-  protected $listeners = [
-    'delete'
-  ];
+  protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
   {
@@ -34,16 +32,6 @@ class PermissionsTable extends Component
     }
 
     $this->sortField = $field;
-  }
-
-  public function delete($id)
-  {
-    $category = Permission::findOrFail($id);
-    $category->delete();
-
-    // session()->flash('success', 'Article successfully deleted.');
-
-    // return redirect()->to(route('admin.articles.index'));
   }
 
   public function paginationView()

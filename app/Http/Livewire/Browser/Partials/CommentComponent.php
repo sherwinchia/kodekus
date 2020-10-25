@@ -52,7 +52,7 @@ class CommentComponent extends Component
     $user = current_user();
     if ($user) {
       $this->user_id = $user->id;
-      $this->name = $user->name;
+      $this->name = $user->full_name;
       $this->email = $user->email;
     }
   }

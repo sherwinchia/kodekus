@@ -1,7 +1,7 @@
 <nav x-cloack x-data="{menuDropdown : false, searchExpand : false, profileDropdown: false}"
   class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="flex items-center relative">
+    <div class="flex justify-center items-center relative">
       <div class=" absolute left-0 flex items-center sm:hidden">
         <button @click="menuDropdown = !menuDropdown"
           class="inline-flex items-center justify-center p-2 rounded-md text-black" aria-label="Main menu"
@@ -16,51 +16,33 @@
           </svg>
         </button>
       </div>
-      <div class="flex-1 flex items-center justify-center">
-        <div
-          class="flex w-full justify-center sm:w-1/2 sm:justify-end align-middle py-2 sm:px-3 sm:mx-3 sm:border-r border-black text-xl font-semibold">
-          {{-- <div class=" space-x-3 text-lg items-center hidden md:flex">
-            <a href="">
-              <i class="fab fa-instagram-square"></i>
-            </a>
-            <a href="">
-              <i class="fab fa-facebook-square"></i>
-            </a>
-            <a href="">
-              <i class="fab fa-twitter-square"></i>
-            </a>
-            <a href="">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div> --}}
-          <a href="{{ route('browser.home.index') }}">
+      <div class="container flex-1 flex items-center justify-center">
+        <div class="flex w-full justify-center sm:justify-start align-middle items-center py-4 sm:px-4 space-x-10">
+          <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
             <h2>Ko&#60;\ing&#62;</h2>
           </a>
-        </div>
-        {{-- {{ request()->is('admin/categories*') ? 'navbar-active-list' : 'navbar-list' }} --}}
-        <div class="w-1/2 justify-between align-middle items-center hidden sm:flex py-2 space-x-8">
-          <div class="flex items-center space-x-6">
+          <div class="hidden sm:flex text-lg items-center space-x-6">
             <a href="{{ route('browser.home.index') }}"
-              class=" {{ request()->is('home') ? 'underline' : '' }} rounded-md uppercase">
+              class=" {{ request()->is('home') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               Home
             </a>
             <a href="{{ route('browser.series.index') }}"
-              class=" {{ request()->is('series*') ? 'underline' : '' }}  rounded-md uppercase">
+              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               Series
             </a>
-            <a href="{{ route('browser.series.index') }}"
-              class=" {{ request()->is('about*') ? 'underline' : '' }}  rounded-md uppercase">
+            <a href="{{ route('browser.about.index') }}"
+              class=" {{ request()->is('about*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               About
             </a>
-            <div class="search-box space-x-2">
-              <i @click="searchExpand = !searchExpand" class="fas fa-search"></i>
-              <input x-show="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
-                class="text-sm font-light" placeholder="Cari">
-            </div>
+          </div>
+        </div>
+        <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2">
+          <div class="search-box space-x-2">
+            <i @click="searchExpand = !searchExpand" class="fas fa-search pr-2"></i>
+            <input x-show="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
+              class="text-sm font-light" placeholder="Cari">
           </div>
           <div class="flex items-center space-x-4">
-
-
             @guest
             <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
             <a class="border border-black p-2 rounded"

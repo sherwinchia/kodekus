@@ -11,7 +11,9 @@ class UserForm extends Component
 {
   public $user;
 
-  public $name;
+  public $first_name;
+  public $last_name;
+
   public $role;
   public $roles;
 
@@ -20,7 +22,8 @@ class UserForm extends Component
   public $buttonText = 'Create';
 
   protected $rules = [
-    'name' => 'required|max:80',
+    'first_name' => 'required|max:80',
+    'last_name' => 'nullable|max:80',
     'role' => 'required',
   ];
 
@@ -31,7 +34,9 @@ class UserForm extends Component
 
     if(isset($userId)){
       $this->user = User::findOrFail($userId);
-      $this->name = $this->user->name;
+      $this->first_name = $this->user->profile->first_name;
+      $this->last_name = $this->user->profile->last_name;
+
       $this->role = $this->user->role;
       $this->buttonText = 'Update';
     }
@@ -43,7 +48,8 @@ class UserForm extends Component
   {
     if ($this->edit) {
       $data = $this->validate([
-        'name' => 'required|max:80',
+        'first_name' => 'required|max:80',
+        'last_name' => 'nullable|max:80',
         'role' => 'required',
       ]);
     } else {
@@ -52,7 +58,7 @@ class UserForm extends Component
     
 
     if($this->edit){
-      $this->user->update($data);
+      $this->user->profile->update($data);
       $this->user->syncRoles($this->role);
 
       session()->flash('success', 'User successfully updated.');

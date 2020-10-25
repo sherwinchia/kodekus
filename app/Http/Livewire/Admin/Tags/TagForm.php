@@ -25,10 +25,6 @@ class TagForm extends Component
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:tags',
   ];
 
-  protected $listeners = [
-    'nameAdded'
-  ];
-
   public function mount($tagId=null)
   { 
     $this->edit = isset($tagId) ? true : false;

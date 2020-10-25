@@ -1,7 +1,8 @@
 <div class="container mx-auto author-show">
   <div class="relative h-48 bg-green-300 flex flex-col align-middle items-center justify-center">
-    <div class="author-profile rounded-full h-32 w-32 bg-white flex items-center justify-center">
-      Profile Pict
+    <div class="author-profile rounded-full h-32 w-32 bg-white flex items-center justify-center" style="background-image: url({{  $author->profile->image_link }}); background-size: cover; background-position:
+      50%;">
+
     </div>
     <div class="absolute right-0 bottom-0 p-2 flex items-center space-x-4">
       @if ($author->profile->facebook_link)
@@ -77,6 +78,18 @@
         window.livewire.emit('author-load-more');
       }
     }
+
+    // window.onscroll = function () {
+    //   let currentScrollPos = window.pageYOffset;
+    //   if (currentScrollPos === 0) {
+    //       document.querySelector(".navbar").style.top = "0";
+    //   } else if (prevScrollpos >= currentScrollPos) {
+    //       document.querySelector(".navbar").style.top = "0";
+    //   } else {
+    //       document.querySelector(".navbar").style.top = "-22%";
+    //   }
+    //   prevScrollpos = currentScrollPos;
+    // }
   }
   )
 </script>

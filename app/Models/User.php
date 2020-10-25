@@ -16,8 +16,6 @@ class User extends Authenticatable
 
     const ADMIN_ROLE = 'admin';
 
-    protected $guard_name = '';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -125,6 +123,7 @@ class User extends Authenticatable
       $articles = $this->articles;
       if ($articles) {
         foreach ($articles as $article) {
+
           $likes += $article->likes->count();
         }
       }

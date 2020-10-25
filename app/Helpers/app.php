@@ -1,5 +1,6 @@
 <?php
   use App\Models\Article;
+  use App\Models\Profile;
 
   function current_user(){
     return Auth::user();
@@ -18,6 +19,23 @@
 			return null;
 		}
 		return Carbon::createFromFormat($format, $date);
+  }
+
+  function generate_profile_slug($length = 12){
+    // $slug = strtoupper(substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 6));
+
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $slug = '';
+    for ($i = 0; $i < $length; $i++) {
+        $slug .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    if(Profile::where('slug', $slug)->exists()){
+      $this->generate_profile_slug();
+    }
+    
+    return $slug;
   }
   
   // public function getNewFileName($imageFile)

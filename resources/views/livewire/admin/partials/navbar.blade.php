@@ -8,7 +8,7 @@
     </li>
 
     <li class="navbar-list pr-0"
-      x-data="{contentDrop: {{ (request()->is('admin/articles*') || request()->is('admin/categories*') || request()->is('admin/tags*') || request()->is('admin/series*')) ? 'true' : 'false' }}} ">
+      x-data="{contentDrop: {{ (request()->is('admin/articles*') || request()->is('admin/categories*') || request()->is('admin/tags*') || request()->is('admin/series*') || request()->is('admin/comments*')) ? 'true' : 'false' }}} ">
       <a class="flex-col justify-between items-center cursor-pointer" @click="contentDrop=!contentDrop">
         <div>
           <i class="fa fa-file-alt w-8 text-lg "></i>
@@ -52,6 +52,14 @@
             <div class="w-full">
               <i class="fas fa-tv w-8 text-lg "></i>
               <span class="font-roboto text-md ">Series</span>
+            </div>
+          </a>
+        </li>
+        <li class="{{ request()->is('admin/comments*') ? 'navbar-active-list' : 'navbar-list' }}">
+          <a class="flex-col justify-between items-center" href="{{ route('admin.comments.index') }}">
+            <div class="w-full">
+              <i class="fas fa-comments w-8 text-lg "></i>
+              <span class="font-roboto text-md ">Comments</span>
             </div>
           </a>
         </li>
@@ -149,7 +157,16 @@
     <a class="flex-col justify-between items-center" href="{{ route('admin.advertisements.index') }}">
       <div class="w-full">
         <i class="fas fa-ad w-8 text-l"></i>
-        <span class="font-roboto text-m">Advertisement</span>
+        <span class="font-roboto text-m">Advertisements</span>
+      </div>
+    </a>
+  </li>
+
+  <li class="{{ request()->is('admin/pages*') ? 'navbar-active-list' : 'navbar-list' }}">
+    <a class="flex-col justify-between items-center" href="{{ route('admin.pages.index') }}">
+      <div class="w-full">
+        <i class="fas fa-file w-8 text-l"></i>
+        <span class="font-roboto text-m">Pages</span>
       </div>
     </a>
   </li>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Author
-Route::get('author/{author}', 'Author\AuthorController@show')->name('authors.show');
+Route::get('author/{slug}', 'Author\AuthorController@show')->name('authors.show');
 
 //Article
 Route::get('article/{category}/{slug}','Article\ArticleController@show')->name('articles.show');
@@ -26,8 +26,14 @@ Route::get('search','Search\SearchController@index')->name('search.index');
 //Series
 Route::get('series','Series\SeriesController@index')->name('series.index');
 
+//About
+Route::get('about','About\AboutController@index')->name('about.index');
+
 //Home
 Route::get('home','Home\HomeController@index')->name('home.index');
+
+//Root
+Route::get('/','Root\RootController@index')->name('root.index');
 
 
 Route::middleware('guest:web')->group(function(){

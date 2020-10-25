@@ -47,7 +47,8 @@ class SocialiteController extends Controller
     $profile = Profile::create([
       'first_name' => $name[0],
       'last_name' => $name[1],
-      'user_id' => $user->id
+      'user_id' => $user->id,
+      'slug' => generate_profile_slug()
     ]);
     
     Auth::guard('web')->attempt(['email' => $user->email, 'password' => $this->defaultPassword, 'role' => 'user']);

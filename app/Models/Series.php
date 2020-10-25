@@ -13,6 +13,7 @@ class Series extends Model
   
     protected $fillable = [
       'name',
+      'slug',
     ];
   
     public function getDescriptionForEvent(string $eventName): string
