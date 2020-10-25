@@ -25,10 +25,6 @@ class CategoryForm extends Component
     'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:categories',
   ];
 
-  protected $listeners = [
-    'nameAdded'
-  ];
-
   public function mount($categoryId=null)
   { 
     $this->edit = isset($categoryId) ? true : false;

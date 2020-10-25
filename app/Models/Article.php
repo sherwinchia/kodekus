@@ -136,6 +136,23 @@ class Article extends Model
 
   public function getAuthorLinkAttribute()
   {
-    return route('browser.authors.show', $this->author->id);
+    return route('browser.authors.show', $this->author->profile->slug);
+  }
+
+  public function getUnapprovedCommentsCountAttribute(Type $var = null)
+  {
+    return $this->comments()->where('approved', 0)->count();
+  }
+
+  public function getUnapprovedRepliesCountAttribute()
+  {
+    $count = 0;
+    $comments = $this->comments;
+
+    foreach ($comments as $comment) {
+      $count += $comment->replies()->where('approved', 0)->count();
+    }
+
+    return $count;
   }
 }

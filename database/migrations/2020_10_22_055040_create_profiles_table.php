@@ -19,6 +19,7 @@ class CreateProfilesTable extends Migration
             $table->string('first_name');
             $table->string('last_name')->nullable();
             $table->string('image')->nullable();
+            $table->string('slug')->unique();
             $table->string('phone_number')->unique()->nullable();
             $table->string('facebook_link')->nullable();
             $table->string('twitter_link')->nullable();

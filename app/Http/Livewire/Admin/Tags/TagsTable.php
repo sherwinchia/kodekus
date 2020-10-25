@@ -16,9 +16,7 @@ class TagsTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
-  protected $listeners = [
-    'delete'
-  ];
+  protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
   {
@@ -34,16 +32,6 @@ class TagsTable extends Component
     }
 
     $this->sortField = $field;
-  }
-
-  public function delete($id)
-  {
-    $tag = Tag::findOrFail($id);
-    $tag->delete();
-
-    // session()->flash('success', 'Article successfully deleted.');
-
-    // return redirect()->to(route('admin.articles.index'));
   }
 
   public function paginationView()

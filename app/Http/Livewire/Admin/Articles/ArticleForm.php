@@ -62,7 +62,7 @@ class ArticleForm extends Component
   ];
 
   protected $listeners = [
-    'imageUploaded','publishClicked','titleAdded'
+    'imageUploaded','publishClicked'
   ];
 
   public function mount($articleId=null)

@@ -65,13 +65,30 @@ Breadcrumbs::for('admin.series.index', function ($trail) {
 Breadcrumbs::for('admin.series.create', function ($trail) {
   $trail->parent('admin.series.index');
     $trail->push('Create');
-  });
+});
 
 //Series > Edit
 Breadcrumbs::for('admin.series.edit', function ($trail, $series) {
   $trail->parent('admin.series.index');
     $trail->push($series->name);
-  });
+});
+
+//Comments
+Breadcrumbs::for('admin.comments.index', function ($trail) {
+  $trail->push('Comments', route('admin.comments.index'));
+});
+
+//Comment > Show
+Breadcrumbs::for('admin.comments.show', function ($trail, $article) {
+  $trail->parent('admin.comments.index');
+    $trail->push($article->title);
+});
+
+//Comment > Approval
+Breadcrumbs::for('admin.comments.approval', function ($trail) {
+  $trail->parent('admin.comments.index');
+    $trail->push('Approval');
+});
 
 // Users
 Breadcrumbs::for('admin.users.index', function ($trail) {

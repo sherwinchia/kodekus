@@ -26,18 +26,20 @@ class UsersTableSeeder extends Seeder
         Profile::create([
           'first_name' => 'Sherwin',
           'last_name' => 'Variancia',
+          'slug' => 'sherwin-variancia',
           'user_id' => $user1->id
         ]);
-
+        
         $user2 = User::create([
           'email' => 'john@mail.com',
           'password' => Hash::make('sherwin23'),
-          'role' => 'user'
+          'role' => 'content-writer'
         ]);
 
         Profile::create([
           'first_name' => 'John',
           'last_name' => 'Doe',
+          'slug' => 'john-doe',
           'user_id' => $user2->id
         ]);
 

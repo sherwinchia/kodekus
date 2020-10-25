@@ -69,6 +69,7 @@ class AuthForm extends Component
       'user_id' => $user->id,
       'first_name' => $data['first_name'],
       'last_name' => $data['last_name'],
+      'slug' => generate_profile_slug()
     ]);
 
     Auth::guard('web')->login($user);

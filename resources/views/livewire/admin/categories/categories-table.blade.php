@@ -1,4 +1,4 @@
-<div class="data-table" x-data="tableComponents()" x-init="setDefaults()">
+<div class="data-table">
   <div class="top">
     <div class="flex justify-between mb-2">
       <div>
@@ -25,9 +25,9 @@
             <a wire:click.prevent="sortBy('name')" role="button">Name</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'name'])
           </th>
-          {{-- <th>
-            <a wire:click.prevent="sortBy('published')" role="button">Published</a>
-          </th> --}}
+          <th class="text-center">
+            Total Post
+          </th>
           <th>
             Action
           </th>
@@ -46,15 +46,16 @@
           <td class="non-id">
             {{ $category->name }}
           </td>
-          {{-- <td class="non-id text-center">
-            {{ $category->published }}
-          </td> --}}
+          <td class="non-id text-center">
+            {{ $category->articles->count() }}
+          </td>
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.categories.edit', $category->id) }}">
                 <i class="fas fa-edit"></i>
               </a>
-              <a class="mx-1 text-lg" role="button" wire:click="$emit('onTrashIcon',{{ $category->id }})">
+              <a class="mx-1 text-lg" role="button"
+                wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $category->id }}, 'category')">
                 <i class="fas fa-trash"></i>
               </a>
             </div>
@@ -81,74 +82,5 @@
     </div>
   </div>
 
-  <div class="mx-auto w-full bg-gray-100 flex items-center justify-center" @keydown.escape="confirmationModal = false"
-    x-cloak>
-    <section class="flex flex-wrap p-4 h-full items-center">
-      <div class="overflow-auto" style="background-color: rgba(0,0,0,0.5)" x-show="confirmationModal"
-        :class="{ 'absolute inset-0 z-10 flex items-center justify-center': confirmationModal }">
-        <div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6"
-          x-show="confirmationModal" @click.away="confirmationModal = false">
-
-          <div class="flex justify-between items-center pb-3">
-            <p x-text="modalHeader" class="text-2xl font-bold">Are you sure ?</p>
-          </div>
-
-          <p x-text="modalBody"></p>
-
-          <div class="flex justify-end pt-2">
-            <button class="px-4 bg-transparent p-3 rounded-lg text-red-500 hover:bg-gray-100 hover:text-red-400 mr-2"
-              x-show="deleteButton" x-on:click.prevent="onDelete()">Delete</button>
-            <button class="modal-close px-4 bg-red-500 p-3 rounded-lg text-white hover:bg-red-400"
-              x-on:click="onModalClose()" x-text="cancelButton"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+  <livewire:admin.partials.delete-modal-component />
 </div>
-
-@section('scripts')
-<script>
-  function tableComponents(){
-      return{
-        //data
-        modalHeader : '',
-        modalBody : '',
-        confirmationModal: false, 
-        deleteButton : true,
-        cancelButton : '',
-        id: null ,
-
-        //function
-        setDefaults(){
-          this.modalHeader = 'Are you sure?';
-          this.modalBody = 'This action can not be recovered!';
-          this.cancelButton = 'Cancel';
-          this.deleteButton = true;
-          this.listen();
-        },
-
-        onDelete(){
-          window.livewire.emit('delete',this.id);
-          this.modalHeader = 'Deleted!';
-          this.modalBody = 'The row has been deleted.';
-          this.cancelButton = 'Close';
-          this.deleteButton = false;
-        },
-
-        onModalClose(){
-          this.setDefaults();
-          this.confirmationModal = false;
-        },
-
-        listen() {
-          window.livewire.on('onTrashIcon', categoryId => {
-            this.id = categoryId;
-            this.confirmationModal = true;
-          })
-        }
-      }
-    }
-
-</script>
-@endsection

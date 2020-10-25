@@ -15,12 +15,14 @@ class SeriesForm extends Component
   public $series;
 
   public $name;
+  public $slug;
 
   public $buttonText = 'Create';
   public $edit;
 
   protected $rules = [
     'name' => 'required|max:80',
+    'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:series',
   ];
 
   public function mount($seriesId=null)
@@ -30,8 +32,19 @@ class SeriesForm extends Component
     if(isset($seriesId)){
       $this->series = Series::findOrFail($seriesId);
       $this->name = $this->series->name;
+      $this->slug = $this->series->slug;
       $this->buttonText = 'Update';
     }
+  }
+
+  public function nameAdded()
+  {
+    $slug = $this->name;
+    if(isset($slug)){
+      $slug = strtolower(str_replace(' ','-',$slug));
+      $slug = preg_replace('/[^A-Za-z0-9\-]/', "",$slug);
+      $this->slug = $slug;
+    } 
   }
 
   public function submit()
@@ -39,6 +52,7 @@ class SeriesForm extends Component
     if ($this->edit) {
       $data = $this->validate([
         'name' => 'required|max:80',
+        'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:series,slug,'.$this->series->id,
       ]);
     } else {
       $data = $this->validate($this->rules);

@@ -66,10 +66,23 @@
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
     let prevScrollpos = window.pageYOffset;
+    // window.onscroll = function () {
+    //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    //     console.log('here');
+    //     window.livewire.emit('home-load-more');
+    //   }
+    // }
+
     window.onscroll = function () {
-      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        window.livewire.emit('home-load-more');
+      let currentScrollPos = window.pageYOffset;
+      if (currentScrollPos === 0) {
+          document.querySelector(".navbar").style.top = "0";
+      } else if (prevScrollpos >= currentScrollPos) {
+          document.querySelector(".navbar").style.top = "0";
+      } else {
+          document.querySelector(".navbar").style.top = "-22%";
       }
+      prevScrollpos = currentScrollPos;
     }
   }
   )

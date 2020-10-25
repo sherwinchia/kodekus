@@ -24,4 +24,14 @@ class Reply extends Model
   {
     return $this->belongsTo('App\Models\Comment', 'comment_id');
   }
+
+
+  public function isApproved()
+  {
+    if ($this->approved) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

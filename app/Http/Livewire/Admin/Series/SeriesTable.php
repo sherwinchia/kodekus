@@ -16,9 +16,7 @@ class SeriesTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
-  protected $listeners = [
-    'delete'
-  ];
+  protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
   {
@@ -34,12 +32,6 @@ class SeriesTable extends Component
     }
 
     $this->sortField = $field;
-  }
-
-  public function delete($id)
-  {
-    $series = Series::findOrFail($id);
-    $series->delete();
   }
 
   public function paginationView()

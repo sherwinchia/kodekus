@@ -30,4 +30,13 @@ class Comment extends Model
   {
     return $this->morphTo();
   }
+
+  public function isApproved()
+  {
+    if ($this->approved) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

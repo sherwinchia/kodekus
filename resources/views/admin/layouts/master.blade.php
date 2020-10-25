@@ -13,7 +13,7 @@
           {{-- <img src="{{ asset('images/brand.png') }}" alt=""> --}}
         </div>
         <div class="overflow-y-auto">
-          <livewire:admin.navbar>
+          <livewire:admin.partials.navbar>
         </div>
 
       </div>

@@ -35,6 +35,9 @@ Route::middleware(['admin.auth:admin'])->group(function () {
   //Series
   Route::resource('series','Series\SeriesController')->name('*','series')->only('index','create','edit');
 
+  //Comments
+  Route::resource('comments','Comment\CommentController')->name('*','comments')->only('index','show');
+
   //User
   Route::resource('users','User\UserController')->name('*','users')->only('index','create','edit');
 
@@ -47,6 +50,11 @@ Route::middleware(['admin.auth:admin'])->group(function () {
   //Advertisement
   Route::resource('advertisements','Advertisement\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
   
+  //Pages
+  Route::resource('pages','Page\PageController')->name('*','pages')->only('index','create','edit');
+  
+
+
   //File
   // Route::livewire('files','admin.files.index')->name('files.index');
 

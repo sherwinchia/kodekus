@@ -56,7 +56,7 @@
             {{ $log->description ?? '-' }}
           </td>
           <td class="non-id">
-            {{ $log->causer->name ?? '-' }}
+            {{ $log->causer->full_name ?? '-' }}
           </td>
           <td class="non-id">
             {{ date_to_human($log->created_at) ?? '-' }}

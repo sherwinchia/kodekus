@@ -599,9 +599,6 @@ html, body {
 
 button {
   padding: 0.5rem;
-  --bg-opacity: 1;
-  background-color: #9ae6b4;
-  background-color: rgba(154, 230, 180, var(--bg-opacity));
   border-radius: 0.5rem;
 }
 

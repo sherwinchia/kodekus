@@ -26,25 +26,26 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
               @foreach ($comments as $comment)
               {{-- {{ dd($comment->replies) }} --}}
               <li class="py-2">
-                <div class="flex justify-between items-center">
-                  <div class="font-semibold">
-                    {{ $comment->name }}
+                <div class="bg-gray-200 p-4 rounded-md">
+                  <div class="flex justify-between items-center">
+                    <div class="font-semibold">
+                      {{ $comment->name }}
+                    </div>
+                    <div class="font-light text-sm">
+                      {{ date_to_human($comment->created_at, 'd M Y') }}
+                    </div>
                   </div>
-                  <div class="font-light text-sm">
-                    {{ date_to_human($comment->created_at, 'd M Y') }}
+                  <div class="">
+                    <p style=" overflow-wrap: break-word;">
+                      {{ $comment->content}}
+                    </p>
+                    <a class="cursor-pointer underline" wire:click="reply({{ $comment->id }})">Reply</a>
                   </div>
                 </div>
-                <div class="">
-                  <p style=" overflow-wrap: break-word;">
-                    {{ $comment->content}}
-                  </p>
-                  <a class="cursor-pointer underline" wire:click="reply({{ $comment->id }})">Reply</a>
-                </div>
-                {{-- <button>Expand</button> --}}
                 @if ($comment->replies)
-                <ul class="m-2 ml-4 mr-0">
-                  @foreach ($comment->replies as $reply)
-                  <li class="border-l-2 border-black pl-2">
+                <ul class="m-2 ml-6 mr-0 ">
+                  @foreach ($comment->replies()->latest()->where('approved', 1)->get() as $reply)
+                  <li class="mb-2 bg-gray-200 p-4 rounded-md">
                     <div class="flex justify-between items-center">
                       <div class="font-semibold">
                         {{ $reply->name }}

@@ -7,14 +7,22 @@
 
       <div class="card-body">
         <form wire:submit.prevent="updateProfile" class="flex flex-wrap">
+          <div class="input-group w-full">
+            <label for="image">Image</label>
+            <img class="w-64 h-48 mx-auto object-contain overflow-hidden"
+              src="{{ $temp_image ? $temp_image->temporaryUrl() : (isset($user) ? $user->profile->image_link: null) }}"
+              alt="">
+            <input type="file" wire:model="temp_image" accept="image/*" id="image">
+            @error('temp_image') <span class="error-msg">{{ $message }}</span> @enderror
+          </div>
           <div class="input-group w-1/2 pr-2">
             <label for="first_name">First Name</label>
-            <input wire:model="first_name" type="text">
+            <input wire:model="first_name" wire:input="nameAdded" type="text">
             @error('first_name') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div class="input-group w-1/2 pl-2">
             <label for="last_name">Last Name</label>
-            <input wire:model="last_name" type="text">
+            <input wire:model="last_name" wire:input="nameAdded" type="text">
             @error('last_name') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div class="input-group w-1/2 pr-2">
@@ -26,6 +34,11 @@
             <label for="email">Email</label>
             <input wire:model="email" type="email">
             @error('email') <span class="error-msg">{{ $message }}</span> @enderror
+          </div>
+          <div class="input-group w-1/2 pr-2">
+            <label for="slug">Slug</label>
+            <input wire:model="slug" type="text">
+            @error('slug') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div class="input-group w-1/2 pr-2">
             <label for="birthdate">Birthdate</label>

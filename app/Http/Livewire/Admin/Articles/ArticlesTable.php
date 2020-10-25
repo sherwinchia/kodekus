@@ -16,9 +16,7 @@ class ArticlesTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
-  protected $listeners = [
-    'delete'
-  ];
+  protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
   {
@@ -34,16 +32,6 @@ class ArticlesTable extends Component
     }
 
     $this->sortField = $field;
-  }
-
-  public function delete($id)
-  {
-    $article = Article::findOrFail($id);
-    $article->delete();
-
-    // session()->flash('success', 'Article successfully deleted.');
-
-    // return redirect()->to(route('admin.articles.index'));
   }
 
   public function publish($id)

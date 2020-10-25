@@ -16,9 +16,7 @@ class CategoriesTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
-  protected $listeners = [
-    'delete'
-  ];
+  protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
   {
@@ -34,12 +32,6 @@ class CategoriesTable extends Component
     }
 
     $this->sortField = $field;
-  }
-
-  public function delete($id)
-  {
-    $category = Category::findOrFail($id);
-    $category->delete();
   }
 
   public function paginationView()
