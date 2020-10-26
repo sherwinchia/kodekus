@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Partials;
+namespace App\Http\Livewire\Admin\Comments;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -8,21 +8,14 @@ use Livewire\WithPagination;
 use App\Models\Comment;
 use App\Models\Reply;
 
-class CommentComponent extends Component
+class CommentsApproval extends Component
 {
   use WithPagination;
 
-  public $article;
-
   protected $listeners = [
     'refreshComponent' => '$refresh',
-    'tableRefresh' => '$refresh'
+    'tableRefresh' => '$refresh',
   ];
-
-  public function mount($article)
-  {
-    $this->article = $article;
-  }
 
   public function approve($type, $id)
   {
@@ -51,8 +44,9 @@ class CommentComponent extends Component
 
   public function render()
   {
-      return view('livewire.admin.partials.comment-component', [
-        'comments' => $this->article->comments()->latest()->paginate(6)
+      return view('livewire.admin.comments.comments-approval',[
+        'comments' => Comment::where('approved', 0)->paginate(),
+        'replies' => Reply::where('approved', 0)->paginate(),
       ]);
   }
 }

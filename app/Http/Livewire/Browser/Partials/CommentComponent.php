@@ -109,6 +109,8 @@ class CommentComponent extends Component
 
   public function render()
   {
-      return view('livewire.browser.partials.comment-component');
+      return view('livewire.browser.partials.comment-component', [
+        'comments' => $this->article->comments()->latest()->where('approved', 1)->paginate(5)
+      ]);
   }
 }

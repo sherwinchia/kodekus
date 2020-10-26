@@ -36,6 +36,7 @@ Route::middleware(['admin.auth:admin'])->group(function () {
   Route::resource('series','Series\SeriesController')->name('*','series')->only('index','create','edit');
 
   //Comments
+  Route::get('comments/approval', 'Comment\CommentController@approval')->name('comments.approval');
   Route::resource('comments','Comment\CommentController')->name('*','comments')->only('index','show');
 
   //User
@@ -53,8 +54,6 @@ Route::middleware(['admin.auth:admin'])->group(function () {
   //Pages
   Route::resource('pages','Page\PageController')->name('*','pages')->only('index','create','edit');
   
-
-
   //File
   // Route::livewire('files','admin.files.index')->name('files.index');
 

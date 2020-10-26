@@ -1,5 +1,4 @@
 <div class="home-index container bg-white mx-auto p-4">
-
   <div class="flex flex-col lg:flex-row justify-center mb-4">
     <div class="w-12/12 lg:w-9/12 lg:mr-4 ">
       @foreach ($latestArticles as $article)
