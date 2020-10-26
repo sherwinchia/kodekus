@@ -3,11 +3,22 @@
     <div class="flex flex-col w-full max-w-xl">
       <div class="card">
         <div class="card-header">
-          <p>Comment</p>
-          <span>{{ $article->title }}</span>
+          <p>{{ $article->title }}</p>
           <div class="flex flex-col justify-between">
+            @if ($article->unapproved_comments_count > 0)
+            @if ($article->unapproved_comments_count > 1)
             <span>Pending comments: {{ $article->unapproved_comments_count }}</span>
+            @else
+            <span>Pending comment: {{ $article->unapproved_comments_count }}</span>
+            @endif
+            @endif
+            @if ($article->unapproved_replies_count > 0)
+            @if ($article->unapproved_replies_count > 1)
             <span>Pending replies: {{ $article->unapproved_replies_count }}</span>
+            @else
+            <span>Pending reply: {{ $article->unapproved_replies_count }}</span>
+            @endif
+            @endif
           </div>
         </div>
         <div class="card-body">
@@ -29,18 +40,20 @@
                       {{ $comment->content}}
                     </p>
                   </div>
-                  <div class="flex justify-end p-2 rounded space-x-2">
+                  <div class="flex justify-end p-2 rounded space-x-2 items-center align-middle">
                     <div class="cursor-pointer">
                       <a wire:click="approve('comment', {{ $comment->id }})">
                         @if ($comment->isApproved())
                         <i class="fas fa-check text-green-400"></i>
+                        {{-- <p class="p-2 bg-red-500 rounded text-white">Unapprove</p> --}}
                         @else
                         <i class="fas fa-times text-red-400"></i>
+                        {{-- <p class="p-2 bg-green-500 rounded text-white">Approve</p> --}}
                         @endif
                       </a>
                     </div>
                     <div class="cursor-pointer">
-                      <a
+                      <a class="p-2 bg-red-500 rounded text-white"
                         wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $comment->id }}, 'comment')">
                         <i class="fas fa-trash"></i>
                       </a>
@@ -64,18 +77,20 @@
                         {{ $reply->content }}
                       </p>
                     </div>
-                    <div class="flex justify-end p-2 rounded space-x-2">
+                    <div class="flex justify-end p-2 rounded space-x-2 align-middle items-center">
                       <div class="cursor-pointer">
-                        <a wire:click="approve('reply', {{ $reply->id }})">
+                        <a class="" wire:click="approve('reply', {{ $reply->id }})">
                           @if ($reply->isApproved())
                           <i class="fas fa-check text-green-400"></i>
+                          {{-- <p class="p-2 bg-red-500 rounded text-white">Unapprove</p> --}}
                           @else
                           <i class="fas fa-times text-red-400"></i>
+                          {{-- <p class="p-2 bg-green-500 rounded text-white">Approve</p> --}}
                           @endif
                         </a>
                       </div>
                       <div class="cursor-pointer">
-                        <a
+                        <a class="p-2 bg-red-500 rounded text-white"
                           wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $reply->id }}, 'reply')">
                           <i class="fas fa-trash"></i>
                         </a>

@@ -17,7 +17,19 @@ class CommentsTable extends Component
   public $sortAsc = true;
   public $perPage = 10;
 
+  public $pending_comments;
+  public $pending_replies;
+
   protected $listeners = ['tableRefresh' => '$refresh'];
+
+  public function mount()
+  {
+    $articles = Article::all();
+    foreach ($articles as $article) {
+      $this->pending_comments += $article->unapproved_comments_count;
+      $this->pending_replies += $article->unapproved_replies_count;
+    }
+  }
 
   public function sortBy($field)
   {
@@ -47,7 +59,9 @@ class CommentsTable extends Component
         'articles' => Article::query()
             ->where('published', 1)
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-            ->paginate($this->perPage)
+            ->paginate($this->perPage),
+        'pending_comments'  => $this->pending_comments,
+        'pending_replies'  => $this->pending_replies,
       ]);
   }
 }

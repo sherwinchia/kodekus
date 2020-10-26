@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<livewire:admin.partials.comment-component :article="$article" />
+<livewire:admin.comments.comment-component :article="$article" />
 @endsection
 
 @push('styles')

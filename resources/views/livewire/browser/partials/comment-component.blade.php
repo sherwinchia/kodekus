@@ -1,8 +1,4 @@
-@php
-$comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
-@endphp
-
-<div class="bg-grey-300 h-full" x-data="{drop:false}">
+<div class=" h-full" x-data="{drop:false}">
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
@@ -26,8 +22,8 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
               @foreach ($comments as $comment)
               {{-- {{ dd($comment->replies) }} --}}
               <li class="py-2">
-                <div class="bg-gray-200 p-4 rounded-md">
-                  <div class="flex justify-between items-center">
+                <div class="bg-gray-100 border rounded-md">
+                  <div class="flex justify-between items-center p-4">
                     <div class="font-semibold">
                       {{ $comment->name }}
                     </div>
@@ -35,7 +31,7 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                       {{ date_to_human($comment->created_at, 'd M Y') }}
                     </div>
                   </div>
-                  <div class="">
+                  <div class="bg-white p-4">
                     <p style=" overflow-wrap: break-word;">
                       {{ $comment->content}}
                     </p>
@@ -45,8 +41,8 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                 @if ($comment->replies)
                 <ul class="m-2 ml-6 mr-0 ">
                   @foreach ($comment->replies()->latest()->where('approved', 1)->get() as $reply)
-                  <li class="mb-2 bg-gray-200 p-4 rounded-md">
-                    <div class="flex justify-between items-center">
+                  <li class="mb-2 border rounded-md">
+                    <div class="flex justify-between items-center bg-gray-100  p-4">
                       <div class="font-semibold">
                         {{ $reply->name }}
                       </div>
@@ -54,7 +50,7 @@ $comments = $article->comments()->latest()->where('approved', 1)->paginate(5);
                         {{ date_to_human($reply->created_at, 'd M Y') }}
                       </div>
                     </div>
-                    <div>
+                    <div class="bg-white p-4">
                       <p style=" overflow-wrap: break-word;">
                         {{ $reply->content }}
                       </p>

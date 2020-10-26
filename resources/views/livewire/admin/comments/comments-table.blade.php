@@ -1,11 +1,18 @@
 <div class="data-table">
   <div class="top">
-    {{-- <a href="{{ route('admin.comments.approval') }}">
-    <div class="flex bg-yellow-500 rounded mb-2 px-2 py-4 text-white align-middle items-center space-x-2">
-      <i class="fas fa-exclamation-triangle border-r border-white pr-2"></i>
-      <span class="">There are (number) of comments waiting for approval!</span>
-    </div>
-    </a> --}}
+    @if ($pending_comments || $pending_replies)
+    <a href="{{ route('admin.comments.approval') }}">
+      <div class="flex bg-red-500 rounded mb-2 px-2 py-4 text-white align-middle items-center space-x-2">
+        <i class="fas fa-exclamation-triangle border-r border-white pr-2"></i>
+        @if ($pending_comments+$pending_replies > 1)
+        <span class="">There are {{ $pending_comments+$pending_replies }} of comments/replies waiting for
+          approval!</span>
+        @else
+        <span class="">There is {{ $pending_comments+$pending_replies }} of comment/reply waiting for approval!</span>
+        @endif
+      </div>
+    </a>
+    @endif
     <div class="flex justify-between mb-2">
       <div>
         <input wire:model="search" class="border outline-none px-4 py-2 rounded tracking-wide" type="text"
