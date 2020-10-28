@@ -45,11 +45,12 @@
         @endforeach
       </div>
       <div class="extra">
-        <div class="mb-2 flex items-center">
-          <span>{{ date_to_human($article->publish_date,'d F Y') }}</span>
-          <span class="px-2"> | </span>
-          <span>{{ $article->read_minutes }}</span>
-          <span class=" px-2">|</span>
+        <div class="flex items-center text-gray-700 font-light text-sm space-x-4">
+          <span><a href="{{ $article->author->author_link }}"><i
+                class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
+          <span class=""><i
+              class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
+          <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
           <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
         </div>
       </div>

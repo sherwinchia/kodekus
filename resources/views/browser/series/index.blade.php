@@ -9,7 +9,7 @@
 <div class="search container bg-white mx-auto p-4">
   <div class="flex flex-col">
     @foreach ($series as $_series)
-    <h1>{{ $_series->name }}</h1>
+    <h1 class="p-2">{{ $_series->name }}</h1>
     <div class="swiper-container">
       <div class="swiper-wrapper mb-6">
         @foreach ($_series->articles()->latest('publish_date')->get() as $article)
@@ -29,11 +29,12 @@
                 @endforeach
               </div>
               <div class="extra">
-                <div class="mb-2 flex items-center">
-                  <span>{{ date_to_human($article->publish_date,'d F') }}</span>
-                  <span class="px-2"> | </span>
-                  <span>{{ $article->read_minutes }}</span>
-                  <span class=" px-2">|</span>
+                <div class="flex items-center text-gray-700 font-light text-sm space-x-4">
+                  <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
+                        class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
+                  <span class=""><i
+                      class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
+                  <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
                   <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
                 </div>
               </div>

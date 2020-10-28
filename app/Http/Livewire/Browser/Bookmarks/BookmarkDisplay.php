@@ -8,11 +8,13 @@ class BookmarkDisplay extends Component
 {
   public $bookmarkable;
   public $image;
+  public $type;
 
-  public function mount($bookmarkable, $image=false)
+  public function mount($bookmarkable, $image=false, $type=null)
   {
     $this->bookmarkable = $bookmarkable;
     $this->image = $image;
+    $this->type = $type;
   }
 
   public function render()

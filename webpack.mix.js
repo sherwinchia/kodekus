@@ -26,3 +26,5 @@ mix.js('resources/js/browser/app.js', 'public/js/browser.js')
      processCssUrls: false,
      postCss: [tailwindcss('./tailwind.config.js')],
  });
+
+//  mix.copyDirectory('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/webfonts');

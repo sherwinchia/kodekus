@@ -31,7 +31,7 @@ class Profile extends Model
     if ($this->image) {
       return asset('storage/' . $this->image);
     } else {
-      return asset('images/placeholder/placeholder.png');
+      return asset('images/placeholder/no-profile.png');
     }
   }
 }

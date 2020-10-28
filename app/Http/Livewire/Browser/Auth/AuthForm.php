@@ -48,7 +48,7 @@ class AuthForm extends Component
 	  if (Auth::guard('web')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = current_user();
 
-      return redirect()->intended(route('browser.home.index'));
+      return redirect()->intended('browser.home.index');
 
 	  }else{
 	    $this->addError('error', 'Email or password is incorrect!');

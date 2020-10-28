@@ -57530,7 +57530,8 @@ hljs.initHighlightingOnLoad();
 var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_1__["default"]('.swiper-container', {
   pagination: {
     el: '.swiper-pagination',
-    clickable: true
+    clickable: true,
+    loop: true
   },
   breakpoints: {
     640: {

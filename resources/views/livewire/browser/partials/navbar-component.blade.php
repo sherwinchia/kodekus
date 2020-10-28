@@ -1,5 +1,5 @@
 <nav x-cloack x-data="{menuDropdown : false, searchExpand : false, profileDropdown: false}"
-  class="navbar bg-white border-b border-black">
+  class="navbar bg-white border-b border-gray-500">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
       <div class=" absolute left-0 flex items-center sm:hidden">
@@ -21,18 +21,18 @@
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
             <h2>Ko&#60;\ing&#62;</h2>
           </a>
-          <div class="hidden sm:flex text-lg items-center space-x-6">
+          <div class="hidden sm:flex items-center space-x-6">
             <a href="{{ route('browser.home.index') }}"
               class=" {{ request()->is('home') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               Home
             </a>
-            <a href="{{ route('browser.series.index') }}"
-              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
-              Series
-            </a>
             <a href="{{ route('browser.about.index') }}"
               class=" {{ request()->is('about*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               About
+            </a>
+            <a href="{{ route('browser.series.index') }}"
+              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              Series
             </a>
           </div>
         </div>
@@ -51,7 +51,7 @@
 
             @auth
             <div class="flex flex-col justify-end relative" @mouseexit="profileDropdown = false">
-              <button @mouseenter="profileDropdown = true"><i class="fas fa-user"></i></button>
+              <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
               <div class="absolute bg-white p-3 border border-black w-32 flex flex-col"
                 style="bottom:-7rem; left:-6rem;" x-show="profileDropdown" @click.away="profileDropdown = false">
                 <a class="pb-2">{{ current_user()->full_name }}</a>
@@ -67,8 +67,8 @@
       </div>
     </div>
   </div>
-  <div x-show="menuDropdown" class="">
-    <div class="px-2 pt-2 pb-3">
+  <div x-show.transition.origin.top="menuDropdown" class="" @click.away="menuDropdown = !menuDropdown">
+    <div class="flex justify-center px-4">
       <a href="{{ route('browser.home.index') }}" class="px-3 py-2 rounded-md text-sm font-light uppercase">Home</a>
       <a href="{{ route('browser.search.index') }}"
         class="ml-4 px-3 py-2 rounded-md text-sm font-light uppercase">Search</a>

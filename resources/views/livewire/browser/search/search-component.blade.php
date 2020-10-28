@@ -7,7 +7,7 @@
     </div>
 
     <div class="input-group flex items-center mb-2 md:space-x-4">
-      <div class="w-4/12 flex flex-col">
+      <div class="w-3/12 flex flex-col">
         <label for="category">Kategori</label>
         <select wire:model.debounce.300ms="category" name="category">
           <option disabled>Pilih salah satu kategori</option>
@@ -17,7 +17,7 @@
           @endforeach
         </select>
       </div>
-      <div class="w-4/12 flex flex-col">
+      <div class="w-3/12 flex flex-col">
         <label for="tag">Topik</label>
         <select wire:model.debounce.300ms="tag" name="tag">
           <option disabled>Pilih salah satu topik</option>
@@ -27,7 +27,7 @@
           @endforeach
         </select>
       </div>
-      <div class="w-4/12 flex flex-col">
+      <div class="w-3/12 flex flex-col">
         <label for="pagination">Total</label>
         <select name="pagination" wire:model.debounce.300ms="perPage">
           <option disabled>Pilih jumlah artikel yang ditampilkan</option>
@@ -47,13 +47,13 @@
   </div>
 
   <div class="flex justify-start mb-2">
-    <div class="w-full">
-      <div class="flex flex-wrap">
-        @foreach ($articles as $article)
-        <livewire:browser.articles.article-display-small :article="$article" :key="$article->id" />
-        @endforeach
-      </div>
+
+    <div class="flex-1 flex flex-col">
+      @foreach ($articles as $article)
+      <livewire:browser.articles.article-display-small :article="$article" :key="$article->id" />
+      @endforeach
     </div>
+
   </div>
 
   <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between">

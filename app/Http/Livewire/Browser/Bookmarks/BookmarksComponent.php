@@ -6,9 +6,16 @@ use Livewire\Component;
 
 class BookmarksComponent extends Component
 {
+  public $type;
+
   protected $listeners = [
     'bookmarkRefresh' => '$refresh',
   ];
+
+  public function mount($type)
+  {
+    $this->type = $type;
+  }
 
   public function render()
   {

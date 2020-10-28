@@ -5,21 +5,20 @@
 @endsection
 
 @section('content')
-<div class="container mx-auto article-show">
+<div class="container mx-auto article-show mt-10">
   <div class="flex justify-center mb-4">
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
-      <div class="title mb-4">
-        <h1 class="text-left py-4">{{ $article->title }}</h1>
-        <img src="{{ $article->image_link }}" alt="">
-        <div class="text-left py-4 text-black font-light">
-          <span>by</span> <span class="font-medium"><a
-              href="{{ $article->author_link }}">{{ $article->author->full_name ?? 'Anonymous' }}</a></span>
-          <span class="px-2">|</span>
-          <span class="">{{ date_to_human($article->publish_date,'d F Y') }}</span>
-          <span class="px-2">|</span>
-          <span class="">{{ $article->read_minutes }}</span>
+      <div class="title">
+        <h1 class="text-left mb-4 font-normal font-serif text-3xl lg:text-4xl xl:text-5xl">{{ $article->title }}</h1>
+        <div class="text-left mb-10 font-light text-gray-700 text-sm space-x-4">
+          <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
+                class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
+          <span class=""><i
+              class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
+          <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
         </div>
-        <p class="text-lg font-light text-black py-4">{{ $article->description }}</p>
+        <img class="mb-4" src="{{ $article->image_link }}" alt="">
+        <p class="text-lg text-black">{{ $article->description }}</p>
       </div>
     </div>
   </div>
@@ -43,25 +42,25 @@
             <div class="mb-2 font-semibold">
               <label class="">Share</label>
             </div>
-            <a href="{{ $article->share['facebook'] }}" target="_blank">
+            <a class="facebook-color" href="{{ $article->share['facebook'] }}" target="_blank">
               <div class="social-container">
                 <i class="fab fa-facebook-f text-sm"></i>
               </div>
             </a>
 
-            <a href="{{ $article->share['twitter'] }}" target="_blank">
+            <a class="twitter-color" href="{{ $article->share['twitter'] }}" target="_blank">
               <div class="social-container">
                 <i class="fab fa-twitter text-sm"></i>
               </div>
             </a>
 
-            <a href="{{ $article->share['linkedin'] }}" target="_blank">
+            <a class="linkedin-color" href="{{ $article->share['linkedin'] }}" target="_blank">
               <div class="social-container">
                 <i class="fab fa-linkedin-in text-sm"></i>
               </div>
             </a>
 
-            <a href="{{ $article->share['whatsapp'] }}" target="_blank">
+            <a class="whatsapp-color" href="{{ $article->share['whatsapp'] }}" target="_blank">
               <div class="social-container">
                 <i class="fab fa-whatsapp text-sm"></i>
               </div>
@@ -92,7 +91,7 @@
       @endif
 
       @elseif ($section->type == 'paragraph')
-      <div class="">
+      <div class="mb-4">
         <p class="">{!! $section->data->text !!}</p>
       </div>
 
@@ -106,7 +105,7 @@
 
 
       @elseif ($section->type == 'delimiter')
-      <div class="text-2xl text-center py-6">
+      <div class="text-2xl text-center mb-4">
         • • •
       </div>
 
@@ -120,23 +119,23 @@
       </div>
 
       @elseif ($section->type == 'raw')
-      <div>
+      <div class="mb-4">
         {!! $section->data->html !!}
       </div>
 
       @elseif ($section->type == 'image')
-      <div>
+      <div class="mb-4">
         <img src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
       </div>
 
       @elseif ($section->type == 'quote')
-      <blockquote class="border-l-2 border-gray-700 p-6 my-4">
+      <blockquote class="border-l-2 border-gray-700 p-6 mb-4">
         <p>{!! $section->data->text !!}</p>
         <p class="font-bold text-right">{!! '- ' . $section->data->caption !!}</p>
       </blockquote>
 
       @elseif ($section->type == 'warning')
-      <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+      <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mb-4" role="alert">
         <p class="font-bold">{!! $section->data->title !!}</p>
         <p>{!! $section->data->message !!}</p>
       </div>
@@ -154,7 +153,7 @@
       <div class="post-action flex justify-between items-center pb-4">
         <div class="flex text-gray-800">
           <div class="mr-4 flex items-center">
-            <livewire:browser.partials.like-component :likeableId="$article->id" :key="$article->id" :label="'likes'" />
+            <livewire:browser.partials.like-component :likeableId="$article->id" :key="$article->id" :label="'like'" />
           </div>
           {{-- <div class="mr-4 flex items-center">
             <i class="text-xl p-1 px-2 far fa-comment"></i>
@@ -166,19 +165,24 @@
             </div>
           </div>
         </div>
-        <div class="flex text-gray-800">
-          <a class="pl-4" href="{{ $article->share['facebook'] }}" target="_blank">
-            <i class="text-lg fab fa-facebook-square"></i>
-          </a>
-          <a class="pl-4" href="{{ $article->share['twitter'] }}" target="_blank">
-            <i class="text-lg fab fa-twitter"></i>
-          </a>
-          <a class="pl-4" href="{{ $article->share['linkedin'] }}" target="_blank">
-            <i class="text-lg fab fa-linkedin"></i>
-          </a>
-          <a class="pl-4" href="{{ $article->share['whatsapp'] }}" target="_blank">
-            <i class="text-lg fab fa-whatsapp-square"></i>
-          </a>
+        <div x-data="{showIcon:false}" class="flex items-center align-middle">
+          <div x-show.transition.right="showIcon" class="flex text-gray-800 border-r border-black pr-2">
+            <a class="pl-4 facebook-color" href="{{ $article->share['facebook'] }}" target="_blank">
+              <i class="text-lg fab fa-facebook-square"></i>
+            </a>
+            <a class="pl-4 twitter-color" href="{{ $article->share['twitter'] }}" target="_blank">
+              <i class="text-lg fab fa-twitter"></i>
+            </a>
+            <a class="pl-4 linkedin-color" href="{{ $article->share['linkedin'] }}" target="_blank">
+              <i class="text-lg fab fa-linkedin"></i>
+            </a>
+            <a class="pl-4 whatsapp-color" href="{{ $article->share['whatsapp'] }}" target="_blank">
+              <i class="text-lg fab fa-whatsapp-square"></i>
+            </a>
+          </div>
+
+          <i @click="showIcon = !showIcon" class="pl-2 cursor-pointer text-lg text-black fas fa-share-square"></i>
+
         </div>
       </div>
 
@@ -260,7 +264,7 @@
     <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
       <label>Artikel Lain</label>
     </div>
-    <div class="block space-x-0 lg:flex lg:space-x-6">
+    <div class="blcok space-x-0 lg:flex lg:space-x-6">
       <livewire:browser.articles.articles-display-medium :articles="$article->more_articles" />
     </div>
   </div>

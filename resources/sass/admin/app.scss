@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
-// $fa-font-path: '~@fortawesome/fontawesome-free/webfonts'; 
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-// @import '~@fortawesome/fontawesome-free/scss/solid';
-// @import '~@fortawesome/fontawesome-free/scss/regular';
-
 @tailwind base;
 
 html,body{
@@ -29,6 +24,12 @@ h5, h6          { font-weight: bolder }
 
 @tailwind components; 
 @tailwind utilities;
+
+//fontawesome-free
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 .card{
   @apply rounded overflow-hidden shadow-lg p-6 bg-white mb-6;

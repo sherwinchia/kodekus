@@ -1,4 +1,4 @@
-<div class=" h-full" x-data="{drop:false}">
+<div class=" h-full" x-data="{drop:true}">
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
@@ -11,49 +11,51 @@
           <i class="fas fa-caret-down" x-show="drop"></i>
         </div>
       </div>
-      <div x-show="drop" class="py-4 border-b" x-transition:enter="transition ease-out duration-1000"
-        x-transition:enter-start="opacity-0 transform scale-100"
-        x-transition:enter-end="opacity-100 transform scale-100" x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-100">
+      <div x-show.transition.origin.top="drop" class="py-4 ">
         <div class="flex flex-col">
-          <div class="comment-display mb-4">
+          <div class="comment-display">
             <ul>
               @foreach ($comments as $comment)
               {{-- {{ dd($comment->replies) }} --}}
-              <li class="py-2">
-                <div class="bg-gray-100 border rounded-md">
-                  <div class="flex justify-between items-center p-4">
-                    <div class="font-semibold">
-                      {{ $comment->name }}
+              <li class="my-4 border-b border-gray-200">
+                <div class="flex flex-col  pb-4">
+                  <div class="flex align-middle items-center">
+                    <div class="flex align-middle items-center rounded-full bg-red-500 w-16 h-16" style="background-image: url({{ $comment->user ? $comment->user->profile->image_link : asset('images/placeholder/no-profile.png') }}); background-size: cover; background-position:
+                      50%;">
                     </div>
-                    <div class="font-light text-sm">
-                      {{ date_to_human($comment->created_at, 'd M Y') }}
+                    <div class="flex flex-col ml-4">
+                      <span class="text-black font-normal">{{ $comment->name }}</span>
+                      <span class="text-gray-800 font-light text-sm ">
+                        {{ date_to_human($comment->created_at, 'd M Y H:i') }}
+                      </span>
+                      <a class="cursor-pointer underline text-sm" wire:click="reply({{ $comment->id }})">Reply</a>
                     </div>
                   </div>
-                  <div class="bg-white p-4">
-                    <p style=" overflow-wrap: break-word;">
-                      {{ $comment->content}}
-                    </p>
-                    <a class="cursor-pointer underline" wire:click="reply({{ $comment->id }})">Reply</a>
+
+                  <div>
+                    <p class="ml-16 pl-4 mt-2" style=" overflow-wrap: break-word;">{{ $comment->content}}</p>
                   </div>
                 </div>
+
                 @if ($comment->replies)
-                <ul class="m-2 ml-6 mr-0 ">
+                <ul class="m-2 ml-10 mr-0">
                   @foreach ($comment->replies()->latest()->where('approved', 1)->get() as $reply)
-                  <li class="mb-2 border rounded-md">
-                    <div class="flex justify-between items-center bg-gray-100  p-4">
-                      <div class="font-semibold">
-                        {{ $reply->name }}
+                  <li class="my-4">
+                    <div class="flex flex-col pb-4">
+                      <div class="flex align-middle items-center">
+                        <div class="flex align-middle items-center rounded-full bg-red-500 w-16 h-16" style="background-image: url({{ $reply->user ? $reply->user->profile->image_link : asset('images/placeholder/no-profile.png') }}); background-size: cover; background-position:
+                          50%;">
+                        </div>
+                        <div class="flex flex-col ml-4">
+                          <span class="text-black font-normal">{{ $reply->name }}</span>
+                          <span class="text-gray-800 font-light text-sm ">
+                            {{ date_to_human($reply->created_at, 'd M Y H:i') }}
+                          </span>
+                        </div>
                       </div>
-                      <div class="font-light text-sm">
-                        {{ date_to_human($reply->created_at, 'd M Y') }}
+                      <div>
+                        <p class="ml-16 pl-4" style=" overflow-wrap: break-word;">{{ $reply->content}}</p>
                       </div>
-                    </div>
-                    <div class="bg-white p-4">
-                      <p style=" overflow-wrap: break-word;">
-                        {{ $reply->content }}
-                      </p>
                     </div>
                   </li>
                   @endforeach
@@ -62,7 +64,8 @@
               </li>
               @endforeach
             </ul>
-            <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between p-2">
+            @if (!$comments->isEmpty())
+            <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p class="text-sm leading-5">
                   <span>Menampilkan</span>
@@ -78,10 +81,10 @@
                 {{ $comments->links() }}
               </div>
             </div>
+            @endif
           </div>
-          <div class="comment-form flex flex-col">
+          <div id="comment-form" class="comment-form flex flex-col p-4 border border-gray-300 rounded mt-4">
             <h5 class="font-bold text-lg uppercase text-black">Tulis komentar</h5>
-
             @if ($reply_stage == true)
             <div>
               <span>Replying to </span>
@@ -90,7 +93,7 @@
             </div>
             @endif
             @if (!Auth::check())
-            <div class="input-group flex space-x-2">
+            <div class="input-group flex space-x-4">
               <div class="w-1/2">
                 <label for="name">Nama</label>
                 <input wire:model.lazy="name"
@@ -108,19 +111,21 @@
             </div>
             @endif
             <div class="input-group w-full">
-              <label for="content">Isi</label>
+              <label for="content">Komentar</label>
               <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
                 placeholder="Mulai ketik pesan disini..."></textarea>
               @error('content') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
             </div>
             <div>
               @if ($success_message)
-              <span class="text-green-600 font-normal">{{ $success_message }}</span>
+              <span class="text-green-600 font-normal mb-2">{{ $success_message }}</span>
               @endif
-              <button class="px-4 py-2 bg-white border-black border text-black rounded w-full tracking-wide"
-                wire:loading.attr="disabled" wire:click="submit">Kirim
-              </button>
-              <span wire:loading wire:target="submit">Loading ...</span>
+              <div class="flex justify-end">
+                <button class="px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
+                  wire:loading.attr="disabled" wire:click="submit">Kirim
+                </button>
+              </div>
+              {{-- <span wire:loading wire:target="submit">Loading ...</span> --}}
             </div>
           </div>
         </div>
@@ -128,3 +133,13 @@
     </li>
   </ul>
 </div>
+
+@section('scripts')
+
+<script>
+  window.livewire.on('scrollToCommentForm', event => {
+    document.getElementById('comment-form').scrollIntoView({behavior: 'smooth'});
+  })
+</script>
+
+@endsection
