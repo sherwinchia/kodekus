@@ -67,6 +67,9 @@ class CommentComponent extends Component
       $this->comment_name = $comment->name;
       $this->reply_stage = true;
     }
+
+    $this->emit('scrollToCommentForm');
+    
   }
 
   public function cancelReply()
@@ -79,22 +82,22 @@ class CommentComponent extends Component
   {
     $data = $this->validate($this->rules);
 
-    $data['approved'] = true;
+    $data['approved'] = false;
 
     if ($this->reply_stage) {
       $data['comment_id'] = $this->comment_id;
-      $reply = Reply::create($data);
-      $this->success_message = 'Balasan anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
+      $model = Reply::create($data);
     } else {
       $data['commentable_id'] = $this->article->id;
       $data['commentable_type'] = self::article_model;
-
-      $comment = Comment::create($data);
-      $this->success_message = 'Komen anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
+      $model = Comment::create($data);
     }
-  
-    // $this->name = null;
-    // $this->email = null;
+    
+    if ($model->approved == 0) {
+      $this->success_message = 'Balasan anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
+    }
+
+
     $this->content = null;
     $this->comment_id = null;
     $this->reply_stage = false;

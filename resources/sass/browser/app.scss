@@ -1,13 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
-// $fa-font-path: '~@fortawesome/fontawesome-free/webfonts'; 
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-// @import '~@fortawesome/fontawesome-free/scss/solid';
-// @import '~@fortawesome/fontawesome-free/scss/regular';
-
 @tailwind base;
 
-html,body{
+body{
   padding: 0;
   color : black;
 }
@@ -38,10 +33,16 @@ h5, h6          { font-weight: bolder }
 @import 'partials/_swiper-js';
 @import 'partials/_navbar';
 @import 'partials/_card';
+@import 'partials/_social_color';
 @import 'partials/_search-component';
 @import 'partials/_article-component';
-@import 'partials/bookmark-component';
+@import 'partials/_bookmark-component';
 
+//Fontawesome
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 
 

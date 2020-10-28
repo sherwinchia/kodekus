@@ -74,6 +74,11 @@ class User extends Authenticatable
       return $this->hasOne('App\Models\Profile');
     }
 
+    public function getAuthorLinkAttribute()
+    {
+      return route('browser.authors.show', $this->profile->slug);
+    }
+
     public function getDescriptionForEvent(string $eventName): string
     {
         return $this->name . " has been {$eventName}";

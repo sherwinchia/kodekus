@@ -54,7 +54,7 @@
             {{ $article->title }}
           </td>
           <td>
-            {{ date_to_human($article->publish_date) }}
+            {{ date_to_human($article->publish_date , 'd F Y') }}
           </td>
           <td class="non-id text-center">
             @if ($article->published)

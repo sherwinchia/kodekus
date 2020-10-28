@@ -1,7 +1,8 @@
 .input-group{
   label{
     display: block;
-    font-size: .875rem;
+    font-size: 1rem;
+    margin-bottom: .2rem;
   }
 
   input[type='text'], 
@@ -11,7 +12,7 @@
   input[type='datetime-local'],  
   select, 
   textarea{
-    @apply shadow border-black py-2 px-3 outline-none border mb-2 bg-white;
+    @apply border-gray-300 py-2 px-3 outline-none border mb-2 bg-white;
   }
 
   input[type='text']:focus, 
@@ -21,7 +22,7 @@
   input[type='datetime-local']:focus, 
   select:focus, 
   textarea:focus{
-    @apply border-black;
+    @apply border-gray-500;
   }
   
 }

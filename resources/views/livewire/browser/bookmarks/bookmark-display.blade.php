@@ -10,20 +10,29 @@
       <p class="description text-sm">{{ $bookmarkable->description }}</p>
     </a>
     <div>
+      @if ($type != 'home')
       <div class="tags flex-wrap hidden lg:flex">
         @foreach ($bookmarkable->tags as $tag)
         <a class=" w-auto" href="{{ $tag->tag_link }}">
-          <div class=" py-1 px-2 text-xs  rounded-sm border border-black text-black text-xs mr-2 mb-2">#
+          <div class=" py-1 px-2 text-xs  rounded-sm border border-black text-black mr-2 mb-2">#
             {{ $tag->name }}
           </div>
         </a>
         @endforeach
       </div>
-      <div class="flex items-center text-black text-sm">
-        <span class="">{{ date_to_human( $bookmarkable->publish_date,'d F') }}</span>
-        <span class="px-2">|</span>
-        <span class="">{{  $bookmarkable->read_minutes }}</span>
-        <span class="px-2">|</span>
+      @endif
+      <div class="flex items-center text-gray-800 font-light text-sm ">
+        <span class="hidden lg:inline-block mr-4">
+          <a class="text-black font-normal" href="{{ $bookmarkable->author->author_link }}">
+            <i class="pr-2 far fa-user"></i>{{ $bookmarkable->author->full_name }}
+          </a>
+        </span>
+        @if ($type!='home')
+        <span class="mr-4">
+          <i class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $bookmarkable->publish_date,'F d') }}</span>
+        <span class="hidden lg:inline-block mr-4">
+          <i class="pr-2 far fa-clock"></i>{{  $bookmarkable->read_minutes }}</span>
+        @endif
         <span class="">
           <livewire:browser.partials.bookmark-component :bookmarkableId="$bookmarkable->id" :key="$bookmarkable->id" />
         </span>

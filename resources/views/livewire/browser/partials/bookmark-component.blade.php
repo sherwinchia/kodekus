@@ -1,8 +1,8 @@
 <div class="flex items-center">
-  <div class="bookmark text-lg">
+  <div class="bookmark font-light">
     <button class="p-1 px-2 outline-none" wire:click="bookmark({{ $bookmarkableId }})" wire:loading.attr="disabled">
       @if (current_user() ? current_user()->bookmarked($article_model ,$bookmarkableId) : false)
-      <i class="fas fa-bookmark cursor-pointer"></i>
+      <i class=" text-gray-700 fas fa-bookmark cursor-pointer"></i>
       @else
       <i class="far fa-bookmark cursor-pointer"></i>
       @endif
