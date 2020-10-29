@@ -35,11 +35,14 @@ Route::get('home','Home\HomeController@index')->name('home.index');
 //Root
 Route::get('/','Root\RootController@index')->name('root.index');
 
+//Activation
+Route::get('activation/{token}', 'Auth\AuthController@activateAccount')->name('auth.activation');
 
 Route::middleware('guest:web')->group(function(){
   Route::get('auth','Auth\AuthController@show')->name('auth.show');
   Route::get('sign-in/{provider}', 'Auth\SocialiteController@redirect')->name('login.socialite');
   Route::get('sign-in/{provider}/callback', 'Auth\SocialiteController@handleCallback')->name('login.socialite.callback');
+  Route::get('reset-password/{token}', 'Auth\AuthController@showResetPasswordForm')->name('auth.reset.show');
 });
 
 //Root

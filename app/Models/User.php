@@ -74,6 +74,10 @@ class User extends Authenticatable
       return $this->hasOne('App\Models\Profile');
     }
 
+    public function tokens() {
+      return $this->hasMany('App\Models\VerificationToken');
+    }
+
     public function getAuthorLinkAttribute()
     {
       return route('browser.authors.show', $this->profile->slug);
@@ -84,9 +88,13 @@ class User extends Authenticatable
         return $this->name . " has been {$eventName}";
     }
 
-
     public function isAdmin(){        
       return $this->role === self::ADMIN_ROLE;    
+    }
+
+    public function getIsActivatedAttribute() {
+      $token = $this->tokens()->where('type', 'EMAIL_VERIFICATION')->whereNotNull('validated_at')->first();
+      return $token ? true : false;
     }
 
     public function bookmarked($type, $id)
