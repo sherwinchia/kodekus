@@ -34,6 +34,7 @@
 }
 
 .article-sm{
+  @apply flex mb-4 items-center;
   .info{
     @apply flex flex-col;
     .title{

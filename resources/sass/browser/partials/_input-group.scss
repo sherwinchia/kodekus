@@ -10,9 +10,11 @@
   input[type='email'], 
   input[type='password'], 
   input[type='datetime-local'],  
+  input[type='date'],  
+  input[type='number'],  
   select, 
   textarea{
-    @apply border-gray-300 py-2 px-3 outline-none border mb-2 bg-white;
+    @apply border-gray-300 py-2 px-3 outline-none border mb-1 bg-white;
   }
 
   input[type='text']:focus, 
@@ -20,9 +22,19 @@
   input[type='email']:focus, 
   input[type='password']:focus, 
   input[type='datetime-local']:focus, 
+  input[type='date']:focus,  
+  input[type='number']:focus,  
   select:focus, 
   textarea:focus{
     @apply border-gray-500;
   }
   
+}
+
+.error-msg{
+  @apply text-xs text-red-600 italic;
+}
+
+.success-msg{
+  @apply text-xs text-green-600 italic;
 }

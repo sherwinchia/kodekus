@@ -36,7 +36,7 @@ class AuthController extends Controller
   public function logout()
   {
     Auth::guard('web')->logout();
-	  return redirect()->route('browser.home.index');
+	  return redirect()->back();
   }
   
   public function showResetPasswordForm($token)

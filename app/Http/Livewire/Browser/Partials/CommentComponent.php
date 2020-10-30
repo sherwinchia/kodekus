@@ -80,9 +80,10 @@ class CommentComponent extends Component
 
   public function submit()
   {
+    $this->success_message = null;
     $data = $this->validate($this->rules);
 
-    $data['approved'] = false;
+    $data['approved'] = true;
 
     if ($this->reply_stage) {
       $data['comment_id'] = $this->comment_id;

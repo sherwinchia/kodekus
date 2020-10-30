@@ -129,7 +129,7 @@
       </div>
 
       @elseif ($section->type == 'quote')
-      <blockquote class="border-l-2 border-gray-700 p-6 mb-4">
+      <blockquote class="border-l-2 border-gray-700 p-6 mb-4 italic">
         <p>{!! $section->data->text !!}</p>
         <p class="font-bold text-right">{!! '- ' . $section->data->caption !!}</p>
       </blockquote>
@@ -166,22 +166,22 @@
           </div>
         </div>
         <div x-data="{showIcon:false}" class="flex items-center align-middle">
-          <div x-show.transition.right="showIcon" class="flex text-gray-800 border-r border-black pr-2">
+          <div x-show.transition.right="showIcon" class="flex text-xl  border-r border-black pr-4">
             <a class="pl-4 facebook-color" href="{{ $article->share['facebook'] }}" target="_blank">
-              <i class="text-lg fab fa-facebook-square"></i>
+              <i class="fab fa-facebook-square"></i>
             </a>
             <a class="pl-4 twitter-color" href="{{ $article->share['twitter'] }}" target="_blank">
-              <i class="text-lg fab fa-twitter"></i>
+              <i class="fab fa-twitter"></i>
             </a>
             <a class="pl-4 linkedin-color" href="{{ $article->share['linkedin'] }}" target="_blank">
-              <i class="text-lg fab fa-linkedin"></i>
+              <i class="fab fa-linkedin"></i>
             </a>
             <a class="pl-4 whatsapp-color" href="{{ $article->share['whatsapp'] }}" target="_blank">
-              <i class="text-lg fab fa-whatsapp-square"></i>
+              <i class="fab fa-whatsapp-square"></i>
             </a>
           </div>
 
-          <i @click="showIcon = !showIcon" class="pl-2 cursor-pointer text-lg text-black fas fa-share-square"></i>
+          <i @click="showIcon = !showIcon" class="pl-4 cursor-pointer  text-gray-700 fas fa-share-square"></i>
 
         </div>
       </div>
@@ -259,7 +259,7 @@
   </div>
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center mb-4 ">
   <div class="w-11/12 lg:w-12/12 xl:w-12/12">
     <div class="border-b border-gray-300 mb-4 font-semibold text-xl py-2">
       <label>Artikel Lain</label>

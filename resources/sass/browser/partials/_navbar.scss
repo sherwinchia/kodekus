@@ -9,11 +9,9 @@
   box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
 
   .search-box{
-    @apply flex items-center relative ;
+    @apply flex items-center justify-center relative ;
 
-    input{
-      @apply outline-none pr-4 border-b border-black ;
-    }
+
 
     i{
       @apply text-sm text-black cursor-pointer;
