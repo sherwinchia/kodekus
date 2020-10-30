@@ -8,7 +8,7 @@
       <div class="card-body">
         <form wire:submit.prevent="updateProfile" class="flex flex-wrap">
           <div class="input-group w-full">
-            <label for="image">Image</label>
+            <label for="image">Profile Image</label>
             <img class="w-64 h-48 mx-auto object-contain overflow-hidden"
               src="{{ $temp_image ? $temp_image->temporaryUrl() : (isset($user) ? $user->profile->image_link: null) }}"
               alt="">
@@ -27,12 +27,13 @@
           </div>
           <div class="input-group w-1/2 pr-2">
             <label for="phone_number">Phone Number</label>
-            <input wire:model="phone_number" type="number">
+            <input wire:model="phone_number" type="text"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');">
             @error('phone_number') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div class="input-group w-1/2 pl-2">
             <label for="email">Email</label>
-            <input wire:model="email" type="email">
+            <input wire:model="email" type="email" disabled>
             @error('email') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div class="input-group w-1/2 pr-2">

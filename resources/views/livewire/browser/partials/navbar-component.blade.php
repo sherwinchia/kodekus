@@ -38,9 +38,9 @@
         </div>
         <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2">
           <div class="search-box space-x-2">
+            <input x-show.transition="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
+              class="text-md font-light border border-gray py-2 px-3" placeholder="Cari">
             <i @click="searchExpand = !searchExpand" class="fas fa-search pr-2"></i>
-            <input x-show="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
-              class="text-sm font-light" placeholder="Cari">
           </div>
           <div class="flex items-center space-x-4">
             @guest
@@ -52,12 +52,12 @@
             @auth
             <div class="flex flex-col justify-end relative" @mouseexit="profileDropdown = false">
               <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
-              <div class="absolute bg-white p-3 border border-black w-32 flex flex-col"
-                style="bottom:-7rem; left:-6rem;" x-show="profileDropdown" @click.away="profileDropdown = false">
-                <a class="pb-2">{{ current_user()->full_name }}</a>
+              <div class=" absolute bg-white p-3 border border-black w-40 flex flex-col shadow"
+                style="top:40px; right:0;" x-show="profileDropdown" @click.away="profileDropdown = false">
+                <span class="pb-2">{{ current_user()->full_name }}</span>
                 <div class="border-b border-black mb-2"></div>
-                <a href="{{ route('browser.profile.show') }}">Profile</a>
-                <a href="{{ route('browser.logout') }}">Logout</a>
+                <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.profile.show') }}">Profile</a>
+                <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.logout') }}">Logout</a>
               </div>
             </div>
             @endauth
@@ -67,18 +67,28 @@
       </div>
     </div>
   </div>
-  <div x-show.transition.origin.top="menuDropdown" class="" @click.away="menuDropdown = !menuDropdown">
-    <div class="flex justify-center px-4">
-      <a href="{{ route('browser.home.index') }}" class="px-3 py-2 rounded-md text-sm font-light uppercase">Home</a>
-      <a href="{{ route('browser.search.index') }}"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-light uppercase">Search</a>
-      <a href="{{ route('browser.series.index') }}"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-light uppercase">Series</a>
-      <div class="ml-6 search-box">
-        <input x-show="searchExpand" wire:model.debounce.300ms="search" type="text" class="text-sm font-light"
-          placeholder="Cari">
-        <i @click="searchExpand = !searchExpand" class="fas fa-search"></i>
+  <div x-show.transition.origin.top="menuDropdown" class="pb-4">
+    <div class="flex flex-col justify-center">
+      <div class="flex justify-center">
+        <a href="{{ route('browser.home.index') }}" class="px-3  rounded-md text-sm font-light uppercase">Home</a>
+        <a href="{{ route('browser.search.index') }}" class=" px-3  rounded-md text-sm font-light uppercase">Search</a>
+        <a href="{{ route('browser.series.index') }}" class=" px-3  rounded-md text-sm font-light uppercase">Series</a>
       </div>
+      @auth
+      <div class="flex justify-center mt-4">
+        <a href="{{ route('browser.profile.show') }}" class="px-3 rounded-md text-sm font-light uppercase">Profile</a>
+        <a href="{{ route('browser.logout') }}" class="px-3 rounded-md text-sm font-light uppercase">Logout</a>
+      </div>
+      @endauth
+
+      @guest
+      <div class="flex justify-center mt-4">
+        <a class="px-3 rounded-md text-sm font-light uppercase"
+          href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
+        <a class="px-3 rounded-md text-sm uppercase font-semibold"
+          href="{{ route('browser.auth.show', ['type' => 'register']) }}">Register</a>
+      </div>
+      @endguest
     </div>
   </div>
 </nav>

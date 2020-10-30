@@ -81,7 +81,7 @@ h5, h6          { font-weight: bolder }
 }
 
 .error-msg{
-  @apply text-sm text-red-600;
+  @apply text-red-600 text-xs italic;
 }
 
 .navbar-list{

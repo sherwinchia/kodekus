@@ -24,17 +24,20 @@
               <div class="flex flex-wrap">
                 @foreach ($article->tags as $tag)
                 <a class="w-auto" href="{{ $tag->tag_link }}">
-                  <div class="py-1 px-2 text-sm rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
+                  <div class="py-1 px-2 rounded-sm border border-black text-black text-xs mr-2 mb-2">#
+                    {{ $tag->name }}</div>
                 </a>
                 @endforeach
               </div>
-              <div class="extra">
+              <div class="extra flex justify-between">
                 <div class="flex items-center text-gray-700 font-light text-sm space-x-4">
                   <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
                         class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
                   <span class=""><i
                       class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
-                  <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
+                  {{-- <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span> --}}
+                </div>
+                <div>
                   <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
                 </div>
               </div>

@@ -22,7 +22,7 @@
           <div class="flex flex-col w-full ">
             @foreach ($categories as $category)
             <a href="{{ $category->category_link }}"
-              class="  text-black p-2 cursor-pointer text-md hover:bg-gray-100 flex justify-between">
+              class="  text-black p-2 cursor-pointer text-md hover:bg-gray-200 flex justify-between">
               <span>{{ $category->name }}</span>
               <span>
                 {{ $category->articles->count() }}
@@ -42,8 +42,8 @@
           </div>
           <div class=" flex flex-wrap">
             @foreach ($tags as $tag)
-            <a class="w-auto cursor-pointer mr-2" href="{{ $tag->tag_link }}">
-              <div class="py-1 px-2 rounded-sm border border-black text-black text-sm mb-2">#
+            <a class="w-auto cursor-pointer mr-2 " href="{{ $tag->tag_link }}">
+              <div class="py-1 px-2 rounded-sm border border-black text-black text-sm mb-2 ">#
                 {{ $tag->name }}
               </div>
             </a>
@@ -57,10 +57,10 @@
         <div class="mb-8 h-full">
           <div class="">
             {{-- right-sticky --}}
-            <livewire:browser.bookmarks.bookmarks-component type="home" />
             @if (!current_user() || (current_user() && !current_user()->subscribeToNewsletter()))
-            <livewire:browser.partials.subscribe-component />
+            {{-- <livewire:browser.partials.subscribe-component /> --}}
             @endif
+            <livewire:browser.bookmarks.bookmarks-component type="home" />
           </div>
         </div>
       </div>

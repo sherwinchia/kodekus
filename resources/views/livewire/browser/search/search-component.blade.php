@@ -6,8 +6,8 @@
       <i class="fas fa-search"></i>
     </div>
 
-    <div class="input-group flex items-center mb-2 md:space-x-4">
-      <div class="w-3/12 flex flex-col">
+    <div class="input-group flex items-center justify-between mb-2 md:space-x-4">
+      <div class="w-4/12 flex flex-col">
         <label for="category">Kategori</label>
         <select wire:model.debounce.300ms="category" name="category">
           <option disabled>Pilih salah satu kategori</option>
@@ -17,7 +17,7 @@
           @endforeach
         </select>
       </div>
-      <div class="w-3/12 flex flex-col">
+      <div class="w-4/12 flex flex-col">
         <label for="tag">Topik</label>
         <select wire:model.debounce.300ms="tag" name="tag">
           <option disabled>Pilih salah satu topik</option>

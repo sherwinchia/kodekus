@@ -22,7 +22,7 @@
           </label>
           <input class="" wire:model="password" type="password" placeholder="******************">
           @if ($errors->any())
-          <p class="text-red-500 text-xs italic mb-1">{{ $errors->first() }}</p>
+          <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
         </div>
         <button id="signin-btn" wire:loading.attr="disabled"
@@ -97,7 +97,7 @@
           </label>
           <input class="" wire:model="password_confirmation" type="password" placeholder="******************">
           @if ($errors->any())
-          <p class="text-red-500 text-xs italic mb-1">{{ $errors->first() }}</p>
+          <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
         </div>
         <button id="register-btn" wire:loading.attr="disabled"
@@ -144,7 +144,7 @@
           </label>
           <input class="" wire:model="forgotPasswordEmail" type="text" placeholder="john_doe@gmail.com">
           @if ($errors->any())
-          <p class="text-red-500 text-xs italic mb-1">{{ $errors->first() }}</p>
+          <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
           @if ($forgotPasswordMessage)
           <p class="text-green-500 text-xs italic mb-1">{{ $forgotPasswordMessage }}</p>

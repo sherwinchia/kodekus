@@ -1,36 +1,46 @@
-<footer class="pt-4">
-  <div class="border-black border-t p-2 flex justify-center">
-    &#169; Copyright 2020 Ko&#60;\ing&#62;
-  </div>
-  {{-- <div class="hidden lg:flex justify-center space-x-3 text-lg items-center p-2">
+<footer class="pt-4 border-black border-t">
+  <div class="hidden lg:flex justify-center space-x-3 text-lg items-center p-2">
     <a class="facebook-color" href="">
-      <i class="fab fa-facebook-square"></i>
+      <div class="social-container">
+        <i class="fab fa-facebook"></i>
+      </div>
     </a>
     <a class="twitter-color" href="">
-      <i class="fab fa-twitter-square"></i>
+      <div class="social-container">
+        <i class="fab fa-twitter"></i>
+      </div>
     </a>
     <a class="instagram-color" href="">
-      <i class="fab fa-instagram-square"></i>
+      <div class="social-container">
+        <i class="fab fa-instagram"></i>
+      </div>
     </a>
     <a class="youtube-color" href="">
-      <i class="fab fa-youtube"></i>
+      <div class="social-container">
+        <i class="fab fa-youtube"></i>
+      </div>
     </a>
     <a class="discord-color" href="">
-      <i class="fab fa-discord"></i>
+      <div class="social-container">
+        <i class="fab fa-discord"></i>
+      </div>
     </a>
   </div>
   <div class="hidden lg:flex justify-center space-x-3  p-2">
-    <a href="">
+    <a href="{{ route('browser.home.index') }}">
       Home
     </a>
-    <a href="">
+    <a href="{{ route('browser.search.index') }}">
       Series
     </a>
     <a href="">
       Faq
     </a>
-    <a href="">
+    <a href="{{ route('browser.about.index') }}">
       About
     </a>
-  </div> --}}
+  </div>
+  <div class="py-4 flex justify-center">
+    &#169; Copyright 2020 Ko&#60;\ing&#62;
+  </div>
 </footer>

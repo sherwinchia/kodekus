@@ -1,4 +1,4 @@
-<div class=" h-full" x-data="{drop:true}">
+<div class=" h-full" x-data="{drop:false}">
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
@@ -99,14 +99,14 @@
                 <input wire:model.lazy="name"
                   class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
                   placeholder="John Doe">
-                @error('name') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
+                @error('name') <span class="error-msg">{{ $message }}</span> @enderror
               </div>
               <div class="w-1/2">
                 <label for="email">Email</label>
                 <input wire:model.lazy="email"
                   class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
                   placeholder="john_doe@gmail.com">
-                @error('email') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
+                @error('email') <span class="error-msg">{{ $message }}</span> @enderror
               </div>
             </div>
             @endif
@@ -114,15 +114,18 @@
               <label for="content">Komentar</label>
               <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
                 placeholder="Mulai ketik pesan disini..."></textarea>
-              @error('content') <span class="text-red-600 font-normal">{{ $message }}</span> @enderror
             </div>
             <div>
+              @error('content') <span class="error-msg">{{ $message }}</span> @enderror
               @if ($success_message)
               <span class="text-green-600 font-normal mb-2">{{ $success_message }}</span>
               @endif
               <div class="flex justify-end">
-                <button class="px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
+                <button id="comment-btn"
+                  class="flex justify-center items-center px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
                   wire:loading.attr="disabled" wire:click="submit">Kirim
+                  <span wire:loading wire:target="submit"
+                    class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 ml-2"></span>
                 </button>
               </div>
               {{-- <span wire:loading wire:target="submit">Loading ...</span> --}}
