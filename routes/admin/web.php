@@ -48,6 +48,9 @@ Route::middleware(['admin.auth:admin'])->group(function () {
   //Permission
   Route::resource('permissions','Permission\PermissionController')->name('*','permissions')->only('index','create','edit');
 
+  //Guard
+  Route::resource('guards','Guard\GuardController')->name('*','guards')->only('index','create','edit');
+
   //Advertisement
   Route::resource('advertisements','Advertisement\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
   

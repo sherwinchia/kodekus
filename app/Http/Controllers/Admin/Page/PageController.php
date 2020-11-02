@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Page;
 
-use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
@@ -12,5 +13,10 @@ class PageController extends Controller
   public function index()
   {
     return view(self::PATH .'index');
+  }
+
+  public function edit(Page $page)
+  {
+    return view(self::PATH .'edit', compact('page'));
   }
 }

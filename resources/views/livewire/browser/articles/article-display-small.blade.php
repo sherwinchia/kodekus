@@ -4,8 +4,8 @@
   </div>
   <div class="w-32 h-32 sm:w-40 sm:h-40 md:w-40 md:h-40 lg:w-48 lg:h-48 flex-1 info justify-center">
     <a class="mb-2" href="{{ $article->article_link }}">
-      <h3 class="title">{{ $article->title }}</h3>
-      <p class="description text-gray-700">{{ $article->description }}</p>
+      <h4 class="title">{{ $article->title }}</h4>
+      <p class="description">{{ $article->description }}</p>
     </a>
     <div>
       <div class="tags flex-wrap hidden lg:flex">
@@ -18,7 +18,7 @@
         @endforeach
       </div>
       <div class="flex items-center text-gray-800 font-light text-sm ">
-        <span class="hidden lg:inline-block mr-4">
+        <span class="hidden md:inline-block mr-4">
           <a class="text-black font-normal" href="{{ $article->author->author_link }}">
             <i class="pr-2 far fa-user"></i>{{ $article->author->full_name }}
           </a>

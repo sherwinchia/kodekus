@@ -15,6 +15,7 @@ class User extends Authenticatable
     protected static $logName = 'User';
 
     const ADMIN_ROLE = 'admin';
+    const CONTENT_WRITER_ROLE = 'content-writer';
 
     /**
      * The attributes that are mass assignable.

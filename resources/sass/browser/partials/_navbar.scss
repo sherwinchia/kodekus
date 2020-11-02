@@ -8,13 +8,14 @@
   -moz-box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
   box-shadow: 0px 1px 12px -22px rgba(0,0,0,0.72);
 
+
   .search-box{
-    @apply flex items-center justify-center relative ;
-
-
+    @apply flex items-center relative;
 
     i{
-      @apply text-sm text-black cursor-pointer;
+      @apply text-xl absolute text-gray-700 right-0 cursor-pointer;
+      right: 1rem;
+      top: .8rem;
     }
   }
 }

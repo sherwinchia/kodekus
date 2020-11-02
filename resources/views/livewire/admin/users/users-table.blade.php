@@ -22,8 +22,9 @@
             @include('admin.layouts.partials.sort-icon', ['field'=>'id'])
           </th>
           <th class="text-left">
-            <a wire:click.prevent="sortBy('name')" role="button">Name</a>
-            @include('admin.layouts.partials.sort-icon', ['field'=>'name'])
+            Name
+            {{-- <a wire:click.prevent="sortBy('first_name')" role="button">Name</a> --}}
+            {{-- @include('admin.layouts.partials.sort-icon', ['field'=>'name']) --}}
           </th>
           <th class="text-left">
             <a wire:click.prevent="sortBy('role')" role="button">Role</a>

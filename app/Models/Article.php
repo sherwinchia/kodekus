@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Share;
-use App\Models\Article;
 
 class Article extends Model
 {
@@ -25,7 +24,8 @@ class Article extends Model
     'published', 
     'featured', 
     'trending',
-    'read_minutes'
+    'read_minutes',
+    'author_id'
   ];
 
   public function tags()
@@ -139,7 +139,21 @@ class Article extends Model
     return route('browser.authors.show', $this->author->profile->slug);
   }
 
-  public function getUnapprovedCommentsCountAttribute(Type $var = null)
+  public function getTotalCommentsAttribute()
+  {
+    $count = 0;
+    $comments = $this->comments;
+
+    $count += $comments->where('approved', 1)->count();
+
+    foreach ($comments as $comment) {
+      $count += $comment->replies()->where('approved', 1)->count();
+    }
+
+    return $count;
+  }
+
+  public function getUnapprovedCommentsCountAttribute()
   {
     return $this->comments()->where('approved', 0)->count();
   }

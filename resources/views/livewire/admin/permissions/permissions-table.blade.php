@@ -25,6 +25,10 @@
             <a wire:click.prevent="sortBy('name')" role="button">Name</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'name'])
           </th>
+          <th class="text-left">
+            <a wire:click.prevent="sortBy('guard_name')" role="button">Guard</a>
+            @include('admin.layouts.partials.sort-icon', ['field'=>'guard_name'])
+          </th>
           <th>
             Action
           </th>
@@ -42,6 +46,9 @@
           </td>
           <td class="non-id">
             {{ $permission->name }}
+          </td>
+          <td class="non-id">
+            {{ $permission->guard_name }}
           </td>
           <td class="non-id">
             <div class="flex justify-center text-gray-600">

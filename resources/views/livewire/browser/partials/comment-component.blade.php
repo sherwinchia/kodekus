@@ -1,10 +1,9 @@
 <div class=" h-full" x-data="{drop:false}">
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
-      <div @click="drop = !drop"
-        class="flex justify-between cursor-pointer py-4 text-black inline-block border-t border-b">
+      <div @click="drop = !drop" class="flex justify-between cursor-pointer py-4 text-black border-t border-b">
         <div>
-          <h5 class="font-bold text-lg uppercase text-black">Komentar {{ $comments->total() }}</h5>
+          <h3 class="font-bold text-lg uppercase text-black">Balasan ({{ $article->total_comments }})</h3>
         </div>
         <div>
           <i class="fas fa-caret-down fa-rotate-90" x-show="!drop"></i>
@@ -24,7 +23,11 @@
                       50%;">
                     </div>
                     <div class="flex flex-col ml-4">
+                      @if ($comment->user)
                       <span class="text-black font-normal">{{ $comment->name }}</span>
+                      @else
+                      <span class="text-black font-normal">{{ $comment->name }} (guest)</span>
+                      @endif
                       <span class="text-gray-800 font-light text-sm ">
                         {{ date_to_human($comment->created_at, 'd M Y H:i') }}
                       </span>
@@ -47,7 +50,11 @@
                           50%;">
                         </div>
                         <div class="flex flex-col ml-4">
+                          @if ($reply->user)
                           <span class="text-black font-normal">{{ $reply->name }}</span>
+                          @else
+                          <span class="text-black font-normal">{{ $reply->name }} (guest)</span>
+                          @endif
                           <span class="text-gray-800 font-light text-sm ">
                             {{ date_to_human($reply->created_at, 'd M Y H:i') }}
                           </span>
@@ -66,75 +73,74 @@
             </ul>
             @if (!$comments->isEmpty())
             <div class="flex flex-col justify-center sm:flex-row sm:items-center sm:justify-between">
-              <div>
+              {{-- <div>
                 <p class="text-sm leading-5">
                   <span>Menampilkan</span>
                   <span class="font-medium">{{ $comments->firstItem() }}</span>
-                  <span>sampai</span>
-                  <span class="font-medium">{{ $comments->lastItem() }}</span>
-                  <span>dari</span>
-                  <span class="font-medium">{{ $comments->total() }}</span>
-                  <span>komentar</span>
-                </p>
-              </div>
-              <div>
-                {{ $comments->links() }}
-              </div>
+              <span>sampai</span>
+              <span class="font-medium">{{ $comments->lastItem() }}</span>
+              <span>dari</span>
+              <span class="font-medium">{{ $comments->total() }}</span>
+              <span>komentar</span>
+              </p>
+            </div> --}}
+            <div>
+              {{ $comments->links() }}
             </div>
-            @endif
           </div>
-          <div id="comment-form" class="comment-form flex flex-col p-4 border border-gray-300 rounded mt-4">
-            <h5 class="font-bold text-lg uppercase text-black">Tulis komentar</h5>
-            @if ($reply_stage == true)
-            <div>
-              <span>Replying to </span>
-              <span class="font-semibold">{{ $comment_name }}</span>
-              <a class="cursor-pointer underline" wire:click="cancelReply">Cancel</a>
+          @endif
+        </div>
+        <div id="comment-form" class="comment-form flex flex-col p-4 border border-gray-300 rounded mt-4">
+          <h5 class="font-bold text-lg uppercase text-black">Tulis balasan</h5>
+          @if ($reply_stage == true)
+          <div>
+            <span>Replying to </span>
+            <span class="font-semibold">{{ $comment_name }}</span>
+            <a class="cursor-pointer underline" wire:click="cancelReply">Cancel</a>
+          </div>
+          @endif
+          @if (!Auth::check())
+          <div class="input-group flex space-x-4">
+            <div class="w-1/2">
+              <label for="name">Nama</label>
+              <input wire:model.lazy="name"
+                class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
+                placeholder="John Doe">
+              @error('name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
+            <div class="w-1/2">
+              <label for="email">Email</label>
+              <input wire:model.lazy="email"
+                class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
+                placeholder="john_doe@gmail.com">
+              @error('email') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </div>
+          @endif
+          <div class="input-group w-full">
+            <label for="content">Isi</label>
+            <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
+              placeholder="Mulai ketik pesan disini..."></textarea>
+          </div>
+          <div>
+            @error('content') <span class="error-msg">{{ $message }}</span> @enderror
+            @if ($success_message)
+            <span class="text-green-600 font-normal mb-2">{{ $success_message }}</span>
             @endif
-            @if (!Auth::check())
-            <div class="input-group flex space-x-4">
-              <div class="w-1/2">
-                <label for="name">Nama</label>
-                <input wire:model.lazy="name"
-                  class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
-                  placeholder="John Doe">
-                @error('name') <span class="error-msg">{{ $message }}</span> @enderror
-              </div>
-              <div class="w-1/2">
-                <label for="email">Email</label>
-                <input wire:model.lazy="email"
-                  class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
-                  placeholder="john_doe@gmail.com">
-                @error('email') <span class="error-msg">{{ $message }}</span> @enderror
-              </div>
-            </div>
-            @endif
-            <div class="input-group w-full">
-              <label for="content">Komentar</label>
-              <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
-                placeholder="Mulai ketik pesan disini..."></textarea>
-            </div>
-            <div>
-              @error('content') <span class="error-msg">{{ $message }}</span> @enderror
-              @if ($success_message)
-              <span class="text-green-600 font-normal mb-2">{{ $success_message }}</span>
-              @endif
-              <div class="flex justify-end">
-                <button id="comment-btn"
-                  class="flex justify-center items-center px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
-                  wire:loading.attr="disabled" wire:click="submit">Kirim
-                  <span wire:loading wire:target="submit"
-                    class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 ml-2"></span>
-                </button>
-              </div>
-              {{-- <span wire:loading wire:target="submit">Loading ...</span> --}}
+            <div class="flex justify-end">
+              <button id="comment-btn"
+                class="flex justify-center items-center px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
+                wire:loading.attr="disabled" wire:click="submit">Kirim
+                <span wire:loading wire:target="submit"
+                  class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 ml-2"></span>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </li>
-  </ul>
+</div>
+</li>
+</ul>
 </div>
 
 @section('scripts')

@@ -15,6 +15,19 @@
           </section>
           <section>
             <div class="input-group">
+              <label for="guard">Guard</label>
+              <select wire:model="guard_name" wire:change="guardChange" type="text">
+                <option value="null" disabled>Select one guard</option>
+                @foreach ($guards as $guard)
+                <option value="{{ $guard->name }}">{{ $guard->name  }}</option>
+                @endforeach
+              </select>
+              @error('guard_name') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
+          @if ($defaultPermissions)
+          <section>
+            <div class="input-group">
               <label for="permission">Permission</label>
               @foreach ($defaultPermissions as $key => $permission)
               <div class="flex justify-between mb-2">
@@ -25,6 +38,8 @@
               @endforeach
             </div>
           </section>
+          @endif
+
         </div>
         <div>
           @if ($errors->any())

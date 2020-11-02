@@ -67,7 +67,7 @@
     </li>
 
     <li class="navbar-list pr-0"
-      x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
+      x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*')|| request()->is('admin/guards*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
       <a class="flex-col justify-between items-center cursor-pointer" @click="authenticationDrop=!authenticationDrop">
         <div>
           <i class="fas fa-user-lock w-8 text-lg "></i>
@@ -103,6 +103,14 @@
             <div class="w-full">
               <i class="fas fa-key w-8 text-lg "></i>
               <span class="font-roboto text-md ">Permissions</span>
+            </div>
+          </a>
+        </li>
+        <li class="{{ request()->is('admin/guards*') ? 'navbar-active-list' : 'navbar-list' }} ">
+          <a class="flex-col justify-between items-center" href="{{ route('admin.guards.index') }}">
+            <div class="w-full">
+              <i class="fas fa-shield-alt w-8 text-lg "></i>
+              <span class="font-roboto text-md ">Guards</span>
             </div>
           </a>
         </li>

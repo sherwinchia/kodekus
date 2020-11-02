@@ -9,28 +9,62 @@
           <section>
             <div class="input-group">
               <label for="first_name">First Name</label>
-              <input wire:model="first_name" type="text" id="first_name" maxlength="80">
+              <input wire:model="first_name" wire:input="nameAdded" type="text">
               @error('first_name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </section>
           <section>
             <div class="input-group">
               <label for="last_name">Last Name</label>
-              <input wire:model="last_name" type="text" id="last_name" maxlength="80">
+              <input wire:model="last_name" wire:input="nameAdded" type="text">
               @error('last_name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </section>
 
           <section>
             <div class="input-group">
+              <label for="slug">Slug</label>
+              <input wire:model="slug" type="text">
+              @error('slug') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
+
+          @if ($edit)
+          <section>
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input wire:model="email" type="email" disabled>
+              @error('email') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
+          @else
+          <section>
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input wire:model="email" type="email">
+              @error('email') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
+          @endif
+
+          <section>
+            <div class="input-group">
               <label for="name">Role</label>
               <select wire:model="role">
-                <option selected disabled>Choose one role</option>
+                <option value="null" disabled>Choose one role</option>
                 @foreach ($roles as $role)
                 <option>{{ $role->name }}</option>
                 @endforeach
               </select>
               @error('role') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
+
+          <section>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input wire:model="password" type="password">
+              @error('password') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </section>
 

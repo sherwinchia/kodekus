@@ -1,5 +1,19 @@
+@php
+$footer = App\Models\Page::where('name', 'Footer')->first();
+$footer = json_decode($footer->content);
+@endphp
+
+{{-- {{ dd($footer->socials) }} --}}
+
 <footer class="pt-4 border-black border-t">
   <div class="hidden lg:flex justify-center space-x-3 text-lg items-center p-2">
+    {{-- @foreach ($footer->socials as $social)
+    <a style="color:{{ $social->color ?? 'black' }};" href="{{ $social->link ?? '#' }}">
+    <div class="social-container">
+      <i class="{{ $social->icon ?? '' }}"></i>
+    </div>
+    </a>
+    @endforeach --}}
     <a class="facebook-color" href="">
       <div class="social-container">
         <i class="fab fa-facebook"></i>

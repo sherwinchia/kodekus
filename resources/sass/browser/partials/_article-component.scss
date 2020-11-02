@@ -19,6 +19,7 @@
     }
 
     .description{
+      @apply text-sm;
       max-height: 3rem;
       line-height: 1.5rem;
       display: block;
@@ -48,6 +49,7 @@
     }
 
     .description{
+      @apply text-sm;
       height: 3rem;
       line-height: 1.5rem;
       display: block;

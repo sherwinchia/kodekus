@@ -3,21 +3,22 @@
 @tailwind base;
 
 body{
+  @apply font-roboto;
   padding: 0;
-  color : black;
+  color : black;;
 }
 
 button{
   padding: .5rem;
 }
 
-h1              { font-size: 2em; }
-h2              { font-size: 1.5em; }
-h3              { font-size: 1.17em;  }
-h5              { font-size: .83em;  }
-h6              { font-size: .75em; }
-h1, h2, h3, h4,
-h5, h6          { font-weight: bolder }
+// h1              { font-size: 2em; }
+// h2              { font-size: 1.5em; }
+// h3              { font-size: 1.17em;  }
+// h5              { font-size: .83em;  }
+// h6              { font-size: .75em; }
+// h1, h2, h3, h4,
+// h5, h6          { font-weight: bolder }
 
 @tailwind components; 
 @tailwind utilities;
@@ -38,6 +39,7 @@ h5, h6          { font-weight: bolder }
 @import 'partials/_search-component';
 @import 'partials/_article-component';
 @import 'partials/_bookmark-component';
+@import 'partials/comment-component';
 
 //Fontawesome
 @import '~@fortawesome/fontawesome-free/scss/brands';

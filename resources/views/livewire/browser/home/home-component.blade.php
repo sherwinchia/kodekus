@@ -82,9 +82,10 @@
         } else {
             document.querySelector(".navbar").style.top = "-22%";
         }
+
         prevScrollpos = currentScrollPos;
 
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
           window.livewire.emit('home-load-more');
         }
       }

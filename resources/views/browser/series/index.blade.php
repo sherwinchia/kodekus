@@ -9,7 +9,7 @@
 <div class="search container bg-white mx-auto p-4">
   <div class="flex flex-col">
     @foreach ($series as $_series)
-    <h1 class="p-2">{{ $_series->name }}</h1>
+    <h1 class="p-2 text-lg font-semibold">{{ $_series->name }}</h1>
     <div class="swiper-container">
       <div class="swiper-wrapper mb-6">
         @foreach ($_series->articles()->latest('publish_date')->get() as $article)
@@ -18,7 +18,7 @@
             <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
             <div class=" info">
               <a class="h-24 overflow-hidden mb-2" href="{{ $article->article_link }}">
-                <p class="title font-semibold">{{ $article->title }}</p>
+                <p class="title">{{ $article->title }}</p>
                 <p class="description">{{ $article->description }}</p>
               </a>
               <div class="flex flex-wrap">

@@ -13,6 +13,18 @@
               @error('name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </section>
+          <section>
+            <div class="input-group">
+              <label for="guard">Guard</label>
+              <select wire:model="guard_name" type="text">
+                <option value="null" disabled>Select one guard</option>
+                @foreach ($guards as $guard)
+                <option value="{{ $guard->name }}">{{ $guard->name  }}</option>
+                @endforeach
+              </select>
+              @error('guard_name') <span class="error-msg">{{ $message }}</span> @enderror
+            </div>
+          </section>
 
         </div>
         <div>
