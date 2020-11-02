@@ -34,7 +34,7 @@
     <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
     <div class=" info">
       <a class="h-24 overflow-hidden mb-2" href="{{ $article->article_link }}">
-        <p class="font-semibold">{{ $article->title }}</p>
+        <h4 class="title">{{ $article->title }}</h4>
         <p class="description">{{ $article->description }}</p>
       </a>
       <div class="flex flex-wrap">
@@ -45,12 +45,14 @@
         @endforeach
       </div>
       <div class="extra">
-        <div class="flex items-center text-gray-700 font-light text-sm space-x-4">
-          <span><a href="{{ $article->author->author_link }}"><i
-                class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
-          <span class=""><i
-              class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
-          <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
+        <div class="flex items-center text-gray-700 font-light text-sm  justify-between">
+          <div class="flex space-x-4">
+            <span><a href="{{ $article->author->author_link }}"><i
+                  class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
+            <span class=""><i
+                class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
+            <span class="hidden xl:inline-block"><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
+          </div>
           <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
         </div>
       </div>

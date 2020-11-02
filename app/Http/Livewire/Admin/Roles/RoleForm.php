@@ -2,39 +2,45 @@
 
 namespace App\Http\Livewire\Admin\Roles;
 
+use App\Models\Guard;
+use Livewire\Component;
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
-use Livewire\Component;
 
 class RoleForm extends Component
 {
   public $role;
 
   public $name;
+  public $guard_name;
   public $permissionsId = [];
 
   public $edit;
   public $defaultPermissions;
+  public $guards;
 
   public $buttonText = 'Create';
 
   protected $rules = [
     'name' => 'required|max:80',
+    'guard_name' => 'required'
   ];
 
 
   public function mount($roleId=null)
   { 
-    $this->defaultPermissions = Permission::all();
+    $this->guards = Guard::all();
     $this->edit = isset($roleId) ? true : false;
 
     if(isset($roleId)){
       $this->role = Role::findOrFail($roleId);
       $this->name = $this->role->name;
+      $this->guard_name = $this->role->guard_name;
       $this->buttonText = 'Update';
+      $this->defaultPermissions = Permission::where('guard_name', $this->guard_name)->get();
 
-      $currentPermissions = Role::findByName($this->role->name)->permissions->pluck('id')->toArray();
+      $currentPermissions = Role::findByName($this->role->name, $this->guard_name)->permissions->pluck('id')->toArray();
 
       foreach ($this->defaultPermissions as $key => $permission) {
         if (in_array($permission->id, $currentPermissions)) {
@@ -44,11 +50,17 @@ class RoleForm extends Component
     }
   }
 
+  public function guardChange()
+  {
+    $this->defaultPermissions = Permission::where('guard_name', $this->guard_name)->get();
+  }
+
   public function submit()
   {
     if ($this->edit) {
       $data = $this->validate([
-        'name' => 'required|max:80'
+        'name' => 'required|max:80',
+        'guard_name' => 'required'
       ]);
     } else {
       $data = $this->validate($this->rules);
@@ -71,6 +83,7 @@ class RoleForm extends Component
     }else{
       $role = Role::create([
         'name' => $this->name,
+        'guard_name' => $this->guard_name,
       ]);
 
       $permissions = [];

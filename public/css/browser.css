@@ -593,37 +593,13 @@ video {
 }
 
 body {
+  font-family: Roboto, sans-serif;
   padding: 0;
   color: black;
 }
 
 button {
   padding: 0.5rem;
-}
-
-h1 {
-  font-size: 2em;
-}
-
-h2 {
-  font-size: 1.5em;
-}
-
-h3 {
-  font-size: 1.17em;
-}
-
-h5 {
-  font-size: 0.83em;
-}
-
-h6 {
-  font-size: 0.75em;
-}
-
-h1, h2, h3, h4,
-h5, h6 {
-  font-weight: bolder;
 }
 
 .container{
@@ -24202,16 +24178,19 @@ h5, h6 {
 .navbar .search-box {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: relative;
 }
 
 .navbar .search-box i {
-  font-size: 0.875rem;
+  font-size: 1.25rem;
+  position: absolute;
   --text-opacity: 1;
-  color: #000;
-  color: rgba(0, 0, 0, var(--text-opacity));
+  color: #4a5568;
+  color: rgba(74, 85, 104, var(--text-opacity));
+  right: 0;
   cursor: pointer;
+  right: 1rem;
+  top: 0.8rem;
 }
 
 footer .social-container {
@@ -24363,6 +24342,7 @@ footer .social-container {
 }
 
 .article-md .info .description {
+  font-size: 0.875rem;
   max-height: 3rem;
   line-height: 1.5rem;
   display: block;
@@ -24402,6 +24382,7 @@ footer .social-container {
 }
 
 .article-sm .info .description {
+  font-size: 0.875rem;
   height: 3rem;
   line-height: 1.5rem;
   display: block;

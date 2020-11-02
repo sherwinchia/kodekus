@@ -1,0 +1,12 @@
+.article-form{
+  .article-right{
+    @apply bg-white border-l;
+    width: 400px;
+    section{
+      @apply py-2 px-3 border-b rounded;
+    }
+    section:hover{
+      background-color: rgb(231, 239, 245);
+    }
+  }
+}

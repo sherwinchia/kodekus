@@ -21,7 +21,7 @@
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
             <h2>Ko&#60;\ing&#62;</h2>
           </a>
-          <div class="hidden sm:flex items-center space-x-6">
+          <div class="hidden sm:flex items-center space-x-6 text-sm">
             <a href="{{ route('browser.home.index') }}"
               class=" {{ request()->is('home') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               Home
@@ -37,15 +37,15 @@
           </div>
         </div>
         <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2">
-          <div class="search-box space-x-2">
+          <div class="search-box space-x-2 input-group">
             <input x-show.transition="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
               class="text-md font-light border border-gray py-2 px-3" placeholder="Cari">
             <i @click="searchExpand = !searchExpand" class="fas fa-search pr-2"></i>
           </div>
-          <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-4 text-sm">
             @guest
             <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
-            <a class="border border-black p-2 rounded"
+            <a class="border border-black py-1 px-2 rounded"
               href="{{ route('browser.auth.show', ['type' => 'register']) }}">Register</a>
             @endguest
 

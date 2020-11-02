@@ -7,7 +7,7 @@
     </div>
     <div class="flex-1 info justify-between">
       <a class="mb-2" href="{{ $article->article_link }}">
-        <h3 class="title">{{ $article->title }}</h3>
+        <h4 class="title">{{ $article->title }}</h4>
         <p class="description">{{ $article->description }}</p>
       </a>
       <div>

@@ -9,7 +9,8 @@
   <div class="flex justify-center mb-4">
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       <div class="title">
-        <h1 class="text-left mb-4 font-normal font-serif text-3xl lg:text-4xl xl:text-5xl">{{ $article->title }}</h1>
+        <h1 class="text-left mb-4 font-semibold text-3xl lg:text-4xl xl:text-5xl">
+          {{ $article->title }}</h1>
         <div class="text-left mb-10 font-light text-gray-700 text-sm space-x-4">
           <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
                 class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>

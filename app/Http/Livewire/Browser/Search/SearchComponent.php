@@ -61,7 +61,7 @@ class SearchComponent extends Component
 
   public function update()
   {
-    $articles = Article::where('publish_date','<=',now())->where('published',1);
+    $articles = Article::where('publish_date','<=',now())->where('published',1)->latest();
 
     if ($this->search !== '') {
       $articles = $articles->where('title', 'LIKE', "%{$this->search}%");

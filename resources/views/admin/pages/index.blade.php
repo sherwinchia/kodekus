@@ -5,12 +5,12 @@
 @endsection
 
 @section('breadcrumbs')
-{{ Breadcrumbs::render('admin.comments.index') }}
+{{ Breadcrumbs::render('admin.pages.index') }}
 @endsection
 
 @section('content')
 <div class="flex-1 flex flex-col p-8">
-  {{-- <livewire:admin.comments.comments-table> --}}
+  <livewire:admin.pages.pages-table>
 </div>
 
 @endsection

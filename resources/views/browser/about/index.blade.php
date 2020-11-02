@@ -7,7 +7,7 @@
 @section('content')
 <div class="my-auto">
   <div class=" flex justify-center items-center mb-10">
-    <h1>About {{ config('app.name') }}</h1>
+    <h1 class="text-lg font-bold uppercase">About {{ config('app.name') }}</h1>
   </div>
   <div class="container bg-white mx-auto p-4">
     <div class="flex flex-col">

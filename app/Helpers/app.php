@@ -1,4 +1,7 @@
 <?php
+
+  use Illuminate\Support\Facades\Auth;
+  use Carbon\Carbon;
   use App\Models\Article;
   use App\Models\Profile;
 

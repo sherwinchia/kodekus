@@ -2,15 +2,17 @@
 
 namespace App\Http\Livewire\Admin\Partials;
 
-use Livewire\Component;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Models\Article;
 use App\Models\Tag;
 use App\Models\User;
-use App\Models\Category;
-use App\Models\Comment;
+use App\Models\Guard;
 use App\Models\Reply;
+use App\Models\Series;
+use App\Models\Article;
+use App\Models\Comment;
+use Livewire\Component;
+use App\Models\Category;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DeleteModalComponent extends Component
 {
@@ -98,6 +100,11 @@ class DeleteModalComponent extends Component
 
       case 'reply':
         $reply = Reply::find($id);
+        $reply->delete();
+        break;
+      
+      case 'guard':
+        $reply = Guard::find($id);
         $reply->delete();
         break;
       

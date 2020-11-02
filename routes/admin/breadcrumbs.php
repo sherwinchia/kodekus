@@ -1,5 +1,7 @@
 <?php
 
+use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
+
 // Dashboard
 Breadcrumbs::for('admin.dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('admin.dashboard.index'));
@@ -141,6 +143,23 @@ $trail->parent('admin.permissions.index');
   $trail->push($permission->name);
 });
 
+// Guards
+Breadcrumbs::for('admin.guards.index', function ($trail) {
+  $trail->push('Guards', route('admin.guards.index'));
+});
+
+// Guards > Create
+Breadcrumbs::for('admin.guards.create', function ($trail) {
+  $trail->parent('admin.guards.index');
+  $trail->push('Create');
+});
+
+// Guards > Edit
+Breadcrumbs::for('admin.guards.edit', function ($trail, $guard) {
+  $trail->parent('admin.guards.index');
+  $trail->push($guard->name);
+});
+
 // Logs
 Breadcrumbs::for('admin.logs.index', function ($trail) {
   $trail->push('Logs', route('admin.logs.index'));
@@ -162,6 +181,17 @@ Breadcrumbs::for('admin.advertisements.edit', function ($trail, $advertisement) 
 $trail->parent('admin.advertisements.index');
   $trail->push($advertisement->name);
 });
+
+// Pages
+Breadcrumbs::for('admin.pages.index', function ($trail) {
+  $trail->push('Pages', route('admin.pages.index'));
+});
+
+// Pages > Edit
+Breadcrumbs::for('admin.pages.edit', function ($trail, $page) {
+  $trail->parent('admin.pages.index');
+    $trail->push($page->name);
+  });
 
 // Profile > Edit
 Breadcrumbs::for('admin.profile.edit', function ($trail, $user) {

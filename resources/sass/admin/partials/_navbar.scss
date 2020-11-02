@@ -1,0 +1,45 @@
+.navbar-list{
+  @apply  p-2 pl-4 my-1 mx-2 rounded-lg; 
+
+  a{
+    i{
+      @apply text-gray-500;
+    }
+    span{
+      @apply text-gray-500;
+      i{
+        @apply text-gray-500;
+      }
+    }
+  }
+}
+
+.navbar-list:hover{
+  @apply bg-dark-100; 
+  a{
+    i{
+      @apply text-white;
+    }
+    span{
+      @apply text-white;
+      i{
+        @apply text-white;
+      }
+    }
+  }
+}
+
+.navbar-active-list{
+  @apply bg-primary p-2 pl-4 my-1 mx-2 rounded-lg; 
+  a{
+    i{
+      @apply text-white;
+    }
+    span{
+      @apply text-white;
+      i{
+        @apply text-white;
+      }
+    }
+  }
+}
