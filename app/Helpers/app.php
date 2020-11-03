@@ -35,7 +35,7 @@
     }
 
     if(Profile::where('slug', $slug)->exists()){
-      $this->generate_profile_slug();
+      generate_profile_slug();
     }
     
     return $slug;

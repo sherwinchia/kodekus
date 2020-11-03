@@ -93,6 +93,10 @@ class User extends Authenticatable
       return $this->role === self::ADMIN_ROLE;    
     }
 
+    public function isContentWriter(){        
+      return $this->role === self::CONTENT_WRITER_ROLE;    
+    }
+
     public function getIsActivatedAttribute() {
       $token = $this->tokens()->where('type', 'EMAIL_VERIFICATION')->whereNotNull('validated_at')->first();
       return $token ? true : false;
