@@ -1,4 +1,4 @@
-<nav x-cloack x-data="{menuDropdown : false, searchExpand : false, profileDropdown: false}"
+<nav x-cloack x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
   class="navbar bg-white border-b border-gray-500">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
@@ -34,14 +34,18 @@
               class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
               Series
             </a>
+            <a href="{{ route('browser.search.index') }}"
+              class=" {{ request()->is('search*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              Search
+            </a>
           </div>
         </div>
         <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2">
-          <div class="search-box space-x-2 input-group">
+          {{-- <div class="search-box space-x-2 input-group">
             <input x-show.transition="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
               class="text-md font-light border border-gray py-2 px-3" placeholder="Cari">
             <i @click="searchExpand = !searchExpand" class="fas fa-search pr-2"></i>
-          </div>
+          </div> --}}
           <div class="flex items-center space-x-4 text-sm">
             @guest
             <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>

@@ -63,7 +63,7 @@
           <section>
             <div class="input-group">
               <label for="password">Password</label>
-              <input wire:model="password" type="password">
+              <input wire:model="password" type="text">
               @error('password') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </section>

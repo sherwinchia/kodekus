@@ -45,7 +45,7 @@ class UserForm extends Component
       $this->user = User::findOrFail($userId);
       $this->email = $this->user->email;
       $this->first_name = $this->user->profile->first_name;
-      $this->last_name = $this->user->profile->last_name;
+    $this->last_name = $this->user->profile->last_name;
       $this->slug = $this->user->profile->slug;
 
       $this->role = $this->user->role;
@@ -63,6 +63,12 @@ class UserForm extends Component
       $slug = preg_replace('/[^A-Za-z0-9\-]/', "",$slug);
       $this->slug = $slug;
     } 
+  }
+
+  public function generatePassword()
+  {
+    // $this->password = substr(md5(microtime()),rand(0,26),8);
+    $this->password = chr(rand() > 0.5 ? rand(65, 90) : rand(97,122));
   }
 
   public function submit()
@@ -86,6 +92,9 @@ class UserForm extends Component
       $this->user->profile->update($data);
       $this->user->syncRoles($role);
 
+      $permissions = $this->user->getPermissionsViaRoles();
+      $this->user->syncPermissions($permissions);
+
       session()->flash('success', 'User successfully updated.');
       return redirect()->route('admin.users.index');
     }else{
@@ -101,7 +110,10 @@ class UserForm extends Component
         'last_name' => $data['last_name'],
         'slug' => $data['slug']
       ]);
+
       $user->syncRoles($role);
+      $permissions = $user->getPermissionsViaRoles();
+      $user->syncPermissions($permissions);
 
       session()->flash('success', 'User successfully created.');
       return redirect()->route('admin.users.index');

@@ -115,7 +115,7 @@ class ArticleForm extends Component
 
     $this->read_minutes = $readMinutes;
 
-    $this->author_id = 1;
+    $this->author_id = current_user()->id;
 
     if ($this->edit) {
       $data = $this->validate([

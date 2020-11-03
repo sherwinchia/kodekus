@@ -66,6 +66,7 @@
       </ul>
     </li>
 
+    @can('admin', 'admin')
     <li class="navbar-list pr-0"
       x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*')|| request()->is('admin/guards*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
       <a class="flex-col justify-between items-center cursor-pointer" @click="authenticationDrop=!authenticationDrop">
@@ -78,6 +79,7 @@
           </span>
         </div>
       </a>
+
       <ul class="my-2 transform origin-top-left" x-show="authenticationDrop"
         x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 scale-75"
         x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition-all ease-in duration-200"
@@ -116,7 +118,7 @@
         </li>
       </ul>
     </li>
-
+    @endcan
 
     <li class="navbar-list pr-0 "
       x-data="{advancedDrop:{{ (request()->is('admin/files*') || request()->is('admin/backups*') || request()->is('admin/logs*')) ? 'true' : 'false' }}}">
@@ -169,6 +171,7 @@
       </div>
     </a>
   </li>
+
 
   <li class="{{ request()->is('admin/pages*') ? 'navbar-active-list' : 'navbar-list' }}">
     <a class="flex-col justify-between items-center" href="{{ route('admin.pages.index') }}">

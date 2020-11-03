@@ -23,8 +23,8 @@ class LoginForm extends Component
     $data = $this->validate($this->rules);
 
 	  if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
-      $admin = auth()->guard('admin')->user();
-			if ($admin->isAdmin()) {
+      $user = auth()->guard('admin')->user();
+			if ($user->isAdmin() || $user->isContentWriter()) {
         return redirect()->intended(route('admin.welcome'));
 
       }
