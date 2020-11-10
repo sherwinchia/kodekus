@@ -79,11 +79,16 @@ class UserForm extends Component
         'last_name' => 'nullable|max:80',
         'role' => 'required',
         'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:profiles,slug,'.$this->user->profile->id,
+        'password' => 'nullable',
       ]);
     } else {
       $data = $this->validate($this->rules);
     }
     
+    if ($data['password']) {
+      $data['password'] = Hash::make($data['password']);
+    }
+
     $role = Role::where('name',$this->role)->first();
     $data['role'] = $role->name;
 
@@ -101,7 +106,7 @@ class UserForm extends Component
       $user = User::create([
         'role' => $role->name,
         'email' => $data['email'],
-        'password' => Hash::make($data['password'])
+        'password' => $data['password']
       ]);
 
       $profile = Profile::create([

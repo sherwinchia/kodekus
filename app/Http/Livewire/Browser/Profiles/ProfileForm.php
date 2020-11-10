@@ -65,7 +65,7 @@ class ProfileForm extends Component
       'last_name' => 'nullable|string',
       'phone_number' => 'nullable|numeric',
       'birthdate' => 'nullable|date',
-      'temp_image' => 'image|max:2048|nullable',
+      'temp_image' => 'image|max:1024|nullable',
     ]);
 
     if (is_object($data['temp_image'])) {

@@ -22,11 +22,13 @@
       </div>
       @endif
       <div class="flex items-center text-gray-800 font-light text-sm ">
-        <span class="hidden lg:inline-block mr-4">
+        {{-- <span class="hidden lg:inline-block mr-4">
           <a class="text-black font-normal" href="{{ $bookmarkable->author->author_link }}">
-            <i class="pr-2 far fa-user"></i>{{ $bookmarkable->author->full_name }}
-          </a>
-        </span>
+        <i class="pr-2 far fa-user"></i>{{ $bookmarkable->author->full_name }}
+        </a>
+        </span> --}}
+        <span class="hidden lg:inline-block mr-4">
+          <i class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $bookmarkable->publish_date,'F d') }}</span>
         @if ($type!='home')
         <span class="mr-4">
           <i class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $bookmarkable->publish_date,'F d') }}</span>

@@ -18,6 +18,7 @@ class AuthForm extends Component
   private const TYPE_EMAIL = 'EMAIL_VERIFICATION';
   private const TYPE_PASSWORD = 'PASSWORD_RESET';
   
+  public $full_name;
   public $first_name;
   public $last_name;
   public $email;
@@ -78,13 +79,21 @@ class AuthForm extends Component
 
   public function register()
   {
+    $full_name = $this->split_name($this->full_name);
+    $this->first_name = $full_name[0];
+    $this->last_name = $full_name[1];
+
     $data = $this->validate($this->rules);
 
     $user = User::create([
       'email' => $data['email'],
       'password' => Hash::make($data['password']),
-      'role' => 'user'
     ]);
+
+    $role = Role::where('name','user')->first();
+    $user->syncRoles($role);
+    $permissions = $user->getPermissionsViaRoles();
+    $user->syncPermissions($permissions);
 
     $profile = Profile::create([
       'user_id' => $user->id,
@@ -129,8 +138,15 @@ class AuthForm extends Component
       $sEmail->forgotPassword($user, $vToken);
   
       $this->forgotPasswordMessage = 'The password reset link has been sent successfully.';
+  }
 
- 
+
+  public function split_name($name) 
+  {
+    $name = trim($name);
+    $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+    $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+    return array($first_name, $last_name);
   }
   
   public function render()

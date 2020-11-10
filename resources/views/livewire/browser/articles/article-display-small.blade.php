@@ -17,10 +17,13 @@
         </a>
         @endforeach
       </div>
-      <div class="flex items-center text-gray-800 font-light text-sm ">
+      <div class="flex items-center text-black font-light text-sm items-center align-middle">
+        <div class="hidden md:block rounded-full h-6 w-6 lg:h-8 lg:w-8 bg-white mr-2" style="background-image: url({{  $article->author->profile->image_link }}); background-size: cover; background-position:
+          50%;">
+        </div>
         <span class="hidden md:inline-block mr-4">
           <a class="text-black font-normal" href="{{ $article->author->author_link }}">
-            <i class="pr-2 far fa-user"></i>{{ $article->author->full_name }}
+            {{ $article->author->full_name }}
           </a>
         </span>
         <span class="mr-4">

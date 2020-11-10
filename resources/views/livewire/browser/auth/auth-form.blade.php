@@ -1,32 +1,32 @@
-<div class="flex-1 container mx-auto flex justify-center items-center space-x-10">
+<div class="flex-1 container mx-auto flex justify-center items-center space-x-10 py-10">
 
   @if ($form == 'login')
   <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <div>
-      <label class="block text-gray-700 text-md font-bold mb-6">
-        Login
+      <label class="block text-black text-xl font-bold mb-4">
+        Sign In
       </label>
     </div>
 
     <div class="flex flex-col space-y-2">
       <form class="border-b border-black pb-4 mb-2" wire:submit.prevent="login">
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
+          <label class="text-sm" for="username">
             Email
           </label>
-          <input wire:model="email" type="text" placeholder="Email">
+          <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
         </div>
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="password">
+          <label class="text-sm" for="password">
             Password
           </label>
-          <input class="" wire:model="password" type="password" placeholder="******************">
+          <input wire:model="password" class="w-full" type="password" placeholder="********">
           @if ($errors->any())
           <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
         </div>
         <button id="signin-btn" wire:loading.attr="disabled"
-          class="w-full flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
+          class="w-full my-2 flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
           type="submit">
           Sign In
           <span wire:loading wire:target="login"
@@ -60,48 +60,48 @@
   @if ($form == 'register')
   <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <div>
-      <label class="block text-gray-700 text-md font-bold mb-6">
+      <label class="block text-black text-xl font-bold mb-4">
         Register
       </label>
     </div>
 
     <div class="flex flex-col space-y-2">
       <form class="border-b border-black pb-4 mb-2" wire:submit.prevent="register">
-        <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
+        {{-- <div class="input-group">
+          <label class="text-sm" for="username">
             First Name
           </label>
-          <input wire:model="first_name" type="text" placeholder="First Name">
-        </div>
+          <input wire:model="first_name" class="w-full" type="text" placeholder="First Name">
+        </div> --}}
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
-            Last Name
+          <label class="text-sm" for="full_name">
+            Full Name
           </label>
-          <input wire:model="last_name" type="text" placeholder="Last Name">
+          <input wire:model="full_name" class="w-full" type="text" placeholder="John Doe">
         </div>
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="username">
+          <label class="text-sm" for="username">
             Email
           </label>
-          <input wire:model="email" type="text" placeholder="Email">
+          <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
         </div>
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="password">
+          <label class="text-sm" for="password">
             Password
           </label>
-          <input class="" wire:model="password" type="password" placeholder="******************">
+          <input wire:model="password" class="w-full" type="password" placeholder="********">
         </div>
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="password">
+          <label class="text-sm" for="password">
             Confirm Password
           </label>
-          <input class="" wire:model="password_confirmation" type="password" placeholder="******************">
+          <input wire:model="password_confirmation" class="w-full" type="password" placeholder="********">
           @if ($errors->any())
           <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
         </div>
         <button id="register-btn" wire:loading.attr="disabled"
-          class="w-full flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
+          class="w-full my-2 flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
           type="submit">
           Register
 
@@ -132,17 +132,17 @@
   @if ($form == 'forgot-password')
   <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <div>
-      <label class="block text-gray-700 text-md font-bold mb-6">
-        Forgot Password
+      <label class="block text-black text-xl font-bold mb-4">
+        Reset Password
       </label>
     </div>
     <div class="flex flex-col space-y-2">
       <form class=" pb-4 mb-2" wire:submit.prevent="forgotPassword">
         <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="email">
+          <label class="text-sm" for="email">
             Email
           </label>
-          <input class="" wire:model="forgotPasswordEmail" type="text" placeholder="john_doe@gmail.com">
+          <input class="w-full" wire:model="forgotPasswordEmail" type="text" placeholder="john_doe@gmail.com">
           @if ($errors->any())
           <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
@@ -151,7 +151,7 @@
           @endif
         </div>
         <button id="reset-btn" wire:loading.attr="disabled"
-          class="w-full flex items-center justify-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
+          class="w-full my-2 flex items-center justify-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
           type="submit">
           Reset Password
           <span wire:loading wire:target="forgotPassword"

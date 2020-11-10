@@ -1,60 +1,79 @@
 @php
-$footer = App\Models\Page::where('name', 'Footer')->first();
-$footer = json_decode($footer->content);
+$socials = App\Models\Page::where('name', 'Social')->first();
+$socials = unserialize($socials->content);
 @endphp
 
-{{-- {{ dd($footer->socials) }} --}}
+<footer class="flex justify-center items-center border-black border-t">
+  <div class="container">
+    <div class="flex justify-center lg:justify-between p-4 pt-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4 text-center lg:text-left">Follow {{ config('app.name') }}</h3>
+        <p></p>
+        <div class="flex justify-center space-x-3 text-sm lg:text-normal items-center">
 
-<footer class="pt-4 border-black border-t">
-  <div class="hidden lg:flex justify-center space-x-3 text-lg items-center p-2">
-    {{-- @foreach ($footer->socials as $social)
-    <a style="color:{{ $social->color ?? 'black' }};" href="{{ $social->link ?? '#' }}">
-    <div class="social-container">
-      <i class="{{ $social->icon ?? '' }}"></i>
+          @foreach ($socials as $social)
+          <a style="color:{{ $social['color'] }};" class="text-lg" href="{{ $social['link'] }}">
+            <div class="social-container">
+              <i class="{{ $social['icon'] }}"></i>
+            </div>
+          </a>
+          @endforeach
+
+          {{-- <a class="social-color" href="">
+            <div class="social-container">
+              <i class="fab fa-facebook"></i>
+            </div>
+          </a>
+          <a class="social-color" href="">
+            <div class="social-container">
+              <i class="fab fa-twitter"></i>
+            </div>
+          </a>
+          <a class="social-color" href="">
+            <div class="social-container">
+              <i class="fab fa-instagram"></i>
+            </div>
+          </a>
+          <a class="social-color" href="">
+            <div class="social-container">
+              <i class="fab fa-youtube"></i>
+            </div>
+          </a>
+          <a class="social-color" href="">
+            <div class="social-container">
+              <i class="fab fa-discord"></i>
+            </div>
+          </a> --}}
+        </div>
+      </div>
+      {{-- <div>
+        Newsletter
+      </div> --}}
     </div>
-    </a>
-    @endforeach --}}
-    <a class="facebook-color" href="">
-      <div class="social-container">
-        <i class="fab fa-facebook"></i>
+
+    <div class="flex justify-center lg:justify-between p-4 align-middle items-center">
+      <div>
+        &#169; Ko&#60;\ing&#62; 2020
       </div>
-    </a>
-    <a class="twitter-color" href="">
-      <div class="social-container">
-        <i class="fab fa-twitter"></i>
+      <div class="hidden justify-center space-x-3 p-2 text-sm lg:flex uppercase">
+        <a class="{{ request()->is('home') ? 'border-b' : '' }} border-black py-1"
+          href="{{ route('browser.home.index') }}">
+          Home
+        </a>
+        <a class="{{ request()->is('about*') ? 'border-b' : '' }} border-black py-1"
+          href="{{ route('browser.about.index') }}">
+          About
+        </a>
+        <a class="{{ request()->is('series*') ? 'border-b' : '' }} border-black py-1"
+          href="{{ route('browser.series.index') }}">
+          Series
+        </a>
+        <a class="{{ request()->is('search*') ? 'border-b' : '' }} border-black py-1"
+          href="{{ route('browser.search.index') }}">
+          Search
+        </a>
       </div>
-    </a>
-    <a class="instagram-color" href="">
-      <div class="social-container">
-        <i class="fab fa-instagram"></i>
-      </div>
-    </a>
-    <a class="youtube-color" href="">
-      <div class="social-container">
-        <i class="fab fa-youtube"></i>
-      </div>
-    </a>
-    <a class="discord-color" href="">
-      <div class="social-container">
-        <i class="fab fa-discord"></i>
-      </div>
-    </a>
-  </div>
-  <div class="hidden lg:flex justify-center space-x-3  p-2">
-    <a href="{{ route('browser.home.index') }}">
-      Home
-    </a>
-    <a href="{{ route('browser.search.index') }}">
-      Series
-    </a>
-    <a href="">
-      Faq
-    </a>
-    <a href="{{ route('browser.about.index') }}">
-      About
-    </a>
-  </div>
-  <div class="py-4 flex justify-center">
-    &#169; Copyright 2020 Ko&#60;\ing&#62;
+    </div>
+
   </div>
 </footer>

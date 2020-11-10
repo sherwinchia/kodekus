@@ -18,7 +18,7 @@ Route::middleware(['guest:admin'])->group(function(){
   Route::get('login','Core\AuthController@showLogin')->name('login.show');
 });
 
-Route::middleware(['admin.auth:admin'])->group(function () {
+Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(function () {
   
   //Dashboard
   Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard.index');

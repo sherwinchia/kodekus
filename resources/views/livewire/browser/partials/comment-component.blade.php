@@ -1,9 +1,10 @@
 <div class=" h-full" x-data="{drop:false}">
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
-      <div @click="drop = !drop" class="flex justify-between cursor-pointer py-4 text-black border-t border-b">
+      <div @click="drop = !drop"
+        class="flex justify-between cursor-pointer py-4 text-black border-t border-b border-black">
         <div>
-          <h3 class="font-bold text-lg uppercase text-black">Balasan ({{ $article->total_comments }})</h3>
+          <h3 class="font-bold text-lg text-black">Balasan ({{ $article->total_comments }})</h3>
         </div>
         <div>
           <i class="fas fa-caret-down fa-rotate-90" x-show="!drop"></i>
@@ -90,7 +91,7 @@
           </div>
           @endif
         </div>
-        <div id="comment-form" class="comment-form flex flex-col p-4 border border-gray-300 rounded mt-4">
+        <div id="comment-form" class="comment-form flex flex-col p-4 border border-black rounded mt-4">
           <h5 class="font-bold text-lg uppercase text-black">Tulis balasan</h5>
           @if ($reply_stage == true)
           <div>
@@ -103,14 +104,14 @@
           <div class="input-group flex space-x-4">
             <div class="w-1/2">
               <label for="name">Nama</label>
-              <input wire:model.lazy="name"
+              <input wire:model.debounce="name"
                 class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
                 placeholder="John Doe">
               @error('name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
             <div class="w-1/2">
               <label for="email">Email</label>
-              <input wire:model.lazy="email"
+              <input wire:model.debounce="email"
                 class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
                 placeholder="john_doe@gmail.com">
               @error('email') <span class="error-msg">{{ $message }}</span> @enderror
@@ -119,11 +120,12 @@
           @endif
           <div class="input-group w-full">
             <label for="content">Isi</label>
-            <textarea wire:model.lazy="content" name="content" class="w-full" rows="4"
+            <textarea wire:model.debounce="content" name="content" class="w-full" rows="4"
               placeholder="Mulai ketik pesan disini..."></textarea>
+            @error('content') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
           <div>
-            @error('content') <span class="error-msg">{{ $message }}</span> @enderror
+
             @if ($success_message)
             <span class="text-green-600 font-normal mb-2">{{ $success_message }}</span>
             @endif

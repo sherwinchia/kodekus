@@ -26,10 +26,7 @@
             {{-- <a wire:click.prevent="sortBy('first_name')" role="button">Name</a> --}}
             {{-- @include('admin.layouts.partials.sort-icon', ['field'=>'name']) --}}
           </th>
-          <th class="text-left">
-            <a wire:click.prevent="sortBy('role')" role="button">Role</a>
-            @include('admin.layouts.partials.sort-icon', ['field'=>'role'])
-          </th>
+
           <th>
             Action
           </th>
@@ -48,9 +45,7 @@
           <td class="non-id">
             {{ $user->full_name }}
           </td>
-          <td class="non-id">
-            {{ $user->role }}
-          </td>
+
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.users.edit', $user->id) }}">

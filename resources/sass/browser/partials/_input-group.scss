@@ -1,7 +1,6 @@
 .input-group{
   label{
     display: block;
-    font-size: 1rem;
     margin-bottom: .2rem;
   }
 
@@ -14,7 +13,7 @@
   input[type='number'],  
   select, 
   textarea{
-    @apply border-gray-300 py-2 px-3 outline-none border mb-1 bg-white;
+    @apply py-2 px-3 outline-none border border-black mb-1 bg-white text-sm;
   }
 
   input[type='text']:focus, 
@@ -26,7 +25,7 @@
   input[type='number']:focus,  
   select:focus, 
   textarea:focus{
-    @apply border-gray-500;
+    @apply  bg-white;
   }
   
 }

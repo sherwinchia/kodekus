@@ -36,7 +36,7 @@ class SeriesTable extends Component
 
   public function paginationView()
   {
-      return 'livewire.pagination.tailwind';
+      return 'livewire.pagination.tailwind-admin';
   }
 
   public function render()

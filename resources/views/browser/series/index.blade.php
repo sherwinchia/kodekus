@@ -17,6 +17,7 @@
           <div class="article-md p-2">
             <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
             <div class=" info">
+
               <a class="h-24 overflow-hidden mb-2" href="{{ $article->article_link }}">
                 <p class="title">{{ $article->title }}</p>
                 <p class="description">{{ $article->description }}</p>
@@ -31,8 +32,8 @@
               </div>
               <div class="extra flex justify-between">
                 <div class="flex items-center text-gray-700 font-light text-sm space-x-4">
-                  <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
-                        class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span>
+                  {{-- <span><a class="text-black font-normal" href="{{ $article->author->author_link }}"><i
+                    class="pr-2 far fa-user"></i>{{ $article->author->full_name }}</a></span> --}}
                   <span class=""><i
                       class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
                   {{-- <span class=""><i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span> --}}

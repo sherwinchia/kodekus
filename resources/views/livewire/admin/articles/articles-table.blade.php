@@ -29,10 +29,12 @@
             <a wire:click.prevent="sortBy('publish_date')" role="button">Publish Date</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'publish_date'])
           </th>
+          @role('admin', 'admin')
           <th>
             <a wire:click.prevent="sortBy('published')" role="button">Published</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'published'])
           </th>
+          @endrole
           <th>
             Action
           </th>
@@ -56,6 +58,7 @@
           <td>
             {{ date_to_human($article->publish_date , 'd F Y') }}
           </td>
+          @role('admin', 'admin')
           <td class="non-id text-center">
             @if ($article->published)
             <input type="checkbox" wire:click.prevent="publish({{ $article->id }})" checked>
@@ -63,6 +66,7 @@
             <input type="checkbox" wire:click.prevent="publish({{ $article->id }})">
             @endif
           </td>
+          @endrole
           <td class=" non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.articles.edit', $article->id) }}">
@@ -81,13 +85,13 @@
     <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
       <div>
         <p class="text-sm leading-5">
-          Showing
+          <span>Showing</span>
           <span class="font-medium">{{ $articles->firstItem() }}</span>
-          to
+          <span>to</span>
           <span class="font-medium">{{ $articles->lastItem() }}</span>
-          of
+          <span>of</span>
           <span class="font-medium">{{ $articles->total() }}</span>
-          results
+          <span>results</span>
         </p>
       </div>
       <div class="inline-block">

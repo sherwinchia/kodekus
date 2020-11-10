@@ -3,7 +3,7 @@
     <div class="input-group search-box mb-2">
       <input wire:model.debounce.300ms="search" type="text" class="w-full"
         placeholder="Contoh: Laravel, Javascript, Python">
-      <i class="fas fa-search"></i>
+      {{-- <i class="fas fa-search"></i> --}}
     </div>
 
     <div class="input-group flex items-center justify-between mb-2 md:space-x-4">

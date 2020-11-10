@@ -597,11 +597,16 @@ html, body {
   --text-opacity: 1;
   color: #000;
   color: rgba(0, 0, 0, var(--text-opacity));
+  font-family: Roboto, sans-serif;
 }
 
 button {
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
+  border-radius: 0.125rem;
 }
 
 h1 {
