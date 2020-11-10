@@ -596,6 +596,7 @@ body {
   font-family: Roboto, sans-serif;
   padding: 0;
   color: black;
+  letter-spacing: 1px;
 }
 
 button {
@@ -24076,7 +24077,6 @@ button {
 
 .input-group label {
   display: block;
-  font-size: 1rem;
   margin-bottom: 0.2rem;
 }
 
@@ -24089,19 +24089,20 @@ button {
 .input-group input[type=number],
 .input-group select,
 .input-group textarea {
-  --border-opacity: 1;
-  border-color: #e2e8f0;
-  border-color: rgba(226, 232, 240, var(--border-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   outline: 0;
   border-width: 1px;
+  --border-opacity: 1;
+  border-color: #000;
+  border-color: rgba(0, 0, 0, var(--border-opacity));
   margin-bottom: 0.25rem;
   --bg-opacity: 1;
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
+  font-size: 0.875rem;
 }
 
 .input-group input[type=text]:focus,
@@ -24113,9 +24114,9 @@ button {
 .input-group input[type=number]:focus,
 .input-group select:focus,
 .input-group textarea:focus {
-  --border-opacity: 1;
-  border-color: #a0aec0;
-  border-color: rgba(160, 174, 192, var(--border-opacity));
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 .error-msg {
@@ -24203,8 +24204,22 @@ footer .social-container {
   border-radius: 9999px;
   border-width: 1px;
   --border-opacity: 1;
-  border-color: #a0aec0;
-  border-color: rgba(160, 174, 192, var(--border-opacity));
+  border-color: #2d3748;
+  border-color: rgba(45, 55, 72, var(--border-opacity));
+}
+
+footer .social-container .social-color {
+  color: black;
+}
+
+footer .social-container:hover {
+  --bg-opacity: 1;
+  background-color: #edf2f7;
+  background-color: rgba(237, 242, 247, var(--bg-opacity));
+}
+
+footer .social-container:hover .social-color {
+  color: white;
 }
 
 .card {

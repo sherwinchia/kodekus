@@ -11,7 +11,7 @@
 @section('content')
 
 <div class="flex-1 flex flex-col p-8">
-  <livewire:admin.pages.page-form pageId="{{ $page->id }}" />
+  <livewire:admin.pages.page-form pageId="{{ $page->id }}" pageType="{{ $page->name }}" />
 </div>
 
 @endsection

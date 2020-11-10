@@ -1,5 +1,5 @@
 <nav x-cloack x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
-  class="navbar bg-white border-b border-gray-500">
+  class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
       <div class=" absolute left-0 flex items-center sm:hidden">
@@ -21,21 +21,21 @@
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
             <h2>Ko&#60;\ing&#62;</h2>
           </a>
-          <div class="hidden sm:flex items-center space-x-6 text-sm">
+          <div class="hidden sm:flex items-center space-x-6 text-sm uppercase">
             <a href="{{ route('browser.home.index') }}"
-              class=" {{ request()->is('home') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              class=" {{ request()->is('home') ? 'border-b' : '' }} border-black py-1">
               Home
             </a>
             <a href="{{ route('browser.about.index') }}"
-              class=" {{ request()->is('about*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              class=" {{ request()->is('about*') ? 'border-b' : '' }} border-black py-1">
               About
             </a>
             <a href="{{ route('browser.series.index') }}"
-              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black py-1">
               Series
             </a>
             <a href="{{ route('browser.search.index') }}"
-              class=" {{ request()->is('search*') ? 'border-b' : '' }} border-black font-roboto py-1 uppercase">
+              class=" {{ request()->is('search*') ? 'border-b' : '' }} border-black py-1">
               Search
             </a>
           </div>
@@ -58,7 +58,7 @@
               <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
               <div class=" absolute bg-white p-3 border border-black w-40 flex flex-col shadow"
                 style="top:40px; right:0;" x-show="profileDropdown" @click.away="profileDropdown = false">
-                <span class="pb-2">{{ current_user()->full_name }}</span>
+                <span class="pb-2 text-normal overflow-hidden">{{ current_user()->full_name }}</span>
                 <div class="border-b border-black mb-2"></div>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.profile.show') }}">Profile</a>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.logout') }}">Logout</a>

@@ -34,7 +34,7 @@ class UsersTable extends Component
 
   public function paginationView()
   {
-      return 'livewire.pagination.tailwind';
+      return 'livewire.pagination.tailwind-admin';
   }
 
   public function render()
@@ -47,7 +47,6 @@ class UsersTable extends Component
             ->orWhereHas('profile', function($query){
               $query->where('last_name', 'LIKE', "%{$this->search}%");
             }) 
-            ->orWhere('role', 'LIKE', "%{$this->search}%") 
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage)
       ]);

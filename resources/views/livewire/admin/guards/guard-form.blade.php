@@ -22,7 +22,7 @@
             <span class="block sm:inline">{{ $errors->first() }}</span>
           </div>
           @endif
-          <button type="submit" class="w-full p-4 bg-green-200 outline-none">{{ $buttonText }}</button>
+          <button type="submit" class="">{{ $buttonText }}</button>
         </div>
       </form>
     </div>

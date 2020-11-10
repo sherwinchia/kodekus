@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Browser\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Auth;
 use Str;
+use Auth;
 use Hash;
-use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Models\Profile;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
@@ -41,8 +42,12 @@ class SocialiteController extends Controller
       'email' => $user->getEmail(),
       'password' => Hash::make($this->defaultPassword),
       "{$provider}_id" => $user->getId(),
-      'role' => 'user'
     ]);
+
+    $role = Role::where('name','user')->first();
+    $user->syncRoles($role);
+    $permissions = $user->getPermissionsViaRoles();
+    $user->syncPermissions($permissions);
 
     $profile = Profile::create([
       'first_name' => $name[0],
@@ -51,7 +56,7 @@ class SocialiteController extends Controller
       'slug' => generate_profile_slug()
     ]);
     
-    Auth::guard('web')->attempt(['email' => $user->email, 'password' => $this->defaultPassword, 'role' => 'user']);
+    Auth::guard('web')->attempt(['email' => $user->email, 'password' => $this->defaultPassword]);
     Auth::logoutOtherDevices($this->defaultPassword);
 
     return redirect()->route('browser.home.index');
@@ -59,7 +64,7 @@ class SocialiteController extends Controller
 
   private function login($userDetails, $provider)
   {
-    if (Auth::guard('web')->attempt(['email' => $userDetails->getEmail(), 'password' => $this->defaultPassword , "{$provider}_id" => $userDetails->getId(), 'role' => 'user'])) {
+    if (Auth::guard('web')->attempt(['email' => $userDetails->getEmail(), 'password' => $this->defaultPassword , "{$provider}_id" => $userDetails->getId()])) {
       // Auth::logoutOtherDevices($this->defaultPassword);
       $user = current_user();
       if (!$user["{$provider}_id"]) $user->update(["{$provider}_id" => $userDetails->getId()]);

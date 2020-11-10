@@ -14,8 +14,9 @@ class User extends Authenticatable
 
     protected static $logName = 'User';
 
-    const ADMIN_ROLE = 'admin';
-    const CONTENT_WRITER_ROLE = 'content-writer';
+    // const ADMIN_ROLE = 'admin';
+    // const CONTENT_WRITER_ROLE = 'content-writer';
+    // const USER_ROLE = 'user';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +26,7 @@ class User extends Authenticatable
     protected $fillable = [
         'email', 
         'password', 
-        'role', 
+  
         'facebook_id', 
         'google_id'
     ];
@@ -89,13 +90,17 @@ class User extends Authenticatable
         return $this->name . " has been {$eventName}";
     }
 
-    public function isAdmin(){        
-      return $this->role === self::ADMIN_ROLE;    
-    }
+    // public function isAdmin(){        
+    //   return $this->role === self::ADMIN_ROLE;    
+    // }
 
-    public function isContentWriter(){        
-      return $this->role === self::CONTENT_WRITER_ROLE;    
-    }
+    // public function isContentWriter(){        
+    //   return $this->role === self::CONTENT_WRITER_ROLE;    
+    // }
+
+    // public function isUser(){        
+    //   return $this->role === self::USER_ROLE;    
+    // }
 
     public function getIsActivatedAttribute() {
       $token = $this->tokens()->where('type', 'EMAIL_VERIFICATION')->whereNotNull('validated_at')->first();

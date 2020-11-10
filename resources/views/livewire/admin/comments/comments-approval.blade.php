@@ -4,8 +4,14 @@
       @if (!$comments->isEmpty() || !$replies->isEmpty())
       @if (!$comments->isEmpty())
       <div class="card">
-        <div class="card-header">
+        <div class="card-header flex justify-between items-center">
           <p>Pending Comments <span>({{ $comments->count() }})</span></p>
+          <div>
+            {{-- <button type="button" wire:click="approveAllComment" class="p-2 bg-green-500 text-white rounded">Approve
+              All</button>
+            <button type="button" wire:click="deleteAllComment" class="p-2 bg-red-500 text-white rounded">Delete
+              All</button> --}}
+          </div>
         </div>
         <div class="card-body">
           <ul>

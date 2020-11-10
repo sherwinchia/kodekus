@@ -24,7 +24,7 @@ class LoginForm extends Component
 
 	  if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = auth()->guard('admin')->user();
-			if ($user->isAdmin() || $user->isContentWriter()) {
+			if ($user->hasAnyRole(['admin', 'content-writer'])) {
         return redirect()->intended(route('admin.welcome'));
 
       }

@@ -9,6 +9,10 @@
     return Auth::user();
   }
 
+  function current_admin(){
+    return Auth::guard('admin')->user();
+  }
+
   function date_to_human($date, $format = 'd/m/Y, h:i A'){
 		if ($date == null) {
 			return null;

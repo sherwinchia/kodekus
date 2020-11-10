@@ -16,7 +16,7 @@
       <div class="hidden lg:block">
         @if (!$categories->isEmpty())
         <div class="mb-8">
-          <div class="flex items-center py-2 border-b border-gray-500">
+          <div class="flex items-center py-2 border-b border-black">
             <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-black">Kategori</h5>
           </div>
           <div class="flex flex-col w-full ">
@@ -37,7 +37,7 @@
       <div class="hidden lg:block">
         @if (!$tags->isEmpty())
         <div class="mb-8">
-          <div class="flex items-center py-2 mb-2 border-b border-gray-500">
+          <div class="flex items-center py-2 mb-2 border-b border-black">
             <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-black">Topik</h5>
           </div>
           <div class=" flex flex-wrap">

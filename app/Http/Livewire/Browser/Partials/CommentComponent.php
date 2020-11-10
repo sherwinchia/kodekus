@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 
 use App\Models\Comment;
 use App\Models\Reply;
-
+use App\Models\Page;
 class CommentComponent extends Component
 {
   use WithPagination;
@@ -82,8 +82,8 @@ class CommentComponent extends Component
   {
     $this->success_message = null;
     $data = $this->validate($this->rules);
-
-    $data['approved'] = true;
+    
+    $data['approved'] = unserialize(Page::where('name', 'Comment')->first()->content)['comment_approval'];
 
     if ($this->reply_stage) {
       $data['comment_id'] = $this->comment_id;
@@ -96,6 +96,8 @@ class CommentComponent extends Component
     
     if ($model->approved == 0) {
       $this->success_message = 'Balasan anda telah sukses dikirim dan sedang menunggu peninjauan dari admin.';
+    } else {
+      $this->success_message = 'Balasan anda telah sukses dikirim.';
     }
 
 

@@ -22,7 +22,6 @@ class UsersTableSeeder extends Seeder
         $user1 = User::create([
           'email' => 'sherwin@admin.com',
           'password' => Hash::make('sherwin23'),
-          'role' => 'admin'
         ]);
 
         Profile::create([
@@ -38,7 +37,6 @@ class UsersTableSeeder extends Seeder
         $user2 = User::create([
           'email' => 'john@mail.com',
           'password' => Hash::make('sherwin23'),
-          'role' => 'content-writer'
         ]);
 
         Profile::create([

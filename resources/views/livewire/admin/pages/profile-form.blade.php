@@ -73,7 +73,7 @@
           </div>
 
           <div class="w-full mt-2">
-            <button type="submit" class="w-full p-4 bg-green-200 outline-none">Update</button>
+            <button type="submit">Update</button>
           </div>
         </form>
       </div>
@@ -107,7 +107,7 @@
             </section>
           </div>
           <div class="mt-2">
-            <button type="submit" class="w-full p-4 bg-green-200 outline-none">Update</button>
+            <button type="submit">Update</button>
           </div>
         </form>
       </div>
