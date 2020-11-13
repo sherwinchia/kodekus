@@ -10,13 +10,13 @@
 
     <div class="flex flex-col space-y-2">
       <form class="border-b border-black pb-4 mb-2" wire:submit.prevent="login">
-        <div class="input-group">
-          <label class="text-sm" for="username">
+        <div class="input-group mb-1">
+          <label class="text-sm" for="email">
             Email
           </label>
           <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
         </div>
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Password
           </label>
@@ -67,31 +67,31 @@
 
     <div class="flex flex-col space-y-2">
       <form class="border-b border-black pb-4 mb-2" wire:submit.prevent="register">
-        {{-- <div class="input-group">
+        {{-- <div class="input-group mb-1">
           <label class="text-sm" for="username">
             First Name
           </label>
           <input wire:model="first_name" class="w-full" type="text" placeholder="First Name">
         </div> --}}
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="full_name">
             Full Name
           </label>
           <input wire:model="full_name" class="w-full" type="text" placeholder="John Doe">
         </div>
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="username">
             Email
           </label>
           <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
         </div>
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Password
           </label>
           <input wire:model="password" class="w-full" type="password" placeholder="********">
         </div>
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Confirm Password
           </label>
@@ -138,7 +138,7 @@
     </div>
     <div class="flex flex-col space-y-2">
       <form class=" pb-4 mb-2" wire:submit.prevent="forgotPassword">
-        <div class="input-group">
+        <div class="input-group mb-1">
           <label class="text-sm" for="email">
             Email
           </label>

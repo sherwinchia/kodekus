@@ -12,6 +12,11 @@ class CommentController extends Controller
 {
   public const PATH = 'admin.comments.';
 
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+  
   public function index()
   {
     return view(self::PATH.'index');

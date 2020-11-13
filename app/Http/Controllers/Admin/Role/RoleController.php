@@ -11,6 +11,11 @@ class RoleController extends Controller
 {
   public const PATH = 'admin.roles.';
 
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+  
   public function index()
   {
     return view(self::PATH.'index');

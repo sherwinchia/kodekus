@@ -1,5 +1,5 @@
 @if (count($breadcrumbs))
-<div class="text-white font-roboto aria-label=" Breadcrumb">
+<div class="text-black font-roboto aria-label=" Breadcrumb">
   <ol class="list-none p-0 inline-flex">
     @foreach ($breadcrumbs as $breadcrumb)
     @if ($breadcrumb->url && !$loop->last)

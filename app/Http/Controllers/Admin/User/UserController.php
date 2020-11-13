@@ -11,6 +11,11 @@ class UserController extends Controller
 {
   public const PATH = 'admin.users.';
 
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+
   public function index()
   {
     return view(self::PATH.'index');

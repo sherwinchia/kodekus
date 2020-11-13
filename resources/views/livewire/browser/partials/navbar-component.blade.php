@@ -2,7 +2,7 @@
   class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
-      <div class=" absolute left-0 flex items-center sm:hidden">
+      <div class=" absolute right-0 flex items-center sm:hidden">
         <button @click="menuDropdown = !menuDropdown"
           class="inline-flex items-center justify-center p-2 rounded-md text-black" aria-label="Main menu"
           aria-expanded="false">
@@ -17,9 +17,10 @@
         </button>
       </div>
       <div class="container flex-1 flex items-center justify-center">
-        <div class="flex w-full justify-center sm:justify-start align-middle items-center py-4 sm:px-4 space-x-10">
+        <div class="flex w-full justify-center sm:justify-start align-middle items-center sm:px-4 space-x-10">
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
-            <h2>Ko&#60;\ing&#62;</h2>
+            <img width="75" height="75" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
+            {{-- <h2>Ko&#60;\ing&#62;</h2> --}}
           </a>
           <div class="hidden sm:flex items-center space-x-6 text-sm uppercase">
             <a href="{{ route('browser.home.index') }}"
@@ -49,7 +50,7 @@
           <div class="flex items-center space-x-4 text-sm">
             @guest
             <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
-            <a class="border border-black py-1 px-2 rounded"
+            <a class="border border-black py-2 px-2 rounded"
               href="{{ route('browser.auth.show', ['type' => 'register']) }}">Register</a>
             @endguest
 

@@ -6,10 +6,11 @@ $socials = unserialize($socials->content);
 <footer class="flex justify-center items-center border-black border-t">
   <div class="container">
     <div class="flex justify-center lg:justify-between p-4 pt-8">
+      @if (!empty($socials))
       <div>
         <h3 class="text-lg font-bold mb-4 text-center lg:text-left">Follow {{ config('app.name') }}</h3>
         <p></p>
-        <div class="flex justify-center space-x-3 text-sm lg:text-normal items-center">
+        <div class="flex justify-center lg:justify-start  space-x-3 text-sm lg:text-normal items-center">
 
           @foreach ($socials as $social)
           <a style="color:{{ $social['color'] }};" class="text-lg" href="{{ $social['link'] }}">
@@ -46,6 +47,7 @@ $socials = unserialize($socials->content);
           </a> --}}
         </div>
       </div>
+      @endif
       {{-- <div>
         Newsletter
       </div> --}}
@@ -55,7 +57,7 @@ $socials = unserialize($socials->content);
       <div>
         &#169; Ko&#60;\ing&#62; 2020
       </div>
-      <div class="hidden justify-center space-x-3 p-2 text-sm lg:flex uppercase">
+      <div class="hidden justify-center space-x-6 p-2 text-sm lg:flex uppercase">
         <a class="{{ request()->is('home') ? 'border-b' : '' }} border-black py-1"
           href="{{ route('browser.home.index') }}">
           Home

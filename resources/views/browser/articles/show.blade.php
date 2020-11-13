@@ -18,13 +18,13 @@
               50%;">
             </div>
             <div>
-              <a class="text-black lg:text-lg" href="{{ $article->author->author_link }}">
+              <a class="text-black lg:text-normal" href="{{ $article->author->author_link }}">
                 {{ $article->author->full_name }}
               </a>
             </div>
           </div>
           <div class="flex items-center space-x-2 mb-4 lg:mb-0">
-            <span class="text-xs lg:text-sm">
+            <span class="text-xs lg:text-sm mr-2">
               <i class=" far fa-calendar-alt"></i>
               {{ date_to_human( $article->publish_date,'F d') }}
             </span>

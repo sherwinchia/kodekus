@@ -3,19 +3,19 @@
 
   a{
     i{
-      @apply text-gray-500;
+      @apply text-gray-600;
     }
     span{
-      @apply text-gray-500;
+      @apply text-gray-600;
       i{
-        @apply text-gray-500;
+        @apply text-gray-600;
       }
     }
   }
 }
 
 .navbar-list:hover{
-  @apply bg-dark-100; 
+  @apply bg-primary; 
   a{
     i{
       @apply text-white;

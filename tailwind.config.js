@@ -1,5 +1,15 @@
 module.exports = {
-  purge: [],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      './resources/views/browser/**/*.blade.php',
+      './resources/views/admin/**/*.blade.php',
+      './resources/views/livewire/**/*.blade.php',
+      './resources/views/errors/*.blade.php',
+      './resources/sass/**/*.scss',
+      './resources/js/**/*.js',
+    ],
+  },
   theme: {
     extend: {
       colors:{

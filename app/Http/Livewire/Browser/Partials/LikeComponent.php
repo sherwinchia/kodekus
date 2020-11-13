@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Browser\Partials;
 
-use Livewire\Component;
+use App\Models\Like;
 
 use App\Models\Article;
-use App\Models\Like;
+use Livewire\Component;
+use Illuminate\Support\Facades\Session;
 
 class LikeComponent extends Component
 {
@@ -50,6 +51,7 @@ class LikeComponent extends Component
       }
       $this->emit('likeRefresh');
     } else {
+      Session::put('url.intended',url()->previous());
       return redirect()->route('browser.auth.show',['type'=> 'login']);
     }
   }

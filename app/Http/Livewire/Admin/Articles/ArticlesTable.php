@@ -46,6 +46,16 @@ class ArticlesTable extends Component
       return 'livewire.pagination.tailwind-admin';
   }
 
+  public function articles()
+  {
+    $articles = Article::query()
+              ->where('title', 'LIKE', "%{$this->search}%") 
+              ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+              ->paginate($this->perPage);
+
+    return $articles;
+  }
+
   public function render()
   {
       return view('livewire.admin.articles.articles-table', [

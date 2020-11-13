@@ -65,16 +65,18 @@ class GenerateAdmin extends Command{
     $admin = User::create([
       'email' => $email,
       'password' => Hash::make($password),
-      'role' => 'admin'
     ]);
 
     $profile = Profile::create([
       'user_id' => $admin->id,
       'first_name' => $first_name,
       'last_name' => $last_name,
+      'slug' => generate_profile_slug()
     ]);
 
-    $admin->syncRoles($admin->role);
+    $role = Role::where('name','admin')->first();
+
+    $admin->syncRoles($role);
 
     if($admin){
       $this->info('Admin has been created successfully.');

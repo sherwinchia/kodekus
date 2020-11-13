@@ -57,9 +57,9 @@
         <div class="mb-8 h-full">
           <div class="">
             {{-- right-sticky --}}
-            @if (!current_user() || (current_user() && !current_user()->subscribeToNewsletter()))
-            {{-- <livewire:browser.partials.subscribe-component /> --}}
-            @endif
+            {{-- @if (!current_user() || (current_user() && !current_user()->subscribeToNewsletter()))
+            <livewire:browser.partials.subscribe-component />
+            @endif --}}
             <livewire:browser.bookmarks.bookmarks-component type="home" />
           </div>
         </div>
