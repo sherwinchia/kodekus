@@ -10,6 +10,11 @@ class PageController extends Controller
 {
   public const PATH = 'admin.pages.';
 
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+  
   public function index()
   {
     return view(self::PATH .'index');

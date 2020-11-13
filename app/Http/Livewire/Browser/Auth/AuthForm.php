@@ -2,16 +2,17 @@
 
 namespace App\Http\Livewire\Browser\Auth;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-
 use App\Models\User;
 use App\Models\Profile;
+use Livewire\Component;
+use Spatie\Permission\Models\Role;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Services\Shared\VerificationServices;
 use App\Services\Browser\EmailServices;
+use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Permission;
+use App\Services\Shared\VerificationServices;
 
 class AuthForm extends Component
 {
@@ -70,7 +71,13 @@ class AuthForm extends Component
 	  if (Auth::guard('web')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = current_user();
 
-      return redirect()->route('browser.home.index');
+      $intended_url = Session::get('url.intended');
+      if ($intended_url) {
+        Session::forget('url.intended');
+        return redirect($intended_url);
+      } else {
+        return redirect()->route('browser.home.index');
+      }
 
 	  }else{
 	    $this->addError('error', 'Email or password is incorrect!');

@@ -10,6 +10,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
@@ -68,7 +69,14 @@ class SocialiteController extends Controller
       // Auth::logoutOtherDevices($this->defaultPassword);
       $user = current_user();
       if (!$user["{$provider}_id"]) $user->update(["{$provider}_id" => $userDetails->getId()]);
-      return redirect()->route('browser.home.index');
+      
+      $intended_url = Session::get('url.intended');
+      if ($intended_url) {
+        Session::forget('url.intended');
+        return redirect($intended_url);
+      } else {
+        return redirect()->route('browser.home.index');
+      }
     }
     return redirect()->back()->withErrors(['message' => 'Email or password is incorrect.']);
   }

@@ -4,11 +4,22 @@
 
 html,body{
   @apply p-0 text-black font-roboto;
+  letter-spacing: 1px;
 }
 
 button{
-  @apply p-2 border border-black rounded-sm;  
+  @apply px-3 py-2 bg-primary rounded-md text-white text-sm font-semibold; 
+  
+  &:hover{
+    background-color: rgb(119, 101, 224);
+  }
+
+  &:focus{
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(107, 76, 245, 0.733);
+  }
 }
+
 
 h1              { font-size: 2em; margin: .67em 0 }
 h2              { font-size: 1.5em; margin: .75em 0 }

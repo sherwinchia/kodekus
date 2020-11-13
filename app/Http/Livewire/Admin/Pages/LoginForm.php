@@ -6,9 +6,12 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class LoginForm extends Component
 {
+  protected $maxAttempts = 3;
+  protected $decayMinutes = 1;
 
   public $email;
   public $password;

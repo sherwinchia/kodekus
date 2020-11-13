@@ -4,7 +4,7 @@
       <div @click="drop = !drop"
         class="flex justify-between cursor-pointer py-4 text-black border-t border-b border-black">
         <div>
-          <h3 class="font-bold text-lg text-black">Balasan ({{ $article->total_comments }})</h3>
+          <h3 class="font-normal text-lg text-black">Balasan ({{ $article->total_comments }})</h3>
         </div>
         <div>
           <i class="fas fa-caret-down fa-rotate-90" x-show="!drop"></i>
@@ -92,7 +92,7 @@
           @endif
         </div>
         <div id="comment-form" class="comment-form flex flex-col p-4 border border-black rounded mt-4">
-          <h5 class="font-bold text-lg uppercase text-black">Tulis balasan</h5>
+          <h5 class=" text-lg uppercase text-black mb-2">Tulis balasan</h5>
           @if ($reply_stage == true)
           <div>
             <span>Replying to </span>
@@ -104,16 +104,14 @@
           <div class="input-group flex space-x-4">
             <div class="w-1/2">
               <label for="name">Nama</label>
-              <input wire:model.debounce="name"
-                class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="text"
+              <input wire:model.debounce="name" class="text-black bg-white  p-2 w-full border border-black" type="text"
                 placeholder="John Doe">
               @error('name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
             <div class="w-1/2">
               <label for="email">Email</label>
-              <input wire:model.debounce="email"
-                class="text-black bg-white rounded-t hover:outline-none p-2 w-full border border-black" type="email"
-                placeholder="john_doe@gmail.com">
+              <input wire:model.debounce="email" class="text-black bg-white  p-2 w-full border border-black"
+                type="email" placeholder="john_doe@gmail.com">
               @error('email') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
           </div>

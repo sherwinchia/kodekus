@@ -1,6 +1,6 @@
 <div>
   <div class="mb-2">
-    <div class="input-group search-box mb-2">
+    <div class="input-group search-box">
       <input wire:model.debounce.300ms="search" type="text" class="w-full"
         placeholder="Contoh: Laravel, Javascript, Python">
       {{-- <i class="fas fa-search"></i> --}}

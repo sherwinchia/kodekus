@@ -19,8 +19,7 @@
           </span>
         </div>
       </a>
-      {{-- {{ dd(current_admin()->permissions) }} --}}
-      {{-- {{ dd(current_admin()->can('manage authentication')) }} --}}
+
       <ul class="my-2 transform origin-top-left" x-show="contentDrop"
         x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 scale-75"
         x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition-all ease-in duration-200"
@@ -57,6 +56,7 @@
             </div>
           </a>
         </li>
+        @role('admin')
         <li class="{{ request()->is('admin/comments*') ? 'navbar-active-list' : 'navbar-list' }}">
           <a class="flex-col justify-between items-center" href="{{ route('admin.comments.index') }}">
             <div class="w-full">
@@ -65,9 +65,11 @@
             </div>
           </a>
         </li>
+        @endrole
       </ul>
     </li>
 
+    @role('admin')
     <li class="navbar-list pr-0"
       x-data="{authenticationDrop: {{ (request()->is('admin/users*') || request()->is('admin/permissions*')|| request()->is('admin/guards*') || request()->is('admin/roles*')) ? 'true' : 'false' }}}">
       <a class="flex-col justify-between items-center cursor-pointer" @click="authenticationDrop=!authenticationDrop">
@@ -182,6 +184,7 @@
       </div>
     </a>
   </li>
+  @endrole
 
   <li class="{{ request()->is('admin/profile*') ? 'navbar-active-list' : 'navbar-list' }}">
     <a class="flex-col justify-between items-center" href="{{ route('admin.profile.show') }}">

@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Browser\Partials;
 
-use Livewire\Component;
-
 use App\Models\Article;
+
+use Livewire\Component;
 use App\Models\Bookmark;
+use Illuminate\Support\Facades\Session;
 
 class BookmarkComponent extends Component
 {
@@ -46,6 +47,7 @@ class BookmarkComponent extends Component
       $this->emit('bookmarkRefresh');
       $this->emitTo('Browser.Bookmarks.BookmarksComponent','bookmarkRefresh');
     } else {
+      Session::put('url.intended',url()->previous());
       return redirect()->route('browser.auth.show',['type'=> 'login']);
     }
   }

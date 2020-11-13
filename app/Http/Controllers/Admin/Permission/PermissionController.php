@@ -11,6 +11,11 @@ class PermissionController extends Controller
 {
   public const PATH = 'admin.permissions.';
 
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+  
   public function index()
   {
     return view(self::PATH.'index');

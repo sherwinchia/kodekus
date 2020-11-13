@@ -87,6 +87,8 @@ class UserForm extends Component
     
     if ($data['password']) {
       $data['password'] = Hash::make($data['password']);
+    } else {
+      $data['password'] = $this->user->password;
     }
 
     $role = Role::where('name',$this->role)->first();

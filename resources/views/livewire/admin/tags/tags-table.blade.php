@@ -10,7 +10,9 @@
           <option value="20">20</option>
         </select>
       </div>
-      <a href="{{ route('admin.tags.create') }}" role="button">Create</a>
+      <a href="{{ route('admin.tags.create') }}" role="button"> <button>
+          Create
+        </button></a>
     </div>
   </div>
   <div class="bottom">

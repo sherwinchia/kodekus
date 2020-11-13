@@ -21,7 +21,7 @@
         @endforeach
       </div>
       @endif
-      <div class="flex items-center text-gray-800 font-light text-sm ">
+      <div class="flex items-center text-gray-800 font-light text-sm justify-between">
         {{-- <span class="hidden lg:inline-block mr-4">
           <a class="text-black font-normal" href="{{ $bookmarkable->author->author_link }}">
         <i class="pr-2 far fa-user"></i>{{ $bookmarkable->author->full_name }}

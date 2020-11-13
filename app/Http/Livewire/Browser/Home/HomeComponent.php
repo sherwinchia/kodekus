@@ -41,7 +41,8 @@ class HomeComponent extends Component
   public function render()
   {
       return view('livewire.browser.home.home-component', [
-        'latestArticles' => Article::latest('publish_date')->paginate($this->perLoad)
+        'latestArticles' => Article::latest('publish_date')->where('publish_date','<=',now())
+        ->where('published',1)->paginate($this->perLoad)
       ]);
   }
 }
