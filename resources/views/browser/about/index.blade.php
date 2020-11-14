@@ -1,3 +1,8 @@
+@php
+$about = App\Models\Page::where('name', 'About')->first();
+$about = unserialize($about->content);
+@endphp
+
 @extends('browser.layouts.master')
 
 @section('meta-content')
@@ -13,28 +18,8 @@
     <div class="flex flex-col">
 
       <div class="flex justify-center w-full ">
-        <div class="max-w-xl">
-          <p class="text-lg mb-4">
-            Hallo 👋, selamat datang di {{ config('app.name') }}.
-          </p>
-          <p class="text-lg mb-4">
-            Nama saya Sherwin dan saya adalah mahasiswa semester lima jurusan software engineering. Tujuan utama saya
-            membuat website ini adalah
-            sebagai catatan untuk pembelajaran saya. Selain itu, saya juga ingin berbagi catatan pembelajaran saya
-            dengan
-            teman-teman semua. Siapa tahu dapat membantu teman-teman dalam proses belajar pemrogramannya.
-          </p>
-          <p class="text-lg mb-4">
-            Untuk sementara ini saya adalah satu-satunya penulis di blog ini. Bagi teman-teman yang tertarik untuk
-            bergabung bersama dengan saya untuk menulis dan berbagi pengalaman di blog ini boleh contact saya di
-            sherwin.variancia@koding.com
-          </p>
-          <p class="text-lg">
-            Terima Kasih.
-          </p>
-          <p class="text-lg mb-4">
-            Sherwin Variancia 👨‍💻
-          </p>
+        <div class="max-w-xl about">
+          {!! $about !!}
         </div>
       </div>
     </div>

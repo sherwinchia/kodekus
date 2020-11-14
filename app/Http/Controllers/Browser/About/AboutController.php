@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Browser\About;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use SEOTools;
+use App\Models\Page;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AboutController extends Controller
 {
@@ -12,14 +13,21 @@ class AboutController extends Controller
 
   public function index()
   {
-    SEOTools::setTitle('About | ' . config('app.name') );
-    SEOTools::setDescription('This is my page description');
-    SEOTools::opengraph()->setUrl(route('browser.about.index'));
-    SEOTools::setCanonical(route('browser.about.index'));
-    SEOTools::opengraph()->addProperty('type', 'about');
-    SEOTools::twitter()->setSite('@LuizVinicius73');
-    SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+    //0 = Title, 1 = Description
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
 
+    SEOTools::setTitle('About &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
+    SEOTools::setCanonical(route('browser.about.index'));
+
+    SEOTools::opengraph()->setUrl(route('browser.about.index'));
+    SEOTools::opengraph()->addProperty('type', 'articles');
+    
+    SEOTools::twitter()->setSite('@sherwinchia');
+    SEOTools::twitter()->setUrl(route('browser.about.index'));
+
+    SEOTools::jsonLd()->setType('Article');
 
     return view(self::PATH . 'index');
   }

@@ -1,4 +1,4 @@
-<div>
+<div class="">
   <ul>
     <li class="{{ request()->is('admin/dashboard') ? 'navbar-active-list' : 'navbar-list' }}">
       <a class="flex-col justify-between items-center" href="{{ route('admin.dashboard.index') }}">

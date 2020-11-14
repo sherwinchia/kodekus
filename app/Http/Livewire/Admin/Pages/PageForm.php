@@ -21,7 +21,16 @@ class PageForm extends Component
   //Comment
   public $comment_approval;
 
-  protected $listeners = ['refreshComponent' => '$refresh'];
+  //Meta
+  public $metas;
+
+  //About
+  public $about;
+
+  protected $listeners = [
+    'refreshComponent' => '$refresh',
+    'updateAbout'
+  ];
 
   public function mount($pageId, $pageType)
   {
@@ -38,6 +47,14 @@ class PageForm extends Component
 
     if ($this->type == 'Comment') {
       $this->comment_approval = $this->content['comment_approval'];
+    }
+
+    if ($this->type == 'About') {
+      $this->about = $this->content;
+    }
+
+    if ($this->type == 'Meta') {
+      $this->metas = $this->content;
     }
   }
 
@@ -68,6 +85,7 @@ class PageForm extends Component
       'socials.*.icon' => 'required|string',
       'socials.*.color' => 'required|string',
       'socials.*.link' => 'required|url',
+      'socials.*.display' => 'boolean',
     ]);
 
     $this->content = $data['socials'];
@@ -94,6 +112,41 @@ class PageForm extends Component
     ]);
 
     return $this->successMsg = 'Comment successfully updated.';
+  }
+
+  public function updateAbout($data)
+  {
+    $this->successMsg = null;
+
+    // $data = $this->validate([
+    //   'about' => 'nullable'
+    // ]);
+
+    $this->content = $data;
+
+    $this->page->update([
+      'content' => serialize($this->content),
+    ]);
+
+    return $this->successMsg = 'Comment successfully updated.';
+  }
+
+  public function updateMeta()
+  {
+    $this->successMsg = null;
+
+    $data = $this->validate([
+      'metas.*.name' => 'required',
+      'metas.*.content' => 'required'
+    ]);
+
+    $this->content = $data['metas'];
+
+    $this->page->update([
+      'content' => serialize($this->content),
+    ]);
+
+    return $this->successMsg = 'Social successfully updated.';
   }
 
   public function render()

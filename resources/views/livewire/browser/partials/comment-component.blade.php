@@ -4,7 +4,13 @@
       <div @click="drop = !drop"
         class="flex justify-between cursor-pointer py-4 text-black border-t border-b border-black">
         <div>
-          <h3 class="font-normal text-lg text-black">Balasan ({{ $article->total_comments }})</h3>
+          <h3 class="font-normal text-lg text-black">
+            @if ($article->total_comments>1)
+            Comments ({{ $article->total_comments }})
+            @else
+            Comment ({{ $article->total_comments }})
+            @endif
+          </h3>
         </div>
         <div>
           <i class="fas fa-caret-down fa-rotate-90" x-show="!drop"></i>

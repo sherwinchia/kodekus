@@ -1,4 +1,5 @@
 import 'alpinejs';
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -80,4 +81,4 @@ window.Marker = require('@editorjs/marker');
 window.InlineCode = require('@editorjs/inline-code');
 window.Undo = require('editorjs-undo');
 
-// import SlimSelect from 'slim-select';
+window.Quill = require('quill');

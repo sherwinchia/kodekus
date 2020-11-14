@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="search container bg-white mx-auto p-4">
+<div class="search container mx-auto p-4">
   <div class="flex flex-col">
     @foreach ($series as $_series)
     <h1 class="p-2 text-lg font-semibold">{{ $_series->name }}</h1>

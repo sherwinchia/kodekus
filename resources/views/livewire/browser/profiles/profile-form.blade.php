@@ -1,6 +1,6 @@
 <div class="container mx-auto flex flex-col">
   <div class="flex flex-wrap lg:space-x-2 p-8 justify-center">
-    <div class="border border-black p-6 w-full lg:w-3/6 ">
+    <div class="border border-black p-6 w-full lg:w-3/6 mb-4 lg:mb-0">
       <label class="block text-black text-xl font-bold mb-2">Profile</label>
       <div class="">
         <form wire:submit.prevent="updateProfile" class="flex flex-wrap">

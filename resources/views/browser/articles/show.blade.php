@@ -8,8 +8,9 @@
 <div class="container mx-auto article-show mt-10">
   <div class="flex justify-center mb-4">
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
-      <div class="title">
-        <h1 class="text-left mb-4 font-semibold text-3xl lg:text-4xl xl:text-5xl">
+      <div class="">
+        <img class="mb-4" src="{{ $article->image_link }}" alt="">
+        <h1 class="text-left mb-2 font-semibold text-3xl lg:text-4xl xl:text-5xl">
           {{ $article->title }}</h1>
 
         <div class="flex flex-col lg:flex-row lg:items-center lg:mb-4 lg:space-x-4">
@@ -35,7 +36,6 @@
           </div>
         </div>
 
-        <img class="mb-4" src="{{ $article->image_link }}" alt="">
         <p class="text-md text-black">{{ $article->description }}</p>
       </div>
     </div>
@@ -162,7 +162,7 @@
 
   <div class="post-tag mb-8 flex flex-wrap">
     @foreach ($article->tags as $tag)
-    <a class="w-auto" href="#">
+    <a class="w-auto" href="{{ $tag->tag_link  }}">
       <div class="py-1 px-2 text-sm rounded-sm border border-black mr-2 mb-2"># {{ $tag->name }}</div>
     </a>
     @endforeach

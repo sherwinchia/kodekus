@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Browser\Article;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Article;
-use App\Models\Tag;
-use App\Models\Category;
-use SEOTools;
 use Share;
+use SEOTools;
+use App\Models\Tag;
+use App\Models\Page;
+use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -38,12 +39,23 @@ class ArticleController extends Controller
 
     $article->body = json_decode($article->body);
 
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
     SEOTools::setTitle($article->title);
     SEOTools::setDescription($article->description);
-    SEOTools::opengraph()->setUrl($article->article_link);
     SEOTools::setCanonical($article->article_link);
+
+    SEOTools::opengraph()->setUrl($article->article_link);
     SEOTools::opengraph()->addProperty('type', 'articles');
-    SEOTools::twitter()->setSite($article->article_link);
+    SEOTools::opengraph()->addImage($article->image_link);
+
+    SEOTools::twitter()->setSite($metas[2]['content']);
+    SEOTools::twitter()->setImage($article->image_link);
+    SEOTools::twitter()->setUrl($article->article_link);
+
+    SEOTools::jsonLd()->addImage($article->image_link);
+    SEOTools::jsonLd()->setType('Article');
 
     return view(self::PATH . '.show', compact('article'));
   }

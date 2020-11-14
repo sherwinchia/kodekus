@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Browser\Series;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use SEOTools;
+use App\Models\Page;
 
 use App\Models\Series;
-use SEOTools;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SeriesController extends Controller
 {
@@ -14,13 +15,22 @@ class SeriesController extends Controller
 
   public function index()
   {
-    SEOTools::setTitle('Series | ' . config('app.name') );
-    SEOTools::setDescription('This is my page description');
-    SEOTools::opengraph()->setUrl(route('browser.series.index'));
+    //0 = Title, 1 = Description, 2 = Twitter Site
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
+    SEOTools::setTitle('Series &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
     SEOTools::setCanonical(route('browser.series.index'));
-    SEOTools::opengraph()->addProperty('type', 'series');
-    SEOTools::twitter()->setSite('@LuizVinicius73');
-    SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+
+    SEOTools::opengraph()->setUrl(route('browser.series.index'));
+    SEOTools::opengraph()->addProperty('type', 'articles');
+    
+    SEOTools::twitter()->setSite($metas[2]['content']);
+    SEOTools::twitter()->setUrl(route('browser.series.index'));
+
+    SEOTools::jsonLd()->setType('Article');
+
 
     $series = Series::all()->filter(function($series){
       return $series->articles->count() > 0;

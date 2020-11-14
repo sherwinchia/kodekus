@@ -5,16 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield('meta-content')
 
+  <link rel="icon" type='image/x-icon' href="{{ asset('images/brand/favicon.ico') }}">
+
   <!-- Fonts -->
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
 
   <!-- Styles -->
   <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
   <livewire:styles />
   @stack('styles')
 
