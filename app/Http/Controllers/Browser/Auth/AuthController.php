@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Browser\Auth;
 
-use App\Models\VerificationToken;
-use App\Services\Shared\VerificationServices;
-
-use App\Http\Controllers\Controller;
+use App\Models\Page;
+use SEOTools;
 use Illuminate\Http\Request;
+
+use App\Models\VerificationToken;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Services\Shared\VerificationServices;
 
 class AuthController extends Controller
 {
@@ -24,10 +26,29 @@ class AuthController extends Controller
 
   public function show()
   {
+    //0 = Title, 1 = Description, 2 = Twitter Site
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
+    SEOTools::setTitle('Login &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
+    SEOTools::setCanonical(route('browser.auth.show'));
+
+    SEOTools::opengraph()->setUrl(route('browser.auth.show'));
+    SEOTools::opengraph()->addProperty('type', 'articles');
+    
+    SEOTools::twitter()->setSite($metas[2]['content']);
+    SEOTools::twitter()->setUrl(route('browser.auth.show'));
+
+    SEOTools::jsonLd()->setType('Article');
+    
+
     if (request()->has('type')) {
       $form  = request()->get('type');
+      SEOTools::setTitle(ucfirst($form) . ' &middot; ' . config('app.name') );
     } else {
       $form = 'login';
+      SEOTools::setTitle('Login &middot; ' . config('app.name') );
     }
     
     return view(self::PATH . 'show', compact('form'));

@@ -1,4 +1,4 @@
-<div>
+<div class="">
   <div class="mb-2">
     <div class="input-group search-box">
       <input wire:model.debounce.300ms="search" type="text" class="w-full"

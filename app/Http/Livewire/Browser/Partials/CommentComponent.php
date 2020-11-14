@@ -82,8 +82,8 @@ class CommentComponent extends Component
   {
     $this->success_message = null;
     $data = $this->validate($this->rules);
-    
-    $data['approved'] = unserialize(Page::where('name', 'Comment')->first()->content)['comment_approval'];
+
+    $data['approved'] = !unserialize(Page::where('name', 'Comment')->first()->content)['comment_approval'];
 
     if ($this->reply_stage) {
       $data['comment_id'] = $this->comment_id;

@@ -171,7 +171,6 @@
   <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <p class="mb-2">
       <b>Congratulations</b> you have successfully registered. An email have been sent to your email for activation.
-      Activate your account to enable bookmarks feature.
     </p>
 
     <a href="{{ route('browser.home.index') }}"

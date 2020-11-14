@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Browser\Search;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Article;
-use App\Models\Tag;
-use App\Models\Category;
 use SEOTools;
+use App\Models\Tag;
+use App\Models\Page;
+use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
@@ -15,13 +16,21 @@ class SearchController extends Controller
 
   public function index()
   {
-    SEOTools::setTitle('Search | '. config('app.name') );
-    SEOTools::setDescription('This is my page description');
-    SEOTools::opengraph()->setUrl(route('browser.home.index'));
-    SEOTools::setCanonical(route('browser.home.index'));
+    //0 = Title, 1 = Description, 2 = Twitter Site
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
+    SEOTools::setTitle('Search &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
+    SEOTools::setCanonical(route('browser.search.index'));
+
+    SEOTools::opengraph()->setUrl(route('browser.search.index'));
     SEOTools::opengraph()->addProperty('type', 'articles');
-    SEOTools::twitter()->setSite('@LuizVinicius73');
-    SEOTools::jsonLd()->addImage('https://codecasts.com.br/img/logo.jpg');
+    
+    SEOTools::twitter()->setSite($metas[2]['content']);
+    SEOTools::twitter()->setUrl(route('browser.search.index'));
+
+    SEOTools::jsonLd()->setType('Article');
 
     return view(self::PATH . 'index');
   }

@@ -3,7 +3,7 @@
     <button class="p-1 px-2 outline-none" wire:click="bookmark({{ $bookmarkableId }})" wire:loading.attr="disabled"
       wire:loading.remove>
       @if (current_user() ? current_user()->bookmarked($article_model ,$bookmarkableId) : false)
-      <i class=" text-black fas fa-bookmark cursor-pointer"></i>
+      <i class=" text-gray-800 fas fa-bookmark cursor-pointer"></i>
       @else
       <i class="far fa-bookmark cursor-pointer"></i>
       @endif

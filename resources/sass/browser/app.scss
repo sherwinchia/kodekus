@@ -34,9 +34,10 @@ button{
 @tailwind utilities;
 
 //Pages
-@import 'pages/home';
-@import 'pages/author';
-@import 'pages/article-inner';
+@import 'pages/_home';
+@import 'pages/_about';
+@import 'pages/_author';
+@import 'pages/_article-inner';
 
 //Partials
 @import 'partials/_input-group';

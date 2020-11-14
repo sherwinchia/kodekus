@@ -13,11 +13,13 @@ $socials = unserialize($socials->content);
         <div class="flex justify-center lg:justify-start  space-x-3 text-sm lg:text-normal items-center">
 
           @foreach ($socials as $social)
+          @if ($social['display'])
           <a style="color:{{ $social['color'] }};" class="text-lg" href="{{ $social['link'] }}">
             <div class="social-container">
               <i class="{{ $social['icon'] }}"></i>
             </div>
           </a>
+          @endif
           @endforeach
 
           {{-- <a class="social-color" href="">
@@ -55,7 +57,7 @@ $socials = unserialize($socials->content);
 
     <div class="flex justify-center lg:justify-between p-4 align-middle items-center">
       <div>
-        &#169; Ko&#60;\ing&#62; 2020
+        &#169; {{ config('app.name') }} 2020
       </div>
       <div class="hidden justify-center space-x-6 p-2 text-sm lg:flex uppercase">
         <a class="{{ request()->is('home') ? 'border-b' : '' }} border-black py-1"

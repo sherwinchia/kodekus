@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <div class="flex-none article-right flex flex-col justify-between">
+  <div class="flex-none article-right flex flex-col justify-between border-t">
     <div class="overflow-y-auto">
       <section>
         <div class="input-group">
@@ -124,7 +124,7 @@
         <span class="block sm:inline">{{ $errors->first() }}</span>
       </div>
       @endif
-      <button x-on:click.prevent="onPublishClicked()" class="w-full ">{{ $buttonText }}</button>
+      <button x-on:click.prevent="onPublishClicked()" class="w-full py-4">{{ $buttonText }}</button>
     </div>
   </div>
 </div>

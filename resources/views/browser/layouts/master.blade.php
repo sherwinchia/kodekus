@@ -8,7 +8,7 @@
 
 <div class="h-20"></div>
 
-<main class="flex flex-col min-h-screen">
+<main class="flex flex-col min-h-screen bg-white">
   @yield('content')
 </main>
 

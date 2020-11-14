@@ -27,9 +27,10 @@
           </a>
         </span>
         <span class="mr-4">
-          <i class="pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
+          <i
+            class="text-gray-800 pr-2 far fa-calendar-alt"></i>{{ date_to_human( $article->publish_date,'F d') }}</span>
         <span class="hidden lg:inline-block mr-4">
-          <i class="pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
+          <i class="text-gray-800 pr-2 far fa-clock"></i>{{  $article->read_minutes }}</span>
         <span class="">
           <livewire:browser.partials.bookmark-component :bookmarkableId="$article->id" :key="$article->id" />
         </span>
