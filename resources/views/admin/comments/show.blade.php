@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-<title>Comment | {{ config('app.name') }} </title>
+<title>Comment &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('breadcrumbs')

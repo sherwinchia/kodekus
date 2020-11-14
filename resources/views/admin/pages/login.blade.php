@@ -1,7 +1,7 @@
 @extends('admin.layouts.stranger')
 
 @section('meta-content')
-<title>Login | {{ config('app.name') }} </title>
+<title>Login &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('content')

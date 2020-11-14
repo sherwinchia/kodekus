@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-<title>User | {{ config('app.name') }} </title>
+<title>User &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('breadcrumbs')

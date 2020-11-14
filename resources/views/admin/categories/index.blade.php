@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-<title>Categories | {{ config('app.name') }} </title>
+<title>Categories &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('breadcrumbs')
