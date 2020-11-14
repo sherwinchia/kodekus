@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-<title>Dashboard | {{ config('app.name') }} </title>
+<title>Dashboard &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('breadcrumbs')

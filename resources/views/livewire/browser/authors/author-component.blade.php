@@ -1,5 +1,6 @@
 <div class="container mx-auto author-show mt-10">
-  <div class="relative h-48 border border-gray-800 rounded flex flex-col align-middle items-center justify-center">
+  <div
+    class="relative h-48 border border-gray-800 rounded flex flex-col align-middle items-center justify-center ml-4 mr-4">
     <div class="author-profile rounded-full h-32 w-32 bg-white flex items-center justify-center" style="background-image: url({{  $author->profile->image_link }}); background-size: cover; background-position:
       50%;">
     </div>
