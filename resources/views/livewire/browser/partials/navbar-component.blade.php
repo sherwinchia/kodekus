@@ -1,4 +1,4 @@
-<nav wire:ignore x-cloack x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
+<nav x-cloak x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
   class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">

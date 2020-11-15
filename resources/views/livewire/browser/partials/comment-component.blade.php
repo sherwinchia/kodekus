@@ -151,7 +151,7 @@
 
 @section('scripts')
 
-<script>
+<script type="text/javascript">
   window.livewire.on('scrollToCommentForm', event => {
     document.getElementById('comment-form').scrollIntoView({behavior: 'smooth'});
   })
