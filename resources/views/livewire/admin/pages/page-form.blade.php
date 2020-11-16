@@ -92,7 +92,12 @@
             <div class="border border-gray-400 rounded-lg p-4 mb-4">
               <div class="card-body flex">
                 <div class="input-group w-full">
+                  @if ($meta['name'] == 'Twitter Site')
+                  <label for="content">{{ $meta['name'] }} <span class=" inline-block text-xs font-light italic"> ex:
+                      @john_doe</span></label>
+                  @else
                   <label for="content">{{ $meta['name'] }}</label>
+                  @endif
                   @if ($meta['name'] == 'Description')
                   <textarea class="w-full" wire:model="metas.{{ $index }}.content" name="description"
                     rows="4"></textarea>
