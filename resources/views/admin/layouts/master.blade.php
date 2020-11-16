@@ -10,9 +10,7 @@
       <div x-show="sidebarVisible"
         class="navigation-bar w-64 flex-none overflow-y-auto transform origin-left flex flex-col border-r">
         <div class=" text-center text-black overflow-hidden h-24 flex items-center justify-center px-2">
-          <div class=" h-16 w-16" style="background-image: url({{ asset('images/brand/logo-transparent.png') }}); background-size: cover; background-position:
-            50%;">
-          </div>
+          <img width="50" height="50" src="{{ asset('images/brand/logo-transparent.png') }}" alt="logo">
           <div class=" font-semibold text-2xl">
             {{ config('app.name') }}
           </div>
