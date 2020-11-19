@@ -90,7 +90,6 @@
 
 
 </div>
-
 <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
   @foreach ($article->body->blocks as $section)
   @if ($section->type == 'header')
@@ -149,8 +148,25 @@
   @elseif ($section->type == 'quote')
   <blockquote class="border-l-2 border-black p-6 mb-4 italic">
     <p>{!! $section->data->text !!}</p>
-    <p class="font-bold text-right">{!! '- ' . $section->data->caption !!}</p>
+    <p class="font-bold text-right mt-4">{!! '- ' . $section->data->caption !!}</p>
   </blockquote>
+
+  @elseif($section->type == 'list')
+  <div class="p-4 mb-4">
+    @if ($section->data->style == 'ordered')
+    <ol class="list-decimal">
+      @foreach ($section->data->items as $list)
+      <li>{{ $list }}</li>
+      @endforeach
+    </ol>
+    @else
+    <ul class="list-disc">
+      @foreach ($section->data->items as $list)
+      <li>{{ $list }}</li>
+      @endforeach
+    </ul>
+    @endif
+  </div>
 
   @elseif ($section->type == 'warning')
   <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mb-4" role="alert">
