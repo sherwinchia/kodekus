@@ -94,17 +94,17 @@
   @foreach ($article->body->blocks as $section)
   @if ($section->type == 'header')
   @if ($section->data->level == 1)
-  <h1 class="text-6xl mb-4">{{ $section->data->text }}</h1>
+  <h1 class="text-6xl mb-2 font-semibold">{{ $section->data->text }}</h1>
   @elseif ($section->data->level == 2)
-  <h2 class="text-5xl mb-4">{{ $section->data->text }}</h2>
+  <h2 class="text-5xl mb-2 font-semibold">{{ $section->data->text }}</h2>
   @elseif ($section->data->level == 3)
-  <h3 class="text-4xl mb-4">{{ $section->data->text }}</h3>
+  <h3 class="text-4xl mb-2 font-semibold">{{ $section->data->text }}</h3>
   @elseif ($section->data->level == 4)
-  <h4 class="text-3xl mb-4">{{ $section->data->text }}</h4>
+  <h4 class="text-3xl mb-2 font-semibold">{{ $section->data->text }}</h4>
   @elseif ($section->data->level == 5)
-  <h5 class="text-2xl mb-4">{{ $section->data->text }}</h5>
+  <h5 class="text-2xl mb-2 font-semibold">{{ $section->data->text }}</h5>
   @elseif ($section->data->level == 6)
-  <h6 class="text-xl mb-4">{{ $section->data->text }}</h6>
+  <h6 class="text-xl mb-2 font-semibold">{{ $section->data->text }}</h6>
   @endif
 
   @elseif ($section->type == 'paragraph')
@@ -146,27 +146,28 @@
   </div>
 
   @elseif ($section->type == 'quote')
-  <blockquote class="border-l-2 border-black p-6 mb-4 italic">
+  <blockquote class="border-l-2 border-black p-3 mb-4">
     <p>{!! $section->data->text !!}</p>
     <p class="font-bold text-right mt-4">{!! '- ' . $section->data->caption !!}</p>
   </blockquote>
 
   @elseif($section->type == 'list')
-  <div class="p-4 mb-4">
+  <div class="pl-4  mb-4">
     @if ($section->data->style == 'ordered')
     <ol class="list-decimal">
       @foreach ($section->data->items as $list)
-      <li>{{ $list }}</li>
+      <li>{!! $list !!}</li>
       @endforeach
     </ol>
     @else
     <ul class="list-disc">
       @foreach ($section->data->items as $list)
-      <li>{{ $list }}</li>
+      <li>{!! $list !!}</li>
       @endforeach
     </ul>
     @endif
   </div>
+
 
   @elseif ($section->type == 'warning')
   <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mb-4" role="alert">

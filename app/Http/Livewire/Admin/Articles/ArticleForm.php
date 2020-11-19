@@ -104,6 +104,9 @@ class ArticleForm extends Component
   public function publishClicked($editorJs)
   { 
     $this->body =json_encode($editorJs);
+
+    dd(preg_replace('/data:image(.*?)\"/', '', $this->body));
+
     $readMinutes = (new ReadTime(preg_replace('/data:image(.*?)\=/', '', $this->body), $omitSeconds = true, $abbreviated = false, $wordsPerMinute = 210))->toArray()['minutes'];
 
     if ($readMinutes > 1) {
