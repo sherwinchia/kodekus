@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="container flex-1 flex items-center justify-center">
-        <div class="flex w-full justify-center sm:justify-start align-middle items-center sm:px-4 space-x-10">
+        <div class="flex w-full justify-center sm:justify-start align-middle items-center sm:px-4 space-x-6">
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
             <img width="75" height="75" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
             {{-- <h2>Ko&#60;\ing&#62;</h2> --}}
