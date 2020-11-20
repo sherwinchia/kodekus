@@ -101,13 +101,11 @@ class ArticleForm extends Component
     } 
   }
 
-  public function publishClicked($editorJs)
+  public function publishClicked($editorJs, $readData)
   { 
-    $this->body =json_encode($editorJs);
+    $this->body = $editorJs;
 
-    dd(preg_replace('/data:image(.*?)\"/', '', $this->body));
-
-    $readMinutes = (new ReadTime(preg_replace('/data:image(.*?)\=/', '', $this->body), $omitSeconds = true, $abbreviated = false, $wordsPerMinute = 210))->toArray()['minutes'];
+    $readMinutes = (new ReadTime($readData, $omitSeconds = true, $abbreviated = false, $wordsPerMinute = 210))->toArray()['minutes'];
 
     if ($readMinutes > 1) {
       $readMinutes .= ' minutes';

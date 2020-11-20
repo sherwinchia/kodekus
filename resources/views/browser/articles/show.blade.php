@@ -128,7 +128,7 @@
 
   @elseif ($section->type == 'code')
   <div class="">
-    <pre>
+    <pre style="margin-top: -1.00rem; margin-bottom: -1.7rem;">
           <code>
 {{ $section->data->code }}
           </code>
