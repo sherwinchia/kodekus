@@ -163,7 +163,17 @@
       //Function
       onPublishClicked(){
         editor.save().then((outputData) => {
-          window.livewire.emit('publishClicked',outputData);
+          let data = JSON.stringify(outputData);
+          let readData = outputData;
+          let blocks = outputData.blocks;
+
+          blocks.forEach((block, index) => {
+            if (block.type == 'image') {
+              readData.blocks.splice(index,1)
+            }
+          });
+
+          window.livewire.emit('publishClicked',data, JSON.stringify(readData));
         }).catch((error) => {
           console.log('Saving failed: ', error)
         });
