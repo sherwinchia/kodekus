@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <p class="text-md text-black">{{ $article->description }}</p>
+        {{-- <p class="text-md text-black">{{ $article->description }}</p> --}}
       </div>
     </div>
   </div>
