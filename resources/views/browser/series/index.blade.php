@@ -12,7 +12,7 @@
     <h1 class="p-2 text-lg font-semibold">{{ $_series->name }}</h1>
     <div class="swiper-container">
       <div class="swiper-wrapper mb-6">
-        @foreach ($_series->articles()->latest('publish_date')->get() as $article)
+        @foreach ($_series->articles()->where('published', 1)->latest('publish_date')->get() as $article)
         <div class="swiper-slide">
           <div class="article-md p-2">
             <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
