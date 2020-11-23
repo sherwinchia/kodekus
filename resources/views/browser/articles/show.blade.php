@@ -94,17 +94,17 @@
   @foreach ($article->body->blocks as $section)
   @if ($section->type == 'header')
   @if ($section->data->level == 1)
-  <h1 class="text-6xl mb-2 font-semibold">{{ $section->data->text }}</h1>
+  <h1 class="text-6xl mb-2 font-semibold">{!! $section->data->text !!}</h1>
   @elseif ($section->data->level == 2)
-  <h2 class="text-5xl mb-2 font-semibold">{{ $section->data->text }}</h2>
+  <h2 class="text-5xl mb-2 font-semibold">{!! $section->data->text !!}</h2>
   @elseif ($section->data->level == 3)
-  <h3 class="text-4xl mb-2 font-semibold">{{ $section->data->text }}</h3>
+  <h3 class="text-4xl mb-2 font-semibold">{!! $section->data->text !!}</h3>
   @elseif ($section->data->level == 4)
-  <h4 class="text-3xl mb-2 font-semibold">{{ $section->data->text }}</h4>
+  <h4 class="text-3xl mb-2 font-semibold">{!! $section->data->text !!}</h4>
   @elseif ($section->data->level == 5)
-  <h5 class="text-2xl mb-2 font-semibold">{{ $section->data->text }}</h5>
+  <h5 class="text-2xl mb-2 font-semibold">{!! $section->data->text !!}</h5>
   @elseif ($section->data->level == 6)
-  <h6 class="text-xl mb-2 font-semibold">{{ $section->data->text }}</h6>
+  <h6 class="text-xl mb-2 font-semibold">{!! $section->data->text !!}</h6>
   @endif
 
   @elseif ($section->type == 'paragraph')
