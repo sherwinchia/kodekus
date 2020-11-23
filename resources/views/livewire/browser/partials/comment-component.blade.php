@@ -17,7 +17,7 @@
           <i class="fas fa-caret-down" x-show="drop"></i>
         </div>
       </div>
-      <div x-show.transition.origin.top="drop" class="py-4 ">
+      <div x-cloack x-show.transition.origin.top="drop" class="py-4 ">
         <div class="flex flex-col">
           <div class="comment-display">
             <ul>
