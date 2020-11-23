@@ -94,7 +94,7 @@ class Article extends Model
       $nextId = Article::where('id', '>', $this->id)->min('id');
     }
     $nextArticle = Article::find($nextId); 
-    if ($nextArticle) {
+    if ($nextArticle $nextArticle->published == 1) {
       $nextArticle->link = route('browser.articles.show', ['slug'=> $nextArticle->slug, 'category' => $nextArticle->category->slug]);
       return $nextArticle;
     } else {
@@ -111,7 +111,7 @@ class Article extends Model
       $prevId = Article::where('id', '<', $this->id)->max('id');
     }
     $prevArticle = Article::find($prevId);
-    if ($prevArticle) {
+    if ($prevArticle && $prevArticle->published == 1) {
       $prevArticle->link = route('browser.articles.show', ['slug'=> $prevArticle->slug, 'category' => $prevArticle->category->slug]);
       return $prevArticle;
     } else {
