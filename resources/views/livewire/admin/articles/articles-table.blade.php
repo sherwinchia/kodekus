@@ -59,7 +59,7 @@
           <td class="non-id">
             {{ $article->title }}
           </td>
-          <td class="non-id">
+          <td class="non-id text-center">
             {{ date_to_human($article->publish_date , 'd F Y') }}
           </td>
           @role('admin', 'admin')
