@@ -94,7 +94,7 @@ class Article extends Model
       $nextId = Article::where('id', '>', $this->id)->min('id');
     }
     $nextArticle = Article::find($nextId); 
-    if ($nextArticle $nextArticle->published == 1) {
+    if ($nextArticle && $nextArticle->published == 1) {
       $nextArticle->link = route('browser.articles.show', ['slug'=> $nextArticle->slug, 'category' => $nextArticle->category->slug]);
       return $nextArticle;
     } else {
