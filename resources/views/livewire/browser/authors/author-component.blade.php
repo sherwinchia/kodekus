@@ -46,7 +46,7 @@
     <div class="flex items-center align-middle space-x-4 justify-center mt-2">
       {{-- <div class="text-center"> <i class="fas fa-birthday-cake"></i>
           {{ date_to_human($author->created_at, 'd F y') }}</div> --}}
-    <div class="text-center flex items-center text-sm"><i class="fas fa-newspaper pr-2"></i>
+    <div class="text-center flex items-center text-sm"><i class="far fa-newspaper pr-2"></i>
       {{ $author->articles()->count() }}
     </div>
     <div class="text-center flex items-center  text-sm"><i class="text-red-400 fas fa-heart pr-2"></i>

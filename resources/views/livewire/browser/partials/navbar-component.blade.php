@@ -1,4 +1,4 @@
-<nav x-cloak x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
+<nav x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
   class="navbar bg-white border-b border-black">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
@@ -58,7 +58,7 @@
             <div class="flex flex-col justify-end relative" @mouseexit="profileDropdown = false">
               <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
               <div class=" absolute bg-white p-3 border border-black w-40 flex flex-col shadow"
-                style="top:40px; right:0;" x-show="profileDropdown" @click.away="profileDropdown = false">
+                style="top:40px; right:0;" x-cloak x-show="profileDropdown" @click.away="profileDropdown = false">
                 <span class="pb-2 text-normal overflow-hidden">{{ current_user()->full_name }}</span>
                 <div class="border-b border-black mb-2"></div>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.profile.show') }}">Profile</a>
@@ -72,7 +72,7 @@
       </div>
     </div>
   </div>
-  <div x-show.transition.origin.top="menuDropdown" class="pb-4">
+  <div x-cloak x-show.transition.origin.top="menuDropdown" class="pb-4">
     <div class="flex flex-col justify-center">
       <div class="flex justify-center">
         <a href="{{ route('browser.home.index') }}" class="px-3  rounded-md text-sm font-light uppercase">Home</a>

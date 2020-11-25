@@ -13,7 +13,7 @@ class ArticlesTable extends Component
 
   public $search = '';
   public $sortField = 'id';
-  public $sortAsc = true;
+  public $sortAsc = false;
   public $perPage = 10;
 
   protected $listeners = ['tableRefresh' => '$refresh'];
