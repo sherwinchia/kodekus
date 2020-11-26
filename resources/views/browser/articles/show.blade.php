@@ -185,6 +185,11 @@
     <p>{!! $section->data->message !!}</p>
   </div>
 
+  @elseif ($section->data->type == 'warning')
+  <div class="bg-orange-100 rounded-sm border-orange-500 border  text-orange-700 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+
   @elseif ($section->data->type == 'dark')
   <div class="bg-gray-700 rounded-sm border border-gray-800 text-gray-100 p-4 mb-4" role="alert">
     <p>{!! $section->data->message !!}</p>
