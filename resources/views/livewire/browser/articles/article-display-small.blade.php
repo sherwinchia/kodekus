@@ -13,18 +13,18 @@
       <div class="tags flex-wrap hidden lg:flex">
         @foreach ($article->tags as $tag)
         <a class=" w-auto" href="{{ $tag->tag_link }}">
-          <div class=" py-1 px-2 rounded-sm border border-black text-black text-xs mr-2 mb-2">#
+          <div class=" py-1 px-2 rounded-sm border border-black text-xs mr-2 mb-2">#
             {{ $tag->name }}
           </div>
         </a>
         @endforeach
       </div>
-      <div class="flex items-center text-black font-light text-sm items-center align-middle">
+      <div class="flex font-light text-sm items-center align-middle">
         <div class="hidden md:block rounded-full h-6 w-6 lg:h-8 lg:w-8 bg-white mr-2" style="background-image: url({{  $article->author->profile->image_link }}); background-size: cover; background-position:
           50%;">
         </div>
         <span class="hidden md:inline-block mr-4">
-          <a class="text-black font-normal" href="{{ $article->author->author_link }}">
+          <a class="font-normal" href="{{ $article->author->author_link }}">
             {{ $article->author->full_name }}
           </a>
         </span>

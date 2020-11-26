@@ -15,7 +15,7 @@ module.exports = {
       colors:{
         primary:'#6C72EF',
         hover:'#ECEFF3',
-        base:'#F1F4F8',
+        base:'#fcfdff',
         dark:{
           100:'#27292C',
           200:'#202125',

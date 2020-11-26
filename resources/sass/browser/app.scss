@@ -3,9 +3,8 @@
 @tailwind base;
 
 body{
-  @apply font-roboto;
+  @apply font-roboto text-gray-800;
   padding: 0;
-  color : black;
   letter-spacing: 1px;
 }
 

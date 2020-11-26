@@ -1,10 +1,10 @@
 <nav x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
-  class="navbar bg-white border-b border-black">
+  class="navbar bg-base border-b border-black ">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
       <div class=" absolute right-0 flex items-center sm:hidden">
         <button @click="menuDropdown = !menuDropdown"
-          class="inline-flex items-center justify-center p-2 rounded-md text-black" aria-label="Main menu"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-800" aria-label="Main menu"
           aria-expanded="false">
           <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
@@ -19,12 +19,12 @@
       <div class="container flex-1 flex items-center justify-center">
         <div class="flex w-full justify-center sm:justify-start align-middle items-center sm:px-4 space-x-6">
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
-            <img width="75" height="75" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
+            <img width="60" height="60" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
             {{-- <h2>Ko&#60;\ing&#62;</h2> --}}
           </a>
           <div class="hidden sm:flex items-center space-x-6 text-sm uppercase">
             <a href="{{ route('browser.home.index') }}"
-              class=" {{ request()->is('home') ? 'border-b' : '' }} border-black py-1">
+              class=" {{ request()->is('/') ? 'border-b' : '' }} border-black py-1">
               Home
             </a>
             <a href="{{ route('browser.about.index') }}"

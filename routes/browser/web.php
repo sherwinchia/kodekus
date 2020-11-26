@@ -30,10 +30,10 @@ Route::get('series','Series\SeriesController@index')->name('series.index');
 Route::get('about','About\AboutController@index')->name('about.index');
 
 //Home
-Route::get('home','Home\HomeController@index')->name('home.index');
+Route::get('/','Home\HomeController@index')->name('home.index');
 
 //Root
-Route::get('/','Root\RootController@index')->name('root.index');
+Route::get('/root','Root\RootController@index')->name('root.index');
 
 //Activation
 Route::get('activation/{token}', 'Auth\AuthController@activateAccount')->name('auth.activation');

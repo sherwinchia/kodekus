@@ -121,7 +121,7 @@ class Article extends Model
 
   public function getMoreArticlesAttribute()
   {
-    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->orWhere('series_id', $this->series_id)->take(3)->get();
+    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->take(3)->get();
     return $morePost;
   }
 

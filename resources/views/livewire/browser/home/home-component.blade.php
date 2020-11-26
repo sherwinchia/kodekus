@@ -17,12 +17,12 @@
         @if (!$categories->isEmpty())
         <div class="mb-8">
           <div class="flex items-center py-2 border-b border-black">
-            <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-black">Kategori</h5>
+            <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-gray-800">Kategori</h5>
           </div>
           <div class="flex flex-col w-full ">
             @foreach ($categories as $category)
             <a href="{{ $category->category_link }}"
-              class="  text-black p-2 cursor-pointer text-md hover:bg-gray-200 flex justify-between">
+              class="  text-gray-800 p-2 cursor-pointer text-md hover:bg-gray-200 flex justify-between">
               <span>{{ $category->name }}</span>
               <span>
                 {{ $category->articles->count() }}
@@ -38,12 +38,12 @@
         @if (!$tags->isEmpty())
         <div class="mb-8">
           <div class="flex items-center py-2 mb-2 border-b border-black">
-            <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-black">Topik</h5>
+            <h5 class="font-semibold tracking-wider font-roboto text-xl uppercase text-gray-800">Topik</h5>
           </div>
           <div class=" flex flex-wrap">
             @foreach ($tags as $tag)
             <a class="w-auto cursor-pointer mr-2 " href="{{ $tag->tag_link }}">
-              <div class="py-1 px-2 rounded-sm border border-black text-black text-sm mb-2 ">#
+              <div class="py-1 px-2 rounded-sm border border-black text-gray-800 text-sm mb-2 ">#
                 {{ $tag->name }}
               </div>
             </a>

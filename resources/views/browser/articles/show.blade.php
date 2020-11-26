@@ -19,7 +19,7 @@
               50%;">
             </div>
             <div>
-              <a class="text-black lg:text-normal" href="{{ $article->author->author_link }}">
+              <a class="text-normal" href="{{ $article->author->author_link }}">
                 {{ $article->author->full_name }}
               </a>
             </div>
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        {{-- <p class="text-md text-black">{{ $article->description }}</p> --}}
+        {{-- <p class="text-md ">{{ $article->description }}</p> --}}
       </div>
     </div>
   </div>
