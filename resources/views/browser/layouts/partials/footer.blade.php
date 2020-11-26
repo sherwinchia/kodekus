@@ -14,8 +14,8 @@ $socials = unserialize($socials->content);
 
           @foreach ($socials as $social)
           @if ($social['display'])
-          <a style="color:{{ $social['color'] }};" class="text-lg" href="{{ $social['link'] }}">
-            <div class="social-container">
+          <a target="_blank" class="text-lg" href="{{ $social['link'] }}">
+            <div style="background-color:{{ $social['color'] }};" class="social-container">
               <i class="{{ $social['icon'] }}"></i>
             </div>
           </a>
@@ -55,7 +55,7 @@ $socials = unserialize($socials->content);
       </div> --}}
     </div>
 
-    <div class="flex justify-center lg:justify-between p-4 align-middle items-center font-semibold">
+    <div class="flex justify-center lg:justify-between p-4 align-middle items-center font-light">
       <div>
         &#169; {{ config('app.name') . ' ' . date('Y')}}
       </div>

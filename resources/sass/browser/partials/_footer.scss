@@ -1,9 +1,9 @@
 footer{
   .social-container{
-    @apply flex justify-center align-middle items-center w-10 h-10 rounded-full border bg-gray-200 border-gray-200;
+    @apply flex justify-center align-middle items-center w-10 h-10 rounded-full bg-gray-200;
 
     .social-color{
-      color: black;
+      color: white;
     }
 
     &:hover{
