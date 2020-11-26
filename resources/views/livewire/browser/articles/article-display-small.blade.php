@@ -13,7 +13,7 @@
       <div class="tags flex-wrap hidden lg:flex">
         @foreach ($article->tags as $tag)
         <a class=" w-auto" href="{{ $tag->tag_link }}">
-          <div class=" py-1 px-2 rounded-sm border border-black text-xs mr-2 mb-2">#
+          <div class=" py-1 px-2 rounded-sm border border-gray-800 text-xs mr-2 mb-2">#
             {{ $tag->name }}
           </div>
         </a>

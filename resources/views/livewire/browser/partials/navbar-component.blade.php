@@ -1,5 +1,5 @@
 <nav x-data="{menuDropdown : false, searchExpand : true, profileDropdown: false}"
-  class="navbar bg-base border-b border-black ">
+  class="navbar bg-base border-b border-gray-800 ">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="flex justify-center items-center relative">
       <div class=" absolute right-0 flex items-center sm:hidden">
@@ -24,19 +24,19 @@
           </a>
           <div class="hidden sm:flex items-center space-x-6 text-sm uppercase">
             <a href="{{ route('browser.home.index') }}"
-              class=" {{ request()->is('/') ? 'border-b' : '' }} border-black py-1">
+              class=" {{ request()->is('/') ? 'border-b' : '' }} border-gray-800 py-1">
               Home
             </a>
             <a href="{{ route('browser.about.index') }}"
-              class=" {{ request()->is('about*') ? 'border-b' : '' }} border-black py-1">
+              class=" {{ request()->is('about*') ? 'border-b' : '' }} border-gray-800 py-1">
               About
             </a>
             <a href="{{ route('browser.series.index') }}"
-              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-black py-1">
+              class=" {{ request()->is('series*') ? 'border-b' : '' }} border-gray-800 py-1">
               Series
             </a>
             <a href="{{ route('browser.search.index') }}"
-              class=" {{ request()->is('search*') ? 'border-b' : '' }} border-black py-1">
+              class=" {{ request()->is('search*') ? 'border-b' : '' }} border-gray-800 py-1">
               Search
             </a>
           </div>
@@ -50,17 +50,17 @@
           <div class="flex items-center space-x-4 text-sm">
             @guest
             <a href="{{ route('browser.auth.show', ['type' => 'login']) }}">Login</a>
-            <a class="border border-black py-2 px-2 rounded"
+            <a class="border border-gray-800 py-2 px-2 rounded"
               href="{{ route('browser.auth.show', ['type' => 'register']) }}">Register</a>
             @endguest
 
             @auth
             <div class="flex flex-col justify-end relative" @mouseexit="profileDropdown = false">
               <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
-              <div class=" absolute bg-white p-3 border border-black w-40 flex flex-col shadow"
+              <div class=" absolute bg-white p-3 border border-gray-800 w-40 flex flex-col shadow"
                 style="top:40px; right:0;" x-cloak x-show="profileDropdown" @click.away="profileDropdown = false">
                 <span class="pb-2 text-normal overflow-hidden">{{ current_user()->full_name }}</span>
-                <div class="border-b border-black mb-2"></div>
+                <div class="border-b border-gray-800 mb-2"></div>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.profile.show') }}">Profile</a>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.logout') }}">Logout</a>
               </div>

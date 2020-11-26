@@ -2,9 +2,9 @@
   <ul class="block w-full mx-auto">
     <li class="flex align-center flex-col">
       <div @click="drop = !drop"
-        class="flex justify-between cursor-pointer py-4 text-black border-t border-b border-black">
+        class="flex justify-between cursor-pointer py-4 text-gray-800 border-t border-b border-gray-800">
         <div>
-          <h3 class="font-normal text-lg text-black">
+          <h3 class="font-normal text-lg text-gray-800">
             @if ($article->total_comments>1)
             Comments ({{ $article->total_comments }})
             @else
@@ -31,9 +31,9 @@
                     </div>
                     <div class="flex flex-col ml-4">
                       @if ($comment->user)
-                      <span class="text-black font-normal">{{ $comment->name }}</span>
+                      <span class="text-gray-800 font-normal">{{ $comment->name }}</span>
                       @else
-                      <span class="text-black font-normal">{{ $comment->name }} (guest)</span>
+                      <span class="text-gray-800 font-normal">{{ $comment->name }} (guest)</span>
                       @endif
                       <span class="text-gray-800 font-light text-sm ">
                         {{ date_to_human($comment->created_at, 'd M Y H:i') }}
@@ -58,9 +58,9 @@
                         </div>
                         <div class="flex flex-col ml-4">
                           @if ($reply->user)
-                          <span class="text-black font-normal">{{ $reply->name }}</span>
+                          <span class="text-gray-800 font-normal">{{ $reply->name }}</span>
                           @else
-                          <span class="text-black font-normal">{{ $reply->name }} (guest)</span>
+                          <span class="text-gray-800 font-normal">{{ $reply->name }} (guest)</span>
                           @endif
                           <span class="text-gray-800 font-light text-sm ">
                             {{ date_to_human($reply->created_at, 'd M Y H:i') }}
@@ -97,8 +97,8 @@
           </div>
           @endif
         </div>
-        <div id="comment-form" class="comment-form flex flex-col p-4 border border-black rounded mt-4">
-          <h5 class=" text-lg uppercase text-black mb-2">Tulis balasan</h5>
+        <div id="comment-form" class="comment-form flex flex-col p-4 border border-gray-800 rounded mt-4">
+          <h5 class=" text-lg uppercase text-gray-800 mb-2">Tulis balasan</h5>
           @if ($reply_stage == true)
           <div>
             <span>Replying to </span>
@@ -110,13 +110,13 @@
           <div class="input-group flex space-x-4">
             <div class="w-1/2">
               <label for="name">Nama</label>
-              <input wire:model.debounce="name" class="text-black bg-white  p-2 w-full border border-black" type="text"
-                placeholder="John Doe">
+              <input wire:model.debounce="name" class="text-gray-800 bg-white  p-2 w-full border border-gray-800"
+                type="text" placeholder="John Doe">
               @error('name') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
             <div class="w-1/2">
               <label for="email">Email</label>
-              <input wire:model.debounce="email" class="text-black bg-white  p-2 w-full border border-black"
+              <input wire:model.debounce="email" class="text-gray-800 bg-white  p-2 w-full border border-gray-800"
                 type="email" placeholder="john_doe@gmail.com">
               @error('email') <span class="error-msg">{{ $message }}</span> @enderror
             </div>
@@ -135,7 +135,7 @@
             @endif
             <div class="flex justify-end">
               <button id="comment-btn"
-                class="flex justify-center items-center px-4 py-2 bg-white border-black border text-black rounded tracking-wide"
+                class="flex justify-center items-center px-4 py-2 bg-white border-gray-800 border text-gray-800 rounded tracking-wide"
                 wire:loading.attr="disabled" wire:click="submit">Kirim
                 <span wire:loading wire:target="submit"
                   class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 ml-2"></span>

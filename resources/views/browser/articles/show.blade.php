@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container mx-auto article-show mt-10">
+<div class="container mx-auto article-show sm:mt-10">
   <div class="flex justify-center mb-4">
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       <div class="">
