@@ -33,8 +33,8 @@ import 'alpinejs';
 //     el: '#app',
 // });
 
-try {
-  window.$ = window.jQuery = require('jquery');
+// try {
+//   window.$ = window.jQuery = require('jquery');
 
   // let token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -44,18 +44,18 @@ try {
   //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
   // }
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
+  // $.ajaxSetup({
+  //   headers: {
+  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //   }
+  // });
 
   // require('bootstrap');
-} catch (e) {}
+// } catch (e) {}
 
-window.axios = require('axios');
+// window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -67,18 +67,17 @@ window.EditorJS = require('@editorjs/editorjs');
 window.Paragraph = require('@editorjs/paragraph');
 window.Header = require('@editorjs/header');
 window.Quote = require('@editorjs/quote');
-window.Warning = require('@editorjs/warning');
+// window.Warning = require('@editorjs/warning');
 window.Delimiter = require('@editorjs/delimiter');
 window.List = require('@editorjs/list');
 window.ImageTool = require('@editorjs/image');
 window.SimpleImage = require('@editorjs/simple-image');
-window.LinkTool = require('@editorjs/link');
+// window.LinkTool = require('@editorjs/link');
 window.Embed = require('@editorjs/embed');
 window.AttachesTool = require('@editorjs/attaches');
 window.CodeTool = require('@editorjs/code');
-window.RawTool = require('@editorjs/raw');
-window.Marker = require('@editorjs/marker');
+// window.Marker = require('@editorjs/marker');
 window.InlineCode = require('@editorjs/inline-code');
 window.Undo = require('editorjs-undo');
-
+window.Alert = require('editorjs-alert');
 window.Quill = require('quill');

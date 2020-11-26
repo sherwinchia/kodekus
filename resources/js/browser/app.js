@@ -36,8 +36,8 @@ import 'swiper/swiper-bundle.css';
 //     el: '#app',
 // });
 
-try {
-  window.$ = window.jQuery = require('jquery');
+// try {
+  // window.$ = window.jQuery = require('jquery');
 
   // let token = document.head.querySelector('meta[name="csrf-token"]');
 
@@ -47,18 +47,18 @@ try {
   //     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
   // }
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
+  // $.ajaxSetup({
+  //   headers: {
+  //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  //   }
+  // });
 
   // require('bootstrap');
-} catch (e) {}
+// } catch (e) {}
 
-window.axios = require('axios');
+// window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -66,7 +66,21 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-window.hljs = require('highlight.js');
+// window.hljs = require('highlight.js');
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import css from 'highlight.js/lib/languages/css';
+import xml from 'highlight.js/lib/languages/xml';
+import php from 'highlight.js/lib/languages/php';
+import python from 'highlight.js/lib/languages/python';
+import plaintext from 'highlight.js/lib/languages/plaintext';
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('php', php);
+hljs.registerLanguage('python', python);
+hljs.registerLanguage('plaintext', plaintext);
+
 hljs.initHighlightingOnLoad();
 
 let swiper = new Swiper('.swiper-container', {

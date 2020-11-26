@@ -201,34 +201,30 @@
           holder: 'editorjs',
 
           tools:{
-            delimiter: Delimiter,
-            code: CodeTool,
-            raw: RawTool,
-            image: {
-            class: SimpleImage,
-            inlineToolbar: true
+            title:{
+              class:Header,
+              shortcut: 'CMD+SHIFT+F',
+              config: {
+                placeholder: 'Enter a title',
+                levels: [4],
+                defaultLevel: 4
+              }
             },
-            // title:{
-            //   class:Header,
-            //   config: {
-            //     placeholder: 'Enter a title',
-            //     levels: [1],
-            //     defaultLevel: 1
-            //   }
-            // },
-            // subtitle:{
-            //   class:Header,
-            //   config: {
-            //     placeholder: 'Enter a sub-title',
-            //     levels: [3],
-            //     defaultLevel: 3
-            //   },
-            // },
+            subtitle:{
+              class:Header,
+              shortcut: 'CMD+SHIFT+G',
+              config: {
+                placeholder: 'Enter a sub title',
+                levels: [5],
+                defaultLevel: 5
+              },
+            },
             header:{
               class:Header,
+              shortcut: 'CMD+SHIFT+H',
               config: {
-                placeholder: 'Enter a header',
-                levels: [4, 5, 6],
+                placeholder: 'Enter a custom header',
+                levels: [1,2,3, 4, 5, 6],
                 defaultLevel: 4
               }
             },
@@ -236,6 +232,9 @@
               class: Paragraph,
               inlineToolbar: true,
             },
+            delimiter: Delimiter,
+            code: CodeTool,
+            image: SimpleImage,
             quote: {
               class: Quote,
               inlineToolbar: true,
@@ -245,39 +244,32 @@
                 captionPlaceholder: 'Quote\'s author',
               },
             },
-            warning: {
-              class: Warning,
+            alert: {
+              class: Alert,
               inlineToolbar: true,
-              shortcut: 'CMD+SHIFT+W',
+              shortcut: 'CMD+SHIFT+A',
               config: {
-                titlePlaceholder: 'Title',
-                messagePlaceholder: 'Message',
+                defaultType: 'primary',
+                messagePlaceholder: 'Enter something',
               },
             },
             list: {
               class: List,
               inlineToolbar: true,
             },
-            linkTool: {
-              class: LinkTool,
-              config: {
-                endpoint: 'http://localhost:8008/fetchUrl', // Your backend endpoint for url data fetching
-              }
-            },
+            // linkTool: {
+            //   class: LinkTool,
+            //   config: {
+            //     endpoint: 'http://localhost:8008/fetchUrl', // Your backend endpoint for url data fetching
+            //   }
+            // },
             attaches: {
               class: AttachesTool,
               config: {
                 endpoint: 'http://localhost:8008/uploadFile'
               }
             },
-            embed: {
-              class: Embed,
-              inlineToolbar: true,
-            },
-            Marker: {
-              class: Marker,
-              shortcut: 'CMD+SHIFT+M',
-            },
+            embed: Embed,
             inlineCode: {
               class: InlineCode,
               shortcut: 'CMD+SHIFT+M',

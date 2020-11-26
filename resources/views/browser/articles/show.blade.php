@@ -128,8 +128,8 @@
 
   @elseif ($section->type == 'code')
   <div class="">
-    <pre style="margin-top: -1.00rem; margin-bottom: -1.7rem;">
-          <code>
+    <pre style="margin-top: -1.8rem; margin-bottom: -1.8rem; ">
+          <code style="padding:0 1.4rem 0 1.4rem; border-radius:5px;" class="text-sm">
 {{ $section->data->code }}
           </code>
         </pre>
@@ -169,11 +169,37 @@
   </div>
 
 
-  @elseif ($section->type == 'warning')
-  <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mb-4" role="alert">
-    <p class="font-bold">{!! $section->data->title !!}</p>
+  @elseif ($section->type == 'alert')
+  @if ($section->data->type == 'primary')
+  <div class="bg-blue-100 rounded-sm border border-blue-500 text-blue-700 p-4 mb-4" role="alert">
     <p>{!! $section->data->message !!}</p>
   </div>
+
+  @elseif ($section->data->type == 'info')
+  <div class="bg-purple-100 rounded-sm border border-purple-500 text-purple-700 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+
+  @elseif ($section->data->type == 'success')
+  <div class="bg-green-100 rounded-sm border-green-500 border  text-green-700 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+
+  @elseif ($section->data->type == 'dark')
+  <div class="bg-gray-700 rounded-sm border border-gray-800 text-gray-100 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+
+  @elseif ($section->data->type == 'light')
+  <div class="bg-gray-100 rounded-sm border border-gray-300 text-gray-900 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+
+  @elseif ($section->data->type == 'danger')
+  <div class="bg-red-100 rounded-sm border border-red-500 text-red-700 p-4 mb-4" role="alert">
+    <p>{!! $section->data->message !!}</p>
+  </div>
+  @endif
   @endif
   @endforeach
 

@@ -104,7 +104,6 @@ class ArticleForm extends Component
   public function publishClicked($editorJs, $readData)
   { 
     $this->body = $editorJs;
-
     $readMinutes = (new ReadTime($readData, $omitSeconds = true, $abbreviated = false, $wordsPerMinute = 210))->toArray()['minutes'];
 
     if ($readMinutes > 1) {
