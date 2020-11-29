@@ -19,7 +19,7 @@
       <div class="container flex-1 flex items-center justify-center">
         <div class="flex w-full justify-center sm:justify-start align-middle items-center sm:px-4 space-x-6">
           <a class="text-xl font-bold font-roboto" href="{{ route('browser.home.index') }}">
-            <img width="60" height="60" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
+            <img width="80" height="80" src="{{ asset('images/brand/logo-transparent.png') }}" alt="Logo">
             {{-- <h2>Ko&#60;\ing&#62;</h2> --}}
           </a>
           <div class="hidden sm:flex items-center space-x-6 text-sm uppercase">
@@ -76,6 +76,7 @@
     <div class="flex flex-col justify-center">
       <div class="flex justify-center">
         <a href="{{ route('browser.home.index') }}" class="px-3  rounded-md text-sm font-light uppercase">Home</a>
+        <a href="{{ route('browser.about.index') }}" class=" px-3  rounded-md text-sm font-light uppercase">About</a>
         <a href="{{ route('browser.search.index') }}" class=" px-3  rounded-md text-sm font-light uppercase">Search</a>
         <a href="{{ route('browser.series.index') }}" class=" px-3  rounded-md text-sm font-light uppercase">Series</a>
       </div>

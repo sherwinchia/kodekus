@@ -90,7 +90,7 @@
 
 
 </div>
-<div class="center w-11/12 lg:w-6/12 xl:w-6/12">
+<div id="article-body" class="center w-11/12 lg:w-6/12 xl:w-6/12">
   @foreach ($article->body->blocks as $section)
   @if ($section->type == 'header')
   @if ($section->data->level == 1)

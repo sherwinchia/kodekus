@@ -48,11 +48,12 @@
         <i class="fab fa-google w-6 border-r border-white pr-2"></i>
         <div>Continue with Google</div>
       </a>
-      <a href="{{ route('browser.login.socialite', 'facebook') }}" class="flex space-x-2 items-center w-full cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4
+      {{-- <a href="{{ route('browser.login.socialite', 'facebook') }}" class="flex space-x-2 items-center w-full
+      cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4
       focus:outline-none focus:shadow-outline">
-        <i class="fab fa-facebook-f w-6 border-r border-white pr-2"></i>
-        <div>Continue with Facebook</div>
-      </a>
+      <i class="fab fa-facebook-f w-6 border-r border-white pr-2"></i>
+      <div>Continue with Facebook</div>
+      </a> --}}
     </div>
   </div>
   @endif
@@ -120,11 +121,12 @@
         <i class="fab fa-google w-6 border-r border-white pr-2"></i>
         <div>Continue with Google</div>
       </a>
-      <a href="{{ route('browser.login.socialite', 'facebook') }}" class="flex space-x-2 items-center w-full cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4
+      {{-- <a href="{{ route('browser.login.socialite', 'facebook') }}" class="flex space-x-2 items-center w-full
+      cursor-pointer bg-blue-500 hover:bg-blue-700 text-white py-2 px-4
       focus:outline-none focus:shadow-outline">
-        <i class="fab fa-facebook-f w-6 border-r border-white pr-2"></i>
-        <div>Continue with Facebook</div>
-      </a>
+      <i class="fab fa-facebook-f w-6 border-r border-white pr-2"></i>
+      <div>Continue with Facebook</div>
+      </a> --}}
     </div>
   </div>
   @endif
