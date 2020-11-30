@@ -65,7 +65,7 @@
 
         <section>
           <div class="input-group">
-            <label for="series">Series</label>
+            <label for="series">Series <span class="font-light italic">(optional)</span></label>
             <select wire:model="series_id">
               <option value="null">Choose one series</option>
               @foreach ($series as $serie)

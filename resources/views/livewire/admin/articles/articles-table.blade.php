@@ -29,6 +29,9 @@
             <a wire:click.prevent="sortBy('title')" role="button">Title</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'title'])
           </th>
+          <th class="text-left">
+            Series
+          </th>
           <th>
             <a wire:click.prevent="sortBy('publish_date')" role="button">Publish Date</a>
             @include('admin.layouts.partials.sort-icon', ['field'=>'publish_date'])
@@ -58,6 +61,9 @@
           </td>
           <td class="non-id">
             {{ $article->title }}
+          </td>
+          <td class="non-id">
+            {{ $article->series->name ?? '-' }}
           </td>
           <td class="non-id text-center">
             {{ date_to_human($article->publish_date , 'd F Y') }}

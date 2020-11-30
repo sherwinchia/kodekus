@@ -21,7 +21,7 @@
 
     </div>
     <div class="content flex-1 flex flex-col overflow-y-auto bg-gray-100">
-      <div class="fixed top-0 w-full flex items-center p-6 h-16">
+      <div class="fixed top-0 w-full flex items-center p-6 h-16 bg-gray-100">
         <div class="text-black text-lg font-roboto font-bold uppercase cursor-pointer mr-4"
           @click="sidebarVisible=!sidebarVisible">
           <i class="fas fa-bars text-lg text-black"></i>

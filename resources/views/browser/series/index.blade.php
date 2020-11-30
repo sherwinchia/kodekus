@@ -9,6 +9,7 @@
 <div class="search container mx-auto p-4">
   <div class="flex flex-col">
     @foreach ($series as $_series)
+    @if($_series->articles()->where('published', 1)->count() > 0)
     <h1 class="p-2 text-lg font-semibold">{{ $_series->name }}</h1>
     <div class="swiper-container">
       <div class="swiper-wrapper mb-6">
@@ -50,6 +51,7 @@
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
+    @endif
     @endforeach
   </div>
 </div>

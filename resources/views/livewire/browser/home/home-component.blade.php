@@ -42,11 +42,13 @@
           </div>
           <div class=" flex flex-wrap">
             @foreach ($tags as $tag)
+            @if($tag->articles()->where('published', 1)->count() > 0)
             <a class="w-auto cursor-pointer mr-2 " href="{{ $tag->tag_link }}">
               <div class="py-1 px-2 rounded-sm border border-black text-gray-800 text-sm mb-2 ">#
                 {{ $tag->name }}
               </div>
             </a>
+            @endif
             @endforeach
           </div>
         </div>
