@@ -46,7 +46,7 @@
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.pages.edit', $page->id) }}">
-                <i class="fas fa-edit"></i>
+                <i class="far fa-edit"></i>
               </a>
             </div>
           </td>

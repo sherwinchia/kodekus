@@ -36,13 +36,13 @@
                     <div class="cursor-pointer">
                       <a class="p-2 bg-green-500 text-white rounded" wire:loading.attr="disabled"
                         wire:click="approve('comment', {{ $comment->id }})">
-                        Approve
+                        <i class="far fa-thumbs-up"></i>
                       </a>
                     </div>
                     <div class="cursor-pointer">
                       <a class="p-2 bg-red-500 rounded text-white" wire:loading.attr="disabled"
                         wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $comment->id }}, 'comment')">
-                        <i class="fas fa-trash"></i>
+                        <i class="far fa-trash-alt"></i>
                       </a>
                     </div>
                   </div>

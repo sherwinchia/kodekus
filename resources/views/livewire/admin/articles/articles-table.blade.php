@@ -79,12 +79,16 @@
           @endrole
           <td class=" non-id">
             <div class="flex justify-center text-gray-600">
+              <a class="mx-1 text-lg" role="button" target="_blank"
+                href="{{ route('admin.articles.preview', $article->id) }}">
+                <i class="far fa-eye"></i>
+              </a>
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.articles.edit', $article->id) }}">
-                <i class="fas fa-edit"></i>
+                <i class="far fa-edit"></i>
               </a>
               <a class="mx-1 text-lg" role="button"
                 wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $article->id }}, 'article')">
-                <i class=" fas fa-trash"></i>
+                <i class=" far fa-trash-alt"></i>
               </a>
             </div>
           </td>

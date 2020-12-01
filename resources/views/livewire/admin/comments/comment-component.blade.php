@@ -44,10 +44,10 @@
                     <div class="cursor-pointer">
                       <a wire:click="approve('comment', {{ $comment->id }})">
                         @if ($comment->isApproved())
-                        <i class="fas fa-check text-green-400"></i>
+                        <i class="far fa-thumbs-up text-green-400"></i>
                         {{-- <p class="p-2 bg-red-500 rounded text-white">Unapprove</p> --}}
                         @else
-                        <i class="fas fa-times text-red-400"></i>
+                        <i class="far fa-thumbs-down text-red-400"></i>
                         {{-- <p class="p-2 bg-green-500 rounded text-white">Approve</p> --}}
                         @endif
                       </a>
@@ -55,7 +55,7 @@
                     <div class="cursor-pointer">
                       <a class="p-2 bg-red-500 rounded text-white"
                         wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $comment->id }}, 'comment')">
-                        <i class="fas fa-trash"></i>
+                        <i class="far fa-trash-alt"></i>
                       </a>
                     </div>
                   </div>

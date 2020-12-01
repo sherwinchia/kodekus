@@ -3,7 +3,7 @@
     @if ($pending_comments || $pending_replies)
     <a href="{{ route('admin.comments.approval') }}">
       <div class="flex bg-red-500 rounded mb-2 px-2 py-4 text-white align-middle items-center space-x-2">
-        <i class="fas fa-exclamation-triangle border-white pr-2"></i>
+        <i class="fas fa-exclamation-triangle border-white px-2"></i>
         @if ($pending_comments+$pending_replies > 1)
         <span class="">There are {{ $pending_comments+$pending_replies }} of comments/replies waiting for
           approval!</span>
@@ -69,7 +69,7 @@
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.comments.show', $article) }}">
-                <i class="fas fa-eye"></i>
+                <i class="far fa-eye"></i>
               </a>
             </div>
           </td>

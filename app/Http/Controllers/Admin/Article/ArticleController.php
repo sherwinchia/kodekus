@@ -35,4 +35,10 @@ class ArticleController extends Controller
     // if (!$servicesImpacted->contains('name', $service->name))
     return view(self::PATH.'edit',compact('article'));
   }
+
+  public function preview(Article $article)
+  {
+    $article->body = json_decode($article->body);
+    return view(self::PATH.'preview', compact('article'));
+  }
 }

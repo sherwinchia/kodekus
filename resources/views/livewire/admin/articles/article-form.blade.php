@@ -233,7 +233,10 @@
               inlineToolbar: true,
             },
             delimiter: Delimiter,
-            code: CodeTool,
+            code: {
+              class:CodeTool,
+              shortcut: 'CMD+SHIFT+C'
+            },
             image: SimpleImage,
             quote: {
               class: Quote,

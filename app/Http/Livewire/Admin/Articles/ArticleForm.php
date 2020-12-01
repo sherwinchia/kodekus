@@ -154,9 +154,11 @@ class ArticleForm extends Component
       $this->article = Article::create($data);
       session()->flash('success', 'Article successfully created.');
     }
-
+    
     $this->article->tags()->sync($this->tags);
-    return redirect()->route('admin.articles.index');
+
+    return redirect()->route('admin.articles.edit', $this->article->id);
+    // return redirect()->route('admin.articles.index');
   }
 
   public function render()

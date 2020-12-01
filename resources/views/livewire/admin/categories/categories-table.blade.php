@@ -56,11 +56,11 @@
           <td class="non-id">
             <div class="flex justify-center text-gray-600">
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.categories.edit', $category->id) }}">
-                <i class="fas fa-edit"></i>
+                <i class="far fa-edit"></i>
               </a>
               <a class="mx-1 text-lg" role="button"
                 wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $category->id }}, 'category')">
-                <i class="fas fa-trash"></i>
+                <i class="far fa-trash-alt"></i>
               </a>
             </div>
           </td>

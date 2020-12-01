@@ -25,6 +25,7 @@ Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(func
 
   //Article
   Route::resource('articles','Article\ArticleController')->name('*','articles')->only('index','create','edit');
+  Route::get('preview-article/{article}', 'Article\ArticleController@preview')->name('articles.preview');
 
   //Category
   Route::resource('categories','Category\CategoryController')->name('*','categories')->only('index','create','edit');
