@@ -143,7 +143,10 @@
 
     @elseif ($section->type == 'image')
     <div class="mb-4">
-      <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+      <figure>
+        <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+        <figcaption class="text-center font-light italic">{{ $section->data->caption ?? '' }}</figcaption>
+      </figure>
     </div>
 
     @elseif ($section->type == 'quote')
