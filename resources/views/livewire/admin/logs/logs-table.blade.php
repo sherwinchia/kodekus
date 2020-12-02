@@ -10,7 +10,12 @@
           <option value="20">20</option>
         </select>
       </div>
-      {{-- <a href="{{ route('admin.logs.create') }}" role="button">Create</a> --}}
+      <a wire:click.prevent="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' , 'null', 'activity')"
+        role="button">
+        <button>
+          <i class="far fa-trash-alt"></i>
+        </button>
+      </a>
     </div>
   </div>
   <div class="bottom">
@@ -95,4 +100,5 @@
     </div>
   </div>
 </div>
+<livewire:admin.partials.delete-modal-component />
 </div>

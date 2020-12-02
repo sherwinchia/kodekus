@@ -2,6 +2,10 @@
 
 @tailwind base;
 
+html{
+  scroll-behavior: smooth;
+}
+
 body{
   @apply font-roboto text-gray-800;
   padding: 0;
@@ -54,6 +58,7 @@ button{
 @import 'partials/_article-component';
 @import 'partials/_bookmark-component';
 @import 'partials/comment-component';
+@import 'partials/back-to-top-button';
 
 //Fontawesome
 @import '~@fortawesome/fontawesome-free/scss/brands';

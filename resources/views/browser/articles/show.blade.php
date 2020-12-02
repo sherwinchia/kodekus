@@ -145,7 +145,9 @@
     <div class="mb-4">
       <figure>
         <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+        @if (isset($section->data->caption))
         <figcaption class="text-center font-light italic">{{ $section->data->caption ?? '' }}</figcaption>
+        @endif
       </figure>
     </div>
 
@@ -156,7 +158,7 @@
     </blockquote>
 
     @elseif($section->type == 'list')
-    <div class="pl-4  mb-4">
+    <div class="pl-5 mb-4">
       @if ($section->data->style == 'ordered')
       <ol class="list-decimal">
         @foreach ($section->data->items as $list)
@@ -171,7 +173,6 @@
       </ul>
       @endif
     </div>
-
 
     @elseif ($section->type == 'alert')
     @if ($section->data->type == 'primary')

@@ -13,6 +13,7 @@ use Livewire\Component;
 use App\Models\Category;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Spatie\Activitylog\Models\Activity;
 
 class DeleteModalComponent extends Component
 {
@@ -108,6 +109,10 @@ class DeleteModalComponent extends Component
         $reply->delete();
         break;
       
+      case 'activity':
+        $activities = Activity::truncate();
+        $activities->delete();
+        break;
 
       default:
         # code...

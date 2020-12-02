@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       colors:{
-        primary:'#6C72EF',
+        primary:'#575DF1',
         hover:'#ECEFF3',
         base:'#fcfdff',
         dark:{

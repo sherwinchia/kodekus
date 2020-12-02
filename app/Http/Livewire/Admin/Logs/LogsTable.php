@@ -12,6 +12,11 @@ class LogsTable extends Component
 
   use WithPagination;
 
+  protected $listeners = [
+    'refreshComponent' => '$refresh',
+    'tableRefresh' => '$refresh'
+  ];
+
   public $search = '';
   public $sortField = 'id';
   public $sortAsc = true;
@@ -37,6 +42,10 @@ class LogsTable extends Component
 
   //   // return redirect()->to(route('admin.articles.index'));
   // }
+
+  public function clear()
+  {
+  }
 
   public function paginationView()
   {

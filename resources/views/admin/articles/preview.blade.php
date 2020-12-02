@@ -1,7 +1,7 @@
 @extends('browser.layouts.master')
 
 @section('meta-content')
-{!! SEOTools::generate() !!}
+<title>Preview Article &middot; Kodekus</title>
 @endsection
 
 @section('content')
@@ -64,7 +64,7 @@
         @elseif ($section->data->level == 5)
         <h5 class="text-xl mb-2 font-semibold">{!! $section->data->text !!}</h5>
         @elseif ($section->data->level == 6)
-        <h6 class="text-lg mb-2 font-semibold">{!! $section->data->text !!}</h6>
+        <h6 class="mb-2 font-semibold">{!! $section->data->text !!}</h6>
         @endif
 
         @elseif ($section->type == 'paragraph')
@@ -102,7 +102,10 @@
 
         @elseif ($section->type == 'image')
         <div class="mb-4">
-          <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+          <figure>
+            <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+            <figcaption class="text-center font-light italic">{{ $section->data->caption ?? '' }}</figcaption>
+          </figure>
         </div>
 
         @elseif ($section->type == 'quote')

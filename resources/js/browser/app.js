@@ -106,8 +106,10 @@ let swiper = new Swiper('.swiper-container', {
 })
 
 document.addEventListener('DOMContentLoaded', function() {
+  let backToTop = document.getElementById('back-to-top');
   let prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
+    //navbar
     let currentScrollPos = window.pageYOffset;
     if (currentScrollPos === 0) {
         document.querySelector(".navbar").style.top = "0";
@@ -117,7 +119,21 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector(".navbar").style.top = "-22%";
     }
     prevScrollpos = currentScrollPos;
+
+    //scroll to top button
+    if (document.documentElement.scrollTop > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
   }
 
+  backToTop.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo(0,0);
+    // document.body.scrollTop = 0; 
+    // document.documentElement.scrollTop = 0; 
+    // $('html, body').animate({scrollTop:0}, '300');
+  });
 
 }, false);
