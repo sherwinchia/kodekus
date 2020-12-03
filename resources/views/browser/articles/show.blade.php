@@ -105,7 +105,7 @@
     @elseif ($section->data->level == 5)
     <h5 class="text-xl mb-2 font-semibold">{!! $section->data->text !!}</h5>
     @elseif ($section->data->level == 6)
-    <h6 class="text-lg mb-2 font-semibold">{!! $section->data->text !!}</h6>
+    <h6 class="mb-2 font-semibold">{!! $section->data->text !!}</h6>
     @endif
 
     @elseif ($section->type == 'paragraph')
