@@ -178,7 +178,7 @@
     <a href="{{ route('browser.home.index') }}"
       class="w-full flex items-center justify-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
       type="submit">
-      Home
+      Next
     </a>
   </div>
   @endif

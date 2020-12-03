@@ -115,6 +115,11 @@ class DeleteModalComponent extends Component
         $activities->delete();
         break;
 
+      case 'user':
+        $user = User::find($id);
+        $user->profile->delete();
+        $user->delete();
+        break;
       default:
         # code...
         break;

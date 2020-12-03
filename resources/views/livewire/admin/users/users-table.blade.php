@@ -55,6 +55,10 @@
               <a class="mx-1 text-lg" role="button" href="{{ route('admin.users.edit', $user->id) }}">
                 <i class="far fa-edit"></i>
               </a>
+              <a class="mx-1 text-lg" role="button"
+                wire:click="$emitTo('admin.partials.delete-modal-component', 'onTrashIcon' ,{{ $user->id }}, 'user')">
+                <i class="far fa-trash-alt"></i>
+              </a>
             </div>
           </td>
         </tr>
@@ -78,4 +82,5 @@
       </div>
     </div>
   </div>
+  <livewire:admin.partials.delete-modal-component />
 </div>

@@ -11,6 +11,8 @@ class UsersTable extends Component
 {
   use WithPagination;
 
+  protected $listeners = ['tableRefresh' => '$refresh'];
+
   public $search = '';
   public $sortField = 'id';
   public $sortAsc = true;
