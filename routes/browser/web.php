@@ -14,29 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Author
-Route::get('author/{slug}', 'Author\AuthorController@show')->name('authors.show');
+Route::middleware(['user.activated'])->group(function(){
+  //Author
+  Route::get('author/{slug}', 'Author\AuthorController@show')->name('authors.show');
 
-//Article
-Route::get('article/{category}/{slug}','Article\ArticleController@show')->name('articles.show');
+  //Article
+  Route::get('article/{category}/{slug}','Article\ArticleController@show')->name('articles.show');
 
-//Search
-Route::get('search','Search\SearchController@index')->name('search.index');
+  //Search
+  Route::get('search','Search\SearchController@index')->name('search.index');
 
-//Series
-Route::get('series','Series\SeriesController@index')->name('series.index');
+  //Series
+  Route::get('series','Series\SeriesController@index')->name('series.index');
 
-//About
-Route::get('about','About\AboutController@index')->name('about.index');
+  //About
+  Route::get('about','About\AboutController@index')->name('about.index');
 
-//Home
-Route::get('/','Home\HomeController@index')->name('home.index');
+  //Home
+  Route::get('/','Home\HomeController@index')->name('home.index');
 
-//Root
-Route::get('/root','Root\RootController@index')->name('root.index');
+  //Root
+  Route::get('/root','Root\RootController@index')->name('root.index');
 
-//Activation
-Route::get('activation/{token}', 'Auth\AuthController@activateAccount')->name('auth.activation');
+  Route::middleware('browser.auth:web')->group(function(){
+    Route::get('profile','Profile\ProfileController@show')->name('profile.show');
+  });
+});
 
 Route::middleware('guest:web')->group(function(){
   Route::get('auth','Auth\AuthController@show')->name('auth.show');
@@ -45,10 +48,12 @@ Route::middleware('guest:web')->group(function(){
   Route::get('reset-password/{token}', 'Auth\AuthController@showResetPasswordForm')->name('auth.reset.show');
 });
 
-//Root
 Route::middleware(['browser.auth:web'])->group(function(){
-  Route::get('profile','Profile\ProfileController@show')->name('profile.show');
+  Route::middleware('non.activated')->group(function(){
+    Route::get('activate-account', 'Auth\AuthController@activate')->name('auth.activate');
+  });
   Route::get('logout','Auth\AuthController@logout')->name('logout');
 });
 
-
+//Activation
+Route::get('activation/{token}', 'Auth\AuthController@activateAccount')->name('auth.activation');

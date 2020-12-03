@@ -1,6 +1,6 @@
 <div class="flex-1 container mx-auto flex justify-center items-center space-x-10">
   @if ($stage=='reset-form')
-  <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
+  <div class="auth-box flex flex-col max-w-xs  bg-white border border-black px-8 pt-6 pb-8 mb-4">
     <div>
       <label class="block text-gray-700 text-md font-bold mb-6">
         Reset Password
@@ -8,17 +8,17 @@
     </div>
     <div class="flex flex-col space-y-2">
       <form class=" " wire:submit.prevent="resetPassword">
-        <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="password">
+        <div class="input-group mb-1">
+          <label class="text-sm" for="password">
             New Password
           </label>
-          <input class="" wire:model="password" type="password" placeholder="******************">
+          <input class="w-full" wire:model="password" type="password" placeholder="********">
         </div>
-        <div class="input-group">
-          <label class="block text-gray-700 text-sm font-bold" for="password">
+        <div class="input-group mb-1">
+          <label class="text-sm" for="password">
             Confirm New Password
           </label>
-          <input class="" wire:model="password_confirmation" type="password" placeholder="******************">
+          <input class="w-full" wire:model="password_confirmation" type="password" placeholder="********">
         </div>
         @if ($errors->any())
         <p class="text-red-500 text-xs italic mb-1">{{ $errors->first() }}</p>

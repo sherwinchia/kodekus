@@ -225,7 +225,7 @@
                 style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
 
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation"
-                  style="background-color:#395270;vertical-align:top;" width="100%">
+                  style="background-color:#575DF1;vertical-align:top;" width="100%">
 
                   <tr>
                     <td align="center"
@@ -372,11 +372,11 @@
                       <table border="0" cellpadding="0" cellspacing="0" role="presentation"
                         style="border-collapse:separate;line-height:100%;">
                         <tr>
-                          <td align="center" bgcolor="#395270" role="presentation"
-                            style="border:0px solid #000;border-radius:24px;cursor:auto;mso-padding-alt:9px 26px 9px 26px;background:#395270;"
+                          <td align="center" bgcolor="#575DF1" role="presentation"
+                            style="border:0px solid #000;border-radius:24px;cursor:auto;mso-padding-alt:9px 26px 9px 26px;background:#575DF1;"
                             valign="middle">
                             <a href="{{ $vToken->activation_link }}"
-                              style="display:inline-block;background:#395270;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:100%;Margin:0;text-decoration:none;text-transform:none;padding:9px 26px 9px 26px;mso-padding-alt:0px;border-radius:24px;"
+                              style="display:inline-block;background:#575DF1;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:100%;Margin:0;text-decoration:none;text-transform:none;padding:9px 26px 9px 26px;mso-padding-alt:0px;border-radius:24px;"
                               target="_blank">
                               <div><span
                                   style="font-size: 20px; font-family: 'arial black', sans-serif;"><strong>ACTIVATE</strong></span>

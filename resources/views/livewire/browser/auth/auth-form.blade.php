@@ -1,7 +1,7 @@
 <div class="flex-1 container mx-auto flex justify-center items-center space-x-10 py-10">
 
   @if ($form == 'login')
-  <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
+  <div class="auth-box flex flex-col max-w-xs  bg-white border border-black px-5 pt-6 pb-5 mb-4">
     <div>
       <label class="block text-black text-xl font-bold mb-4">
         Sign In
@@ -59,7 +59,7 @@
   @endif
 
   @if ($form == 'register')
-  <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
+  <div class="auth-box flex flex-col max-w-xs  bg-white border border-black px-5 pt-6 pb-5 mb-4">
     <div>
       <label class="block text-black text-xl font-bold mb-4">
         Register
@@ -132,14 +132,14 @@
   @endif
 
   @if ($form == 'forgot-password')
-  <div class="flex flex-col max-w-lg  bg-white border border-black px-8 pt-6 pb-8 mb-4">
+  <div class="auth-box flex flex-col max-w-xs  bg-white border border-black px-5 pt-6 pb-5 mb-4">
     <div>
       <label class="block text-black text-xl font-bold mb-4">
         Reset Password
       </label>
     </div>
     <div class="flex flex-col space-y-2">
-      <form class=" pb-4 mb-2" wire:submit.prevent="forgotPassword">
+      <form class=" mb-2" wire:submit.prevent="forgotPassword">
         <div class="input-group mb-1">
           <label class="text-sm" for="email">
             Email

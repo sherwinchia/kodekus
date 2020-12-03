@@ -24,7 +24,7 @@
         <section>
           <div class="input-group">
             <label for="description">Description</label>
-            <textarea wire:model="description" type="text" maxlength="200"></textarea>
+            <textarea wire:model="description" rows="5" type="text" maxlength="200"></textarea>
             <p class="text-xs text-gray-600">{{ strlen($description) }}/200</p>
             @error('description') <span class="error-msg">{{ $message }}</span> @enderror
           </div>

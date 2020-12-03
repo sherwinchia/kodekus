@@ -16,7 +16,9 @@
         @foreach ($_series->articles()->where('published', 1)->latest('publish_date')->get() as $article)
         <div class="swiper-slide">
           <div class="article-md p-2">
-            <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
+            <a href="{{ $article->article_link }}">
+              <img src="{{ $article->image_link }}" class="rounded" alt="technology" />
+            </a>
             <div class=" info">
 
               <a class="h-24 overflow-hidden mb-2" href="{{ $article->article_link }}">

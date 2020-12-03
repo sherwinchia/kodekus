@@ -62,6 +62,12 @@ class AuthController extends Controller
   
   public function showResetPasswordForm($token)
   {
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
+    SEOTools::setTitle('Reset Password &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
+
     $vToken = $this->sVerification->isValidToken($token, self::TYPE_PASSWORD);
     
     if (!$vToken) {
@@ -69,6 +75,17 @@ class AuthController extends Controller
     }
 
     return view(self::PATH . 'reset-password', ['token' => $vToken]);
+  }
+
+  public function activate()
+  {
+    $metas = Page::where('name', 'Meta')->first();
+    $metas = unserialize($metas->content);
+
+    SEOTools::setTitle('Activate Account &middot; ' . config('app.name') );
+    SEOTools::setDescription($metas[1]['content']);
+
+    return view(self::PATH . 'activate');
   }
 
   public function activateAccount($token)

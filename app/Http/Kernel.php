@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
         'admin.auth' => \App\Http\Middleware\Admin\Authenticate::class,
         'browser.auth' => \App\Http\Middleware\Browser\Authenticate::class,
         'user.activated' => \App\Http\Middleware\Browser\Activated::class,
+        'non.activated' => \App\Http\Middleware\Browser\NonActivated::class,
         'isAdmin' => \App\Http\Middleware\Admin\AdminMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -69,5 +70,6 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
+        'browser.activated' => \App\Http\Middleware\User\Activated::class,
     ];
 }

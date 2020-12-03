@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-<livewire:browser.auth.reset-password-form :token="$token" />
+<livewire:browser.auth.activate-account />
 @endsection

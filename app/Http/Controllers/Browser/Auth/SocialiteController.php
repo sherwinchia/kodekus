@@ -12,10 +12,16 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
+use App\Services\Shared\VerificationServices;
 
 class SocialiteController extends Controller
 {
   protected $defaultPassword = 'Secret';
+  private const TYPE_EMAIL = 'EMAIL_VERIFICATION';
+
+  public function __construct(VerificationServices $sVerificationToken){
+    $this->sVerificationToken = $sVerificationToken;
+  }
 
   public function redirect($provider)
   {
@@ -49,6 +55,9 @@ class SocialiteController extends Controller
     $user->syncRoles($role);
     $permissions = $user->getPermissionsViaRoles();
     $user->syncPermissions($permissions);
+
+    $vToken = $this->sVerificationToken->generateToken($user, self::TYPE_EMAIL);
+    $this->sVerificationToken->revokeToken($vToken);
 
     $profile = Profile::create([
       'first_name' => $name[0],

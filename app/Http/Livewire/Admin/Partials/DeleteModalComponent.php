@@ -35,6 +35,7 @@ class DeleteModalComponent extends Component
     switch ($this->type) {
       case 'article':
         $article = Article::find($id);
+        $article->bookmarks()->delete();
         $article->delete();
         break;
       
