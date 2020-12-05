@@ -9,7 +9,7 @@
   <div class="flex justify-center mb-4">
     <div class="center w-11/12 lg:w-6/12 xl:w-6/12">
       <div class="">
-        <img style="border-radius: 5px;" class="mb-4" src="{{ $article->image_link }}" alt="">
+        <img loading="lazy" style="border-radius: 5px;" class="mb-4" src="{{ $article->image_link }}" alt="">
         <h1 class="text-left mb-2 font-semibold text-3xl lg:text-4xl xl:text-5xl">
           {{ $article->title }}</h1>
 
@@ -144,7 +144,8 @@
     @elseif ($section->type == 'image')
     <div class="mb-4">
       <figure>
-        <img style="border-radius:5px;" src="{{ $section->data->url }}" alt="{{ $section->data->caption ?? '' }}">
+        <img loading="lazy" style="border-radius:5px;" src="{{ $section->data->url }}"
+          alt="{{ $section->data->caption ?? '' }}">
         @if (isset($section->data->caption))
         <figcaption class="text-center font-light italic">{{ $section->data->caption ?? '' }}</figcaption>
         @endif
