@@ -94,13 +94,12 @@ class Article extends Model
       $nextId = Article::where('id', '>', $this->id)->min('id');
     }
     $nextArticle = Article::find($nextId); 
-    if ($nextArticle && $nextArticle->published == 1) {
+    if ($nextArticle && $nextArticle->published == 1 && $nextArticle->publish_date <= now()) {
       $nextArticle->link = route('browser.articles.show', ['slug'=> $nextArticle->slug, 'category' => $nextArticle->category->slug]);
       return $nextArticle;
     } else {
       return null;
-    }
-    
+    } 
   }
 
   public function getPrevArticleAttribute()
@@ -111,7 +110,7 @@ class Article extends Model
       $prevId = Article::where('id', '<', $this->id)->max('id');
     }
     $prevArticle = Article::find($prevId);
-    if ($prevArticle && $prevArticle->published == 1) {
+    if ($prevArticle && $prevArticle->published == 1 && $prevArticle->publish_date <= now()) {
       $prevArticle->link = route('browser.articles.show', ['slug'=> $prevArticle->slug, 'category' => $prevArticle->category->slug]);
       return $prevArticle;
     } else {
@@ -121,7 +120,7 @@ class Article extends Model
 
   public function getMoreArticlesAttribute()
   {
-    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->take(3)->get();
+    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->where('published', 1)->where('publish_date','<=',now())->take(3)->get();
     return $morePost;
   }
 
