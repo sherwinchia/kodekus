@@ -1,4 +1,4 @@
-@extends('browser.layouts.master')
+@extends('admin.layouts.preview')
 
 @section('meta-content')
 <title>Preview Article &middot; Kodekus</title>
