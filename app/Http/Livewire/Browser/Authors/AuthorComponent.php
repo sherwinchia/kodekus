@@ -8,7 +8,7 @@ class AuthorComponent extends Component
 {
   public $author;
 
-  public $perLoad = 6;
+  public $perLoad = 8;
   public $time;
   public $operator;
   public $orderBy;
@@ -24,7 +24,7 @@ class AuthorComponent extends Component
 
   public function loadMore()
   {
-    $this->perLoad += 6;
+    $this->perLoad += 8;
   }
 
   public function render()

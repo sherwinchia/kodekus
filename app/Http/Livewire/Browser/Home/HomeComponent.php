@@ -30,7 +30,7 @@ class HomeComponent extends Component
 
   public function loadMore()
   {
-    $this->perLoad += 6;
+    $this->perLoad += 8;
   }
 
   public function search()

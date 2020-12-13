@@ -41,7 +41,7 @@
             </a>
           </div>
         </div>
-        <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2">
+        <div class="justify-between align-middle items-center hidden sm:flex py-4 space-x-2 ">
           {{-- <div class="search-box space-x-2 input-group">
             <input x-show.transition="searchExpand" wire:model="search" wire:keydown.enter="search" type="text"
               class="text-md font-light border border-gray py-2 px-3" placeholder="Cari">
@@ -56,9 +56,14 @@
 
             @auth
             <div class="flex flex-col justify-end relative" @mouseexit="profileDropdown = false">
-              <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button>
+              {{-- <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button> --}}
+              <button @mouseenter="profileDropdown = true">
+                <div class="rounded-full h-10 w-10 lg:h-10 lg:w-10 bg-white mr-2" style="background-image: url({{  current_user()->profile->image_link }}); background-size: cover; background-position:
+                  50%;">
+                </div>
+              </button>
               <div class=" absolute bg-white p-3 border border-gray-800 w-40 flex flex-col shadow"
-                style="top:40px; right:0;" x-cloak x-show="profileDropdown" @click.away="profileDropdown = false">
+                style="top:60px; right:10px;" x-cloak x-show="profileDropdown" @click.away="profileDropdown = false">
                 <span class="pb-2 text-normal overflow-hidden">{{ current_user()->full_name }}</span>
                 <div class="border-b border-gray-800 mb-2"></div>
                 <a class="hover:bg-gray-200 py-2 px-1" href="{{ route('browser.profile.show') }}">Profile</a>

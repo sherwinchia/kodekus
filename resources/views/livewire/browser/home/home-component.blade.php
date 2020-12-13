@@ -5,6 +5,16 @@
       <livewire:browser.articles.article-display-small :article="$article" :key="$article->id" />
       @endforeach
 
+      @if ($latestArticles->hasMorePages())
+      <button id="loadmore-btn" wire:click="loadMore" wire:loading.attr="disabled"
+        class=" m-auto my-2 flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
+        type="submit">
+        Load More
+
+        <span wire:loading wire:target="loadmore-btn"
+          class="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-gray-900 ml-2"></span>
+      </button>
+      @endif
       {{-- @if ($latestArticles->hasMorePages())
       <div class="flex justify-center">
         <a wire:click='loadMore' class="border border-black rounded p-2 cursor-pointer">Load More</a>
@@ -71,7 +81,7 @@
 </div>
 
 @section('scripts')
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
       let prevScrollpos = window.pageYOffset;
       window.onscroll = function () {
@@ -87,11 +97,11 @@
 
         prevScrollpos = currentScrollPos;
 
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
-          window.livewire.emit('home-load-more');
-        }
+        // if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        //   window.livewire.emit('home-load-more');
+        // }
       }
     }
   )
-</script>
+</script> --}}
 @endsection
