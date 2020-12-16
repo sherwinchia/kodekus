@@ -30,7 +30,7 @@ class AuthorComponent extends Component
   public function render()
   {
       return view('livewire.browser.authors.author-component', [
-        'articles' => $this->author->articles()->latest('publish_date')->paginate($this->perLoad)
+        'articles' => $this->author->articles()->where('published', 1)->latest('publish_date')->paginate($this->perLoad)
       ]);
   }
 }
