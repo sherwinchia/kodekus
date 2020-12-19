@@ -155,7 +155,7 @@
     @elseif ($section->type == 'quote')
     <blockquote class="border-l-2 border-black p-3 mb-4">
       <p>{!! $section->data->text !!}</p>
-      <p class="font-bold text-right mt-4">{!! '- ' . $section->data->caption !!}</p>
+      <p class="font-normal text-right mt-4">{!! '- ' . $section->data->caption !!}</p>
     </blockquote>
 
     @elseif($section->type == 'list')

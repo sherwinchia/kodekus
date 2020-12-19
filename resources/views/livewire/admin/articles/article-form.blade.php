@@ -12,6 +12,7 @@
     <div x-cloack x-show.transition.origin.right="rightPanelVisible"
       class="flex-none article-right flex flex-col justify-between border-t">
       <div class="overflow-y-auto">
+
         <section>
           <div class="input-group">
             <label for="title">Title</label>
@@ -118,6 +119,16 @@
             <label for="trending">Trending</label>
             <input class="w-full h-10" type="checkbox" wire:model="trending">
             @error('trending') <span class="error-msg">{{ $message }}</span> @enderror
+          </div>
+        </section>
+
+        <section>
+          <div class="input-group">
+            <label for="preview">Preview</label>
+            <a class="mx-1 text-lg text-gray-600" role="button" target="_blank"
+              href="{{ route('admin.articles.preview', $article->id) }}">
+              <i class="far fa-eye"></i>
+            </a>
           </div>
         </section>
       </div>
