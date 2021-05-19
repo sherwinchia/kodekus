@@ -38,7 +38,7 @@
                             Series
                         </a>
                         <a href="{{ route('browser.quizzes.index') }}"
-                            class=" {{ request()->is('quizzes*') ? 'border-b' : '' }} border-gray-800 py-1">
+                            class=" {{ request()->is('quiz*') ? 'border-b' : '' }} border-gray-800 py-1">
                             Quiz
                         </a>
                         <a href="{{ route('browser.search.index') }}"
@@ -65,7 +65,7 @@
                                 {{-- <button @mouseenter="profileDropdown = true"><i class="far fa-user"></i></button> --}}
                                 <button @mouseenter="profileDropdown = true">
                                     <div class="rounded-full h-10 w-10 lg:h-10 lg:w-10 bg-white mr-2" style="background-image: url({{ current_user()->profile->image_link }}); background-size: cover; background-position:
-                          50%;">
+                              50%;">
                                     </div>
                                 </button>
                                 <div class=" absolute bg-white p-3 border border-gray-800 w-40 flex flex-col shadow"

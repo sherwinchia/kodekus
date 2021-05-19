@@ -17,6 +17,7 @@ class CreateQuizzesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('article_id')->nullable();
             $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

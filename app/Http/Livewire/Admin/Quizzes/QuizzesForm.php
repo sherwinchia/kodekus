@@ -13,6 +13,7 @@ class QuizzesForm extends Component
     public $quiz;
 
     public $name;
+    public $description;
     public $article_id;
     public $articles;
 
@@ -23,6 +24,7 @@ class QuizzesForm extends Component
 
     protected $rules = [
         'name' => 'required',
+        'description' => 'nullable',
         'questions' => 'required',
         'questions.*.text' => 'required',
         'questions.*.options' => 'required',
@@ -46,6 +48,7 @@ class QuizzesForm extends Component
         if (isset($quiz)) {
             $this->quiz = $quiz;
             $this->name = $quiz->name;
+            $this->description = $quiz->description;
             $this->article_id = $quiz->article_id;
             $this->buttonText = 'Update';
             $this->populateQuestion($quiz);
@@ -112,13 +115,15 @@ class QuizzesForm extends Component
         if ($this->edit) {
             $this->quiz->update([
                 'name' => $data['name'],
-                'article_id' => $this->article_id
+                'article_id' => $this->article_id,
+                'description' => $this->description
             ]);
             $this->clearQuestionAndOption($this->quiz);
         } else {
             $this->quiz = Quiz::create([
                 'name' => $data['name'],
-                'article_id' => $this->article_id
+                'article_id' => $this->article_id,
+                'description' => $this->description
             ]);
         }
         foreach ($data['questions'] as $question) {

@@ -9,8 +9,15 @@
                     <section>
                         <div class="input-group">
                             <label for="name">Name</label>
-                            <input wire:model="name" type="text" id="name" maxlength="80">
+                            <input wire:model="name" type="text" id="name">
                             @error('name') <span class="error-msg">{{ $message }}</span> @enderror
+                        </div>
+                    </section>
+                    <section>
+                        <div class="input-group">
+                            <label for="name">Description</label>
+                            <textarea wire:model="description"></textarea>
+                            @error('description') <span class="error-msg">{{ $message }}</span> @enderror
                         </div>
                     </section>
                     <section>
