@@ -14,67 +14,69 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['guest:admin'])->group(function(){
-  Route::get('login','Core\AuthController@showLogin')->name('login.show');
+Route::middleware(['guest:admin'])->group(function () {
+  Route::get('login', 'Core\AuthController@showLogin')->name('login.show');
 });
 
 Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(function () {
-  
+
   //Dashboard
-  Route::get('dashboard','Dashboard\DashboardController@index')->name('dashboard.index');
+  Route::get('dashboard', 'Dashboard\DashboardController@index')->name('dashboard.index');
 
   //Article
-  Route::resource('articles','Article\ArticleController')->name('*','articles')->only('index','create','edit');
+  Route::resource('articles', 'Article\ArticleController')->name('*', 'articles')->only('index', 'create', 'edit');
   Route::get('preview-article/{article}', 'Article\ArticleController@preview')->name('articles.preview');
 
   //Category
-  Route::resource('categories','Category\CategoryController')->name('*','categories')->only('index','create','edit');
+  Route::resource('categories', 'Category\CategoryController')->name('*', 'categories')->only('index', 'create', 'edit');
 
   //Tag
-  Route::resource('tags','Tag\TagController')->name('*','tags')->only('index','create','edit');
+  Route::resource('tags', 'Tag\TagController')->name('*', 'tags')->only('index', 'create', 'edit');
 
   //Series
-  Route::resource('series','Series\SeriesController')->name('*','series')->only('index','create','edit');
+  Route::resource('series', 'Series\SeriesController')->name('*', 'series')->only('index', 'create', 'edit');
 
   //Comments
   Route::get('comments/approval', 'Comment\CommentController@approval')->name('comments.approval');
-  Route::resource('comments','Comment\CommentController')->name('*','comments')->only('index','show');
+  Route::resource('comments', 'Comment\CommentController')->name('*', 'comments')->only('index', 'show');
+
+  //Quizzes
+  Route::resource('quizzes', 'Quiz\QuizController')->name('*', 'quizzes')->only('index', 'create', 'edit');
 
   //User
-  Route::resource('users','User\UserController')->name('*','users')->only('index','create','edit');
+  Route::resource('users', 'User\UserController')->name('*', 'users')->only('index', 'create', 'edit');
 
   //Role
-  Route::resource('roles','Role\RoleController')->name('*','roles')->only('index','create','edit');
+  Route::resource('roles', 'Role\RoleController')->name('*', 'roles')->only('index', 'create', 'edit');
 
   //Permission
-  Route::resource('permissions','Permission\PermissionController')->name('*','permissions')->only('index','create','edit');
+  Route::resource('permissions', 'Permission\PermissionController')->name('*', 'permissions')->only('index', 'create', 'edit');
 
   //Guard
-  Route::resource('guards','Guard\GuardController')->name('*','guards')->only('index','create','edit');
+  Route::resource('guards', 'Guard\GuardController')->name('*', 'guards')->only('index', 'create', 'edit');
 
   //Advertisement
-  Route::resource('advertisements','Advertisement\AdvertisementController')->name('*','advertisements')->only('index','create','edit');
-  
+  Route::resource('advertisements', 'Advertisement\AdvertisementController')->name('*', 'advertisements')->only('index', 'create', 'edit');
+
   //Pages
-  Route::resource('pages','Page\PageController')->name('*','pages')->only('index','create','edit');
-  
+  Route::resource('pages', 'Page\PageController')->name('*', 'pages')->only('index', 'create', 'edit');
+
   //File
   // Route::livewire('files','admin.files.index')->name('files.index');
 
   //Log
-  Route::get('logs','Log\LogController@index')->name('logs.index');
+  Route::get('logs', 'Log\LogController@index')->name('logs.index');
 
   //Backup
-  Route::get('backups','Backup\BackupController@index')->name('backups.index');
+  Route::get('backups', 'Backup\BackupController@index')->name('backups.index');
 
-  Route::get('profile','Core\ProfileController@show')->name('profile.show');
+  Route::get('profile', 'Core\ProfileController@show')->name('profile.show');
   // Route::post()->name('profile.update.password');
   // Route::post()->name('profile.update.profile');
 
   //Logout
-  Route::get('logout','Core\AuthController@logout')->name('logout');
+  Route::get('logout', 'Core\AuthController@logout')->name('logout');
 
   //Root
-  Route::get('/','Core\WelcomeController@index')->name('welcome');
+  Route::get('/', 'Core\WelcomeController@index')->name('welcome');
 });
-

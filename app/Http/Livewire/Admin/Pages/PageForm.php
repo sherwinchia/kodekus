@@ -37,7 +37,7 @@ class PageForm extends Component
     $this->page = Page::find($pageId);
     $this->type = $pageType;
     $this->content  = unserialize($this->page->content);
-    
+
 
 
     if ($this->type == 'Social') {
@@ -60,13 +60,13 @@ class PageForm extends Component
 
   public function addSocial()
   {
-    $data= array(
+    $data = array(
       'name' => '',
       'icon' => '',
       'color' => '',
       'link' => ''
     );
-    array_push($this->socials ,$data);
+    array_push($this->socials, $data);
     $this->emitSelf('refreshComponent');
   }
 
@@ -128,7 +128,7 @@ class PageForm extends Component
       'content' => serialize($this->content),
     ]);
 
-    return $this->successMsg = 'Comment successfully updated.';
+    return $this->successMsg = 'About successfully updated.';
   }
 
   public function updateMeta()

@@ -11,18 +11,18 @@ class Article extends Model
   use LogsActivity;
 
   protected static $logName = 'Article';
-  
+
   protected $fillable = [
-    'title', 
-    'description', 
-    'body', 
-    'slug', 
-    'image', 
-    'category_id', 
-    'series_id', 
-    'publish_date', 
-    'published', 
-    'featured', 
+    'title',
+    'description',
+    'body',
+    'slug',
+    'image',
+    'category_id',
+    'series_id',
+    'publish_date',
+    'published',
+    'featured',
     'trending',
     'read_minutes',
     'author_id'
@@ -31,6 +31,11 @@ class Article extends Model
   public function tags()
   {
     return $this->belongsToMany('App\Models\Tag');
+  }
+
+  public function quiz()
+  {
+    return $this->hasOne('App\Models\Quiz');
   }
 
   public function author()
@@ -65,22 +70,22 @@ class Article extends Model
 
   public function getDescriptionForEvent(string $eventName): string
   {
-      return $this->title . " has been {$eventName}";
+    return $this->title . " has been {$eventName}";
   }
 
   public function getArticleLinkAttribute()
   {
-    return route('browser.articles.show', ['slug'=> $this->slug, 'category' => $this->category->slug]);
+    return route('browser.articles.show', ['slug' => $this->slug, 'category' => $this->category->slug]);
   }
 
   public function getShareLinkAttribute()
   {
-    $share = Share::page(route('browser.articles.show', ['slug'=> $this->slug, 'category' => $this->category->slug]), $this->title)
-            ->facebook()
-            ->twitter()
-            ->linkedin()
-            ->whatsapp()
-            ->getRawLinks();
+    $share = Share::page(route('browser.articles.show', ['slug' => $this->slug, 'category' => $this->category->slug]), $this->title)
+      ->facebook()
+      ->twitter()
+      ->linkedin()
+      ->whatsapp()
+      ->getRawLinks();
 
     return $share;
   }
@@ -93,13 +98,13 @@ class Article extends Model
     } else {
       $nextId = Article::where('id', '>', $this->id)->min('id');
     }
-    $nextArticle = Article::find($nextId); 
+    $nextArticle = Article::find($nextId);
     if ($nextArticle && $nextArticle->published == 1 && $nextArticle->publish_date <= now()) {
-      $nextArticle->link = route('browser.articles.show', ['slug'=> $nextArticle->slug, 'category' => $nextArticle->category->slug]);
+      $nextArticle->link = route('browser.articles.show', ['slug' => $nextArticle->slug, 'category' => $nextArticle->category->slug]);
       return $nextArticle;
     } else {
       return null;
-    } 
+    }
   }
 
   public function getPrevArticleAttribute()
@@ -111,7 +116,7 @@ class Article extends Model
     }
     $prevArticle = Article::find($prevId);
     if ($prevArticle && $prevArticle->published == 1 && $prevArticle->publish_date <= now()) {
-      $prevArticle->link = route('browser.articles.show', ['slug'=> $prevArticle->slug, 'category' => $prevArticle->category->slug]);
+      $prevArticle->link = route('browser.articles.show', ['slug' => $prevArticle->slug, 'category' => $prevArticle->category->slug]);
       return $prevArticle;
     } else {
       return null;
@@ -120,7 +125,7 @@ class Article extends Model
 
   public function getMoreArticlesAttribute()
   {
-    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->where('published', 1)->where('publish_date','<=',now())->take(3)->get();
+    $morePost = Article::inRandomOrder()->where('id', '!=', $this->id)->where('published', 1)->where('publish_date', '<=', now())->take(3)->get();
     return $morePost;
   }
 

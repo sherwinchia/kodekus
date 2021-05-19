@@ -20,9 +20,9 @@ class UsersTable extends Component
 
   public function updatingSearch()
   {
-      $this->resetPage();
+    $this->resetPage();
   }
-  
+
   public function sortBy($field)
   {
     if ($this->sortField === $field) {
@@ -36,21 +36,21 @@ class UsersTable extends Component
 
   public function paginationView()
   {
-      return 'livewire.pagination.tailwind-admin';
+    return 'livewire.pagination.tailwind-admin';
   }
 
   public function render()
   {
-      return view('livewire.admin.users.users-table', [
-        'users' => User::query()
-            ->whereHas('profile', function($query){
-              $query->where('first_name', 'LIKE', "%{$this->search}%");
-            }) 
-            ->orWhereHas('profile', function($query){
-              $query->where('last_name', 'LIKE', "%{$this->search}%");
-            }) 
-            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-            ->paginate($this->perPage)
-      ]);
+    return view('livewire.admin.users.users-table', [
+      'users' => User::query()
+        ->whereHas('profile', function ($query) {
+          $query->where('first_name', 'LIKE', "%{$this->search}%");
+        })
+        ->orWhereHas('profile', function ($query) {
+          $query->where('last_name', 'LIKE', "%{$this->search}%");
+        })
+        ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+        ->paginate($this->perPage)
+    ]);
   }
 }

@@ -11,6 +11,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Livewire\Component;
 use App\Models\Category;
+use App\models\Quiz;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Spatie\Activitylog\Models\Activity;
@@ -29,7 +30,7 @@ class DeleteModalComponent extends Component
     $this->type = $type;
     $this->emit('triggerConfirmationModal', $id);
   }
-  
+
   public function delete($id)
   {
     switch ($this->type) {
@@ -38,10 +39,10 @@ class DeleteModalComponent extends Component
         $article->bookmarks()->delete();
         $article->delete();
         break;
-      
+
       case 'category':
         $category = Category::find($id);
-        
+
         if ($category->articles->isEmpty()) {
           $category->delete();
         } else {
@@ -50,7 +51,7 @@ class DeleteModalComponent extends Component
         }
 
         break;
-      
+
       case 'tag':
         $tag = Tag::find($id);
 
@@ -60,9 +61,9 @@ class DeleteModalComponent extends Component
           session()->flash('error', 'Failed to delete tag!');
           return redirect()->route('admin.tags.index');
         }
-      
+
         break;
-      
+
       case 'series':
         $series = Series::find($id);
 
@@ -74,7 +75,7 @@ class DeleteModalComponent extends Component
         }
 
         break;
-      
+
       case 'role':
         $users = User::all();
         $role = Role::find($id);
@@ -88,12 +89,12 @@ class DeleteModalComponent extends Component
 
         $role->delete();
         break;
-      
+
       case 'permission':
         $permission = Permission::find($id);
         $permission->delete();
         break;
-      
+
       case 'comment':
         $comment = Comment::find($id);
         $comment->replies()->delete();
@@ -104,12 +105,12 @@ class DeleteModalComponent extends Component
         $reply = Reply::find($id);
         $reply->delete();
         break;
-      
+
       case 'guard':
         $reply = Guard::find($id);
         $reply->delete();
         break;
-      
+
       case 'activity':
         $activities = Activity::truncate();
         $activities->delete();
@@ -119,6 +120,16 @@ class DeleteModalComponent extends Component
         $user = User::find($id);
         $user->profile->delete();
         $user->delete();
+        break;
+
+      case 'quiz':
+        $quiz = Quiz::find($id);
+        $questions = $quiz->questions;
+        foreach ($questions as $question) {
+          $question->options()->delete();
+        }
+        $quiz->questions()->delete();
+        $quiz->delete();
         break;
       default:
         # code...
@@ -130,6 +141,6 @@ class DeleteModalComponent extends Component
 
   public function render()
   {
-      return view('livewire.admin.partials.delete-modal-component');
+    return view('livewire.admin.partials.delete-modal-component');
   }
 }

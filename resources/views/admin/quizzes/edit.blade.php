@@ -1,17 +1,16 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-    <title>User &middot; {{ config('app.name') }} </title>
+    <title>Quiz &middot; {{ config('app.name') }} </title>
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.users.create') }}
+    {{ Breadcrumbs::render('admin.quizzes.edit', $quiz) }}
 @endsection
-
 
 @section('content')
     <div class="flex-1 flex flex-col p-8">
-        <livewire:admin.users.user-form />
+        <livewire:admin.quizzes.quizzes-form :quiz="$quiz" />
     </div>
 
 @endsection

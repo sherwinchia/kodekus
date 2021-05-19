@@ -18,16 +18,16 @@ class UserController extends Controller
 
   public function index()
   {
-    return view(self::PATH.'index');
+    return view(self::PATH . 'index');
   }
 
   public function create()
   {
-    return view(self::PATH.'create');
+    return view(self::PATH . 'create');
   }
 
   public function edit(User $user)
   {
-    return view(self::PATH.'edit',compact('user'));
+    return view(self::PATH . 'edit', compact('user'));
   }
 }
