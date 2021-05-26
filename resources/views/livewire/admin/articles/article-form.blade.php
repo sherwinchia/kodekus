@@ -165,7 +165,7 @@
         quill = new Quill(container, {theme: 'snow'});
         quill.on('text-change', function () {
           let quillData = quill.root.innerHTML;
-          console.log(quillData);
+          // console.log(quillData);
           let customEvent = new CustomEvent('input', {detail:JSON.stringify(quillData)});
           container.dispatchEvent(customEvent);
         });

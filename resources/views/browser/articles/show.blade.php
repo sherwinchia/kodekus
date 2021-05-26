@@ -132,7 +132,7 @@
                             <div class="">
                                 <pre style="margin-top: -1.8rem; margin-bottom: -1.8rem; ">
                                                 <code style="padding:0 1.4rem 0 1.4rem; border-radius:5px;" class="text-sm">
-                                    {{ $section->data->code }}
+{{ $section->data->code }}
                                                 </code>
                                               </pre>
                             </div>

@@ -16,6 +16,8 @@ class ArticlesTable extends Component
   public $sortAsc = false;
   public $perPage = 15;
 
+  // protected $paginationTheme = 'tailwind';
+
   protected $listeners = ['tableRefresh' => '$refresh'];
 
   public function updatingSearch()
