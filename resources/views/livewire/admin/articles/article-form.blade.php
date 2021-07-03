@@ -122,6 +122,7 @@
           </div>
         </section>
 
+        @if ($edit)
         <section>
           <div class="input-group">
             <label for="preview">Preview</label>
@@ -131,6 +132,7 @@
             </a>
           </div>
         </section>
+        @endif
       </div>
 
       <div x-data="formComponents()">

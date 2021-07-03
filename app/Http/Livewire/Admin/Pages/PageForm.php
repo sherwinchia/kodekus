@@ -80,14 +80,34 @@ class PageForm extends Component
   {
     $this->successMsg = null;
 
-    $data = $this->validate([
-      'socials.*.name' => 'required|string',
-      'socials.*.icon' => 'required|string',
-      'socials.*.color' => 'required|string',
-      'socials.*.link' => 'required|url',
-      'socials.*.display' => 'boolean',
-    ]);
-
+    $data = $this->validate(
+      [
+        'socials.*.name' => 'required|string',
+        'socials.*.icon' => 'required|string',
+        'socials.*.color' => 'required|string',
+        'socials.*.link' => 'required|url',
+        'socials.*.display' => 'boolean'
+      ],
+      [
+          'socials.*.name.required' => 'The :attribute cannot be empty.',
+          'socials.*.name.string' => 'The :attribute format is not valid.',
+          'socials.*.icon.required' => 'The :attribute cannot be empty.',
+          'socials.*.icon.string' => 'The :attribute format is not valid.',
+          'socials.*.color.required' => 'The :attribute cannot be empty.',
+          'socials.*.color.string' => 'The :attribute format is not valid.',
+          'socials.*.link.required' => 'The :attribute cannot be empty.',
+          'socials.*.link.string' => 'The :attribute format is not valid.',
+          'socials.*.display.required' => 'The :attribute cannot be empty.',
+          'socials.*.display.string' => 'The :attribute format is not valid.',
+      ],
+      [
+        'socials.*.name' => 'Social name',
+        'socials.*.icon' => 'Social icon',
+        'socials.*.color' => 'Social color',
+        'socials.*.link' => 'Social link',
+        'socials.*.display' => 'Social display'
+      ],
+    );
     $this->content = $data['socials'];
 
     $this->page->update([
@@ -135,10 +155,21 @@ class PageForm extends Component
   {
     $this->successMsg = null;
 
-    $data = $this->validate([
+    $data = $this->validate(
+      [
       'metas.*.name' => 'required',
       'metas.*.content' => 'required'
-    ]);
+      ],
+      [
+        'metas.*.name.required' => 'The :attribute cannot be empty.',
+        'metas.*.content.required' => 'The :attribute cannot be empty.',
+      ],
+      [
+        'metas.*.name' => 'Meta name',
+        'metas.*.content' => 'Meta content'
+      ]
+  
+    );
 
     $this->content = $data['metas'];
 
@@ -146,7 +177,7 @@ class PageForm extends Component
       'content' => serialize($this->content),
     ]);
 
-    return $this->successMsg = 'Social successfully updated.';
+    return $this->successMsg = 'Meta successfully updated.';
   }
 
   public function render()

@@ -33,14 +33,14 @@ class CommentComponent extends Component
     'user_id' => 'nullable'
   ];
 
-  protected $messages = [
-    'name.required' => 'Kolom nama tidak boleh kosong.',
-    'name.max:80' => 'Kolom nama maksimal 80 karakter.',
-    'email.required' => 'Kolom email tidak boleh kosong',
-    'email.email' => 'Email harus valid.',
-    'content.required' => 'Kolom isi tidak boleh kosong.',
-    'content.max:360' => 'Kolom isi maksimal 360 karakter.',
-  ];
+  // protected $messages = [
+  //   'name.required' => 'Kolom nama tidak boleh kosong.',
+  //   'name.max:80' => 'Kolom nama maksimal 80 karakter.',
+  //   'email.required' => 'Kolom email tidak boleh kosong',
+  //   'email.email' => 'Email harus valid.',
+  //   'content.required' => 'Kolom isi tidak boleh kosong.',
+  //   'content.max:360' => 'Kolom isi maksimal 360 karakter.',
+  // ];
 
   protected $listeners = [
     'refreshComponent' => '$refresh'  

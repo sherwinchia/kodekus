@@ -15,15 +15,18 @@
             Email
           </label>
           <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
+          @error('email') <span class="error-msg">{{ $message }}</span> @enderror
         </div>
         <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Password
           </label>
           <input wire:model="password" class="w-full" type="password" placeholder="********">
+          @error('password') <span class="error-msg">{{ $message }}</span> @enderror
           @if ($errors->any())
           <p class="error-msg mb-1">{{ $errors->first() }}</p>
           @endif
+          
         </div>
         <button id="signin-btn" wire:loading.attr="disabled"
           class="w-full my-2 flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
@@ -79,27 +82,29 @@
             Full Name
           </label>
           <input wire:model="full_name" class="w-full" type="text" placeholder="John Doe">
+          @error('first_name') <span class="error-msg">{{ $message }}</span> @enderror
         </div>
         <div class="input-group mb-1">
           <label class="text-sm" for="username">
             Email
           </label>
           <input wire:model="email" class="w-full" type="text" placeholder="john_doe@gmail.com">
+          @error('email') <span class="error-msg">{{ $message }}</span> @enderror
         </div>
         <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Password
           </label>
           <input wire:model="password" class="w-full" type="password" placeholder="********">
+          
         </div>
         <div class="input-group mb-1">
           <label class="text-sm" for="password">
             Confirm Password
           </label>
           <input wire:model="password_confirmation" class="w-full" type="password" placeholder="********">
-          @if ($errors->any())
-          <p class="error-msg mb-1">{{ $errors->first() }}</p>
-          @endif
+          @error('password') <span class="error-msg">{{ $message }}</span> @enderror
+      
         </div>
         <button id="register-btn" wire:loading.attr="disabled"
           class="w-full my-2 flex justify-center items-center border border-black bg-white hover:bg-gray-200 text-black py-2 px-4"
@@ -145,9 +150,8 @@
             Email
           </label>
           <input class="w-full" wire:model="forgotPasswordEmail" type="text" placeholder="john_doe@gmail.com">
-          @if ($errors->any())
-          <p class="error-msg mb-1">{{ $errors->first() }}</p>
-          @endif
+          @error('forgotPasswordEmail') <span class="error-msg">{{ $message }}</span> @enderror
+      
           @if ($forgotPasswordMessage)
           <p class="text-green-500 text-xs italic mb-1">{{ $forgotPasswordMessage }}</p>
           @endif

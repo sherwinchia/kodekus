@@ -39,6 +39,10 @@ class AuthForm extends Component
     'password' => 'required|confirmed|min:6',
   ];
 
+    protected $messages = [
+    'first_name.required' => 'The name field is required.',
+  ];
+
   public function mount($form)
   {
     if ($form == 'login' || $form == 'register' || $form == 'forgot-password') {
@@ -70,7 +74,6 @@ class AuthForm extends Component
 
 	  if (Auth::guard('web')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = current_user();
-
       $intended_url = Session::get('url.intended');
       if ($intended_url) {
         Session::forget('url.intended');
@@ -78,7 +81,6 @@ class AuthForm extends Component
       } else {
         return redirect()->route('browser.home.index');
       }
-
 	  }else{
 	    $this->addError('error', 'Email or password is incorrect!');
 	  }

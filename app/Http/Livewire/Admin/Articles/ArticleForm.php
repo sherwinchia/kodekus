@@ -116,7 +116,6 @@ class ArticleForm extends Component
 
     $this->author_id = current_admin()->id;
     
-
     if ($this->edit) {
       $data = $this->validate([
         'title' => 'required|max:80',
@@ -128,7 +127,6 @@ class ArticleForm extends Component
         'series_id' => 'nullable',
         'read_minutes' => 'nullable',
         'publish_date' => 'required',
-        'author_id' => 'required',
         'published' => 'required',
         'featured' => 'required',
         'trending' => 'required',

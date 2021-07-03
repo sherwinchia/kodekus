@@ -78,6 +78,8 @@ class GenerateAdmin extends Command{
 
     $admin->syncRoles($role);
 
+    
+
     if($admin){
       $this->info('Admin has been created successfully.');
     }else{
