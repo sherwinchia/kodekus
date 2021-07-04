@@ -39,6 +39,18 @@ class ArticleController extends Controller
   public function preview(Article $article)
   {
     $article->body = json_decode($article->body);
+
+    if (auth('admin')->user()->hasRole('content-writer')) {
+      $user = auth('admin')->user();
+
+      $articles =  $user->articles;
+      if ($articles->contains($article)) {
+        return view(self::PATH.'preview', compact('article'));
+      } else {
+        return abort('403');
+      }
+    }
+    
     return view(self::PATH.'preview', compact('article'));
   }
 }

@@ -27,9 +27,10 @@ class LoginForm extends Component
 
 	  if (Auth::guard('admin')->attempt(['email' => $this->email, 'password' => $this->password])) {
       $user = auth()->guard('admin')->user();
-			if ($user->hasAnyRole(['admin', 'content-writer'])) {
+			if ($user->hasRole('admin')) {
         return redirect()->intended(route('admin.welcome'));
-
+      }else {
+        return redirect()->intended(route('admin.articles.index'));
       }
       Auth::guard('admin')->logout();
       $this->addError('error', 'Email or password is incorrect!');

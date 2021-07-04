@@ -11,6 +11,11 @@ class DashboardController extends Controller
 {
   public const PATH = 'admin.dashboard.';
   
+  public function __construct()
+  {
+    $this->middleware(['role:admin']);
+  }
+
   public function index()
   {
     $articles = Article::all();

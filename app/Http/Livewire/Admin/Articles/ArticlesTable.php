@@ -60,11 +60,22 @@ class ArticlesTable extends Component
 
   public function render()
   {
+    if (current_admin()->hasRole('admin')) {
       return view('livewire.admin.articles.articles-table', [
         'articles' => Article::query()
             ->where('title', 'LIKE', "%{$this->search}%") 
             ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
             ->paginate($this->perPage)
       ]);
+    } else {
+      return view('livewire.admin.articles.articles-table', [
+        'articles' => Article::query()
+            ->where('author_id','=',current_admin()->id)
+            ->where('title', 'LIKE', "%{$this->search}%") 
+            ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+            ->paginate($this->perPage)
+      ]);
+    }
+
   }
 }

@@ -46,18 +46,15 @@
         </div>
 
         <div class="flex gap-4">
-            <div class="bg-white shadow-md rounded-lg w-5/12 flex flex-col space-y-2 p-4">
+            <div class="bg-white shadow-md rounded-lg w-full flex flex-col space-y-2 p-4">
                 <div><b>Recent Articles</b></div>
                 @foreach ($latestArticles as $article)
+                <a class="w-full" href="{{ route('admin.articles.edit', $article->id) }}">
                     <div class="w-full rounded-md border border-gray-300 p-2">
-                        <a class="w-full" href="{{ route('admin.articles.edit', $article->id) }}">
                             {{ $article->title }}
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 @endforeach
-            </div>
-            <div>
-                Comment :D
             </div>
         </div>
 

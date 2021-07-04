@@ -10,21 +10,21 @@
       <label class="block text-black mb-2" for="username">
         Email
       </label>
-      <input class="w-full border border-black rounded-none p-2 focus:outline-none" wire:model="email" type="text"
+      <input tabindex="1" class="w-full border border-black rounded-none p-2 focus:outline-none" wire:model="email" type="text"
         placeholder="Email">
     </div>
     <div class="mb-4 ">
       <label class="block text-black mb-2" for="password">
         Password
       </label>
-      <input class=" w-full border border-black rounded-none p-2 focus:outline-none" wire:model="password"
+      <input tabindex="2" class=" w-full border border-black rounded-none p-2 focus:outline-none" wire:model="password"
         type="password" placeholder="******************">
       @if ($errors->any())
       <p class="text-red-500 text-xs italic">{{ $errors->first() }}</p>
       @endif
     </div>
     <div class="flex items-center justify-between">
-      <button class="w-full border border-black rounded-none bg-white text-black text-lg font-normal hover:bg-gray-200"
+      <button tabindex="3" class="w-full border border-black rounded-none bg-white text-black text-lg font-normal hover:bg-gray-200"
         type="submit" wire:loading.attr="disabled">
         Sign In
         <span wire:loading wire:target="submit"

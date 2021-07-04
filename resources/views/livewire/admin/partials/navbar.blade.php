@@ -1,12 +1,14 @@
 <div class="">
     <ul>
+        @role('admin')
         <li class="{{ request()->is('admin/dashboard') ? 'navbar-active-list' : 'navbar-list' }}">
             <a class="flex-col justify-between items-center" href="{{ route('admin.dashboard.index') }}">
                 <i class="fa fa-home w-8 text-lg"></i>
                 <span class="font-roboto text-md">Dashboard</span>
             </a>
         </li>
-
+        @endrole
+        
         <li class="navbar-list pr-0"
             x-data="{contentDrop: {{ request()->is('admin/articles*') || request()->is('admin/categories*') || request()->is('admin/tags*') || request()->is('admin/series*') || request()->is('admin/comments*') ? 'true' : 'false' }}} ">
             <a class="flex-col justify-between items-center cursor-pointer" @click="contentDrop=!contentDrop">

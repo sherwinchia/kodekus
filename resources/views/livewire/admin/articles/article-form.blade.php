@@ -106,7 +106,7 @@
           </div>
         </section>
 
-        <section>
+        {{-- <section>
           <div class="input-group">
             <label for="featured">Featured</label>
             <input class="w-full h-10" type="checkbox" wire:model="featured">
@@ -120,7 +120,7 @@
             <input class="w-full h-10" type="checkbox" wire:model="trending">
             @error('trending') <span class="error-msg">{{ $message }}</span> @enderror
           </div>
-        </section>
+        </section> --}}
 
         @if ($edit)
         <section>
