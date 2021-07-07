@@ -74,14 +74,14 @@
         <li class="{{ request()->is('admin/quizzes*') ? 'navbar-active-list' : 'navbar-list' }}">
             <a class="flex-col justify-between items-center" href="{{ route('admin.quizzes.index') }}">
                 <div class="w-full">
-                    <i class="fas fa-pencil-alt w-8 text-l"></i>
-                    <span class="font-roboto text-m">Quizzes</span>
+                    <i class="fas fa-pencil-alt w-8 text-lg"></i>
+                    <span class="font-roboto text-md">Quizzes</span>
                 </div>
             </a>
         </li>
 
         @role('admin')
-        <li class="navbar-list pr-0"
+        {{-- <li class="navbar-list pr-0"
             x-data="{authenticationDrop: {{ request()->is('admin/users*') || request()->is('admin/permissions*') || request()->is('admin/guards*') || request()->is('admin/roles*') ? 'true' : 'false' }}}">
             <a class="flex-col justify-between items-center cursor-pointer"
                 @click="authenticationDrop=!authenticationDrop">
@@ -132,13 +132,18 @@
                     </a>
                 </li>
             </ul>
+        </li> --}}
+
+        <li class=" {{ request()->is('admin/users*') ? 'navbar-active-list' : 'navbar-list' }} ">
+            <a class="flex-col justify-between items-center " href="{{ route('admin.users.index') }}">
+                <div class="w-full">
+                    <i class="fas fa-users w-8 text-lg "></i>
+                    <span class="font-roboto text-md ">Users</span>
+                </div>
+            </a>
         </li>
 
-
-
-
-
-        <li class="navbar-list pr-0 "
+        {{-- <li class="navbar-list pr-0 "
             x-data="{advancedDrop:{{ request()->is('admin/files*') || request()->is('admin/backups*') || request()->is('admin/logs*') ? 'true' : 'false' }}}">
             <a class="flex-col justify-between items-center cursor-pointer" @click="advancedDrop=!advancedDrop">
                 <div class="relative">
@@ -154,7 +159,7 @@
                 x-transition:enter="transition-all ease-out duration-200" x-transition:enter-start="opacity-0 scale-75"
                 x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition-all ease-in duration-200"
                 x-transition:leave-start="opacity-100 scale-75" x-transition:leave-end="opacity-0 scale-0">
-                {{-- <li class=" {{ request()->is('admin/files*') ? 'navbar-active-list' : 'navbar-list' }} ">
+                <li class=" {{ request()->is('admin/files*') ? 'navbar-active-list' : 'navbar-list' }} ">
         <a class="flex-col justify-between items-center " href="{{ route('admin.files.index') }}">
           <div class="w-full">
             <i class="fas fa-folder w-8 text-lg "></i>
@@ -169,7 +174,7 @@
           <span class="font-roboto text-md ">Backup</span>
         </div>
       </a>
-    </li> --}}
+    </li>
                 <li class="{{ request()->is('admin/logs*') ? 'navbar-active-list' : 'navbar-list' }} ">
                     <a class="flex-col justify-between items-center" href="{{ route('admin.logs.index') }}">
                         <div class="w-full">
@@ -179,13 +184,22 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
+        
         <li class="{{ request()->is('admin/pages*') ? 'navbar-active-list' : 'navbar-list' }}">
             <a class="flex-col justify-between items-center" href="{{ route('admin.pages.index') }}">
                 <div class="w-full">
-                    <i class="fas fa-file w-8 text-l"></i>
+                    <i class="fas fa-file w-8 text-lg"></i>
                     <span class="font-roboto text-m">Pages</span>
+                </div>
+            </a>
+        </li>
+        <li class="{{ request()->is('admin/logs*') ? 'navbar-active-list' : 'navbar-list' }} ">
+            <a class="flex-col justify-between items-center" href="{{ route('admin.logs.index') }}">
+                <div class="w-full">
+                    <i class="fas fa-scroll w-8 text-lg "></i>
+                    <span class="font-roboto text-md ">Logs</span>
                 </div>
             </a>
         </li>
@@ -194,7 +208,7 @@
         <li class="{{ request()->is('admin/profile*') ? 'navbar-active-list' : 'navbar-list' }}">
             <a class="flex-col justify-between items-center" href="{{ route('admin.profile.show') }}">
                 <div class="w-full">
-                    <i class="fas fa-user w-8 text-l"></i>
+                    <i class="fas fa-user w-8 text-lg"></i>
                     <span class="font-roboto text-m">Profile</span>
                 </div>
             </a>
@@ -203,7 +217,7 @@
         <li class="navbar-list">
             <a class="flex-col justify-between items-center" href="{{ route('admin.logout') }}">
                 <div class="w-full">
-                    <i class="fas fa-sign-out-alt w-8 text-l"></i>
+                    <i class="fas fa-sign-out-alt w-8 text-lg"></i>
                     <span class="font-roboto text-m">Logout</span>
                 </div>
             </a>

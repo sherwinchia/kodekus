@@ -34,7 +34,7 @@
                     </section>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 border-b pb-2">
                     <h3>Question(s)</h3>
                     @error('questions') <span class="error-msg block mb-4">{{ $message }}</span> @enderror
                     @foreach ($questions as $question_index => $question)

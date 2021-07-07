@@ -47,13 +47,13 @@ Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(func
   Route::resource('users', 'User\UserController')->name('*', 'users')->only('index', 'create', 'edit');
 
   //Role
-  Route::resource('roles', 'Role\RoleController')->name('*', 'roles')->only('index', 'create', 'edit');
+  // Route::resource('roles', 'Role\RoleController')->name('*', 'roles')->only('index', 'create', 'edit');
 
   //Permission
-  Route::resource('permissions', 'Permission\PermissionController')->name('*', 'permissions')->only('index', 'create', 'edit');
+  // Route::resource('permissions', 'Permission\PermissionController')->name('*', 'permissions')->only('index', 'create', 'edit');
 
   //Guard
-  Route::resource('guards', 'Guard\GuardController')->name('*', 'guards')->only('index', 'create', 'edit');
+  // Route::resource('guards', 'Guard\GuardController')->name('*', 'guards')->only('index', 'create', 'edit');
 
   //Advertisement
   Route::resource('advertisements', 'Advertisement\AdvertisementController')->name('*', 'advertisements')->only('index', 'create', 'edit');

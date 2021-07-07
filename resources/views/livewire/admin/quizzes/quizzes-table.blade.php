@@ -49,6 +49,11 @@
                         </td>
                         <td class="non-id">
                             <div class="flex justify-center text-gray-600">
+
+                                <a class="mx-1 text-lg" role="button"
+                                    href="{{ route('browser.quizzes.show', $quiz->id) }}" target="_blank">
+                                    <i class="far fa-eye"></i>
+                                </a>
                                 <a class="mx-1 text-lg" role="button"
                                     href="{{ route('admin.quizzes.edit', $quiz->id) }}">
                                     <i class="far fa-edit"></i>
