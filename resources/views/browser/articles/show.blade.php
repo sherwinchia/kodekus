@@ -15,12 +15,12 @@
 
                     <div class="flex flex-col lg:flex-row lg:items-center lg:mb-4 lg:space-x-4">
                         <div class="flex items-center align-middle space-x-2 mb-4 lg:mb-0">
-                            <div class="rounded-full h-10 w-10 bg-white flex items-center justify-center" style="background-image: url({{ $article->author->profile->image_link }}); background-size: cover; background-position:
+                            <div class="rounded-full h-10 w-10 bg-white flex items-center justify-center" style="background-image: url({{ isset($article->author) ? $article->author->profile->image_link : asset("images/placeholder/no-profile.png") }}); background-size: cover; background-position:
                                                   50%;">
                             </div>
                             <div>
-                                <a class="text-normal" href="{{ $article->author->author_link }}">
-                                    {{ $article->author->full_name }}
+                                <a class="text-normal" href="{{ isset($article->author) ? $article->author->author_link : "#" }}">
+                                    {{ isset($article->author) ? $article->author->full_name : "Anonymous" }}
                                 </a>
                             </div>
                         </div>

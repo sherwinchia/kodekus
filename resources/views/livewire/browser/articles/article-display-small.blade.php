@@ -20,12 +20,12 @@
         @endforeach
       </div>
       <div class="flex font-light text-sm items-center align-middle">
-        <div class="hidden md:block rounded-full h-6 w-6 lg:h-8 lg:w-8 bg-white mr-2" style="background-image: url({{  $article->author->profile->image_link }}); background-size: cover; background-position:
+        <div class="hidden md:block rounded-full h-6 w-6 lg:h-8 lg:w-8 bg-white mr-2" style="background-image: url({{ isset($article->author) ? $article->author->profile->image_link : asset("images/placeholder/no-profile.png") }}); background-size: cover; background-position:
           50%;">
         </div>
         <span class="hidden md:inline-block mr-4">
-          <a class="font-normal" href="{{ $article->author->author_link }}">
-            {{ $article->author->full_name }}
+          <a class="font-normal" href="{{ isset($article->author) ? $article->author->author_link : "#" }}">
+            {{ isset($article->author) ? $article->author->full_name : "Anonymous"  }}
           </a>
         </span>
         <span class="mr-4">
