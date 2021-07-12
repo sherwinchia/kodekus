@@ -17,8 +17,7 @@
                     @endforeach
                 </div>
             @endforeach
-            <button class="px-3 py-2 bg-primary rounded-md text-white text-sm font-semibold" type="submit">Submit
-                Quiz</button>
+            <button class="px-3 py-2 bg-primary rounded-md text-white text-sm font-semibold" type="submit">Cek Hasil</button>
         </form>
     @elseif ($state == 'submit')
         <div class="card-header">
@@ -41,7 +40,7 @@
                 </div>
             @endforeach
             <button class="px-3 py-2 bg-primary rounded-md text-white text-sm font-semibold" type="button"
-                wire:click.prevent="redo()">Redo
+                wire:click.prevent="redo()">Ulang
                 Quiz</button>
         </div>
     @endif
