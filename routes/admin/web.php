@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest:admin'])->group(function () {
   Route::get('login', 'Core\AuthController@showLogin')->name('login.show');
+
 });
+
+Route::get('logoutuser', 'Core\AuthController@logout')->name('logoutuser');
 
 Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(function () {
 
@@ -79,4 +82,5 @@ Route::middleware(['admin.auth:admin', 'role:admin|content-writer'])->group(func
 
   //Root
   Route::get('/', 'Core\WelcomeController@index')->name('welcome');
+
 });

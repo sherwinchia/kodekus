@@ -40,7 +40,12 @@
                     @foreach ($questions as $question_index => $question)
                         <div class="p-4 border border-gray-400 mb-4 rounded-lg">
                             <section class="mb-2">
+                                <a class="cursor-pointer flex justify-end py-2"
+                                    wire:click="removeQuestion({{ $question_index }})">
+                                    <i class="fas fa-times text-gray-700"></i>
+                                </a>
                                 <div class="input-group">
+                                    
                                     <textarea wire:model.defer="questions.{{ $question_index }}.text"
                                         placeholder="Enter the question here"></textarea>
                                     @error('questions.' . $question_index . '.text') <span
