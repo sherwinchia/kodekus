@@ -44,7 +44,7 @@ $php artisan serve
 $php artisan storage:link
 ```
 
-## Built With
+### Built With
 Backend: Laravel <br />
 Frontend: Livewire & Tailwind <br />
 Database: MySQL
