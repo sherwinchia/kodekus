@@ -8,7 +8,7 @@ Guest
 2. Comment on content
 3. Register as user
 
-Customer
+User
 1. Login
 2. Bookmark content
 3. Like content
