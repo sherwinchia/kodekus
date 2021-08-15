@@ -49,3 +49,5 @@ $php artisan generate:admin
 Backend: Laravel <br />
 Frontend: Livewire & Tailwind <br />
 Database: MySQL
+
+Demo: https://www.youtube.com/watch?v=sTYAHT5qbR0
