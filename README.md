@@ -44,6 +44,6 @@ $php artisan storage:link
 ```
 
 ## Built With
-*Backend: Laravel
-*Frontend: Livewire & Tailwind
-*Database: MySQL
+Backend: Laravel <br />
+Frontend: Livewire & Tailwind <br />
+Database: MySQL
