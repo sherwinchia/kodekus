@@ -1,7 +1,8 @@
 ![banner](https://banners.beyondco.de/Kodekus.png?theme=light&packageManager=&packageName=https%3A%2F%2Fgithub.com%2Fsherwinchia%2Fkodekus&pattern=architect&style=style_1&description=Laravel+Blogging+Web+Application&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
-Laravel Blogging Web Application
+##Laravel Blogging Web Application
 
+### Features
 Guest
 1. View content
 2. Comment on content
@@ -27,7 +28,7 @@ Admin
 5. Manage comment
 6. Logout
 
-### Installation
+## Built With
 
 1. Clone the repository using the command "git clone [link]"
 2. Setup XAMPP or Valet
