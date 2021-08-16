@@ -29,7 +29,6 @@ Admin
 6. Logout
 
 ### Installation
-
 1. Clone the repository using the command "git clone [link]"
 2. Setup XAMPP or Valet
 3. Create database in MySQL
@@ -50,4 +49,8 @@ Backend: Laravel <br />
 Frontend: Livewire & Tailwind <br />
 Database: MySQL
 
-Demo: https://www.youtube.com/watch?v=sTYAHT5qbR0
+### Demo
+https://www.youtube.com/watch?v=sTYAHT5qbR0
+
+### Note
+If you find this repository useful, don't forget to star the repository. Credit not required but much appreciated! 
